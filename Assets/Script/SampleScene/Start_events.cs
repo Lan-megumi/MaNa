@@ -14,7 +14,7 @@ public class Start_events : MonoBehaviour {
 	public InputField Account,pass,Account_for,pass_for;
 	
 	void Start () {
-		Screen.SetResolution(1080, 720, false);				//固定分辨率为1080*720窗口化
+		Screen.SetResolution(1280, 720, false);				//固定分辨率为1280*720窗口化
 
 		New_Save_window.SetActive(false);					//设置新建账户为不可见
 		Load_Save_window.SetActive(false);					//设置登录账号为不可见
@@ -76,7 +76,8 @@ public class Start_events : MonoBehaviour {
 		if(Account_text==""||Account_text=="null"||pass_text==""||pass_text=="null"){
 			Account.text="";
 			pass.text="";
-			Debug.Log("不能输入空的账号或密码");			  //检测是否出现空输入存在
+			TipsTextScript._instance.ChangeTips("不能输入空的账号或密码");
+															//检测是否出现空输入存在
 		}else{
 			int LinShi_4=0;									//用于判断是否有账号重复
 			for(int i=nob_i;i>0;i--){
@@ -89,7 +90,8 @@ public class Start_events : MonoBehaviour {
 					Account.text="";
 					pass.text="";
 					LinShi_4=1;
-					Debug.Log("账号已存在，请重新输入");
+					TipsTextScript._instance.ChangeTips("账号已存在，请重新输入");
+					
 				}
 				LinShi_2.Close();							//关闭数据流
 			}
@@ -126,6 +128,7 @@ public class Start_events : MonoBehaviour {
 	}
 
 	public void back_new(){									//新建账户窗口里的返回按钮
+		TipsTextScript._instance.StopTips();
 		nob_i=0;
 		Account.text="";
 		pass.text="";
@@ -137,6 +140,7 @@ public class Start_events : MonoBehaviour {
 	}
 
 	public void At_Load(){									//登录窗口里的登录按钮
+	Debug.Log("At_Load");
 		int LinShi_2=0;
 
 		for(int i=2,LinShi_1=0;LinShi_1==0;i++){			//用于判断有多少个存档文件
@@ -152,7 +156,8 @@ public class Start_events : MonoBehaviour {
 															//判断是否有空输入框
 			Account_for.text="";
 			pass_for.text="";								//清空文字输入框
-			Debug.Log("请不要填写空的账号或密码");
+			TipsTextScript._instance.ChangeTips("请不要填写空的账号或密码");
+			
 		}else{
 			int LinShi_1=0;
 			for(int i=LinShi_2;i>0;i--){					//循环检查符合的账号
@@ -173,7 +178,9 @@ public class Start_events : MonoBehaviour {
 				}
 			}
 			if(LinShi_1==0){
-				Debug.Log("密码或账号输入有误");
+				
+				TipsTextScript._instance.ChangeTips("密码或账号输入有误");
+
 			}
 
 			Account_for.text="";
@@ -182,6 +189,7 @@ public class Start_events : MonoBehaviour {
 	}
 
 	public void back_load(){								//登录窗口里的返回按钮
+		TipsTextScript._instance.StopTips();
 		Account_for.text="";
 		pass_for.text="";									//清空文字输入框
 		Load_Save_window.SetActive(false);

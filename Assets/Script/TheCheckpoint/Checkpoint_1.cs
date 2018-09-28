@@ -8,6 +8,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Checkpoint_1 : MonoBehaviour {
+	public GameObject Select_card_group;
+
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +21,6 @@ public class Checkpoint_1 : MonoBehaviour {
 		Debug.Log(Tne_Game_Name);
 	}
 
-	public GameObject Select_card_group;
 	string Tne_Game_Name="1";
 
 	public void Start_Game(string Tne_Game_Namein){

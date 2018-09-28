@@ -8,6 +8,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Game_Opening : MonoBehaviour {
+	public Text GameMaster_Button_Text;
+	public Text Display_Money_GB , Display_Money_ZS;
+
 
 	// Use this for initialization
 	void Start () {
@@ -38,9 +41,8 @@ public class Game_Opening : MonoBehaviour {
 	}
 	SAVE_GS LoadDate ;
 	String Display_Money_GB_St,Display_Money_ZS_St;
-	public Text GameMaster_Button_Text;
-	public Text Display_Money_GB , Display_Money_ZS;
 
+	//管理员
 	public void GM_Button() {											//这是一个测试用的按钮
 			//现在的功能是金币和钻石增加一万
 			LoadDate.money_GB=LoadDate.money_GB+10000;
@@ -54,6 +56,7 @@ public class Game_Opening : MonoBehaviour {
 			LoadDate_LS_2.Close();
 	}
 
+	//剧情模式
 	public void To_Region_Button(){
 		SceneManager.LoadScene("REGION",LoadSceneMode.Single);
 	}
