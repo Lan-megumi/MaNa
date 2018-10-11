@@ -20,6 +20,7 @@ public class TestMananger : MonoBehaviour {
 	void Start(){
 		Library1=new List<TestCard>();
 		Debug.Log("0:"+Library1);
+        
 
 	}
 	private void UpdateLibrary(){
@@ -33,9 +34,10 @@ public class TestMananger : MonoBehaviour {
 		 */
 		for (int i = 0; i < CardLibrary.Count; i++)
 		{
-			if (b==4)
+			if (b==Library1.Count)
 			{
-				b=0;
+                Debug.Log("aa" + Library1.Count);
+                b =0;
 			}
 				Cardid=Library1[b].GetCardid;
 				CardType=Library1[b].GetCardType;
