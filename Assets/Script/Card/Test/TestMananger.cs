@@ -20,7 +20,7 @@ public class TestMananger : MonoBehaviour {
 	void Start(){
 		Library1=new List<TestCard>();
 		Debug.Log("0:"+Library1);
-        
+        VisableCard();
 
 	}
 	private void UpdateLibrary(){
