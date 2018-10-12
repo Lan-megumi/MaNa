@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+	该脚本用于发牌以及实现实例化卡牌Ui功能
+ */
 public class TestMananger : MonoBehaviour {
 
 	public List<GameObject> CardLibrary;
 	public List<TestCard> Library1;
 
 // //-----------------------------------------------------
+//	定义用于接收卡牌属性的类
 	private string Cardid;
 	private Type CardType;
 	private Element_type CardEle;
@@ -23,9 +27,11 @@ public class TestMananger : MonoBehaviour {
         VisableCard();
 
 	}
+	//用于更新牌组与牌库中的差异
 	private void UpdateLibrary(){
 		Library1= TestCardLibrary._instance.Library0;
 	}
+	//该方法功能为发牌，并且与Ui功能交互
 	public void VisableCard(){
 		UpdateLibrary();
 		Debug.Log("1:"+Library1[1]);
