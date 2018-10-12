@@ -1,19 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EmenyLibrary : Attributes {
+/*
+	该脚本是用于储存怪物(Attributes类型)的数据
+ */
+public class EmenyLibrary{
 	public static EmenyLibrary _instance;
 	void Awake(){
 		_instance=this;
 	}
-
-	public void Emeny1(){
-		Hp=1500;
-		Mana=0;
-		Rgs=0;
-		Agi=50;
-		Imm=15;
-		Avd=2;
+/*
+	调用方法时注意先执行类下的 initdate() 填充数据
+ */
+	public class Emeny1:Attributes{
+		public void initdate(){
+			Hp=1500;
+			Mana=0;
+			Rgs=0;
+			Agi=50;
+			Imm=15;
+			Avd=2;
+		}
+	}
+	public class Emeny2: Attributes {
+		public void initdate(){
+			Hp=1800;
+			Mana=0;
+			Rgs=0;
+			Agi=50;
+			Imm=15;
+			Avd=2;
+		}
 	}
 }

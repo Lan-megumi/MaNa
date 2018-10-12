@@ -30,6 +30,8 @@ public class TestMananger : MonoBehaviour {
 	//用于更新牌组与牌库中的差异
 	private void UpdateLibrary(){
 		Library1= TestCardLibrary._instance.Library0;
+
+
 	}
 	//该方法功能为发牌，并且与Ui功能交互
 	public void VisableCard(){

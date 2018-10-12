@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
-Attributes
+Attributes类的
 	人物/敌人属性详解：
 	Hp					生命值
 	Mana			  法力值
