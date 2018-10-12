@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+/*
+	该脚本用于实例化卡牌以及洗牌的功能
+ */
 public  class  TestCardLibrary:MonoBehaviour{
 	public static TestCardLibrary _instance;
 	TestCard EL01Fi = new TestCard("EL01Fi",(Type)0,(Element_type)0,(Rarity)0,"火花");
@@ -44,25 +46,10 @@ public  class  TestCardLibrary:MonoBehaviour{
 
 		if (t == true)
 		{
-			// Library0.Add(EL01Fi);
-			// Library0.Add(EL02Fi);
-			// Library0.Add(EL03Fi);
-			// Library0.Add(EL04Fi);
-			// t=false;
 			Debug.Log(Library0[0]+"Add Card!");
 		}
-	
-		// if (n>=Library0.Count)
-		// {
-		// 	n=0;
-		// }
-		//  IdText.text=Library0[n].GetCardid.ToString();
-		//  TypeText.text=Library0[n].GetCardType.ToString();
-		//  EleText.text=Library0[n].GetCardElement_type.ToString();
-		//  RarityText.text=Library0[n].GetCardRarity.ToString();
-		//  NameText.text=Library0[n].GetCardName.ToString();
-		//  n++;
 	}
+	//洗牌功能
 	public void OrbLibrary(){
 		System.Random random =new System.Random();
 		Debug.Log("Random:"+random);

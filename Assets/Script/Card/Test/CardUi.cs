@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+/*
+	该脚本用于实例化卡牌
+	定义对应卡牌属性的各个Text控件并且绑定，然后通过修改 text 将接收过来的参数强制转换为string逐个填充
+ */
 public class CardUi : MonoBehaviour {
 	public Text IdText,TypeText,EleText,RarityText,NameText;
 	public static CardUi _instance;
