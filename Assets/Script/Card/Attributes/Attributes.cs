@@ -16,7 +16,7 @@ public class Attributes  {
 	public int Hp;
 	public int  Mana;
 	public int Rgs;
-	public int Agi;
+	public float Agi;
 	public int Imm;
 	public int Avd;
 
@@ -33,7 +33,7 @@ public class Attributes  {
 		set{Rgs=value;}
 		get{ return Rgs;}
 	}
-	public int GetAgi{
+	public float GetAgi{
 		set{Agi=value;}
 		get{ return Agi;}
 	}

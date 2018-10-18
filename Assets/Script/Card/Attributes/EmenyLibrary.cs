@@ -27,7 +27,7 @@ public class EmenyLibrary{
 			Hp=1800;
 			Mana=0;
 			Rgs=0;
-			Agi=50;
+			Agi=150;
 			Imm=15;
 			Avd=2;
 		}

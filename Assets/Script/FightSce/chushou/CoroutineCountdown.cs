@@ -11,7 +11,7 @@ public class CoroutineCountdown : MonoBehaviour
 {
     public static CoroutineCountdown _instance;
 
-    public Text time1,time2,Notetext;
+    public Text Notetext;
 
 //显示滑动值----------------
     public int tt1 = 0;
@@ -35,9 +35,7 @@ public class CoroutineCountdown : MonoBehaviour
     public Text targetTextObject,targetTextObject1;
 
 //---------------------------------
-    private  GameObject Player1bt1,Player1bt11;
 
-    private  GameObject Player2bt2,Player2bt21;
 
 
     private void Awake()
@@ -55,13 +53,6 @@ public class CoroutineCountdown : MonoBehaviour
         //谁先出手
         NextTrun();
 
-        Player1bt1 = GameObject.Find("SpeedCanvas/Button1");
-        Player1bt11 = GameObject.Find("SpeedCanvas/Button11");
-
-         Player2bt2 = GameObject.Find("SpeedCanvas/Button2");
-         Player2bt21 = GameObject.Find("SpeedCanvas/Button21");
-
-
     }
    
    public void NextTrun(){
@@ -78,11 +69,6 @@ public class CoroutineCountdown : MonoBehaviour
    }
     void  Update()
     {
-        targetTextObject.text = "滑动值为 " + targetSliderOject.value;
-        targetTextObject1.text = "滑动值为 " + targetSliderOject1.value;
-        time1.text = tt1.ToString();
-        time2.text = tt2.ToString();
-
         if (i == 1)
         {
             Player1Speed--;
@@ -98,23 +84,40 @@ public class CoroutineCountdown : MonoBehaviour
             {
                 targetSliderOject1.value = 0;
             }
-
-
         }
-        if (Player1Speed <= 0)
+        //当出现两个速度相同时的情况
+        if (Player1Speed==Player2Speed)
+        {
+            int randomn=new System.Random().Next(0,10);
+            Debug.Log("Random!"+randomn);
+            if(randomn>=4) 
+            {
+                //玩家优先，敌人数值+1
+                Player2Speed+=1;
+            }else
+            {
+                //敌人优先，玩家数值+1
+                Player1Speed+=1;
+            }
+            // Debug.Log("RandomSpeed:"+Player1Speed+"|"+Player2Speed);
+        }
+        //
+        if (Player1Speed <= 0&&i==1)
         {
             i = -1;
-            time2.text = Player2Speed.ToString();
-            Player2();            
-            Player1();
-        }
 
-        if (Player2Speed <= 0)
+            // Player2();            
+            // Player1();
+            CheckedPlayer();
+            // Debug.Log("Speed:"+Player1Speed+"|"+Player2Speed);
+
+        }else if (Player2Speed <= 0&&i==1)
         {
             i = -1;
-            time1.text = Player1Speed.ToString();
-            Player1();
-            Player2();
+            // Player1();
+            // Player2();
+            CheckedPlayer();
+            // Debug.Log("Speed:"+Player1Speed+"|"+Player2Speed); 
         }
         // Debug.Log("a=" + a);
         // Debug.Log("b=" + b);
@@ -124,44 +127,14 @@ public class CoroutineCountdown : MonoBehaviour
     public void CheckedPlayer(){
         if (Player1Speed==0)
         {
-            
+
+            Notetext.text="你的回合";
+        }else if(Player2Speed==0){
+
+            Notetext.text="敌方回合";
+
         }
     }
-   //回合的判定
-
-    public void Player1()//我方回合，禁止对面
-    {
-        Notetext.text = "我方回合";
-        Button Bt1 = (Button)Player1bt1.GetComponent<Button>();
-        Bt1.interactable = true;
-
-        Button Bt11 = (Button)Player1bt11.GetComponent<Button>();
-        Bt11.interactable = true;
-
-        if (Player2Speed == 0)
-        {
-            Bt1.interactable = false;
-            Bt11.interactable = false;
-        }
-    }
-    public void Player2()//敌方回合，禁止对面
-    {
-        Button Bt2 = (Button)Player2bt2.GetComponent<Button>();
-        Bt2.interactable = true;
-
-        Button Bt21 = (Button)Player2bt21.GetComponent<Button>();
-        Bt21.interactable = true;
-        
-        if (Player1Speed == 0)
-        {
-            Bt2.interactable = false;
-            Bt21.interactable = false;
-        }
-        Notetext.text = "敌方回合";
-    }
-
-
-
 }
 
     
