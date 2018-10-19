@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
 	该脚本用于发牌以及实现实例化卡牌Ui功能
@@ -21,8 +22,14 @@ public class TestMananger : MonoBehaviour
     public Element_type CardEle;
     public Rarity CardRarity;
     public string CardName;
+    //----------------------------------------------------
+    private bool bCard, bCard1, bCard2 = false;//融合条件
+    public Text text, text1, text2;//是否选择
 
-    public bool BCard, BCard1, BCard2 = false;
+
+    
+
+    public bool BCard, BCard1, BCard2;
     //-----------------------------------------------------	
     private int b, c = 0;
     private int d;
@@ -32,6 +39,10 @@ public class TestMananger : MonoBehaviour
     }
     void Start()
     {
+        text.text = "未选";
+        text2.text = "未选";
+        text1.text = "未选";
+
         Library1 = new List<TestCard>();
         VisableCard();
     }
@@ -44,17 +55,65 @@ public class TestMananger : MonoBehaviour
     public void ShotA()
     {
         BCard = true;
+        if (bCard == false)
+        {
+            text.text = "已选";
+            bCard = true;
+        }
+        else
+        {
+            text.text = "未选";
+            bCard = false;
+        }
         ShotAA();
     }
     public void ShotB()
     {
         BCard1 = true;
+        if (bCard1 == false)
+        {
+            text1.text = "已选";
+            bCard1 = true;
+        }
+        else
+        {
+            text1.text = "未选";
+            bCard1 = false;
+        }
         ShotAA();
     }
     public void ShotC()
     {
         BCard2 = true;
+        if (bCard2 == false)
+        {
+            text2.text = "已选";
+            bCard2 = true;
+        }
+        else
+        {
+            text2.text = "未选";
+            bCard2 = false;
+        }
         ShotAA();
+    }
+
+    public void button3()//点击融合    （内容未补完）
+    {
+        if (bCard == true) {        //第一张
+        Cardid = Library1[d - 2].GetCardid;
+        Debug.Log("融合了:" + Cardid);
+       }
+        if (bCard1 == true)        //第二张
+        {
+            Cardid = Library1[d - 1].GetCardid;
+            Debug.Log("融合了" + Cardid);
+        }
+        if (bCard2 == true)         //第三张
+        {
+            Cardid = Library1[d].GetCardid;
+            Debug.Log("融合了" + Cardid);
+        }
     }
 
     //该方法功能为发牌，并且与Ui功能交互
@@ -101,8 +160,9 @@ public class TestMananger : MonoBehaviour
             Debug.Log(CardEle);
             Debug.Log(CardRarity);
             Debug.Log(CardName);
+            
             BCard2 = false;
-            //return;
+            
         }
         if (BCard1 == true)
         {
@@ -117,8 +177,9 @@ public class TestMananger : MonoBehaviour
             Debug.Log(CardEle);
             Debug.Log(CardRarity);
             Debug.Log(CardName);
+            
             BCard1 = false;
-            //return;
+            
         }
         if (BCard == true)
         {
@@ -133,8 +194,9 @@ public class TestMananger : MonoBehaviour
             Debug.Log(CardEle);
             Debug.Log(CardRarity);
             Debug.Log(CardName);
+            
             BCard = false;
-            //return;
+            
         }
     }
 }
