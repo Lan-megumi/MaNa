@@ -6,6 +6,7 @@ using UnityEngine.UI;
 /*
     该脚本功能
     实现根据角色速度影响操作回合
+    分别表示玩家和敌人的回合
  */
 public class CoroutineCountdown : MonoBehaviour
 {
@@ -13,9 +14,8 @@ public class CoroutineCountdown : MonoBehaviour
 
     public Text Notetext;
 
-//显示滑动值----------------
-    public int tt1 = 0;
-    public int tt2 = 0;
+    public bool IfPlayer;
+
 //---------------------------
 
     private int i = 1;
@@ -31,12 +31,7 @@ public class CoroutineCountdown : MonoBehaviour
 
 //滑动条
     public Slider targetSliderOject,targetSliderOject1;
-//滑动条的文本控件
-    public Text targetTextObject,targetTextObject1;
-
 //---------------------------------
-
-
 
     private void Awake()
     {
@@ -47,12 +42,10 @@ public class CoroutineCountdown : MonoBehaviour
         Debug.Log("dd" + d);
     }
     
-
     void Start()
     {
         //谁先出手
         NextTrun();
-
     }
    
    public void NextTrun(){
@@ -85,6 +78,7 @@ public class CoroutineCountdown : MonoBehaviour
                 targetSliderOject1.value = 0;
             }
         }
+
         //当出现两个速度相同时的情况
         if (Player1Speed==Player2Speed)
         {
@@ -105,34 +99,37 @@ public class CoroutineCountdown : MonoBehaviour
         if (Player1Speed <= 0&&i==1)
         {
             i = -1;
-
-            // Player2();            
-            // Player1();
             CheckedPlayer();
             // Debug.Log("Speed:"+Player1Speed+"|"+Player2Speed);
 
         }else if (Player2Speed <= 0&&i==1)
         {
             i = -1;
-            // Player1();
-            // Player2();
             CheckedPlayer();
             // Debug.Log("Speed:"+Player1Speed+"|"+Player2Speed); 
         }
-        // Debug.Log("a=" + a);
-        // Debug.Log("b=" + b);
-        
     }
-
+//  检查player
     public void CheckedPlayer(){
         if (Player1Speed==0)
         {
-
+            
             Notetext.text="你的回合";
         }else if(Player2Speed==0){
-
+            CountDebuff._instance.EnemyComputeDebuff();
             Notetext.text="敌方回合";
+        }
+    }
 
+    public void Function_Dizzy(string Who){
+        if (Who=="Player")
+        {
+             i = 1;
+            Player1Speed = 7;
+        }else if (Who=="Enemy")
+        {
+            i = 1;
+            Player2Speed = 10;
         }
     }
 }

@@ -5,7 +5,20 @@ using UnityEngine.UI;
 
 
 /*
-	该脚本用于测试Debuff中的燃烧
+	该脚本功能
+	debuff属性计算
+		燃烧*
+		寒冷
+		冰冻
+		恐惧
+		眩晕
+		冻伤
+	Debuff归属计算
+		Player方
+		Enemy方
+	Debuff群体/单体判定
+		Player方
+		Enemy方
  */
 public class CountDebuff : MonoBehaviour {
 	public Text TextHp,TextName,TextRound;
@@ -13,7 +26,7 @@ public class CountDebuff : MonoBehaviour {
 	//用于接收敌人血量
 	private int EmenyHp;
 
-	public List<Attributes> EmenyList;
+	public static CountDebuff _instance;
 //------------------------------------------------
 	//定义回合数，当前回合和上一回合
 	private int Round=0,eldRound;
@@ -30,13 +43,22 @@ public class CountDebuff : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		AddRound();
 		TextRound.text=Round.ToString();		
 	}
 
+	void Awake(){
+		_instance=this;
+	}
+	
 
-	//玩家/敌人回合结束后，判断敌方是否有(回合开始结算)Debuff需要结算
-	public void ComputeDebuff(){
+//玩家/敌人回合结束后，判断敌方是否有(回合开始结算)Debuff需要结算
+	public void EnemyComputeDebuff(){
 
+		if (IceAcheNum!=0)
+		{
+			IceAche();
+		}
 		if (IceNum!=0)
 		{
 			Ice();
@@ -59,7 +81,8 @@ public class CountDebuff : MonoBehaviour {
 		eldRound=Round;
 		Round++;
 		TextRound.text=Round.ToString();
-		ComputeDebuff();
+		//当传回值为false时,代表轮到敌人开始回合，需要计算Debuff
+		
 	}
 //------------------------------燃烧---------------------------
 	//燃烧Debuff的计算方法
@@ -84,8 +107,6 @@ public class CountDebuff : MonoBehaviour {
 		DebuffUi._instance.ChangeFire(FireNum);
 
 	}
-
-
 
 //------------------------------冰冻---------------------------
 	public void Ice(){
@@ -116,13 +137,13 @@ public class CountDebuff : MonoBehaviour {
 		{
 			int IceAcheDamage=10;
 			EmenyHp-=IceAcheDamage;
+			UpdateHp();
 			IceNum++;
 			DebuffUi._instance.ChangeIce(IceNum);
 
 		}
 		IceAcheNum--;
 		DebuffUi._instance.ChangeIceAche(IceAcheNum);
-
 	}
 	public void AddIceAche(){
 		IceAcheNum+=2;
@@ -134,7 +155,8 @@ public class CountDebuff : MonoBehaviour {
 //------------------------------晕眩---------------------------
 	//眩晕实现：直接增加行动速度=目标初始速度
 	public void Dizzy(){
-		Debug.Log("眩晕未实现！");
+		// Debug.Log("眩晕未实现！");
+		CoroutineCountdown._instance.Function_Dizzy("Enemy");
 		DizzyNum=0;
 		DebuffUi._instance.ChangeDizzy(DizzyNum);
 	}
