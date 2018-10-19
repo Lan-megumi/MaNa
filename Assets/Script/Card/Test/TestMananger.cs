@@ -98,21 +98,31 @@ public class TestMananger : MonoBehaviour
         ShotAA();
     }
 
-    public void button3()//点击融合    （内容未补完）
+    public void button3()//点击融合，显示id,      （其余内容未补完）
     {
+        if (bCard == true && bCard1 == true && bCard2 == true ||       //出牌条件，不得出单张或者3张
+            bCard == true && bCard1 == false && bCard2 == false ||
+            bCard == false && bCard1 == true && bCard2 == false ||
+            bCard == false && bCard1 == false && bCard2 == true)
+        {
+            Debug.Log("这样出牌系不可以滴，一次必须出2张牌");
+
+        }else {
+
         if (bCard == true) {        //第一张
-        Cardid = Library1[d - 2].GetCardid;
-        Debug.Log("融合了:" + Cardid);
-       }
+            Cardid = Library1[d - 2].GetCardid;
+             Debug.Log("融合了:" + Cardid);
+       } 
         if (bCard1 == true)        //第二张
         {
-            Cardid = Library1[d - 1].GetCardid;
-            Debug.Log("融合了" + Cardid);
+             Cardid = Library1[d - 1].GetCardid;
+             Debug.Log("融合了" + Cardid);
         }
         if (bCard2 == true)         //第三张
         {
             Cardid = Library1[d].GetCardid;
             Debug.Log("融合了" + Cardid);
+        }
         }
     }
 
