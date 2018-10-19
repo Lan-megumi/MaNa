@@ -53,7 +53,7 @@ public class CountDebuff : MonoBehaviour {
 	
 
 //玩家/敌人回合结束后，判断敌方是否有(回合开始结算)Debuff需要结算
-	public void ComputeDebuff(){
+	public void EnemyComputeDebuff(){
 
 		if (IceAcheNum!=0)
 		{
@@ -108,8 +108,6 @@ public class CountDebuff : MonoBehaviour {
 
 	}
 
-
-
 //------------------------------冰冻---------------------------
 	public void Ice(){
 		//当冻伤buff消失时，冰冻效果也会消失
@@ -157,7 +155,8 @@ public class CountDebuff : MonoBehaviour {
 //------------------------------晕眩---------------------------
 	//眩晕实现：直接增加行动速度=目标初始速度
 	public void Dizzy(){
-		Debug.Log("眩晕未实现！");
+		// Debug.Log("眩晕未实现！");
+		CoroutineCountdown._instance.Function_Dizzy("Enemy");
 		DizzyNum=0;
 		DebuffUi._instance.ChangeDizzy(DizzyNum);
 	}

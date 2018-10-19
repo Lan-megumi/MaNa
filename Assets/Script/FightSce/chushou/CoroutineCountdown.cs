@@ -113,16 +113,24 @@ public class CoroutineCountdown : MonoBehaviour
     public void CheckedPlayer(){
         if (Player1Speed==0)
         {
-
+            
             Notetext.text="你的回合";
         }else if(Player2Speed==0){
-            CountDebuff._instance.ComputeDebuff();
+            CountDebuff._instance.EnemyComputeDebuff();
             Notetext.text="敌方回合";
         }
     }
 
-    public void Function_Dizzy(){
-
+    public void Function_Dizzy(string Who){
+        if (Who=="Player")
+        {
+             i = 1;
+            Player1Speed = 7;
+        }else if (Who=="Enemy")
+        {
+            i = 1;
+            Player2Speed = 10;
+        }
     }
 }
 
