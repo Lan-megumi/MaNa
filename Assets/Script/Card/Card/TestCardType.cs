@@ -34,3 +34,18 @@ using UnityEngine;
 		zipp,common,normal,rare
 	}
 
+	/*
+		AttackeType属性详解
+	*根据单词组成具体的属性
+		0SingleDamage：单体伤害
+		1GropupDamage：群体伤害
+		2SingleCure：单体治疗
+		3GropupCure：群体治疗
+		4Sputtering:溅射
+		5GropBuff
+		6GroupDebuff
+	 */
+	public enum AttcakeType{
+		SingleDamage,GroupDamage,SigeleCure,GroupCure,Sputtering,GropBuff,GroupDebuff
+	}
+

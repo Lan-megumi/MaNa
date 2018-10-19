@@ -8,13 +8,19 @@ using System.Collections.Generic;
 	CardElement_type	详见TestCardType脚本，是一个自定义的Element_type类型
 	CardRarity				   详见TestCardType脚本，是一个自定义的Rarity类型
 	CardName 				卡的名字，是一个字符串
- */
+	---------2018.10.19--------
+	CardCost					卡的消耗
+	CardDamge				 卡的伤害
+*/
 public class TestCard{
 	public  string Cardid;
 	public   Type CardType;
 	public  Element_type CardElement_type;
 	public  Rarity CardRarity;
 	public  string CardName;
+	public int CardCost,CardDamge;
+
+	public AttcakeType CardAttType;
 	// private readonly
 
 	//新建牌库用到的方法
@@ -22,12 +28,15 @@ public class TestCard{
 		
 	}
 	//目前主要用到下面这个构造方法，没有传参的部分可用于继承的子类里填充数据
-	public TestCard(string Cardid,Type CardType,Element_type CardElement_type,Rarity CardRarity,string CardName){
+	public TestCard(string Cardid,Type CardType,Element_type CardElement_type,Rarity CardRarity,string CardName,int CardCose,int CardDamge,AttcakeType CardAttType){
 		this.Cardid=Cardid;
 		this.CardType=CardType;
 		this.CardElement_type=CardElement_type;
 		this.CardRarity=CardRarity;
 		this.CardName=CardName;
+		this.CardCost=CardCose;
+		this.CardDamge=CardDamge;
+		this.CardAttType=CardAttType;
 	}
 	
 /*
@@ -54,7 +63,16 @@ public class TestCard{
 	public string GetCardName{
 		get{return CardName;}
 	}
+	public int GetCardCost{
+		get{return CardCost;}
+	}
 
+	public int GetCardDamage{
+		get{return CardDamge;}
+	}
 
+	public AttcakeType GetAttcakeType{
+		get{return CardAttType;}
+	}
 
 }
