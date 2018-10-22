@@ -17,11 +17,14 @@ public class TestMananger : MonoBehaviour
     // //-----------------------------------------------------
     //	定义用于接收卡牌属性的类
     [HideInInspector]
-    public string Cardid;
+    public string Cardid,Cardid1,Cardid2,Cardid3;
     public Type CardType;
     public Element_type CardEle;
     public Rarity CardRarity;
     public string CardName;
+
+    public string CardName1, CardName2, CardName3;
+
     //----------------------------------------------------
     private bool bCard, bCard1, bCard2 = false;//融合条件
     public Text text, text1, text2;//是否选择
@@ -110,18 +113,21 @@ public class TestMananger : MonoBehaviour
         }else {
 
         if (bCard == true) {        //第一张
-            Cardid = Library1[d - 2].GetCardid;
-             Debug.Log("融合了:" + Cardid);
+            Cardid1 = Library1[d - 2].GetCardid;
+                CardName1 = Library1[d - 2].GetCardName;
+             Debug.Log("融合了:" + Cardid1);
        } 
         if (bCard1 == true)        //第二张
         {
-             Cardid = Library1[d - 1].GetCardid;
-             Debug.Log("融合了" + Cardid);
+             Cardid2 = Library1[d - 1].GetCardid;
+            CardName2 = Library1[d - 1].GetCardName;
+             Debug.Log("融合了" + Cardid2);
         }
         if (bCard2 == true)         //第三张
         {
-            Cardid = Library1[d].GetCardid;
-            Debug.Log("融合了" + Cardid);
+            Cardid3 = Library1[d].GetCardid;
+            CardName = Library1[d].GetCardName;
+                Debug.Log("融合了" + Cardid3);
         }
         }
     }

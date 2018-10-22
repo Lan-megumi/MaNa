@@ -654,6 +654,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1151204357}
+        m_MethodName: ShowC
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &701685159
@@ -1072,6 +1083,7 @@ GameObject:
   - component: {fileID: 1151204353}
   - component: {fileID: 1151204352}
   - component: {fileID: 1151204356}
+  - component: {fileID: 1151204357}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1177,6 +1189,9 @@ MonoBehaviour:
   - {fileID: 1501860302}
   - {fileID: 768765302}
   Cardid: 
+  Cardid1: 
+  Cardid2: 
+  Cardid3: 
   CardType: 0
   CardEle: 0
   CardRarity: 0
@@ -1187,6 +1202,26 @@ MonoBehaviour:
   BCard: 0
   BCard1: 0
   BCard2: 0
+--- !u!114 &1151204357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1151204351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca52a18ac733f048b6d54229782193e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardLibrary: []
+  Cardid: 
+  CardType: 0
+  CardEle: 0
+  CardRarity: 0
+  CardName: 
+  Cardid1: 
+  Cardid2: 
+  Cardid3: 
 --- !u!1 &1342611276
 GameObject:
   m_ObjectHideFlags: 0
