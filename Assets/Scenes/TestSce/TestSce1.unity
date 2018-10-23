@@ -189,8 +189,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1151204351}
-        m_MethodName: 
+      - m_Target: {fileID: 97708130}
+        m_MethodName: OrbLibrary
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1196,6 +1196,9 @@ MonoBehaviour:
   CardEle: 0
   CardRarity: 0
   CardName: 
+  CardName1: 
+  CardName2: 
+  CardName3: 
   text: {fileID: 1609860304}
   text1: {fileID: 2101841470}
   text2: {fileID: 1815683913}

@@ -26,7 +26,7 @@ public class TestMananger : MonoBehaviour
     public string CardName1, CardName2, CardName3;
 
     //----------------------------------------------------
-    private bool bCard, bCard1, bCard2 = false;//融合条件
+    private bool bCard, bCard1, bCard2 = false;//融合条件，false已选，true未选
     public Text text, text1, text2;//是否选择
 
 
@@ -60,8 +60,16 @@ public class TestMananger : MonoBehaviour
         BCard = true;
         if (bCard == false)
         {
+            if (bCard1 == true && bCard2 == true)
+            {
+                text.text = "已选够2张";
+            }
+            else
+            {
             text.text = "已选";
             bCard = true;
+            }
+            
         }
         else
         {
@@ -75,8 +83,15 @@ public class TestMananger : MonoBehaviour
         BCard1 = true;
         if (bCard1 == false)
         {
-            text1.text = "已选";
-            bCard1 = true;
+            if (bCard == true && bCard2 == true)
+            {
+                text1.text = "已选够2张";
+            }
+            else
+            {
+                text1.text = "已选";
+                bCard1 = true;
+            }
         }
         else
         {
@@ -90,8 +105,15 @@ public class TestMananger : MonoBehaviour
         BCard2 = true;
         if (bCard2 == false)
         {
-            text2.text = "已选";
-            bCard2 = true;
+            if (bCard == true && bCard1 == true)
+            {
+                text2.text = "已选够2张";
+            }
+            else
+            {
+                text2.text = "已选";
+                bCard2 = true;
+            }
         }
         else
         {
