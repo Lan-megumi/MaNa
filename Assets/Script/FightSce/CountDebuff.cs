@@ -13,15 +13,8 @@ using UnityEngine.UI;
 		恐惧
 		眩晕
 		冻伤
-	Debuff归属计算
-		Player方
-		Enemy方
-	Debuff群体/单体判定
-		Player方
-		Enemy方
  */
 public class CountDebuff : MonoBehaviour {
-	public Text TextHp,TextName,TextRound;
 //------------------------------------------------
 	//用于接收敌人血量
 	private int EmenyHp;
@@ -29,7 +22,6 @@ public class CountDebuff : MonoBehaviour {
 	public static CountDebuff _instance;
 //------------------------------------------------
 	//定义回合数，当前回合和上一回合
-	private int Round=0,eldRound;
 
 /*
 	定义Debuff的叠加层数
@@ -43,8 +35,7 @@ public class CountDebuff : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		AddRound();
-		TextRound.text=Round.ToString();		
+		
 	}
 
 	void Awake(){
@@ -76,14 +67,9 @@ public class CountDebuff : MonoBehaviour {
 		{
 			Fear();
 		}
+		// EmenyScr.
 	}
-	public void AddRound(){
-		eldRound=Round;
-		Round++;
-		TextRound.text=Round.ToString();
-		//当传回值为false时,代表轮到敌人开始回合，需要计算Debuff
-		
-	}
+
 //------------------------------燃烧---------------------------
 	//燃烧Debuff的计算方法
 	public void Fire(){
@@ -97,7 +83,6 @@ public class CountDebuff : MonoBehaviour {
 		EmenyHp=(int)f_hp;
 		//完成计算后结算数据显示Ui
 		FireNum--;
-		UpdateHp();
 		DebuffUi._instance.ChangeFire(FireNum);
 
 	}
@@ -137,7 +122,6 @@ public class CountDebuff : MonoBehaviour {
 		{
 			int IceAcheDamage=10;
 			EmenyHp-=IceAcheDamage;
-			UpdateHp();
 			IceNum++;
 			DebuffUi._instance.ChangeIce(IceNum);
 
@@ -182,30 +166,6 @@ public class CountDebuff : MonoBehaviour {
 	public void Cold(){
 		IceAcheNum++;
 		DebuffUi._instance.ChangeIceAche(IceAcheNum);
-	}
-
-
-
-//以下是创建敌人的方法
-	public void CreateEmeny1(){
-			EmenyLibrary.Emeny1 emeny1=new EmenyLibrary.Emeny1();
-			emeny1.initdate();
-			//得到血量
-			EmenyHp=emeny1.GetHp;
-			UpdateHp();
-			TextName.text="Emeny1";
-	}
-	public void CreateEmeny2(){
-			EmenyLibrary.Emeny2 emeny2=new EmenyLibrary.Emeny2();
-			emeny2.initdate();
-			Debug.Log(emeny2.GetHp);
-			EmenyHp=emeny2.GetHp;
-			UpdateHp();
-			TextName.text="Emeny2";
-	}
-	//更新 Hp的Ui
-	public void UpdateHp(){
-			TextHp.text=EmenyHp.ToString();
 	}
 	
 }

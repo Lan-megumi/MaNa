@@ -143,7 +143,7 @@ RectTransform:
   m_Children:
   - {fileID: 1400508356}
   m_Father: {fileID: 1151204355}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -597,7 +597,7 @@ RectTransform:
   m_Children:
   - {fileID: 1766371721}
   m_Father: {fileID: 1151204355}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -745,7 +745,7 @@ Prefab:
     - target: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,
         type: 2}
@@ -804,6 +804,14 @@ Prefab:
     - target: {fileID: 1030634416928900, guid: a3292440ec3efd543abf58c6388c0aa1, type: 2}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3292440ec3efd543abf58c6388c0aa1, type: 2}
@@ -1158,13 +1166,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 2072196400}
   - {fileID: 1501860301}
   - {fileID: 2079315121}
   - {fileID: 768765301}
   - {fileID: 4337956}
   - {fileID: 1484974699}
   - {fileID: 701685157}
+  - {fileID: 2072196400}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1199,6 +1207,9 @@ MonoBehaviour:
   CardName1: 
   CardName2: 
   CardName3: 
+  bCard: 0
+  bCard1: 0
+  bCard2: 0
   text: {fileID: 1609860304}
   text1: {fileID: 2101841470}
   text2: {fileID: 1815683913}
@@ -1225,6 +1236,9 @@ MonoBehaviour:
   Cardid1: 
   Cardid2: 
   Cardid3: 
+  text: {fileID: 0}
+  text1: {fileID: 0}
+  text2: {fileID: 0}
 --- !u!1 &1342611276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1417,7 @@ RectTransform:
   m_Children:
   - {fileID: 653029458}
   m_Father: {fileID: 1151204355}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1540,7 +1554,7 @@ Prefab:
     - target: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,
         type: 2}
@@ -1599,6 +1613,14 @@ Prefab:
     - target: {fileID: 1030634416928900, guid: a3292440ec3efd543abf58c6388c0aa1, type: 2}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3292440ec3efd543abf58c6388c0aa1, type: 2}
@@ -1942,7 +1964,7 @@ Prefab:
     - target: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,
         type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,
         type: 2}
@@ -2045,7 +2067,7 @@ RectTransform:
   m_Children:
   - {fileID: 1342611277}
   m_Father: {fileID: 1151204355}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

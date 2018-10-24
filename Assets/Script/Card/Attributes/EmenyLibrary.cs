@@ -14,6 +14,7 @@ public class EmenyLibrary{
  */
 	public class Emeny1:Attributes{
 		public void initdate(){
+			Name="木质傀儡";
 			Hp=1500;
 			Mana=0;
 			Rgs=0;
@@ -24,7 +25,8 @@ public class EmenyLibrary{
 	}
 	public class Emeny2: Attributes {
 		public void initdate(){
-			Hp=1800;
+			Name="钢铁傀儡";
+			Hp=30000;
 			Mana=0;
 			Rgs=0;
 			Agi=150;
@@ -32,4 +34,5 @@ public class EmenyLibrary{
 			Avd=2;
 		}
 	}
+	
 }

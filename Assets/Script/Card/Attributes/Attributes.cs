@@ -19,6 +19,7 @@ public class Attributes  {
 	public float Agi;
 	public int Imm;
 	public int Avd;
+	public string Name;
 
 	
 	public int GetHp{
@@ -44,6 +45,10 @@ public class Attributes  {
 	public int GetAvd{
 		set{Avd=value;}
 		get{ return Avd;}
+	}
+	public string GetName{
+		set{Name=value;}
+		get{return Name;}
 	}
 }
 
