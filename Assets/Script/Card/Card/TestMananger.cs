@@ -26,7 +26,7 @@ public class TestMananger : MonoBehaviour
     public string CardName1, CardName2, CardName3;
 
     //----------------------------------------------------
-    private bool bCard, bCard1, bCard2 = false;//融合条件，false已选，true未选
+    public bool bCard, bCard1, bCard2 = false;//融合条件，false已选，true未选
     public Text text, text1, text2;//是否选择
 
 
@@ -42,83 +42,127 @@ public class TestMananger : MonoBehaviour
     }
     void Start()
     {
-        text.text = "未选";
-        text2.text = "未选";
-        text1.text = "未选";
-
         Library1 = new List<TestCard>();
         VisableCard();
     }
+    private void Update()
+    {
+        Fix();
+    }
+    public void Fix()
+    {
+        if (text.text == "未选")
+        {
+            bCard = false;
+            Debug.Log("1" + bCard);
+        }
+        else
+        {
+            bCard = true;
+        }
+
+        if (text1.text == "未选")
+        {
+            bCard1 = false;
+            Debug.Log("2" + bCard1);
+        }
+        else
+        {
+            bCard1 = true;
+        }
+
+        if (text2.text == "未选")
+        {
+            bCard2 = false;
+            Debug.Log("3" + bCard2);
+        }
+        else
+        {
+            bCard2 = true;
+        }
+
+    }
+
     //用于更新牌组与牌库中的差异
     private void UpdateLibrary()
     {
         Library1 = TestCardLibrary._instance.Library0;
     }
-   
-    public void ShotA()
+    
+
+    public void ShotA()  //是否选中第一张卡牌   
     {
-        BCard = true;
-        if (bCard == false)
-        {
-            if (bCard1 == true && bCard2 == true)
+        
+            BCard = true;
+            if (bCard == false)
             {
-                text.text = "已选够2张";
+                if (bCard1 == true && bCard2 == true)
+                {
+                    text.text = "已选够2张";
+                }
+                else
+                {
+                    text.text = "已选";
+                    bCard = true;
+                }
             }
             else
             {
-            text.text = "已选";
-            bCard = true;
+                text.text = "未选";
+                bCard = false;
             }
+        
+        ShotAA();
+    }
+
+
+    public void ShotB()         //是否选中第二张卡牌   
+    {
+       
+            BCard1 = true;
+            if (bCard1 == false)
+            {
+                if (bCard == true && bCard2 == true)
+                {
+                    text1.text = "已选够2张";
+                }
+                else
+                {
+                    text1.text = "已选";
+                    bCard1 = true;
+                }
+            }
+            else
+            {
+                text1.text = "未选";
+                bCard1 = false;
             
         }
-        else
-        {
-            text.text = "未选";
-            bCard = false;
-        }
         ShotAA();
     }
-    public void ShotB()
+
+
+    public void ShotC()       //是否选中第三张卡牌   
     {
-        BCard1 = true;
-        if (bCard1 == false)
-        {
-            if (bCard == true && bCard2 == true)
+        
+            BCard2 = true;
+            if (bCard2 == false)
             {
-                text1.text = "已选够2张";
+                if (bCard == true && bCard1 == true)
+                {
+                    text2.text = "已选够2张";
+                }
+                else
+                {
+                    text2.text = "已选";
+                    bCard2 = true;
+                }
             }
             else
             {
-                text1.text = "已选";
-                bCard1 = true;
-            }
-        }
-        else
-        {
-            text1.text = "未选";
-            bCard1 = false;
-        }
-        ShotAA();
-    }
-    public void ShotC()
-    {
-        BCard2 = true;
-        if (bCard2 == false)
-        {
-            if (bCard == true && bCard1 == true)
-            {
-                text2.text = "已选够2张";
-            }
-            else
-            {
-                text2.text = "已选";
-                bCard2 = true;
-            }
-        }
-        else
-        {
-            text2.text = "未选";
-            bCard2 = false;
+                text2.text = "未选";
+                bCard2 = false;
+            
         }
         ShotAA();
     }
@@ -133,24 +177,28 @@ public class TestMananger : MonoBehaviour
             Debug.Log("这样出牌系不可以滴，一次必须出2张牌");
 
         }else {
-
-        if (bCard == true) {        //第一张
-            Cardid1 = Library1[d - 2].GetCardid;
+            
+           if (bCard == true) {        //第一张
+                Cardid1 = Library1[d - 2].GetCardid;
                 CardName1 = Library1[d - 2].GetCardName;
-             Debug.Log("融合了:" + Cardid1);
-       } 
-        if (bCard1 == true)        //第二张
-        {
-             Cardid2 = Library1[d - 1].GetCardid;
-            CardName2 = Library1[d - 1].GetCardName;
-             Debug.Log("融合了" + Cardid2);
-        }
-        if (bCard2 == true)         //第三张
-        {
-            Cardid3 = Library1[d].GetCardid;
-            CardName = Library1[d].GetCardName;
-                Debug.Log("融合了" + Cardid3);
-        }
+                
+                Debug.Log("融合了:" + Cardid1);
+       
+            }
+            if (bCard1 == true)        //第二张
+            {
+                    Cardid2 = Library1[d - 1].GetCardid;
+                    CardName2 = Library1[d - 1].GetCardName;
+                    Debug.Log("融合了" + Cardid2);
+                
+            }
+            if (bCard2 == true)         //第三张
+            {
+                    Cardid3 = Library1[d].GetCardid;
+                    CardName = Library1[d].GetCardName;
+                    Debug.Log("融合了" + Cardid3);
+                
+            }
         }
     }
 
@@ -236,6 +284,7 @@ public class TestMananger : MonoBehaviour
             BCard = false;
             
         }
+        Fix();
     }
 }
     
