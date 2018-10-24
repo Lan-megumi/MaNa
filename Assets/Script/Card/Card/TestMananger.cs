@@ -45,16 +45,13 @@ public class TestMananger : MonoBehaviour
         Library1 = new List<TestCard>();
         VisableCard();
     }
-    private void Update()
-    {
-        Fix();
-    }
-    public void Fix()
+   
+    public void Fix()   //在CardCompound 里面调用
     {
         if (text.text == "未选")
         {
             bCard = false;
-            Debug.Log("1" + bCard);
+            Debug.Log("复原卡1" + bCard);
         }
         else
         {
@@ -64,7 +61,7 @@ public class TestMananger : MonoBehaviour
         if (text1.text == "未选")
         {
             bCard1 = false;
-            Debug.Log("2" + bCard1);
+            Debug.Log("复原卡2" + bCard1);
         }
         else
         {
@@ -230,7 +227,7 @@ public class TestMananger : MonoBehaviour
 
         }
     }
-    public void ShotAA()
+    public void ShotAA()    //判断获取第几张卡牌
     {
         Debug.Log("------------------");
         Debug.Log("ShotAA-d:" + d);

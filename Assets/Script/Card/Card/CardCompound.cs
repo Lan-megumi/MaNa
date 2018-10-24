@@ -21,7 +21,8 @@ public class CardCompound : MonoBehaviour {
     private int d,b, c = 0;
     private string a1, a2;
 
-    public Text text,text1,text2;
+    public Text text,text1,text2;//已选或未选
+
     private void Awake()
     {
         _instance = this;
@@ -42,34 +43,39 @@ public class CardCompound : MonoBehaviour {
         Debug.Log("a1a2" + Cardid2);
         Debug.Log("a1a3" + Cardid3);
     
+        //if(TestMananger._instance.bCard == false&& TestMananger._instance.bCard1 == false)
+        //{
 
-        if (TestMananger._instance.bCard==false)
+        //}
+
+        if (TestMananger._instance.bCard==false)  //第一张未被选择
         {
             a1 = Cardid2;
             a2 = Cardid3;
-            Debug.Log("1a1"+a1);
-            Debug.Log("1a2"+a2);  
+            Debug.Log("第一"+a1);
+            Debug.Log("第一" + a2);  
         }
-        if (TestMananger._instance.bCard1 == false)
+        if (TestMananger._instance.bCard1 == false)     //第二张未被选择
         {
             a1 = Cardid1;
             a2 = Cardid3;
             
-            Debug.Log("2a1" + a1);
-            Debug.Log("2a2" + a2);
+            Debug.Log("第二" + a1);
+            Debug.Log("第二" + a2);
         }
-        if (TestMananger._instance.bCard2 == false)
+        if (TestMananger._instance.bCard2 == false)   //第三张未被选择
         {
             a1 = Cardid1;
             a2 = Cardid2;
-            Debug.Log("3a1" + a1);
-            Debug.Log("3a2" + a2);
+            Debug.Log("第三" + a1);
+            Debug.Log("第三" + a2);
             
         }
-        text.text = "未选";
+        text.text = "未选";  //融合后，已选择变为未选
         text1.text = "未选";
         text2.text = "未选";
-        FindDic(a1, a2);
+        FindDic(a1, a2);   
+        TestMananger._instance.Fix();    //TestManager里面的fix方法，使选择变为未选
     }
 
     public string FindDic(string a1, string a2)
