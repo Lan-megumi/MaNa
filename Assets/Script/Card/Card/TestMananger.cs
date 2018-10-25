@@ -202,6 +202,10 @@ public class TestMananger : MonoBehaviour
     //该方法功能为发牌，并且与Ui功能交互
     public void VisableCard()
     {
+        text.text = "未选";  //发牌后，已选择变为未选
+        text1.text = "未选";
+        text2.text = "未选";
+
         UpdateLibrary();
         //Debug.Log("1:" + Library1[1]);
         /*

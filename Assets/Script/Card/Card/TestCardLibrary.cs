@@ -73,7 +73,8 @@ public  class  TestCardLibrary:MonoBehaviour{
 			foreach(TestCard item in OrbList){
 				Library0.Add(item);
 			}
-			OrbList.Clear();	
+			OrbList.Clear();
+        TestMananger._instance.VisableCard();
 	}
 
 }
