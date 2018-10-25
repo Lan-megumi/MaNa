@@ -422,6 +422,8 @@ MonoBehaviour:
   Father: {fileID: 1780929053986740}
   Damaged: 0
   t: 1
+  NTpye: 
+  NName: 
 --- !u!114 &114097321018855464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -666,6 +668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb461afd4c20d884683e2fb80a3cc3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  T_Fire: {fileID: 114762613407931476}
+  T_Ice: {fileID: 114144013649159844}
+  T_Fear: {fileID: 114101218556567254}
+  T_Dizzy: {fileID: 114714830663759942}
+  T_IceAche: {fileID: 114427881382963792}
 --- !u!114 &114427881382963792
 MonoBehaviour:
   m_ObjectHideFlags: 1

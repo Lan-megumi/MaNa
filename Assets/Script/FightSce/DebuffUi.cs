@@ -7,15 +7,11 @@ using UnityEngine.UI;
 	该脚本主要用于更改Debuff Ui
  */
 public class DebuffUi : MonoBehaviour {
-	private GameObject T_Fire,T_Ice,T_Fear,T_Dizzy,T_IceAche;
+	public Text T_Fire,T_Ice,T_Fear,T_Dizzy,T_IceAche;
 	
 	// Use this for initialization
 	void Start () {
-		T_Fire=GameObject.Find("DebuffText/FireText");
-		T_Ice=GameObject.Find("DebuffText/IceText");
-		T_Fear=GameObject.Find("DebuffText/FearText");
-		T_Dizzy=GameObject.Find("DebuffText/DizzyText");
-		T_IceAche=GameObject.Find("DebuffText/IceAcheText");
+
 		
 	}
 	public void ChangeFire(int a){

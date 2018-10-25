@@ -10,7 +10,7 @@ public class BtnScr : MonoBehaviour {
 	public GameObject Father;
 	public int Damaged;
 	public bool t =true;
-	public string NTpye,Name ;
+	public string NTpye,NName ;
 
 	public void GetFather(){
 		
@@ -27,16 +27,36 @@ public class BtnScr : MonoBehaviour {
 
 			t=true;
 		}
-
-		
-		if (NTpye=="Debuff")
+		NTpye=PublicFightScr._instance.RetrunN_Type();
+		NName=PublicFightScr._instance.RetrunN_Name();
+		if (NTpye!=null)
 		{
-			if (Name=="Fire")
+//----------------------------
+			if (NTpye=="Debuff")
 			{
-				
+				//----------------------
+				if (NName=="Fire")
+				{
+					Father.GetComponent<CountDebuff>().AddFire();
+				}
+				//----------------------
 			}
+//----------------------------
+			if (NTpye=="Damaged")
+			{
+				int n = int.Parse(NName);
+				Father.GetComponent<EmenyScr>().CountDamaged(true,n);
+			}
+			if (NTpye=="Cure")
+			{
+				int n = int.Parse(NName);
+				Father.GetComponent<EmenyScr>().CountDamaged(false,n);
+			}
+			PublicFightScr._instance.N_init();
 		}
 
+		
+		
 	}
 	public GameObject returnFater(){
 		return Father;
