@@ -18,7 +18,8 @@ public class CountDebuff : MonoBehaviour {
 //------------------------------------------------
 	//用于接收敌人血量
 	private int EmenyHp;
-
+	//用于绑定 DebuffUi显示的物件
+	public GameObject DebuffUi;
 	public static CountDebuff _instance;
 //------------------------------------------------
 	//定义回合数，当前回合和上一回合
@@ -35,9 +36,12 @@ public class CountDebuff : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		UpdateHpDate();
 	}
-
+	private void UpdateHpDate(){
+		EmenyHp=this.GetComponent<EmenyScr>().EmenyHp;
+		// Debug.Log("CountDebuff_Hp"+EmenyHp);
+	}
 	void Awake(){
 		_instance=this;
 	}
@@ -73,24 +77,27 @@ public class CountDebuff : MonoBehaviour {
 //------------------------------燃烧---------------------------
 	//燃烧Debuff的计算方法
 	public void Fire(){
+		UpdateHpDate();
 		if (IceAcheNum!=0)
 		{
 			IceAcheNum=0;
-			DebuffUi._instance.ChangeIceAche(IceAcheNum);
+			DebuffUi.GetComponent<DebuffUi>().ChangeIceAche(IceAcheNum);
 		}
+		//因为要使用到百分比计算所以用到一个float临时储存HP
 		float f_hp=(float)EmenyHp;
-		f_hp-=f_hp*0.03f*FireNum;
+		f_hp=f_hp*0.03f*FireNum;
 		EmenyHp=(int)f_hp;
+		//将计算后的结果传参
+		this.GetComponent<EmenyScr>().CountDamaged(true,EmenyHp);
 		//完成计算后结算数据显示Ui
 		FireNum--;
-		DebuffUi._instance.ChangeFire(FireNum);
+		DebuffUi.GetComponent<DebuffUi>().ChangeFire(FireNum);
 
 	}
 	//对敌人附加了燃烧Debuff效果一层
 	public void AddFire(){
 		FireNum++;
-		DebuffUi._instance.ChangeFire(FireNum);
-
+		DebuffUi.GetComponent<DebuffUi>().ChangeFire(FireNum);
 	}
 
 //------------------------------冰冻---------------------------
@@ -98,40 +105,40 @@ public class CountDebuff : MonoBehaviour {
 		//当冻伤buff消失时，冰冻效果也会消失
 		if(IceAcheNum==0){
 			IceNum=0;
-			DebuffUi._instance.ChangeIce(IceNum);
+			DebuffUi.GetComponent<DebuffUi>().ChangeIce(IceNum);
 		}
 		if (IceNum==4)
 		{
 			DizzyNum++;
 			Dizzy();
 			IceNum=0;
-			DebuffUi._instance.ChangeIce(IceNum);
+			DebuffUi.GetComponent<DebuffUi>().ChangeIce(IceNum);
 
 		}	
 	}
 	public void AddIce(){
 		IceNum++;
-		DebuffUi._instance.ChangeIce(IceNum);
+		DebuffUi.GetComponent<DebuffUi>().ChangeIce(IceNum);
 
 	}
 
 
 //------------------------------冻伤（回合结束计算）---------------------------
 	public void IceAche(){
+		UpdateHpDate();
 		if (IceAcheNum!=0)
 		{
 			int IceAcheDamage=10;
-			EmenyHp-=IceAcheDamage;
+			GetComponent<EmenyScr>().CountDamaged(true,IceAcheDamage);
 			IceNum++;
-			DebuffUi._instance.ChangeIce(IceNum);
-
+			DebuffUi.GetComponent<DebuffUi>().ChangeIce(IceNum);
 		}
 		IceAcheNum--;
-		DebuffUi._instance.ChangeIceAche(IceAcheNum);
+		DebuffUi.GetComponent<DebuffUi>().ChangeIceAche(IceAcheNum);
 	}
 	public void AddIceAche(){
 		IceAcheNum+=2;
-		DebuffUi._instance.ChangeIceAche(IceAcheNum);
+		DebuffUi.GetComponent<DebuffUi>().ChangeIceAche(IceAcheNum);
 	}
 
 
@@ -142,11 +149,11 @@ public class CountDebuff : MonoBehaviour {
 		// Debug.Log("眩晕未实现！");
 		CoroutineCountdown._instance.Function_Dizzy("Enemy");
 		DizzyNum=0;
-		DebuffUi._instance.ChangeDizzy(DizzyNum);
+		DebuffUi.GetComponent<DebuffUi>().ChangeDizzy(DizzyNum);
 	}
 	public void AddDizzyNum(){
 		DizzyNum++;
-		DebuffUi._instance.ChangeDizzy(DizzyNum);
+		DebuffUi.GetComponent<DebuffUi>().ChangeDizzy(DizzyNum);
 	}
 
 //------------------------------恐惧---------------------------
@@ -154,18 +161,18 @@ public class CountDebuff : MonoBehaviour {
 	public void Fear(){
 		Debug.Log("恐惧未实现！");
 		FearNum-=1;
-		DebuffUi._instance.ChangeFear(FearNum);
+		DebuffUi.GetComponent<DebuffUi>().ChangeFear(FearNum);
 	}
 	public void AddFear(){
 		FearNum++;
-		DebuffUi._instance.ChangeFear(FearNum);
+		DebuffUi.GetComponent<DebuffUi>().ChangeFear(FearNum);
 
 	}
 //------------------------------寒冷---------------------------
 	//效果，延长冻伤时间
 	public void Cold(){
 		IceAcheNum++;
-		DebuffUi._instance.ChangeIceAche(IceAcheNum);
+		DebuffUi.GetComponent<DebuffUi>().ChangeIceAche(IceAcheNum);
 	}
 	
 }

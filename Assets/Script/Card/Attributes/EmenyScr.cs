@@ -6,20 +6,13 @@ using UnityEngine.UI;
 
 public class EmenyScr : MonoBehaviour {
 
-	private int  EmenyHp;
+	public int  EmenyHp;
 	//-------------------------
 	public Text TextHp,TextName;
 	//-------------------------
 	public GameObject BCheckBcak;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 	public void CreatEmeny(int i){
 		if (i==1)
 		{
@@ -27,14 +20,14 @@ public class EmenyScr : MonoBehaviour {
 			Newemeny.initdate();
 			EmenyHp=Newemeny.GetHp;
 			TextName.text=Newemeny.GetName;
-			UpdateHp();
+			UpdateHpUi(EmenyHp.ToString());
 		}
 		else if(i==2){
 			EmenyLibrary.Emeny2 Newemeny=new EmenyLibrary.Emeny2();
 			Newemeny.initdate();
 			EmenyHp=Newemeny.GetHp;
 			TextName.text=Newemeny.GetName;
-			UpdateHp();
+			UpdateHpUi(EmenyHp.ToString());
 		}
 		else{
 			Debug.Log("Input wrong！The enmey"+i+" no Found!");
@@ -42,8 +35,8 @@ public class EmenyScr : MonoBehaviour {
 		
 
 	}
-	public void UpdateHp(){
-			TextHp.text=EmenyHp.ToString();
+	public void UpdateHpUi(string hp){
+			TextHp.text=hp;
 	}
 	public void CountDamaged(bool i,int n){
 		if (i==true)
@@ -53,7 +46,7 @@ public class EmenyScr : MonoBehaviour {
 		{
 			EmenyHp+=n;
 		}
-		UpdateHp();
+		UpdateHpUi(EmenyHp.ToString());
 	}
 	
 	public void UpdateBack(bool i){

@@ -420,6 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Father: {fileID: 1780929053986740}
+  Damaged: 0
   t: 1
 --- !u!114 &114097321018855464
 MonoBehaviour:
@@ -593,7 +594,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: null
+  m_Text: Null
 --- !u!114 &114284493235863564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -736,6 +737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5000ba8404998ee4d97a44f4e9d7ba59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EmenyHp: 0
   TextHp: {fileID: 114586049471561752}
   TextName: {fileID: 114274003485808982}
   BCheckBcak: {fileID: 1586028816734816}
@@ -771,7 +773,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: null
+  m_Text: Null
 --- !u!114 &114714830663759942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -849,6 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e1b29a3400bda419aceb2e809a2b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebuffUi: {fileID: 1717314163703036}
 --- !u!114 &114864886767847316
 MonoBehaviour:
   m_ObjectHideFlags: 1

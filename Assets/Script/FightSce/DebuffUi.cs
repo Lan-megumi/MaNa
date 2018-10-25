@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+/*
+	该脚本主要用于更改Debuff Ui
+ */
 public class DebuffUi : MonoBehaviour {
 	private GameObject T_Fire,T_Ice,T_Fear,T_Dizzy,T_IceAche;
-	public static DebuffUi _instance;
 	
-	void Awake(){
-		_instance=this;
-	}
-
 	// Use this for initialization
 	void Start () {
 		T_Fire=GameObject.Find("DebuffText/FireText");
