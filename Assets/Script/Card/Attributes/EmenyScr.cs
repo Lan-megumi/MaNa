@@ -12,23 +12,36 @@ public class EmenyScr : MonoBehaviour {
 	//-------------------------
 	public GameObject BCheckBcak;
 
+    public Slider targetSliderOject, targetSliderOject1;
 
-	public void CreatEmeny(int i){
+    public static EmenyScr _instance;
+    public float Agi;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
+    public void CreatEmeny(int i){
 		if (i==1)
 		{
 			EmenyLibrary.Emeny1 Newemeny=new EmenyLibrary.Emeny1();
 			Newemeny.initdate();
 			EmenyHp=Newemeny.GetHp;
+            Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
-			UpdateHpUi(EmenyHp.ToString());
-		}
+            UpdateHpUi(EmenyHp.ToString());
+        }
 		else if(i==2){
 			EmenyLibrary.Emeny2 Newemeny=new EmenyLibrary.Emeny2();
 			Newemeny.initdate();
 			EmenyHp=Newemeny.GetHp;
 			TextName.text=Newemeny.GetName;
 			UpdateHpUi(EmenyHp.ToString());
-		}
+            Agi = Newemeny.Agi;
+
+
+        }
 		else{
 			Debug.Log("Input wrong！The enmey"+i+" no Found!");
 		}

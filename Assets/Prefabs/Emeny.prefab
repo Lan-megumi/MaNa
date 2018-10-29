@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 114821981935186366}
   m_Layer: 5
   m_Name: Emeny
-  m_TagString: Untagged
+  m_TagString: Emeny
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -748,6 +748,9 @@ MonoBehaviour:
   TextHp: {fileID: 114586049471561752}
   TextName: {fileID: 114274003485808982}
   BCheckBcak: {fileID: 1586028816734816}
+  targetSliderOject: {fileID: 0}
+  targetSliderOject1: {fileID: 114130255991529536}
+  Agi: 0
 --- !u!114 &114586049471561752
 MonoBehaviour:
   m_ObjectHideFlags: 1
