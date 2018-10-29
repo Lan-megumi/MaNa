@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+    该脚本用于卡牌合成是否为BM（最佳合成）的判断
+    以及是BM是所执行的操作
+ */
 public class CardCompound : MonoBehaviour {
     public static CardCompound _instance;
     public List<GameObject> CardLibrary;

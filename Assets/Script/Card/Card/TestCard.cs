@@ -11,6 +11,8 @@ using System.Collections.Generic;
 	---------2018.10.19--------
 	CardCost					卡的消耗
 	CardDamge				 卡的伤害
+	---------2018.10.29--------
+	CardAttType 			  卡的伤害类型，是一个自定义的AttcakeType类型
 */
 public class TestCard{
 	public  string Cardid;

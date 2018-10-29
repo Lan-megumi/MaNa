@@ -54,13 +54,7 @@ public  class  TestCardLibrary:MonoBehaviour{
 
         
 	}
-	public void Card_EL01Fi(){
-
-		if (t == true)
-		{
-			Debug.Log(Library0[0]+"Add Card!");
-		}
-	}
+	
 	//洗牌功能
 	public void OrbLibrary(){
 		System.Random random =new System.Random();
