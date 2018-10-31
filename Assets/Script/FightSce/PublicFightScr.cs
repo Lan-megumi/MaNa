@@ -20,6 +20,7 @@ public class PublicFightScr : MonoBehaviour {
 		N_Name=name;
 	}
 	public string RetrunN_Name(){
+		
 		return N_Name;
 	}
 	public string RetrunN_Type(){

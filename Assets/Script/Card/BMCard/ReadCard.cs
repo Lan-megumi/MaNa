@@ -32,9 +32,11 @@ public class ReadCard : MonoBehaviour {
 	/*
 		合成调用的方法
 		目前暂时只是根据id找到卡牌对应的伤害没有根据伤害类型
+	
 	*/
 	public void jo(){
 		Library2=TestCardLibrary._instance.Library0;
+		Debug.Log("Card1"+Cardid1+" | Card2:"+Cardid2);
 		for(int i =0 ;i<Library2.Count;i++){
 			if (Library2[i].GetCardid==Cardid1)
 			{
@@ -54,14 +56,16 @@ public class ReadCard : MonoBehaviour {
 		SetDamaged();
 	}
 	//这里是传入参数的方法
-	private void SetId(string id1,string id2){
+	public void SetId(string id1,string id2){
 		Cardid1=id1;
 		Cardid2=id2;
+		jo();
 	}
 	//
 	public void SetDamaged(){
 		int Reckon=CardDamage1+CardDamage2;
 		Debug.Log("Reckon:"+Reckon);
+		PublicFightScr._instance.StarFunction2(Reckon.ToString());
 
 	}
 	//在结算完成后执行清空数据初始化数据

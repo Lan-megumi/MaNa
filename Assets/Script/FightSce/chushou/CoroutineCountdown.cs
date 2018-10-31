@@ -93,34 +93,37 @@ public class CoroutineCountdown : MonoBehaviour
    }
     void  Update()
     {
-        Debug.Log("第II:" + this.igg);
+        // Debug.Log("第II:" + this.igg);
         if (StartGame._instance.Startbool == true)
         {
-            Debug.Log("II:" + this.igg);
+            // Debug.Log("II:" + this.igg);
             if (igg == 1)
             {
                 Player1Speed--;
-                Debug.Log("III:" + Agis.Length);
+                // Debug.Log("III:" + Agis.Length);
                 for (int g = 0; g < Agis.Length; g++)
                 {
                     Agis[g]--;
                     iiSlider[g].value += SpeedAgis[g];
                     if (iiSlider[g].value >= 1)
                     {
+                        //敌人 回合结束
                         iiSlider[g].value = 0;
-                    }
+                        gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();                    }
                 }
 
                 targetSliderOject.value += c;               //玩家每帧数速度
                 if (targetSliderOject.value >= 1)           
                 {
+                    //玩家 回合结束
                     targetSliderOject.value = 0;
+                    TestMananger._instance.VisableCard();
                 }
                 for (int g = 0; g < Agis.Length; g++)      
                 {
                     if (Player1Speed == Agis[g])            //玩家跟敌人速度相等的话
                     {
-                        Debug.Log("查看" + Agis[g]);
+                        // Debug.Log("查看" + Agis[g]);
                         int randomn = new System.Random().Next(0, 10);
                         Debug.Log("Random!" + randomn);
                         if (randomn >= 4) 
@@ -140,18 +143,18 @@ public class CoroutineCountdown : MonoBehaviour
                 if (Player1Speed <= 0 && igg == 1)          //当玩家速度为0
                 {
                     igg = -1;
-                    Debug.Log("jkhg手打");
+                    // Debug.Log("jkhg手打");
                     CheckedPlayer();
                 }
                     for (int g = 0; g < Agis.Length; g++)
                     {
                         if (Agis[g] <= 0 && igg == 1)          
                         {
-                            Debug.Log("创建的回合");
+                            // Debug.Log("创建的回合");
                             igg = -1;
                             CheckedPlayer();
-                            Debug.Log("创建的回合2");
-                            Debug.Log("创建的回合3" + igg);
+                            // Debug.Log("创建的回合2");
+                            // Debug.Log("创建的回合3" + igg);
                         }
                     }
                 

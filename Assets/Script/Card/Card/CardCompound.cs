@@ -38,6 +38,10 @@ public class CardCompound : MonoBehaviour {
         d1.Add("EL02Fi&EL01Fi", "1%2");
     }
 
+//ShowButton3
+/*
+
+ */
     public void ShowButton3()
     {
         Cardid1 = TestMananger._instance.Cardid1;
@@ -56,23 +60,23 @@ public class CardCompound : MonoBehaviour {
         {
             a1 = Cardid2;
             a2 = Cardid3;
-            Debug.Log("第一"+a1);
-            Debug.Log("第一" + a2);  
+            // Debug.Log("第一"+a1);
+            // Debug.Log("第一" + a2);  
         }
         if (TestMananger._instance.bCard1 == false)     //第二张未被选择
         {
             a1 = Cardid1;
             a2 = Cardid3;
             
-            Debug.Log("第二" + a1);
-            Debug.Log("第二" + a2);
+            // Debug.Log("第二" + a1);
+            // Debug.Log("第二" + a2);
         }
         if (TestMananger._instance.bCard2 == false)   //第三张未被选择
         {
             a1 = Cardid1;
             a2 = Cardid2;
-            Debug.Log("第三" + a1);
-            Debug.Log("第三" + a2);
+            // Debug.Log("第三" + a1);
+            // Debug.Log("第三" + a2);
             
         }
         text.text = "未选";  //融合后，已选择变为未选
@@ -89,8 +93,13 @@ public class CardCompound : MonoBehaviour {
         {
             DicReturn = d1[a1 + "&" + a2];
         }
-        Debug.Log("++" + d1.ContainsKey(a1 + "&" + a2));
-        Debug.Log("Dic" + DicReturn);
+        else
+        {
+            ReadCard._instance.SetId(a1,a2);
+
+        }
+        // Debug.Log("++" + d1.ContainsKey(a1 + "&" + a2));
+        // Debug.Log("Dic" + DicReturn);
 
         return DicReturn;
     }

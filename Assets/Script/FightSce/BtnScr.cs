@@ -44,6 +44,7 @@ public class BtnScr : MonoBehaviour {
 //----------------------------
 			if (NTpye=="Damaged")
 			{
+				Debug.Log(NName);
 				int n = int.Parse(NName);
 				Father.GetComponent<EmenyScr>().CountDamaged(true,n);
 			}
