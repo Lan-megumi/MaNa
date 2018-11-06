@@ -19,11 +19,13 @@ public class CardCompound : MonoBehaviour {
     public Type CardType;
     public Element_type CardEle;
     public Rarity CardRarity;
-    public string CardName;
-    public string Cardid1, Cardid2, Cardid3;
+    public string CardName;   
+
+    public string Cardid1, Cardid2, Cardid3;  //获取三张卡牌的id
 
     private int d,b, c = 0;
-    private string a1, a2;
+
+    private string a1, a2;  //构成  a1&a2 
 
     public Text text,text1,text2;//已选或未选
 
@@ -34,7 +36,7 @@ public class CardCompound : MonoBehaviour {
     void Start()
     {
 
-        d1.Add("EL01Fi&EL02Fi", "1%2");
+        d1.Add("EL01Fi&EL02Fi", "1%2");  //添加最佳卡牌
         d1.Add("EL02Fi&EL01Fi", "1%2");
     }
 
@@ -44,7 +46,8 @@ public class CardCompound : MonoBehaviour {
  */
     public void ShowButton3()
     {
-        Cardid1 = TestMananger._instance.Cardid1;
+        //获取选择的卡牌id
+        Cardid1 = TestMananger._instance.Cardid1;  
         Cardid2 = TestMananger._instance.Cardid2;
         Cardid3 = TestMananger._instance.Cardid3;
         Debug.Log("a1a1" + Cardid1);
@@ -86,7 +89,7 @@ public class CardCompound : MonoBehaviour {
         TestMananger._instance.Fix();    //TestManager里面的fix方法，使选择变为未选
     }
 
-    public string FindDic(string a1, string a2)
+    public string FindDic(string a1, string a2)   
     {
         DicReturn = "";
         if (d1.ContainsKey(a1 + "&" + a2))

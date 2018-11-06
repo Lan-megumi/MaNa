@@ -10,7 +10,7 @@ public class EmenyBtnScr : MonoBehaviour {
 	public GameObject Father;
 	public int Damaged;
 	public bool t =true;
-	public string NTpye,NName ;
+	public string NTpye,NName,NAll;
 
 /*
 	该方法附着在每个敌人身上，每个敌人都有一个GetFather()方法
@@ -37,7 +37,11 @@ public class EmenyBtnScr : MonoBehaviour {
 */
 		NTpye=PublicFightScr._instance.RetrunN_Type();
 		NName=PublicFightScr._instance.RetrunN_Name();
-		if (NTpye!=null&&NName!=null)
+        
+
+
+
+        if (NTpye!=null&&NName!=null&&NAll==null)
 		{
 //----------------------------Debuff
 			if (NTpye=="Debuff")
@@ -55,15 +59,20 @@ public class EmenyBtnScr : MonoBehaviour {
 				Debug.Log(NName);
 				int n = int.Parse(NName);
 				Father.GetComponent<EmenyScr>().CountDamaged(true,n);
-			}
+                
+            }
 //----------------------------Cure
 			if (NTpye=="Cure")
 			{
 				int n = int.Parse(NName);
 				Father.GetComponent<EmenyScr>().CountDamaged(false,n);
 			}
-	//执行完所有操作后将 公共脚本值归零
-			PublicFightScr._instance.N_init();
+            
+
+
+
+            //执行完所有操作后将 公共脚本值归零
+            PublicFightScr._instance.N_init();
 		}
 
 		

@@ -54,16 +54,19 @@ public class CoroutineCountdown : MonoBehaviour
         //NextTrun();
         gm = new List<GameObject>();
         iiSlider = new List<Slider>();
-    }   
-   public void Agiss( )
+       
+
+    }
+    public void Agiss( )
     {
         AgisMax = new float[gm.Count];              //速度最大值数组
         Agis = new float[gm.Count];                 //速度数组
         SpeedAgis = new float[gm.Count];            // 1/速度
-        
+
         for (int g = 0; g < gm.Count; g++)
         {
             float avg = gm[g].GetComponent<EmenyScr>().Agi;
+           
             Debug.Log("aasd:" + avg);
             AgisMax[g] = avg;
             Agis[g] = avg;
@@ -93,6 +96,7 @@ public class CoroutineCountdown : MonoBehaviour
    }
     void  Update()
     {
+        
         // Debug.Log("第II:" + this.igg);
         if (StartGame._instance.Startbool == true)
         {

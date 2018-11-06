@@ -21,7 +21,6 @@ public class EmenyScr : MonoBehaviour {
     {
         _instance = this;
     }
-
     public void CreatEmeny(int i){
 		if (i==1)
 		{
@@ -39,14 +38,10 @@ public class EmenyScr : MonoBehaviour {
 			TextName.text=Newemeny.GetName;
 			UpdateHpUi(EmenyHp.ToString());
             Agi = Newemeny.Agi;
-
-
         }
 		else{
 			Debug.Log("Input wrong！The enmey"+i+" no Found!");
 		}
-		
-
 	}
 	public void UpdateHpUi(string hp){
 			TextHp.text=hp;
@@ -61,7 +56,6 @@ public class EmenyScr : MonoBehaviour {
 		}
 		UpdateHpUi(EmenyHp.ToString());
 	}
-	
 	public void UpdateBack(bool i){
 		if (i==true)
 		{

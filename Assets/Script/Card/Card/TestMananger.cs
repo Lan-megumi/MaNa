@@ -46,7 +46,7 @@ public class TestMananger : MonoBehaviour
         VisableCard();
     }
    
-    public void Fix()   //在CardCompound 里面调用
+    public void Fix()   //在CardCompound 里面调用 ，初始化选择（未选）
     {
         if (text.text == "未选")
         {
@@ -85,9 +85,8 @@ public class TestMananger : MonoBehaviour
     {
         Library1 = TestCardLibrary._instance.Library0;
     }
-    
 
-    public void ShotA()  //是否选中第一张卡牌   
+    public void ShotA()  //是否选中第一张卡牌，判断是否已选择了2张
     {
         
             BCard = true;
@@ -109,7 +108,7 @@ public class TestMananger : MonoBehaviour
                 bCard = false;
             }
         
-        ShotAA();
+        ShotAA();   //运行检测
     }
 
 
@@ -175,21 +174,21 @@ public class TestMananger : MonoBehaviour
 
         }else {
             
-           if (bCard == true) {        //第一张
+           if (bCard == true) {        //获取第一张卡牌的id
                 Cardid1 = Library1[d - 2].GetCardid;
                 CardName1 = Library1[d - 2].GetCardName;
                 
                 Debug.Log("融合了:" + Cardid1);
        
             }
-            if (bCard1 == true)        //第二张
+            if (bCard1 == true)        //第二张id
             {
                     Cardid2 = Library1[d - 1].GetCardid;
                     CardName2 = Library1[d - 1].GetCardName;
                     Debug.Log("融合了" + Cardid2);
                 
             }
-            if (bCard2 == true)         //第三张
+            if (bCard2 == true)         //第三张id
             {
                     Cardid3 = Library1[d].GetCardid;
                     CardName = Library1[d].GetCardName;
@@ -211,6 +210,7 @@ public class TestMananger : MonoBehaviour
         /*
 			i上限为Ui界面牌的数量，3
 		 */
+         //界面显示初始化卡牌内容
         for (int i = 0; i < CardLibrary.Count; i++)
         {
             if (b == Library1.Count)
@@ -235,7 +235,7 @@ public class TestMananger : MonoBehaviour
     {
         Debug.Log("------------------");
         Debug.Log("ShotAA-d:" + d);
-        if (BCard2 == true)
+        if (BCard2 == true)    //第三张卡牌的信息
         {
             Cardid = Library1[d].GetCardid;
             CardType = Library1[d].GetCardType;
@@ -251,7 +251,7 @@ public class TestMananger : MonoBehaviour
             BCard2 = false;
             
         }
-        if (BCard1 == true)
+        if (BCard1 == true)        //第二张卡牌的信息
         {
 
             Cardid = Library1[d - 1].GetCardid;
@@ -268,7 +268,7 @@ public class TestMananger : MonoBehaviour
             BCard1 = false;
             
         }
-        if (BCard == true)
+        if (BCard == true)             //第一张卡牌的信息
         {
             Cardid = Library1[d - 2].GetCardid;
             CardType = Library1[d - 2].GetCardType;
@@ -285,7 +285,7 @@ public class TestMananger : MonoBehaviour
             BCard = false;
             
         }
-        Fix();
+        Fix();  //初始化卡牌是否选择
     }
 }
     
