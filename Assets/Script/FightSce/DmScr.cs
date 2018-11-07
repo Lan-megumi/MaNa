@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,12 +23,12 @@ public class DmScr : MonoBehaviour
 
     }
     //点击，全体减血 （true，100）
-    public void Dm()
+    public void Dm(int num)
     {
         Debug.Log("0" + emenyObj2);
         for (int g = 0; g < emenyObj2.Count; g++)
         {
-            emenyObj2[g].GetComponent<EmenyScr>().CountDamaged(true, 100);
+            emenyObj2[g].GetComponent<EmenyScr>().CountDamaged(true, num);
             
         }
     }

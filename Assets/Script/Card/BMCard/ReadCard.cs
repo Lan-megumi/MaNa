@@ -255,12 +255,12 @@ public class ReadCard : MonoBehaviour {
 	//治疗结算↓
 		else if (BmAttackeType==(AttcakeType)2)
 		{
-			PublicFightScr._instance.StarFunction("Cure");
-			PublicFightScr._instance.StarFunction2(Reckon.ToString());
+			// PublicFightScr._instance.StarFunction("Cure");
+			// PublicFightScr._instance.StarFunction2(Reckon.ToString());
 
 		}else if (BmAttackeType==(AttcakeType)3)
 		{
-			DmScr._instance.DmCure(Reckon);
+			// DmScr._instance.DmCure(Reckon);
 
 		}
 	//神奇输入↓
