@@ -6,18 +6,26 @@ using UnityEngine;
  */
 public class EmenyBtnScr : MonoBehaviour {
 
+    public static EmenyBtnScr _instance;
 	// Use this for initialization
 	public GameObject Father;
 	public int Damaged;
 	public bool t =true;
 	public string NTpye,NName,NAll;
+    public int EnemyIndexof;
+    public int z;
 
-/*
-	该方法附着在每个敌人身上，每个敌人都有一个GetFather()方法
-	GetFather 可以获取到敌人物体携带的Btn的父子件，
-		父子件里面有该敌人的数据、独立的计算Debuff脚本
- */
-	public void GetFather(){
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+    /*
+        该方法附着在每个敌人身上，每个敌人都有一个GetFather()方法
+        GetFather 可以获取到敌人物体携带的Btn的父子件，
+            父子件里面有该敌人的数据、独立的计算Debuff脚本
+     */
+    public void GetFather(){
 		
 		
 		if (t==true)
@@ -37,11 +45,14 @@ public class EmenyBtnScr : MonoBehaviour {
 */
 		NTpye=PublicFightScr._instance.RetrunN_Type();
 		NName=PublicFightScr._instance.RetrunN_Name();
-        
+
+        //获取父子间的属性
+        EnemyIndexof= Father.GetComponent<EmenyScr>().EnemyIndex;
+        int z = EnemyIndexof;
+        Debug.Log("EnemyIndexof:" + z);
 
 
-
-        if (NTpye!=null&&NName!=null&&NAll==null)
+        if (NTpye!=null&&NName!=null)
 		{
 //----------------------------Debuff
 			if (NTpye=="Debuff")
@@ -67,7 +78,16 @@ public class EmenyBtnScr : MonoBehaviour {
 				int n = int.Parse(NName);
 				Father.GetComponent<EmenyScr>().CountDamaged(false,n);
 			}
-            
+            //----------------------------
+            if (NTpye == "R")
+            {
+                //Debug.Log(NName);
+                int n = int.Parse(NName);
+                z = EnemyIndexof;
+                //Debug.Log("zzz" + z);
+                Father.GetComponent<EmenyScr>().CountRelated(n,z);
+            }
+
 
 
 

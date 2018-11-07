@@ -16,9 +16,7 @@ public class DmScr : MonoBehaviour
     void Start()
     {
         emenyObj2 = new List<GameObject>();
-
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -31,6 +29,7 @@ public class DmScr : MonoBehaviour
         for (int g = 0; g < emenyObj2.Count; g++)
         {
             emenyObj2[g].GetComponent<EmenyScr>().CountDamaged(true, 100);
+            
         }
-    }
+    }  
 }

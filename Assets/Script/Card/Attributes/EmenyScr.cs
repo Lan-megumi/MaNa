@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +10,12 @@ public class EmenyScr : MonoBehaviour {
 	public Text TextHp,TextName;
 	//-------------------------
 	public GameObject BCheckBcak;
+    //用于记录第几个生成的敌人
+    public int EnemyIndex;
 
     public Slider targetSliderOject, targetSliderOject1;
+
+    public List<GameObject> emenyObj2;
 
     public static EmenyScr _instance;
     public float Agi;
@@ -20,6 +23,11 @@ public class EmenyScr : MonoBehaviour {
     private void Awake()
     {
         _instance = this;
+    }
+    void Start()
+    {
+        emenyObj2 = new List<GameObject>();
+       
     }
     public void CreatEmeny(int i){
 		if (i==1)
@@ -56,7 +64,32 @@ public class EmenyScr : MonoBehaviour {
 		}
 		UpdateHpUi(EmenyHp.ToString());
 	}
-	public void UpdateBack(bool i){
+    public void CountRelated(int n,int z) 
+    {
+        Debug.Log("n:" + n);
+        Debug.Log("z:" + z);
+        if (z == 0&& DmScr._instance.emenyObj2.Count==1)
+        {
+            DmScr._instance.emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+        if(z==0)
+        {
+            DmScr._instance.emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+            DmScr._instance.emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+        if (z == 1)
+        {
+            DmScr._instance.emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+            DmScr._instance.emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+            DmScr._instance.emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+        if(z==2)
+        {
+            DmScr._instance.emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+            DmScr._instance.emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true,n);
+        }
+    }
+    public void UpdateBack(bool i){
 		if (i==true)
 		{
 			BCheckBcak.SetActive(true);
@@ -65,4 +98,5 @@ public class EmenyScr : MonoBehaviour {
 			BCheckBcak.SetActive(false);
 		}
 	}
+  
 }

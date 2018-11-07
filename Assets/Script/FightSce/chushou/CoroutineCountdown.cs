@@ -36,13 +36,11 @@ public class CoroutineCountdown : MonoBehaviour
     public float[] Agis; //速度
     public float[] SpeedAgis;//每帧速度
     public float[] AgisMax;//速度最大值   50  150 
-
     //---------------------------------
 
     private void Awake()
     {
         _instance = this;
-
         c = 1/Player1Speed;    
         Debug.Log("cc" + c);
     }
@@ -66,7 +64,6 @@ public class CoroutineCountdown : MonoBehaviour
         for (int g = 0; g < gm.Count; g++)
         {
             float avg = gm[g].GetComponent<EmenyScr>().Agi;
-           
             Debug.Log("aasd:" + avg);
             AgisMax[g] = avg;
             Agis[g] = avg;
@@ -166,11 +163,12 @@ public class CoroutineCountdown : MonoBehaviour
             
         }
     }
-//  检查player
+
+    
+    //  检查player
     public void CheckedPlayer(){
         if (Player1Speed==0)
         {
-            
             Notetext.text="你的回合";
             Debug.Log("111111");
         }
