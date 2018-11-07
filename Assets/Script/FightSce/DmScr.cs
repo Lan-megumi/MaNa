@@ -22,14 +22,44 @@ public class DmScr : MonoBehaviour
     {
 
     }
-    //点击，全体减血 （true，100）
-    public void Dm()
+    //全体减血 （传入伤害数值）
+    public void Dm(int num)
     {
         Debug.Log("0" + emenyObj2);
         for (int g = 0; g < emenyObj2.Count; g++)
         {
-            emenyObj2[g].GetComponent<EmenyScr>().CountDamaged(true, 100);
+            emenyObj2[g].GetComponent<EmenyScr>().CountDamaged(true, num);
             
         }
-    }  
+    }
+    //群体治疗(待实装)
+    public void DmCure(int num){
+
+    }
+
+    public void CountRelated(int n,int z) 
+    {
+        Debug.Log("n:" + n);
+        Debug.Log("z:" + z);
+        if (z == 0&& DmScr._instance.emenyObj2.Count==1)
+        {
+            DmScr._instance.emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+        if(z==0)
+        {
+            DmScr._instance.emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+            DmScr._instance.emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+        if (z == 1)
+        {
+            DmScr._instance.emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+            DmScr._instance.emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+            DmScr._instance.emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+        if(z==2)
+        {
+            DmScr._instance.emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+            DmScr._instance.emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true,n);
+        }
+    } 
 }

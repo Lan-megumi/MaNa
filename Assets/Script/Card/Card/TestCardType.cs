@@ -41,11 +41,16 @@ using UnityEngine;
 		1GropupDamage：群体伤害
 		2SingleCure：单体治疗
 		3GropupCure：群体治疗
-		4Sputtering:溅射
-		5GropBuff
-		6GroupDebuff
+		4Sputtering: 溅射
+		5SingleBuff： 单体buff
+		6SingleDebuff： 单体Debuff
+		7Empty: 空值
+		8GroupBuff： 群体buff
+		9GroupDeBuff： 群体Debuff
+
 	 */
 	public enum AttcakeType{
-		SingleDamage,GroupDamage,SigeleCure,GroupCure,Sputtering,GropBuff,GroupDebuff
+		SingleDamage,GroupDamage,SigeleCure,GroupCure,Sputtering,SingleBuff,SingleDebuff
+		,Empty,GroupBuff,GroupDebuff
 	}
 

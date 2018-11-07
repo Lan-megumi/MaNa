@@ -85,7 +85,7 @@ public class EmenyBtnScr : MonoBehaviour {
                 int n = int.Parse(NName);
                 z = EnemyIndexof;
                 //Debug.Log("zzz" + z);
-                Father.GetComponent<EmenyScr>().CountRelated(n,z);
+               DmScr._instance.CountRelated(n,z);
             }
 
 
