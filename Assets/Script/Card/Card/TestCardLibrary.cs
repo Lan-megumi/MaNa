@@ -22,7 +22,7 @@ public  class  TestCardLibrary:MonoBehaviour{
 	TestCard EL03Wa=new TestCard("EL03Wa",(Type)0,(Element_type)1,(Rarity)1,"凝结",4,30,(AttcakeType)0);
 	TestCard EL04Wa=new TestCard("EL04Wa",(Type)0,(Element_type)1,(Rarity)1,"暗潮",3,25,(AttcakeType)1);
 	TestCard EL01C1=new TestCard("EL01C1",(Type)0,(Element_type)2,(Rarity)0,"蔓延",4,10,(AttcakeType)3);
-	TestCard EL02C1=new TestCard("EL02C1",(Type)0,(Element_type)2,(Rarity)0,"轻盈",2,0,(AttcakeType)5);
+	TestCard EL02C1=new TestCard("EL02C1",(Type)0,(Element_type)2,(Rarity)0,"轻盈",2,0,(AttcakeType)8);
 	TestCard EL03C1=new TestCard("EL03C1",(Type)0,(Element_type)2,(Rarity)0,"旋风",3,40,(AttcakeType)4);
 	TestCard EL04C1=new TestCard("EL04C1",(Type)0,(Element_type)2,(Rarity)3,"飓风迷域",6,30,(AttcakeType)1);
 	// public Text IdText,TypeText,EleText,RarityText,NameText;

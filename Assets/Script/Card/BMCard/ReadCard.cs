@@ -61,6 +61,7 @@ public class ReadCard : MonoBehaviour {
 			}
 			// Debug.Log("Id"+i+":"+Library2[i].GetCardid);
 		}
+		
 
 
 //------------------------------------------------------------
