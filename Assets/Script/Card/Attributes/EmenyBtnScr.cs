@@ -85,18 +85,11 @@ public class EmenyBtnScr : MonoBehaviour {
                 int n = int.Parse(NName);
                 z = EnemyIndexof;
                 //Debug.Log("zzz" + z);
-                Father.GetComponent<EmenyScr>().CountRelated(n,z);
+                DmScr._instance.CountRelated(n,z);
             }
-
-
-
-
             //执行完所有操作后将 公共脚本值归零
             PublicFightScr._instance.N_init();
 		}
-
-		
-		
 	}
 	public GameObject returnFater(){
 		return Father;

@@ -31,5 +31,30 @@ public class DmScr : MonoBehaviour
             emenyObj2[g].GetComponent<EmenyScr>().CountDamaged(true, 100);
             
         }
-    }  
+    }
+    public void CountRelated(int n, int z)
+    {
+        Debug.Log("n:" + n);
+        Debug.Log("z:" + z);
+        if (z == 0 && DmScr._instance.emenyObj2.Count == 1)
+        {
+            emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+        if (z == 0)
+        {
+            emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+            emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+        if (z == 1)
+        {
+            emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+            emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+            emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+        if (z == 2)
+        {
+            emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+            emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true, n);
+        }
+    }
 }

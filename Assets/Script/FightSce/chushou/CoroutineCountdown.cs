@@ -108,7 +108,7 @@ public class CoroutineCountdown : MonoBehaviour
                     iiSlider[g].value += SpeedAgis[g];
                     if (iiSlider[g].value >= 1)
                     {
-                        //敌人 回合结束
+                        //敌人 回合开始
                         iiSlider[g].value = 0;
                         gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();                    }
                 }
@@ -116,7 +116,7 @@ public class CoroutineCountdown : MonoBehaviour
                 targetSliderOject.value += c;               //玩家每帧数速度
                 if (targetSliderOject.value >= 1)           
                 {
-                    //玩家 回合结束
+                    //玩家 回合开始
                     targetSliderOject.value = 0;
                     TestMananger._instance.VisableCard();
                 }
@@ -137,6 +137,7 @@ public class CoroutineCountdown : MonoBehaviour
                             //敌人优先，玩家数值+1
                             Player1Speed += 1;
                         }
+
 
                     }
                 }
@@ -184,22 +185,7 @@ public class CoroutineCountdown : MonoBehaviour
     }
 
     public void Function_Dizzy(string Who){
-        //if (Who=="Player")
-        //{
-        //     i = 1;
-        //    Player1Speed = 60;
-        //    Debug.Log("xxxxxxx");
-        //}else if (Who=="Enemy")
-        //{
-        //    i = 1;
-        //    Player2Speed = 70;
-        //    for(int g = 0; g < Agis.Length; g++)
-        //    {
-        //    Agis[g] = AgisMax[g];
-
-        //    Debug.Log(Agis[g]);
-        //    }
-        //}
+        
     }
 }
 
