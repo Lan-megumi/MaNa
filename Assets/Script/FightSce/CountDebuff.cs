@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 /*
 	该脚本功能
-	debuff属性计算
+	debuff属性结算与附加
 		燃烧*
 		寒冷
 		冰冻
