@@ -106,7 +106,7 @@ public class CoroutineCountdown : MonoBehaviour
                 {
                     Agis[g]--;
                     iiSlider[g].value += SpeedAgis[g];
-                    if (iiSlider[g].value >= 1)
+                    if (Mathf.Abs(iiSlider[g].value - 1) <= 0.01f)
                     {
                         //敌人 回合开始
                         iiSlider[g].value = 0;
@@ -114,8 +114,9 @@ public class CoroutineCountdown : MonoBehaviour
                 }
 
                 targetSliderOject.value += c;               //玩家每帧数速度
-                if (targetSliderOject.value >= 1)           
+                if (Mathf.Abs(targetSliderOject.value-1)<= 0.01f)           
                 {
+                    
                     //玩家 回合开始
                     targetSliderOject.value = 0;
                     TestMananger._instance.VisableCard();
