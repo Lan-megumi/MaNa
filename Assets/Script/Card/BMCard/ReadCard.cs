@@ -15,7 +15,9 @@ public class ReadCard : MonoBehaviour {
 	}
 
 //------------------------------------------
+	//接收两张牌的参数
 	public string Cardid1,Cardid2;
+	//Reckon 是面板伤害求和
 	private int CardDamage1,CardDamage2,Reckon;
 	private AttcakeType CardAttackeType1,CardAttackeType2,BmAttackeType;
 //------------------------------------------
@@ -48,20 +50,20 @@ public class ReadCard : MonoBehaviour {
 		//获取Damage值和AttacakeType
 			if (Library2[i].GetCardid==Cardid1)
 			{
-				CardDamage1+=Library2[i].GetCardDamage;
+				CardDamage1=Library2[i].GetCardDamage;
 				CardAttackeType1=Library2[i].GetAttcakeType;
 
 				Debug.Log("CardDamage1:"+CardDamage1);
 			}
 			if (Library2[i].GetCardid==Cardid2)
 			{
-				CardDamage2+=Library2[i].GetCardDamage;
+				CardDamage2=Library2[i].GetCardDamage;
 				CardAttackeType2=Library2[i].GetAttcakeType;
 				Debug.Log("CardDamage2:"+CardDamage2);
 			}
 			// Debug.Log("Id"+i+":"+Library2[i].GetCardid);
 		}
-		
+			
 
 
 //------------------------------------------------------------
@@ -261,7 +263,6 @@ public class ReadCard : MonoBehaviour {
 		}else if (BmAttackeType==(AttcakeType)3)
 		{
 			// DmScr._instance.DmCure(Reckon);
-
 		}
 	//神奇输入↓
 		else

@@ -32,7 +32,8 @@ public class CountDebuff : MonoBehaviour {
 	Dizzy:眩晕
 	Fear:恐惧
  */
-	private int FireNum =0,IceNum=0,IceAcheNum=0,DizzyNum=0,FearNum=0;
+	private int FireNum =0,IceNum=0,IceAcheNum=0,DizzyNum=0,
+	FearNum=0;
 	
 	// Use this for initialization
 	void Start () {
