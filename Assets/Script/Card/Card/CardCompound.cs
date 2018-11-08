@@ -50,9 +50,9 @@ public class CardCompound : MonoBehaviour {
         Cardid1 = TestMananger._instance.Cardid1;  
         Cardid2 = TestMananger._instance.Cardid2;
         Cardid3 = TestMananger._instance.Cardid3;
-        Debug.Log("a1a1" + Cardid1);
-        Debug.Log("a1a2" + Cardid2);
-        Debug.Log("a1a3" + Cardid3);
+        // Debug.Log("a1a1" + Cardid1);
+        // Debug.Log("a1a2" + Cardid2);
+        // Debug.Log("a1a3" + Cardid3);
     
         //if(TestMananger._instance.bCard == false&& TestMananger._instance.bCard1 == false)
         //{

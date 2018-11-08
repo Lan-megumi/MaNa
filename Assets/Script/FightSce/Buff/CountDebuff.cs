@@ -20,7 +20,7 @@ public class CountDebuff : MonoBehaviour {
 	private int EmenyHp;
 	//用于绑定 DebuffUi显示的物件
 	public GameObject DebuffUi;
-	public static CountDebuff _instance;
+	// public static CountDebuff _instance;
 //------------------------------------------------
 	//定义回合数，当前回合和上一回合
 
@@ -34,6 +34,7 @@ public class CountDebuff : MonoBehaviour {
  */
 	private int FireNum =0,IceNum=0,IceAcheNum=0,DizzyNum=0,
 	FearNum=0;
+	public float Buffnum;//用于接收buff的数值/伤害
 	
 	// Use this for initialization
 	void Start () {
@@ -43,9 +44,9 @@ public class CountDebuff : MonoBehaviour {
 		EmenyHp=this.GetComponent<EmenyScr>().EmenyHp;
 		// Debug.Log("CountDebuff_Hp"+EmenyHp);
 	}
-	void Awake(){
-		_instance=this;
-	}
+	// void Awake(){
+	// 	_instance=this;
+	// }
 	
 
 //玩家/敌人回合结束后，判断敌方是否有(回合开始结算)Debuff需要结算
@@ -61,7 +62,7 @@ public class CountDebuff : MonoBehaviour {
 		}
 		if (FireNum!=0)
 		{
-			Fire();
+			Fire(Buffnum);
 		}
 	
 		if (DizzyNum!=0)
@@ -77,7 +78,7 @@ public class CountDebuff : MonoBehaviour {
 
 //------------------------------燃烧---------------------------
 	//燃烧Debuff的计算方法
-	public void Fire(){
+	public void Fire(float num){
 		UpdateHpDate();
 		if (IceAcheNum!=0)
 		{
@@ -86,12 +87,17 @@ public class CountDebuff : MonoBehaviour {
 		}
 		//因为要使用到百分比计算所以用到一个float临时储存HP
 		float f_hp=(float)EmenyHp;
-		f_hp=f_hp*0.03f*FireNum;
+		f_hp=f_hp*num*FireNum;
 		EmenyHp=(int)f_hp;
 		//将计算后的结果传参
 		this.GetComponent<EmenyScr>().CountDamaged(true,EmenyHp);
 		//完成计算后结算数据显示Ui
 		FireNum--;
+		//将数值清空
+		if (FireNum==0)
+		{
+			Buffnum=0;
+		}
 		DebuffUi.GetComponent<DebuffUi>().ChangeFire(FireNum);
 
 	}

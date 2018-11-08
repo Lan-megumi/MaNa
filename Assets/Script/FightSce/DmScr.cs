@@ -34,8 +34,8 @@ public class DmScr : MonoBehaviour
     }
     public void CountRelated(int n, int z)
     {
-        Debug.Log("n:" + n);
-        Debug.Log("z:" + z);
+        // Debug.Log("n:" + n);
+        // Debug.Log("z:" + z);
         if (z == 0 && DmScr._instance.emenyObj2.Count == 1)
         {
             emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);

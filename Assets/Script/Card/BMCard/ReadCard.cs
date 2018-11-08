@@ -44,9 +44,15 @@ public class ReadCard : MonoBehaviour {
 	public void jo(){
 	//首先同步卡牌，因为牌库有可能被洗牌，不过好像洗了牌也不影响
 		Library2=TestCardLibrary._instance.Library0;
+		int a =0;
 		// Debug.Log("Card1"+Cardid1+" | Card2:"+Cardid2);
 		for(int i =0 ;i<Library2.Count;i++){
-
+		//优化
+			if (a>=2)
+			{
+				a=0;
+				break;
+			}
 		//获取Damage值和AttacakeType
 			if (Library2[i].GetCardid==Cardid1)
 			{
@@ -54,16 +60,19 @@ public class ReadCard : MonoBehaviour {
 				CardAttackeType1=Library2[i].GetAttcakeType;
 
 				Debug.Log("CardDamage1:"+CardDamage1);
+				a++;
 			}
 			if (Library2[i].GetCardid==Cardid2)
 			{
 				CardDamage2=Library2[i].GetCardDamage;
 				CardAttackeType2=Library2[i].GetAttcakeType;
 				Debug.Log("CardDamage2:"+CardDamage2);
+				a++;
 			}
 			// Debug.Log("Id"+i+":"+Library2[i].GetCardid);
 		}
 			
+	
 
 
 //------------------------------------------------------------
@@ -269,6 +278,13 @@ public class ReadCard : MonoBehaviour {
 		{
 			Debug.Log("The AttcakeType is Wrong! 你输入了什么鬼？");
 		}
+/*
+	执行 BuffScr 脚本，进行buff计算
+*/
+	 BuffScr._instance.Card1_Buff(Cardid1);
+	 BuffScr._instance.Card2_Buff(Cardid2);
+	 BuffScr._instance.ReckonBuff();	
+
 	}
 	
 

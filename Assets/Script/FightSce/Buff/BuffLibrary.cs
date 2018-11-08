@@ -25,15 +25,16 @@ public class BuffLibrary : MonoBehaviour {
 
 
 
-
-
+	
 
 	//--------------------------------------------------
 	//用于接收查找到的buff属性
 	public string BuffId,BuffName;
 	public float Buffrate,BuffNum;
 	//--------------------------------------------------
-
+	void Awake(){
+			_instance=this;
+		}
 	// Use this for initialization
 	void Start () {
 		BuffLibrary0=new List<NewBuff>();

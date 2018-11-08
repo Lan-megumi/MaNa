@@ -17,13 +17,13 @@ public class EmenyScr : MonoBehaviour {
 
     public List<GameObject> emenyObj2;
 
-    public static EmenyScr _instance;
+    // public static EmenyScr _instance;
     public float Agi;
 
-    private void Awake()
-    {
-        _instance = this;
-    }
+    // private void Awake()
+    // {
+    //     _instance = this;
+    // }
     void Start()
     {
         emenyObj2 = new List<GameObject>();

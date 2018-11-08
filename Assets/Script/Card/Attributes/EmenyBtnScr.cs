@@ -11,8 +11,9 @@ public class EmenyBtnScr : MonoBehaviour {
 	public GameObject Father;
 	public int Damaged;
 	public bool t =true;
-	public string NTpye,NName,NAll;
+	public string NTpye,NName,NBuff;
     public int EnemyIndexof;
+	public float N_Buff_num;
     public int z;
 
 
@@ -45,23 +46,23 @@ public class EmenyBtnScr : MonoBehaviour {
 */
 		NTpye=PublicFightScr._instance.RetrunN_Type();
 		NName=PublicFightScr._instance.RetrunN_Name();
-
+		NBuff=PublicFightScr._instance.RetrunN_Buff();
+		N_Buff_num=PublicFightScr._instance.RetrunN_Buff_num();
         //获取父子间的属性
         EnemyIndexof= Father.GetComponent<EmenyScr>().EnemyIndex;
         int z = EnemyIndexof;
-        Debug.Log("EnemyIndexof:" + z);
+        // Debug.Log("EnemyIndexof:" + z);
 
 
-        if (NTpye!=null&&NName!=null)
+        if (NTpye!=null&&NName!=null&&NBuff!=null)
 		{
 //----------------------------Debuff
-			if (NTpye=="Debuff")
+			if (NBuff=="Fire")
 			{
 				//----------------------
-				if (NName=="Fire")
-				{
-					Father.GetComponent<CountDebuff>().AddFire();
-				}
+				
+				Father.GetComponent<CountDebuff>().AddFire();
+				Father.GetComponent<CountDebuff>().Buffnum=N_Buff_num;
 				
 			}
 //----------------------------Damaged
@@ -78,7 +79,7 @@ public class EmenyBtnScr : MonoBehaviour {
 				int n = int.Parse(NName);
 				Father.GetComponent<EmenyScr>().CountDamaged(false,n);
 			}
-            //----------------------------
+//----------------------------群体伤害
             if (NTpye == "R")
             {
                 //Debug.Log(NName);
