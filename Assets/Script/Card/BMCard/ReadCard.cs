@@ -19,7 +19,7 @@ public class ReadCard : MonoBehaviour {
 	public string Cardid1,Cardid2;
 	//Reckon 是面板伤害求和
 	private int CardDamage1,CardDamage2,Reckon;
-	private AttcakeType CardAttackeType1,CardAttackeType2,BmAttackeType;
+	public AttcakeType CardAttackeType1,CardAttackeType2,BmAttackeType;
 //------------------------------------------
 
 	// Use this for initialization

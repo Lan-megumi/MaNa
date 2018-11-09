@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 224634099366798452}
   - component: {fileID: 222361493626458472}
   - component: {fileID: 114018745715425726}
-  - component: {fileID: 114055246953692618}
+  - component: {fileID: 114699307924617954}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114055246953692618}
+      - m_Target: {fileID: 114699307924617954}
         m_MethodName: GetFather
         m_Mode: 1
         m_Arguments:
@@ -408,22 +408,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114055246953692618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1119971902442810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76b2d165ecfd23245b8009e44ccdd009, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Father: {fileID: 1780929053986740}
-  Damaged: 0
-  t: 1
-  NTpye: 
-  NName: 
 --- !u!114 &114097321018855464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,8 +732,10 @@ MonoBehaviour:
   TextHp: {fileID: 114586049471561752}
   TextName: {fileID: 114274003485808982}
   BCheckBcak: {fileID: 1586028816734816}
+  EnemyIndex: 0
   targetSliderOject: {fileID: 0}
   targetSliderOject1: {fileID: 114130255991529536}
+  emenyObj2: []
   Agi: 0
 --- !u!114 &114586049471561752
 MonoBehaviour:
@@ -784,6 +770,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Null
+--- !u!114 &114699307924617954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1119971902442810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b2d165ecfd23245b8009e44ccdd009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Father: {fileID: 1780929053986740}
+  t: 1
+  EnemyIndexof: 0
 --- !u!114 &114714830663759942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -862,6 +862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebuffUi: {fileID: 1717314163703036}
+  Buffnum: 0
 --- !u!114 &114864886767847316
 MonoBehaviour:
   m_ObjectHideFlags: 1

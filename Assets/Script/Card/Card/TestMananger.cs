@@ -215,7 +215,7 @@ public class TestMananger : MonoBehaviour
         {
             if (b == Library1.Count)
             {
-                Debug.Log("aa" + Library1.Count);
+                // Debug.Log("aa" + Library1.Count);
                 b = 0;
             }
             Cardid = Library1[b].GetCardid;
@@ -242,11 +242,11 @@ public class TestMananger : MonoBehaviour
             CardEle = Library1[d].GetCardElement_type;
             CardRarity = Library1[d].GetCardRarity;
             CardName = Library1[d].GetCardName;
-            Debug.Log(Cardid);
-            Debug.Log(CardType);
-            Debug.Log(CardEle);
-            Debug.Log(CardRarity);
-            Debug.Log(CardName);
+            // Debug.Log(Cardid);
+            // Debug.Log(CardType);
+            // Debug.Log(CardEle);
+            // Debug.Log(CardRarity);
+            // Debug.Log(CardName);
             
             BCard2 = false;
             
@@ -259,11 +259,11 @@ public class TestMananger : MonoBehaviour
             CardEle = Library1[d - 1].GetCardElement_type;
             CardRarity = Library1[d - 1].GetCardRarity;
             CardName = Library1[d - 1].GetCardName;
-            Debug.Log(Cardid);
-            Debug.Log(CardType);
-            Debug.Log(CardEle);
-            Debug.Log(CardRarity);
-            Debug.Log(CardName);
+            // Debug.Log(Cardid);
+            // Debug.Log(CardType);
+            // Debug.Log(CardEle);
+            // Debug.Log(CardRarity);
+            // Debug.Log(CardName);
             
             BCard1 = false;
             
@@ -276,11 +276,11 @@ public class TestMananger : MonoBehaviour
             CardRarity = Library1[d - 2].GetCardRarity;
             CardName = Library1[d - 2].GetCardName;
 
-            Debug.Log(Cardid);
-            Debug.Log(CardType);
-            Debug.Log(CardEle);
-            Debug.Log(CardRarity);
-            Debug.Log(CardName);
+            // Debug.Log(Cardid);
+            // Debug.Log(CardType);
+            // Debug.Log(CardEle);
+            // Debug.Log(CardRarity);
+            // Debug.Log(CardName);
             
             BCard = false;
             

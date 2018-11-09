@@ -32,6 +32,10 @@ public class DmScr : MonoBehaviour
             
         }
     }
+/*
+    溅射伤害代码
+    根据点击事件所传回的 index传入方法中的 z 值中来判断溅射哪些对象
+ */
     public void CountRelated(int n, int z)
     {
         // Debug.Log("n:" + n);
@@ -45,11 +49,22 @@ public class DmScr : MonoBehaviour
             emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
             emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
         }
+    /*
+        选择中间的时候有分三个敌人和两个敌人的情况
+     */
         if (z == 1)
         {
-            emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
-            emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
-            emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true, n);
+            if (emenyObj2.Count>2)
+            {
+                 emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+                 emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+                 emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true, n);
+            }else if(emenyObj2.Count==2)
+            {
+                emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
+                emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+            }
+           
         }
         if (z == 2)
         {

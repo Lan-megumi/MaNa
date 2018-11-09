@@ -6,21 +6,15 @@ using UnityEngine;
  */
 public class EmenyBtnScr : MonoBehaviour {
 
-    public static EmenyBtnScr _instance;
 	// Use this for initialization
 	public GameObject Father;
-	public int Damaged;
 	public bool t =true;
 	public string NTpye,NName,NBuff;
     public int EnemyIndexof;
-	public float N_Buff_num;
-    public int z;
+	private float N_Buff_num;
+	private int z;
 
 
-    private void Awake()
-    {
-        _instance = this;
-    }
     /*
         该方法附着在每个敌人身上，每个敌人都有一个GetFather()方法
         GetFather 可以获取到敌人物体携带的Btn的父子件，
@@ -50,11 +44,11 @@ public class EmenyBtnScr : MonoBehaviour {
 		N_Buff_num=PublicFightScr._instance.RetrunN_Buff_num();
         //获取父子间的属性
         EnemyIndexof= Father.GetComponent<EmenyScr>().EnemyIndex;
-        int z = EnemyIndexof;
+        z = EnemyIndexof;
         // Debug.Log("EnemyIndexof:" + z);
 
 
-        if (NTpye!=null&&NName!=null&&NBuff!=null)
+        if (NTpye!=null&&NName!=null)
 		{
 //----------------------------Debuff
 			if (NBuff=="Fire")
@@ -82,7 +76,7 @@ public class EmenyBtnScr : MonoBehaviour {
 //----------------------------群体伤害
             if (NTpye == "R")
             {
-                //Debug.Log(NName);
+                Debug.Log("NName:"+NName+" |index:"+EnemyIndexof);
                 int n = int.Parse(NName);
                 z = EnemyIndexof;
                 //Debug.Log("zzz" + z);
@@ -90,9 +84,18 @@ public class EmenyBtnScr : MonoBehaviour {
             }
             //执行完所有操作后将 公共脚本值归零
             PublicFightScr._instance.N_init();
+			InitDate();
+			ReadCard._instance.InitDate();
 		}
 	}
 	public GameObject returnFater(){
 		return Father;
+	}
+	private void InitDate(){
+		NName="";
+		NTpye="";
+		NBuff="";
+		z=0;
+		N_Buff_num=0;
 	}
 }

@@ -89,7 +89,7 @@ public class BuffScr : MonoBehaviour {
 			Result_name=BuffName1;
 			// Debug.Log("BuffName1="+BuffName1);
 			//当其命中的时候
-			if (Rate+Result_rate>=0.1f)
+			if (Rate+Result_rate>=1f)
 			{
 				PublicFightScr._instance.StarFunctoin3(Result_name);
 				PublicFightScr._instance.StarFunction4(Result_num);
