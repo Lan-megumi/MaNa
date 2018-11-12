@@ -13,8 +13,11 @@ public class CoroutineCountdown : MonoBehaviour
     public static CoroutineCountdown _instance;
 
     public Text Notetext;
-
-    public bool IfPlayer;
+/*
+    IfPlayer：用于记录是否为玩家回合，目前暂未有引用
+    IfFirst:用于记录是否是第一个回合，避免第一个回合就将牌组洗了
+ */
+    public bool IfPlayer,IfFirst;
 
 //---------------------------
 
@@ -119,7 +122,7 @@ public class CoroutineCountdown : MonoBehaviour
                     
                     //玩家 回合开始
                     targetSliderOject.value = 0;
-                    TestMananger._instance.VisableCard();
+                    // TestMananger._instance.VisableCard();
                 }
                 for (int g = 0; g < Agis.Length; g++)      
                 {
@@ -173,6 +176,16 @@ public class CoroutineCountdown : MonoBehaviour
         {
             Notetext.text="你的回合";
             Debug.Log("111111");
+            IfPlayer=true;
+            if (IfFirst!=true)
+            {
+                TestMananger._instance.VisableCard();
+                
+            }else
+            {
+                
+                IfFirst=false;
+            }
         }
        
         for (int g = 0; g < Agis.Length; g++)
@@ -180,11 +193,16 @@ public class CoroutineCountdown : MonoBehaviour
             if (Agis[g] == 0)
             {
                 Notetext.text="敌方回合";
+                IfPlayer=false;
+
                 Debug.Log("333333");
             }
         }
     }
 
+/*
+    晕眩效果逻辑方法
+ */
     public void Function_Dizzy(string Who){
         
     }

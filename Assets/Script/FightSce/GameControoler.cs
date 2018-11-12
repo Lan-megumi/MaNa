@@ -11,6 +11,7 @@ public class GameControoler : MonoBehaviour {
 		//查找储存了场景数据的SceneDate
 		
 		SceDate=GameObject.Find("SceneDate");
+		BlackCan.SetActive(true);
 		if (SceDate!=null)
 		{
 			num=SceDate.GetComponent<SceStar>().Re_SceNum();

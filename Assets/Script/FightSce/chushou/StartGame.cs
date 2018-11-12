@@ -15,12 +15,9 @@ public class StartGame : MonoBehaviour {
     public void StartButton()
     {
         endButton = GameObject.Find("endButton");
-        // StartBt = GameObject.Find("StartButton"); 
         endButton.GetComponent<Button>().interactable = true;
         Startbool = true;
         CoroutineCountdown._instance.Agiss();
-        //CoroutineCountdown._instance.NextTrun();
-        // StartBt.SetActive(false);
     }
 
 }

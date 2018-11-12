@@ -51,7 +51,7 @@ public class TestMananger : MonoBehaviour
         Library1 = new List<TestCard>();
         Debug.Log("TestManager Star");
         
-        VisableCard();
+        // VisableCard();
     }
    
     public void Fix()   //在CardCompound 里面调用 ，初始化选择（未选）
@@ -208,7 +208,7 @@ public class TestMananger : MonoBehaviour
         text.text = "未选";  //发牌后，已选择变为未选
         text1.text = "未选";
         text2.text = "未选";
-
+        Debug.Log("发牌！");
         // UpdateLibrary();
         Library1 = TestCardLibrary._instance.Library0;
         //Debug.Log("1:" + Library1[1]);
@@ -216,11 +216,10 @@ public class TestMananger : MonoBehaviour
 			i上限为Ui界面牌的数量，3
 		 */
          //界面显示初始化卡牌内容
-        Debug.Log("aa" + Library1);
 
         for (int i = 0; i < CardLibrary.Count; i++)
         {
-
+            // Debug.Log("aa" + Library1);
             if (b == Library1.Count)
             {
                 b = 0;
