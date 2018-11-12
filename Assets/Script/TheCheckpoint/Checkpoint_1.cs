@@ -18,19 +18,20 @@ public class Checkpoint_1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(Tne_Game_Name);
+
 	}
 
-	string Tne_Game_Name="1";
+	
 
-	public void Start_Game(string Tne_Game_Namein){
+	public void Start_Game(int num){
 
-		Tne_Game_Name = Tne_Game_Namein;
+		SceStar.Instance.Set_SceNum(num);
+		Debug.Log("num:"+SceStar.Instance.Re_SceNum());
 		Select_card_group.SetActive(true);
 
 	}	
 
 	public void Group(){
-		SceneManager.LoadScene(4,LoadSceneMode.Single);
+		SceneManager.LoadScene(5,LoadSceneMode.Single);
 	}
 }

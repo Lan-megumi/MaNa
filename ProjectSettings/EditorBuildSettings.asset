@@ -20,4 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Area1/Points1.unity
     guid: 54adac3fdd523874d94826336354f474
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/FightSce.unity
+    guid: 992d40e531eed4266b1634e3cdce264b

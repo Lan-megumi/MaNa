@@ -8,6 +8,19 @@ public class PanelScript : MonoBehaviour {
 	该脚本主要用于新建敌人Ui
  */
 	public GameObject Emeny;
+    public static PanelScript Instance;
+
+    public static PanelScript _instance{
+        get{
+            if (null==Instance)
+            {
+                Instance=FindObjectOfType(typeof(PanelScript))as PanelScript;
+            }
+            return Instance;
+        }
+    }
+
+
     public List<GameObject> EnemyObj0;
     //新建一个初始值用于给敌人标记是第几个生成的
     private int EnemeyIndex = 0;

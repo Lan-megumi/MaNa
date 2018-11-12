@@ -8,8 +8,17 @@ using UnityEngine.UI;
  */
 public class TestMananger : MonoBehaviour
 {
+    public static TestMananger Instance;
 
-    public static TestMananger _instance;
+    public static TestMananger _instance{
+        get{
+            if (null==Instance)
+            {
+                Instance=FindObjectOfType(typeof(TestMananger))as TestMananger;
+            }
+            return Instance;
+        }
+    }
 
     public List<GameObject> CardLibrary;
     public List<TestCard> Library1;
@@ -36,13 +45,12 @@ public class TestMananger : MonoBehaviour
     //-----------------------------------------------------	
     private int b, c = 0;
     private int d;
-    private void Awake()
-    {
-        _instance = this;
-    }
+    
     void Start()
     {
         Library1 = new List<TestCard>();
+        Debug.Log("TestManager Star");
+        
         VisableCard();
     }
    
@@ -80,11 +88,7 @@ public class TestMananger : MonoBehaviour
 
     }
 
-    //用于更新牌组与牌库中的差异
-    private void UpdateLibrary()
-    {
-        Library1 = TestCardLibrary._instance.Library0;
-    }
+
 
     public void ShotA()  //是否选中第一张卡牌，判断是否已选择了2张
     {
@@ -205,17 +209,20 @@ public class TestMananger : MonoBehaviour
         text1.text = "未选";
         text2.text = "未选";
 
-        UpdateLibrary();
+        // UpdateLibrary();
+        Library1 = TestCardLibrary._instance.Library0;
         //Debug.Log("1:" + Library1[1]);
         /*
 			i上限为Ui界面牌的数量，3
 		 */
          //界面显示初始化卡牌内容
+        Debug.Log("aa" + Library1);
+
         for (int i = 0; i < CardLibrary.Count; i++)
         {
+
             if (b == Library1.Count)
             {
-                // Debug.Log("aa" + Library1.Count);
                 b = 0;
             }
             Cardid = Library1[b].GetCardid;
