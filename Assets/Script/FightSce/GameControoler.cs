@@ -3,20 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameControoler : MonoBehaviour {
-	public GameObject CardCan,EnemyCan,BlackCan;
+	public GameObject CardCan,EnemyCan,BlackCan,CoverCardCan;
+	public static GameControoler Instance;
+
+    public static GameControoler _instance{
+        get{
+            if (null==Instance)
+            {
+                Instance=FindObjectOfType(typeof(GameControoler))as GameControoler;
+            }
+            return Instance;
+        }
+    }
+
 	private GameObject SceDate;
 	private int num;
 	// Use this for initialization
 	void Start () {
 		//查找储存了场景数据的SceneDate
-		
+		SetUi(false);
 		SceDate=GameObject.Find("SceneDate");
 		BlackCan.SetActive(true);
 		if (SceDate!=null)
 		{
 			num=SceDate.GetComponent<SceStar>().Re_SceNum();
 			//先将Ui显示出来
-			SetUi();
+			SetUi(true);
 			//根据获取的数据创建敌人
 			CreateEmeny(num);
 			//撤下遮布
@@ -54,8 +66,11 @@ public class GameControoler : MonoBehaviour {
 	void Update () {
 		
 	}
-	public void SetUi(){
-		CardCan.SetActive(true);
-		EnemyCan.SetActive(true);
+	public void SetUi(bool i){
+		CardCan.SetActive(i);
+		EnemyCan.SetActive(i);
+	}
+	public void SetCardUi(bool n){
+		CoverCardCan.SetActive(n);
 	}
 }

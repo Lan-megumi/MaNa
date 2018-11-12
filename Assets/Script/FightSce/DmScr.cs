@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class DmScr : MonoBehaviour
 {
-    public static DmScr _instance;
+    public static DmScr Instance;
+
+    public static DmScr _instance{
+        get{
+            if (null==Instance)
+            {
+                Instance=FindObjectOfType(typeof(DmScr))as DmScr;
+            }
+            return Instance;
+        }
+    }
     public List<GameObject> emenyObj2;   //创列表
     public float[] Hp;
 
     // Use this for initialization
     void Awake()
     {
-        _instance = this;
+
     }
     void Start()
     {

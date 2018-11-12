@@ -10,7 +10,17 @@ using UnityEngine.UI;
  */
 public class CoroutineCountdown : MonoBehaviour
 {
-    public static CoroutineCountdown _instance;
+    public static CoroutineCountdown Instance;
+
+    public static CoroutineCountdown _instance{
+        get{
+            if (null==Instance)
+            {
+                Instance=FindObjectOfType(typeof(CoroutineCountdown))as CoroutineCountdown;
+            }
+            return Instance;
+        }
+    }
 
     public Text Notetext;
 /*
@@ -43,21 +53,23 @@ public class CoroutineCountdown : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
+        // gm = new List<GameObject>();
+        // iiSlider = new List<Slider>();
+
         c = 1/Player1Speed;    
         Debug.Log("cc" + c);
     }
-    
-    
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
     void Start()
     {
-        //谁先出手
-        //NextTrun();
         gm = new List<GameObject>();
         iiSlider = new List<Slider>();
-       
-
     }
+    
+    
     public void Agiss( )
     {
         AgisMax = new float[gm.Count];              //速度最大值数组
@@ -100,9 +112,12 @@ public class CoroutineCountdown : MonoBehaviour
         // Debug.Log("第II:" + this.igg);
         if (StartGame._instance.Startbool == true)
         {
+
             // Debug.Log("II:" + this.igg);
             if (igg == 1)
             {
+                GameControoler._instance.SetCardUi(true);
+
                 Player1Speed--;
                 // Debug.Log("III:" + Agis.Length);
                 for (int g = 0; g < Agis.Length; g++)
@@ -179,6 +194,7 @@ public class CoroutineCountdown : MonoBehaviour
             IfPlayer=true;
             if (IfFirst!=true)
             {
+                GameControoler._instance.SetCardUi(false);
                 TestMananger._instance.VisableCard();
                 
             }else
