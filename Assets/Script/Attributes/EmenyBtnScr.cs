@@ -51,12 +51,43 @@ public class EmenyBtnScr : MonoBehaviour {
         if (NTpye!=null&&NName!=null)
 		{
 //----------------------------Debuff
+		//在这里根据接受Debuff的不同来进行不同的操作
 			if (NBuff=="Fire")
 			{
 				//----------------------
 				
 				Father.GetComponent<CountDebuff>().AddFire();
 				Father.GetComponent<CountDebuff>().Buffnum=N_Buff_num;
+				
+			}
+			//冰冻
+			if (NBuff=="Ice")
+			{
+				Father.GetComponent<CountDebuff>().AddIce();
+				// Father.GetComponent<CountDebuff>().
+			}
+			//冻伤的增加回合事件是一回合+2
+			if (NBuff=="IceAche")
+			{
+				Father.GetComponent<CountDebuff>().AddIceAche(2);
+				
+			}
+			//眩晕
+			if (NBuff=="Dizzy")
+			{
+				Father.GetComponent<CountDebuff>().AddDizzyNum();
+				
+			}
+			//恐惧
+			if (NBuff=="Fear")
+			{
+				Father.GetComponent<CountDebuff>().AddFear();
+				
+			}
+			//寒冷 增加一层冻伤效果
+			if (NBuff=="Cold")
+			{
+				Father.GetComponent<CountDebuff>().AddIceAche(1);
 				
 			}
 //----------------------------Damaged

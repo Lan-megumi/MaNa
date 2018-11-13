@@ -143,8 +143,8 @@ public class CountDebuff : MonoBehaviour {
 		IceAcheNum--;
 		DebuffUi.GetComponent<DebuffUi>().ChangeIceAche(IceAcheNum);
 	}
-	public void AddIceAche(){
-		IceAcheNum+=2;
+	public void AddIceAche(int n){
+		IceAcheNum+=n;
 		DebuffUi.GetComponent<DebuffUi>().ChangeIceAche(IceAcheNum);
 	}
 
@@ -154,6 +154,10 @@ public class CountDebuff : MonoBehaviour {
 	//眩晕实现：直接增加行动速度=目标初始速度
 	public void Dizzy(){
 		// Debug.Log("眩晕未实现！");
+		if (DizzyNum>1)
+		{
+			DizzyNum=1;
+		}
 		CoroutineCountdown._instance.Function_Dizzy("Enemy");
 		DizzyNum=0;
 		DebuffUi.GetComponent<DebuffUi>().ChangeDizzy(DizzyNum);

@@ -39,6 +39,7 @@ public class PublicFightScr : MonoBehaviour {
 	public void StarFunction2(string name){
 		N_Name=name;
 	}
+	//以下是Buff触发使用的Function
 	public void StarFunctoin3(string name){
 		N_Buff=name;
 	}
