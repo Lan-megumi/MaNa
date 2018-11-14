@@ -24,6 +24,7 @@ public class CountDebuff : MonoBehaviour {
     //------------------------------------------------
     //定义回合数，当前回合和上一回合
     public Text text;    //   169
+    private bool isDizzy=false;
 /*
 	定义Debuff的叠加层数
 	Fire：燃烧
@@ -157,23 +158,23 @@ public class CountDebuff : MonoBehaviour {
 		if (DizzyNum>1)
 		{
 			DizzyNum=1;
+            isDizzy = true;
 		}
 		CoroutineCountdown._instance.Function_Dizzy("Enemy");
-		DizzyNum=0;
+
+        if (isDizzy==true) 
+        {
+            CoroutineCountdown._instance.NextTrun(); 
+        }
+
+        DizzyNum =0;
 		DebuffUi.GetComponent<DebuffUi>().ChangeDizzy(DizzyNum);
 	}
 	public void AddDizzyNum(){
 		DizzyNum++;
 		DebuffUi.GetComponent<DebuffUi>().ChangeDizzy(DizzyNum);
 	}
-    public void Vertigo1()  //眩晕
-    {
-        if (text.text == "眩晕")
-        {
-            CoroutineCountdown._instance.NextTrun();//这个
-            text.text = "未被眩晕";
-        }
-    }
+  
     //------------------------------恐惧---------------------------
     //降低伤害降低命中
     public void Fear(){

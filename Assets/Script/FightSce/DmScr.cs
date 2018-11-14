@@ -54,7 +54,7 @@ public class DmScr : MonoBehaviour
         {
             emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
         }
-        if (z == 0)
+        if (z == 0 && DmScr._instance.emenyObj2.Count > 1)
         {
             emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
             emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
