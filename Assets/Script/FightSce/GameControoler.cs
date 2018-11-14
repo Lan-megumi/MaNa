@@ -23,6 +23,7 @@ public class GameControoler : MonoBehaviour {
 		//查找储存了场景数据的SceneDate
 		SetUi(false);
 		SceDate=GameObject.Find("SceneDate");
+		CoverCardCan.SetActive(true);
 		BlackCan.SetActive(true);
 		if (SceDate!=null)
 		{
@@ -35,8 +36,10 @@ public class GameControoler : MonoBehaviour {
 			BlackCan.SetActive(false);
 			//初始化数据
 			SceDate.GetComponent<SceStar>().Set_SceNum(0);
+			PlayerDate._instance.Testlinshi();
 			//执行开始游戏
 			EnemyCan.GetComponent<StartGame>().StartButton();
+
 		}else
 		{
 			Debug.Log("数据未找到！");
