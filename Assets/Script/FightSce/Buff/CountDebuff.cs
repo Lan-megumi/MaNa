@@ -20,10 +20,10 @@ public class CountDebuff : MonoBehaviour {
 	private int EmenyHp;
 	//用于绑定 DebuffUi显示的物件
 	public GameObject DebuffUi;
-	// public static CountDebuff _instance;
-//------------------------------------------------
-	//定义回合数，当前回合和上一回合
-
+    // public static CountDebuff _instance;
+    //------------------------------------------------
+    //定义回合数，当前回合和上一回合
+    public Text text;    //   169
 /*
 	定义Debuff的叠加层数
 	Fire：燃烧
@@ -166,10 +166,17 @@ public class CountDebuff : MonoBehaviour {
 		DizzyNum++;
 		DebuffUi.GetComponent<DebuffUi>().ChangeDizzy(DizzyNum);
 	}
-
-//------------------------------恐惧---------------------------
-	//降低伤害降低命中
-	public void Fear(){
+    public void Vertigo1()  //眩晕
+    {
+        if (text.text == "眩晕")
+        {
+            CoroutineCountdown._instance.NextTrun();//这个
+            text.text = "未被眩晕";
+        }
+    }
+    //------------------------------恐惧---------------------------
+    //降低伤害降低命中
+    public void Fear(){
 		Debug.Log("恐惧未实现！");
 		FearNum-=1;
 		DebuffUi.GetComponent<DebuffUi>().ChangeFear(FearNum);
