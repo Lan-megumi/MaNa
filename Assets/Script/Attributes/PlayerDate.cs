@@ -49,9 +49,28 @@ public class PlayerDate : MonoBehaviour {
 		this.GetComponent<PlayerUi>().UpdateName(Player_name);
 		this.GetComponent<PlayerUi>().UpdateMana(MaxMana);
 
-		this.GetComponent<PlayerUi>().UpdateHp(Hp);
+		this.GetComponent<PlayerUi>().Update_HpSlider(MaxHp,Hp);
 
 	}
-	
+
+//-----------------------------------------
+	//以下分别为获取 玩家血量、最大血量、魔法抗性、异常抗性、闪避
+	public int ReturnHp(){
+		return Hp;
+	}
+	public int ReturnMaxHp(){
+		return MaxHp;
+	}
+	public int ReturnRgs(){
+		return Rgs;
+	}
+	public int ReturnImm(){
+		return Imm;
+	}
+	public int ReturnAvd(){
+		return Avd;
+	}
+//-----------------------------------------
+
 	
 }

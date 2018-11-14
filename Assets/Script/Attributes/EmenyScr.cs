@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class EmenyScr : MonoBehaviour {
 
-	public int  EmenyHp;
+	public int  EnemyHp,EnemyMaxHp;
 	//-------------------------
 	public Text TextHp,TextName;
+	public Slider HpSlider;
 	//-------------------------
 	public GameObject BCheckBcak;
     //用于记录第几个生成的敌人
@@ -34,38 +35,55 @@ public class EmenyScr : MonoBehaviour {
 		{
 			EmenyLibrary.Emeny1 Newemeny=new EmenyLibrary.Emeny1();
 			Newemeny.initdate();
-			EmenyHp=Newemeny.GetHp;
+			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
-            UpdateHpUi(EmenyHp.ToString());
         }
 		else if(i==2){
 			EmenyLibrary.Emeny2 Newemeny=new EmenyLibrary.Emeny2();
 			Newemeny.initdate();
-			EmenyHp=Newemeny.GetHp;
+			EnemyHp=Newemeny.GetHp;
 			TextName.text=Newemeny.GetName;
-			UpdateHpUi(EmenyHp.ToString());
             Agi = Newemeny.Agi;
         }
+		
 		else{
 			Debug.Log("Input wrong！The enmey"+i+" no Found!");
 		}
+		if (EnemyHp!=0)
+		{
+			EnemyMaxHp=EnemyHp;
+			Update_HpSlider(EnemyMaxHp,EnemyHp);	
+		}
+		
+
 	}
-	public void UpdateHpUi(string hp){
-			TextHp.text=hp;
-	}
+/*
+	敌人的伤害/治疗计算,结算完成后进行Ui的修改
+ */
 	public void CountDamaged(bool i,int n){
 		if (i==true)
 		{
-			EmenyHp-=n;
+			EnemyHp-=n;
 		}else
 		{
-			EmenyHp+=n;
+			EnemyHp+=n;
+			//过量治疗
+			if (EnemyHp>EnemyMaxHp)
+			{
+				EnemyHp=EnemyMaxHp;
+			}
 		}
-		UpdateHpUi(EmenyHp.ToString());
+		// UpdateHpUi(EnemyHp.ToString());
+		Update_HpSlider(EnemyMaxHp,EnemyHp);
+
 	}
     
-
+	public void Update_HpSlider(int Maxnum,int NowNum){
+		double i = (double)NowNum/(double)Maxnum;
+		Debug.Log(NowNum+"/"+Maxnum+"="+i);
+		HpSlider.value=(float)i;
+	}
     public void UpdateBack(bool i){
 		if (i==true)
 		{
@@ -75,5 +93,6 @@ public class EmenyScr : MonoBehaviour {
 			BCheckBcak.SetActive(false);
 		}
 	}
+
   
 }

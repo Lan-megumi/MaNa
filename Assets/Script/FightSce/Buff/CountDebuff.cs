@@ -41,7 +41,7 @@ public class CountDebuff : MonoBehaviour {
 		UpdateHpDate();
 	}
 	private void UpdateHpDate(){
-		EmenyHp=this.GetComponent<EmenyScr>().EmenyHp;
+		EmenyHp=this.GetComponent<EmenyScr>().EnemyHp;
 		// Debug.Log("CountDebuff_Hp"+EmenyHp);
 	}
 	// void Awake(){
