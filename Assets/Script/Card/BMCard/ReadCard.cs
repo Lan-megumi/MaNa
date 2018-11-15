@@ -42,6 +42,7 @@ public GroundLib groundLib;
 	public void SetId(string id1,string id2){
 		Cardid1=id1;
 		Cardid2=id2;
+        Debug.Log("Cardid1" + Cardid1 + "Cardid2" + Cardid2);
 		jo();
 	}
 

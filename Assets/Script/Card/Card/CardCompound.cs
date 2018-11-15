@@ -78,8 +78,8 @@ public class CardCompound : MonoBehaviour {
         {
             a1 = Cardid1;
             a2 = Cardid2;
-            // Debug.Log("第三" + a1);
-            // Debug.Log("第三" + a2);
+            //Debug.Log("第三" + a1);
+             //Debug.Log("第三" + a2);
             
         }
         text.text = "未选";  //融合后，已选择变为未选
@@ -94,16 +94,19 @@ public class CardCompound : MonoBehaviour {
         DicReturn = "";
         if (d1.ContainsKey(a1 + "&" + a2))
         {
+            
             DicReturn = d1[a1 + "&" + a2];
+            Debug.Log("zzzzzzzzzzzz");
         }
         else
         {
-            ReadCard._instance.SetId(a1,a2);
+            Debug.Log("xxxxxxxxxxx");
+            
 
         }
         // Debug.Log("++" + d1.ContainsKey(a1 + "&" + a2));
         // Debug.Log("Dic" + DicReturn);
-
+        ReadCard._instance.SetId(a1, a2);
         return DicReturn;
     }
 }
