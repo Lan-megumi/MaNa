@@ -190,7 +190,7 @@ public class CoroutineCountdown : MonoBehaviour
         if (Player1Speed==0)
         {
             Notetext.text="你的回合";
-            Debug.Log("111111");
+            // Debug.Log("111111");
             IfPlayer=true;
             if (IfFirst!=true)
             {
@@ -211,7 +211,7 @@ public class CoroutineCountdown : MonoBehaviour
                 Notetext.text="敌方回合";
                 IfPlayer=false;
 
-                Debug.Log("333333");
+                // Debug.Log("333333");
             }
         }
     }

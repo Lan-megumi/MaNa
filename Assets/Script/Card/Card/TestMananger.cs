@@ -49,7 +49,7 @@ public class TestMananger : MonoBehaviour
     void Start()
     {
         Library1 = new List<TestCard>();
-        Debug.Log("TestManager Star");
+        // Debug.Log("TestManager Star");
         
         // VisableCard();
     }

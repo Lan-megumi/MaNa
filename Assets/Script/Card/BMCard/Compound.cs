@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Compound : MonoBehaviour {
-	Dictionary <string ,string>d1=new Dictionary<string, string>();
+	Dictionary <string ,string> d1=new Dictionary<string, string>();
 	private string DicReturn;
 
 	// Use this for initialization

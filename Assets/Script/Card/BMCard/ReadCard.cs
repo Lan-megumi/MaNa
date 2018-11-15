@@ -8,11 +8,17 @@ using UnityEngine;
  */
 public class ReadCard : MonoBehaviour {
 	public List<TestCard> Library2;
-	public static ReadCard _instance;
+	public static ReadCard Instance;
 
-	void Awake(){
-		_instance=this;
-	}
+    public static ReadCard _instance{
+        get{
+            if (null==Instance)
+            {
+                Instance=FindObjectOfType(typeof(ReadCard))as ReadCard;
+            }
+            return Instance;
+        }
+    }
 
 //------------------------------------------
 	//接收两张牌的参数
@@ -22,9 +28,11 @@ public class ReadCard : MonoBehaviour {
 	public AttcakeType CardAttackeType1,CardAttackeType2,BmAttackeType;
 //------------------------------------------
 
+public GroundLib groundLib;
 	// Use this for initialization
 	void Start () {
 		Library2 = new List<TestCard>();
+		groundLib=new GroundLib();
 	}
 
 //这里是公开的传入参数的方法
@@ -241,14 +249,31 @@ public class ReadCard : MonoBehaviour {
 
 
 
-	/*
-		区别于伤害、治疗的Debuff释放
-	*/
+
 
 //--------------------------------------------------------------------------
+/*
+	将Reckon传入地形运算脚本
+	重新给Reckon赋值
+*/
+	//准备数据传参 
+	double [] numObj={22.1};
+	if (BmAttackeType==(AttcakeType)0)
+	{
+		//新建用于接受 GroundScr 中 场景数据库变量？对象？
+		GroundLib gb = GroundScr._instance.groundLib;
+		Reckon= gb.ReckonDamaged(numObj);
+	}
+	
+//--------------------------------------------------------------------------
+/*
+	区别于伤害、治疗的Debuff释放
+*/
+	
 	/*
 		根据上方计算的BmAttackeType结果来使用传参
 	 */
+	 //伤害结算
 		if (BmAttackeType==(AttcakeType)0)
 		{
 			PublicFightScr._instance.StarFunction("Damaged");

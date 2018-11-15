@@ -26,7 +26,7 @@ public class Checkpoint_1 : MonoBehaviour {
 	public void Start_Game(int num){
 
 		SceStar.Instance.Set_SceNum(num);
-		Debug.Log("num:"+SceStar.Instance.Re_SceNum());
+		// Debug.Log("num:"+SceStar.Instance.Re_SceNum());
 		Select_card_group.SetActive(true);
 
 	}	

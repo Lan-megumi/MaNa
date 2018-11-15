@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameControoler : MonoBehaviour {
 	public GameObject CardCan,EnemyCan,BlackCan,CoverCardCan;
@@ -18,6 +20,7 @@ public class GameControoler : MonoBehaviour {
 
 	private GameObject SceDate;
 	private int num;
+	// private string Ground;
 	// Use this for initialization
 	void Start () {
 		//查找储存了场景数据的SceneDate
@@ -27,7 +30,10 @@ public class GameControoler : MonoBehaviour {
 		BlackCan.SetActive(true);
 		if (SceDate!=null)
 		{
+			//获取数据
 			num=SceDate.GetComponent<SceStar>().Re_SceNum();
+			// Ground=SceDate.GetComponent<SceStar>().Re_SceGround();
+			this.GetComponent<GroundScr>().GetSceGround();
 			//先将Ui显示出来
 			SetUi(true);
 			//根据获取的数据创建敌人
@@ -35,7 +41,8 @@ public class GameControoler : MonoBehaviour {
 			//撤下遮布
 			BlackCan.SetActive(false);
 			//初始化数据
-			SceDate.GetComponent<SceStar>().Set_SceNum(0);
+			SceDate.GetComponent<SceStar>().InitDate();
+			//新建临时玩家，一般情况下是独挡新建玩家实例
 			PlayerDate._instance.Testlinshi();
 			//执行开始游戏
 			EnemyCan.GetComponent<StartGame>().StartButton();
@@ -75,5 +82,10 @@ public class GameControoler : MonoBehaviour {
 	}
 	public void SetCardUi(bool n){
 		CoverCardCan.SetActive(n);
+	}
+	//当战斗结束后事件执行完毕后可调用该方法返回场景
+	public void BackSce(){
+		SceneManager.LoadScene(3,LoadSceneMode.Single);
+		
 	}
 }
