@@ -31,6 +31,11 @@ public class SceStar : MonoBehaviour {
 */
 	public void Set_SceNum(int i){
 		SceNum=i;
+		if (i==1)
+		{
+			SceGround="Strom_labyrinth";
+			Debug.Log("场景地图为飓风迷域 Strom_labyrinth");
+		}
 		if (i==2)
 		{
 			SceGround="Strom_labyrinth";

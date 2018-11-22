@@ -21,6 +21,7 @@ public class GroundLib  {
 	public int ReckonDamaged(double[] date){
 		double Fina=0;
 		Fina = GroundLibrary[0].Rule(date);
+		
 		return (int)Fina;
 	
 	}
@@ -49,6 +50,7 @@ public class GroundLib  {
 	}
 
 	public class Strom_labyrinth:Ground{
+
 		public override double Rule(double[] date){
 			Debug.Log("Strom_labyrinth.Rule");
 			double Reckon = date[0]*1;
@@ -56,6 +58,7 @@ public class GroundLib  {
 		}  
 	}
 	public class Arena:Ground{
+
 		public override double Rule(double[] date){
 			Debug.Log("Arena.Rule所有伤害提升3%");
 			double Reckon = date[0]+date[0]*0.03;

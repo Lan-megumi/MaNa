@@ -22,6 +22,7 @@ public class EmenyLibrary{
 			Imm=15;
 			Avd=2;
 		}
+		
 	}
 	public class Emeny2: Attributes {
 		public void initdate(){
@@ -32,6 +33,21 @@ public class EmenyLibrary{
 			Agi=150;
 			Imm=15;
 			Avd=2;
+		}
+	}
+	public  class Enemy3:Attributes{
+		public void initdate(){
+			Name="厚重型训练木人";
+			Hp=600;
+			Agi=78;
+		}
+		public override double Passivity_skill(int huihe){
+			if (huihe%2==0)
+			{
+				Hp+=65;
+				Debug.Log("触发了自我修复！");
+			}
+			return 0.0;
 		}
 	}
 	

@@ -57,7 +57,7 @@ public class GameControoler : MonoBehaviour {
 	public void CreateEmeny(int i){
 		if (i==1)
 		{
-			PanelScript._instance.CreatEmeny(1);
+			PanelScript._instance.CreatEmeny(3);
 		}
 		if (i==2)
 		{

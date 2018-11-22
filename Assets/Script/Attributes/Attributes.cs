@@ -21,6 +21,10 @@ public class Attributes  {
 	public int Avd;
 	public string Name;
 
+	public virtual double Passivity_skill(int i){
+		Debug.Log("这里是父类的被动技能");
+		return 0.0;
+	}
 	
 	public int GetHp{
 		set{Hp=value;}

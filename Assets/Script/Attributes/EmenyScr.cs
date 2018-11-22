@@ -45,7 +45,16 @@ public class EmenyScr : MonoBehaviour {
 			EnemyHp=Newemeny.GetHp;
 			TextName.text=Newemeny.GetName;
             Agi = Newemeny.Agi;
-        }
+        }else if(i==3){
+			EmenyLibrary.Enemy3 Newemeny=new EmenyLibrary.Enemy3();
+			Newemeny.initdate();
+			//测试代码↓
+			// Newemeny.Passivity_skill(4);
+
+			EnemyHp=Newemeny.GetHp;
+            Agi = Newemeny.Agi;
+			TextName.text=Newemeny.GetName;
+		}
 		
 		else{
 			Debug.Log("Input wrong！The enmey"+i+" no Found!");
