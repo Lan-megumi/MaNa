@@ -62,7 +62,9 @@ public class EmenyLibrary{
 		public override double Passivity_skill(double[] i){
 		
 			Debug.Log("触发锤一下被动");
-			
+			int r = Random.Range(1,40);
+			PlayerDate._instance.AttackePlayer(40+r);
+			Debug.Log("锤一下造成了"+40+r+"点伤害!");
 			return 0.0;
 		}
 	}
@@ -74,8 +76,49 @@ public class EmenyLibrary{
 			Agi=60;
 		}
 		public override double Passivity_skill(double[] i){
-			Debug.Log("触发弩箭被动被动");
-			
+			int r = Random.Range(1,20);
+			PlayerDate._instance.AttackePlayer(70+r);
+			Debug.Log("弩箭造成了"+(70+r)+"点伤害!");	
+			if (0<i[1]&&i[1]<100)
+			{
+				Debug.Log("触发 故障发生");
+			}
+			return 0.0;
+		}
+	}
+
+	public class Enemy6:Attributes{
+		public void initdate(){
+			Name="损害的大型训练木人";
+			Hp=1200;
+			Agi=82;
+		}
+		public override double Passivity_skill(double[] i){
+
+			if (0<i[2]&&i[2]<400)
+			{
+				Debug.Log("机关训练木人想使用致命重击！");
+				int d = Random.Range(1,40);
+				double r = Random.Range(0,1);
+				if (r+0.65>=1)
+				{
+					PlayerDate._instance.AttackePlayer(80+d);
+					Debug.Log("致命重击造成了"+(80+r)+"点伤害!");
+
+				}else
+				{
+					Debug.Log("扑空了");
+				}
+			}else{
+				Debug.Log("触发锤一下被动");
+				int r = Random.Range(1,40);
+				PlayerDate._instance.AttackePlayer(40+r);
+				Debug.Log("锤一下造成了"+40+r+"点伤害!");
+			}
+			if (0<i[1]&&i[1]<100)
+			{
+				Debug.Log("触发 故障发生");
+			}
 			return 0.0;
 		}
 	}

@@ -52,7 +52,19 @@ public class PlayerDate : MonoBehaviour {
 		this.GetComponent<PlayerUi>().Update_HpSlider(MaxHp,Hp);
 
 	}
-
+	public int AttackePlayer(int damage){
+		int Reckon= Hp-damage;
+		if (Reckon<=0)
+		{
+			Debug.Log("玩家被击败了");
+		}
+		Hp=Reckon;
+		UpdateHp();
+		return Reckon;
+	}
+	public void UpdateHp(){
+		this.GetComponent<PlayerUi>().Update_HpSlider(MaxHp,Hp);
+	}
 //-----------------------------------------
 	//以下分别为获取 玩家血量、最大血量、魔法抗性、异常抗性、闪避
 	public int ReturnHp(){
