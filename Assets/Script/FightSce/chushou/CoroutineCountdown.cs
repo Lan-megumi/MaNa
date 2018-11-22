@@ -66,10 +66,12 @@ public class CoroutineCountdown : MonoBehaviour
     void Start()
     {
         gm = new List<GameObject>();
-        iiSlider = new List<Slider>();
+        iiSlider = new List<Slider>(); //储存滑动条
     }
     
-    
+    /// <summary>
+    /// 速度和速度平均值的 数组
+    /// </summary>
     public void Agiss( )
     {
         AgisMax = new float[gm.Count];              //速度最大值数组
@@ -88,6 +90,9 @@ public class CoroutineCountdown : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 洗牌
+    /// </summary>
    public void NextTrun(){                
         
         if (igg == -1 & Player1Speed == 0)
@@ -108,7 +113,14 @@ public class CoroutineCountdown : MonoBehaviour
    }
     void  Update()
     {
-        
+        CoroutineCountDown(); //出手判断
+    }
+
+    /// <summary>
+    /// 出手判断
+    /// </summary>
+    public void CoroutineCountDown()
+    {
         // Debug.Log("第II:" + this.igg);
         if (StartGame._instance.Startbool == true)
         {
@@ -128,25 +140,26 @@ public class CoroutineCountdown : MonoBehaviour
                     {
                         //敌人 回合开始
                         iiSlider[g].value = 0;
-                        gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();                    }
+                        gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();
+                    }
                 }
 
                 targetSliderOject.value += c;               //玩家每帧数速度
-                if (Mathf.Abs(targetSliderOject.value-1)<= 0.01f)           
+                if (Mathf.Abs(targetSliderOject.value - 1) <= 0.01f)
                 {
-                    
+
                     //玩家 回合开始
                     targetSliderOject.value = 0;
                     // TestMananger._instance.VisableCard();
                 }
-                for (int g = 0; g < Agis.Length; g++)      
+                for (int g = 0; g < Agis.Length; g++)
                 {
                     if (Player1Speed == Agis[g])            //玩家跟敌人速度相等的话
                     {
                         // Debug.Log("查看" + Agis[g]);
                         int randomn = new System.Random().Next(0, 10);
                         Debug.Log("Random!" + randomn);
-                        if (randomn >= 4) 
+                        if (randomn >= 4)
                         {
                             //玩家优先，敌人数值+1
                             Agis[g] += 1;
@@ -161,29 +174,28 @@ public class CoroutineCountdown : MonoBehaviour
                     }
                 }
                 //
-                if (Player1Speed <= 0 && igg == 1)          //当玩家速度为0
+                if (Player1Speed <= 0 && igg == 1)   //当玩家速度为0
                 {
                     igg = -1;
                     // Debug.Log("jkhg手打");
                     CheckedPlayer();
                 }
-                    for (int g = 0; g < Agis.Length; g++)
+                for (int g = 0; g < Agis.Length; g++)   //遍历速度
+                {
+                    if (Agis[g] <= 0 && igg == 1)        //若速度等于或小于0，检查谁的回合
                     {
-                        if (Agis[g] <= 0 && igg == 1)          
-                        {
-                            // Debug.Log("创建的回合");
-                            igg = -1;
-                            CheckedPlayer();
-                            // Debug.Log("创建的回合2");
-                            // Debug.Log("创建的回合3" + igg);
-                        }
+                        // Debug.Log("创建的回合");
+                        igg = -1;
+                        CheckedPlayer();
+                        // Debug.Log("创建的回合2");
+                        // Debug.Log("创建的回合3" + igg);
                     }
-                
+                }
+
             }
-            
+
         }
     }
-
     
     //  检查player
     public void CheckedPlayer(){
