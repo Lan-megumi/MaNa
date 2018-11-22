@@ -41,7 +41,9 @@ public class EmenyLibrary{
 			Hp=600;
 			Agi=78;
 		}
-		public override double Passivity_skill(int huihe){
+		public override double Passivity_skill(double[] i){
+			
+			int huihe=int.Parse( i[0].ToString());
 			if (huihe%2==0)
 			{
 				Hp+=65;
@@ -50,5 +52,31 @@ public class EmenyLibrary{
 			return 0.0;
 		}
 	}
+
+	public  class Enemy4:Attributes{
+		public void initdate(){
+			Name="敏捷型训练木人";
+			Hp=425;
+			Agi=53;
+		}
+		public override double Passivity_skill(double[] i){
+		
+			Debug.Log("触发锤一下被动");
+			
+			return 0.0;
+		}
+	}
 	
+	public  class Enemy5:Attributes{
+		public void initdate(){
+			Name="机关训练木人";
+			Hp=350;
+			Agi=60;
+		}
+		public override double Passivity_skill(double[] i){
+			Debug.Log("触发弩箭被动被动");
+			
+			return 0.0;
+		}
+	}
 }

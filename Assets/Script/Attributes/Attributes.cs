@@ -21,10 +21,18 @@ public class Attributes  {
 	public int Avd;
 	public string Name;
 
-	public virtual double Passivity_skill(int i){
+/*
+	Passivity_skil 被动技能
+	大部分基础敌人都有一个被动技能
+	需要传参 double[]，传参说明:
+		0:回合数
+		1:玩家hp
+ */
+	public virtual double Passivity_skill(double[] i){
 		Debug.Log("这里是父类的被动技能");
 		return 0.0;
 	}
+
 	
 	public int GetHp{
 		set{Hp=value;}
