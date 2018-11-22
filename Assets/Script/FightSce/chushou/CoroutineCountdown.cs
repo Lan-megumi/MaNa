@@ -38,6 +38,7 @@ public class CoroutineCountdown : MonoBehaviour
 //用于接收Player2的速度
     
     private float c;
+    private int Round= 0;
 //---------------------------
 
 //滑动条
@@ -46,9 +47,10 @@ public class CoroutineCountdown : MonoBehaviour
     public static List<Slider> iiSlider;
 
     private GameObject Emeny;
-    public float[] Agis; //速度
-    public float[] SpeedAgis;//每帧速度
-    public float[] AgisMax;//速度最大值   50  150 
+    public float[] Agis; //速度 的数组
+    public float[] SpeedAgis;//每帧速度 数组
+    public float[] AgisMax;//速度最大值   50  150  数组 
+    public int[] RoundNum; //每个敌人自己的 回合 数组
     //---------------------------------
 
     private void Awake()
@@ -77,10 +79,13 @@ public class CoroutineCountdown : MonoBehaviour
         AgisMax = new float[gm.Count];              //速度最大值数组
         Agis = new float[gm.Count];                 //速度数组
         SpeedAgis = new float[gm.Count];            // 1/速度
+        RoundNum = new int[gm.Count];
 
         for (int g = 0; g < gm.Count; g++)
         {
             float avg = gm[g].GetComponent<EmenyScr>().Agi;
+            RoundNum[g] = 0; //初始每个敌人的回合都是0
+            Debug.Log(""+Round);
             Debug.Log("aasd:" + avg);
             AgisMax[g] = avg;
             Agis[g] = avg;
@@ -122,7 +127,7 @@ public class CoroutineCountdown : MonoBehaviour
     public void CoroutineCountDown()
     {
         // Debug.Log("第II:" + this.igg);
-        if (StartGame._instance.Startbool == true)
+        if (StartGame._instance.Startbool == true)  //点击游戏开始
         {
 
             // Debug.Log("II:" + this.igg);
@@ -132,14 +137,16 @@ public class CoroutineCountdown : MonoBehaviour
 
                 Player1Speed--;
                 // Debug.Log("III:" + Agis.Length);
-                for (int g = 0; g < Agis.Length; g++)
+                for (int g = 0; g < Agis.Length; g++)  //敌人们 --，
                 {
                     Agis[g]--;
                     iiSlider[g].value += SpeedAgis[g];
-                    if (Mathf.Abs(iiSlider[g].value - 1) <= 0.01f)
+                    if (Mathf.Abs(iiSlider[g].value - 1) <= 0.01f)  //当进度条的绝对值-1 小于等于0.01的时候（进度条满）
                     {
                         //敌人 回合开始
                         iiSlider[g].value = 0;
+                        RoundNum[g] += 1;
+                        Debug.Log("敌人回合数" + RoundNum[g]);
                         gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();
                     }
                 }
