@@ -48,9 +48,6 @@ public class EmenyScr : MonoBehaviour {
         }else if(i==3){
 			EmenyLibrary.Enemy3 Newemeny=new EmenyLibrary.Enemy3();
 			Newemeny.initdate();
-			//测试代码↓
-			// Newemeny.Passivity_skill(4);
-
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
@@ -67,6 +64,7 @@ public class EmenyScr : MonoBehaviour {
 		
 
 	}
+    
 /*
 	敌人的伤害/治疗计算,结算完成后进行Ui的修改
  */

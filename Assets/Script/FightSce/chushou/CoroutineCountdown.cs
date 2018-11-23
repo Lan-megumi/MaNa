@@ -168,6 +168,7 @@ public class CoroutineCountdown : MonoBehaviour
                         Debug.Log("敌人g回合数" + RoundNum[g]);
 
                         gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();
+                        //gm[g].GetComponent<EmenyScr>().
                     }
                 }
 
