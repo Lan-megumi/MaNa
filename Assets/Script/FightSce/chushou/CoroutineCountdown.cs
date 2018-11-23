@@ -178,7 +178,6 @@ public class CoroutineCountdown : MonoBehaviour
 
                         gm[g].GetComponent<EmenyScr>().enemyAi[0].Passivity_skill(i);
                         gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();
-
                     }
                 }
 
