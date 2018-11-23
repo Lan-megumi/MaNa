@@ -5,14 +5,7 @@ using UnityEngine;
 	该脚本是用于储存怪物(Attributes类型)的数据
  */
 public class EmenyLibrary{
-	public static EmenyLibrary _instance;
-   
-
-
-	void Awake(){
-		_instance=this;
-
-	}
+	
 /*
 	调用方法时注意先执行类下的 initdate() 填充数据
  */
@@ -124,6 +117,18 @@ public class EmenyLibrary{
 				Debug.Log("触发 故障发生");
 			}
 			return 0.0;
+		}
+	}
+
+
+
+
+//----------------------------------------
+	public class Enemy99:Attributes{
+		public void initdate(){
+			Name="占位符";
+			Hp=1200;
+			Agi=82;
 		}
 	}
 }

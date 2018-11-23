@@ -48,7 +48,12 @@ public class GroundLib  {
 		}
 		
 	}
-
+	public class None:Ground{
+		public override double Rule(double[] date){
+			double Reckon = date[0]*1;
+			return Reckon;
+		}  
+	}
 	public class Strom_labyrinth:Ground{
 
 		public override double Rule(double[] date){

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /*
@@ -68,6 +69,7 @@ public class Checklevel_Scr : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
 			Debug.Log("ENTER");
+			LevelGo(i);
 
 		}
 	}
@@ -94,13 +96,18 @@ public class Checklevel_Scr : MonoBehaviour {
 		}
 	}
 //进入游戏关卡的方法
+
 	public void LevelGo(int i){
 		if (i==0)
 		{
-			
+			SceStar.Instance.Set_SceNum("San Fran_Out training ground");
+			Debug.Log("进入 露天战斗训练场");
+			SceneManager.LoadScene(4,LoadSceneMode.Single);
 		}
+		
 	}
 
 
 
 }
+ 

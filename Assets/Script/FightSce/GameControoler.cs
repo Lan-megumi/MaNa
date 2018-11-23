@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Reflection;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class GameControoler : MonoBehaviour {
@@ -17,12 +19,19 @@ public class GameControoler : MonoBehaviour {
             return Instance;
         }
     }
-
+//---------------------------------------------------------
 	private GameObject SceDate;
-	private int num;
-	// private string Ground;
+	//关卡名
+	public string LevelName;
+	//场景第x小关
+	Level_Enemy_Lib LEL ;
+
+//---------------------------------------------------------
 	// Use this for initialization
 	void Start () {
+		LEL = new Level_Enemy_Lib();
+		Debug.Log("Star"+LEL);
+
 		//查找储存了场景数据的SceneDate
 		SetUi(false);
 		SceDate=GameObject.Find("SceneDate");
@@ -31,13 +40,20 @@ public class GameControoler : MonoBehaviour {
 		if (SceDate!=null)
 		{
 			//获取数据
-			num=SceDate.GetComponent<SceStar>().Re_SceNum();
-			// Ground=SceDate.GetComponent<SceStar>().Re_SceGround();
 			this.GetComponent<GroundScr>().GetSceGround();
 			//先将Ui显示出来
 			SetUi(true);
+
 			//根据获取的数据创建敌人
-			CreateEmeny(num);
+			LevelName=SceDate.GetComponent<SceStar>().Re_LevelName();
+			//去除空格
+			string n = LevelName.Replace(" ","");
+			Debug.Log("去除空格"+n);
+			//执行反射，准备生成敌人
+			// LEL.NewLevel_Enemy(LevelName);
+			this.GetComponent<Level_Enemy_Lib>().NewLevel_Enemy(n);
+			
+
 			//撤下遮布
 			BlackCan.SetActive(false);
 			//初始化数据
@@ -54,28 +70,15 @@ public class GameControoler : MonoBehaviour {
 		
 	}
 	
-	public void CreateEmeny(int i){
-		if (i==1)
-		{
-			PanelScript._instance.CreatEmeny(3);
-		}
-		if (i==2)
-		{
-			PanelScript._instance.CreatEmeny(1);
-			PanelScript._instance.CreatEmeny(1);			
-		}
-		if (i==3)
-		{
-			PanelScript._instance.CreatEmeny(2);
-			PanelScript._instance.CreatEmeny(2);
-			PanelScript._instance.CreatEmeny(2);
-			
-		}
-	}
-	// Update is called once per frame
-	void Update () {
+//当战斗结束后事件执行完毕后可调用该方法返回场景
+	public void BackSce(){
+		SceneManager.LoadScene(5,LoadSceneMode.Single);
 		
 	}
+	
+
+//-----------------------------------------------------
+//Ui层代码
 	public void SetUi(bool i){
 		CardCan.SetActive(i);
 		EnemyCan.SetActive(i);
@@ -83,9 +86,5 @@ public class GameControoler : MonoBehaviour {
 	public void SetCardUi(bool n){
 		CoverCardCan.SetActive(n);
 	}
-	//当战斗结束后事件执行完毕后可调用该方法返回场景
-	public void BackSce(){
-		SceneManager.LoadScene(3,LoadSceneMode.Single);
-		
-	}
+	
 }

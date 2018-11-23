@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SceStar : MonoBehaviour {
 	
-	public int SceNum;
-	public string SceGround;
+
+	public string SceGround,LevelName;
 	public static SceStar _instance;
 	//更规范的 单例写法  调用时 脚本名+Instance+方法
 	public static SceStar Instance{
@@ -21,43 +21,37 @@ public class SceStar : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject.DontDestroyOnLoad(this);
+		
 	}
 	
-	// Update is called once per frame
+
 /*
 	该脚本用于改变场景传值的数据
+	传值 i :关卡名
+	LevelName : 关卡名
 	SceNum：为调用不同敌人组合的数字
 	SceGround:为场地场景
 */
-	public void Set_SceNum(int i){
-		SceNum=i;
-		if (i==1)
+	public void Set_SceNum(string i){
+		LevelName=i;
+		// SceNum=i;
+		if (i=="San Fran_Out training ground")
 		{
-			SceGround="Strom_labyrinth";
-			Debug.Log("场景地图为飓风迷域 Strom_labyrinth");
+			SceGround="None";
+			Debug.Log("场景地图没有 None");
 		}
-		if (i==2)
-		{
-			SceGround="Strom_labyrinth";
-			Debug.Log("场景地图为飓风迷域 Strom_labyrinth");
-		}
-		if (i==3)
-		{
-			SceGround="Arena";
-			Debug.Log("场景地图为飓风迷域 Arena");
-		}
-		// Debug.Log("SceNum:"+SceNum);
+		
 	}
 	
-	public int Re_SceNum(){
-		return SceNum;
-	}
 	public string Re_SceGround(){
 		return SceGround;
 	}
+	public string Re_LevelName(){
+		return LevelName;
+	}
 	public void InitDate(){
-		SceNum=0;
 		SceGround="";
+		LevelName="";
 	}
 	
 	
