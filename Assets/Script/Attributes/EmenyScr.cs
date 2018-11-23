@@ -17,6 +17,7 @@ public class EmenyScr : MonoBehaviour {
     public Slider targetSliderOject, targetSliderOject1;
 
     public List<GameObject> emenyObj2;
+	public List<Attributes> enemyAi;
 
     // public static EmenyScr _instance;
     public float Agi;
@@ -28,32 +29,34 @@ public class EmenyScr : MonoBehaviour {
     void Start()
     {
         emenyObj2 = new List<GameObject>();
+		enemyAi=new List<Attributes>();
        
     }
     public void CreatEmeny(int i){
 		if (i==1)
 		{
-			EmenyLibrary.Emeny1 Newemeny=new EmenyLibrary.Emeny1();
+			Emeny1 Newemeny=new Emeny1();
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
+		
         }
 		else if(i==2){
-			EmenyLibrary.Emeny2 Newemeny=new EmenyLibrary.Emeny2();
+			Emeny2 Newemeny=new Emeny2();
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
 			TextName.text=Newemeny.GetName;
             Agi = Newemeny.Agi;
         }else if(i==3){
-			EmenyLibrary.Enemy3 Newemeny=new EmenyLibrary.Enemy3();
+			Enemy3 Newemeny=new Enemy3();
 			Newemeny.initdate();
-			//测试代码↓
-			// Newemeny.Passivity_skill(4);
-
+			Debug.Log("Enn"+Newemeny);
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
+			enemyAi[0]=Newemeny;
+
 		}
 		
 		else{
@@ -67,6 +70,11 @@ public class EmenyScr : MonoBehaviour {
 		
 
 	}
+	
+	public int Re_hp(){
+		return EnemyHp;
+	}
+
 /*
 	敌人的伤害/治疗计算,结算完成后进行Ui的修改
  */

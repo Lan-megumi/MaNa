@@ -33,7 +33,6 @@ public class SanFran_Outtrainingground:Level_Enemy{
 		if (i==1)
 		{
 			PanelScript._instance.CreatEmeny(3);
-			
 		}
 		if (i==2)
 		{

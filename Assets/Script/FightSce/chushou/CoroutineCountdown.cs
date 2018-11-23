@@ -152,8 +152,12 @@ public class CoroutineCountdown : MonoBehaviour
                 GameControoler._instance.SetCardUi(true);
 
                 Player1Speed--;
-                // Debug.Log("III:" + Agis.Length);
-                for (int g = 0; g < Agis.Length; g++)  //敌人们速度 --，
+
+                 /*
+                    敌人们速度 --，只有到速度为0的时候才进入if条件执行的方法里
+                 */
+                for (int g = 0; g < Agis.Length; g++)  
+               
                 {
                     Agis[g]--;
                     iiSlider[g].value += SpeedAgis[g];              //每帧进度条增加
@@ -162,12 +166,19 @@ public class CoroutineCountdown : MonoBehaviour
                         //敌人 回合开始
                         iiSlider[g].value = 0;
                         RoundNum[g] += 1;                           //回合加1
-                        i[g] = RoundNum[g];
-                        Debug.Log("血量 " + EnemyHp[g]);
-                        Debug.Log("敌人i回合数" + i[g]);
-                        Debug.Log("敌人g回合数" + RoundNum[g]);
+                        
+                        i[0]=RoundNum[g];
+                        i[1]=PlayerDate.Instance.ReturnHp();
+                        i[2]=gm[g].GetComponent<EmenyScr>().Re_hp();
 
+
+                        // Debug.Log("血量 " + EnemyHp[g]);
+                        // Debug.Log("敌人i回合数" + i[g]);
+                        // Debug.Log("敌人g回合数" + RoundNum[g]);
+
+                        gm[g].GetComponent<EmenyScr>().enemyAi[0].Passivity_skill(i);
                         gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();
+
                     }
                 }
 

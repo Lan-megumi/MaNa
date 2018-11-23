@@ -5,7 +5,7 @@ using UnityEngine;
 	该脚本是用于储存怪物(Attributes类型)的数据
  */
 public class EmenyLibrary{
-	
+}	
 /*
 	调用方法时注意先执行类下的 initdate() 填充数据
  */
@@ -32,23 +32,7 @@ public class EmenyLibrary{
 			Avd=2;
 		}
 	}
-	public  class Enemy3:Attributes{
-		public void initdate(){
-			Name="厚重型训练木人";
-			Hp=600;
-			Agi=78;
-		}
-		public override double Passivity_skill(double[] i){
-			
-			int huihe=int.Parse( i[0].ToString());
-			if (huihe%2==0)
-			{
-				Hp+=65;
-				Debug.Log("触发了自我修复！");
-			}
-			return 0.0;
-		}
-	}
+	
 
 	public  class Enemy4:Attributes{
 		public void initdate(){
@@ -131,4 +115,22 @@ public class EmenyLibrary{
 			Agi=82;
 		}
 	}
-}
+	
+
+public  class Enemy3:Attributes{
+		public void initdate(){
+			Name="厚重型训练木人";
+			Hp=600;
+			Agi=78;
+		}
+		public override double Passivity_skill(double[] i){
+			
+			int huihe=int.Parse( i[0].ToString());
+			if (huihe%2==0)
+			{
+				Hp+=65;
+				Debug.Log("触发了自我修复！");
+			}
+			return 0.0;
+		}
+	}
