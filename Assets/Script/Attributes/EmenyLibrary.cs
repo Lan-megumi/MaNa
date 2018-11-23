@@ -6,8 +6,12 @@ using UnityEngine;
  */
 public class EmenyLibrary{
 	public static EmenyLibrary _instance;
+   
+
+
 	void Awake(){
 		_instance=this;
+
 	}
 /*
 	调用方法时注意先执行类下的 initdate() 填充数据

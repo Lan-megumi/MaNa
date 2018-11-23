@@ -51,6 +51,9 @@ public class CoroutineCountdown : MonoBehaviour
     public float[] SpeedAgis;//每帧速度 数组
     public float[] AgisMax;//速度最大值   50  150  数组 
     public int[] RoundNum; //每个敌人自己的 回合 数组
+    public double[] i;    //i和RoundNum是一样的int-》double
+    public int[] EnemyHp;//敌人血量数组
+    public int[] PlayerHp;//储存玩家血量
     //---------------------------------
 
     private void Awake()
@@ -58,7 +61,7 @@ public class CoroutineCountdown : MonoBehaviour
         // gm = new List<GameObject>();
         // iiSlider = new List<Slider>();
 
-        c = 1/Player1Speed;    
+        c = 1/Player1Speed;    //玩家每帧的速度
         Debug.Log("cc" + c);
     }
     /// <summary>
@@ -76,23 +79,35 @@ public class CoroutineCountdown : MonoBehaviour
     /// </summary>
     public void Agiss( )
     {
+        //定义数组长度
         AgisMax = new float[gm.Count];              //速度最大值数组
         Agis = new float[gm.Count];                 //速度数组
         SpeedAgis = new float[gm.Count];            // 1/速度
-        RoundNum = new int[gm.Count];
+
+        RoundNum = new int[gm.Count];               //敌人回合
+        i = new double[gm.Count];                   //与RoundNum相等  
+        EnemyHp = new int[gm.Count];                //敌人血量
+        PlayerHp = new int[1];                      //玩家自己的血量
 
         for (int g = 0; g < gm.Count; g++)
         {
-            float avg = gm[g].GetComponent<EmenyScr>().Agi;
-            RoundNum[g] = 0; //初始每个敌人的回合都是0
-            Debug.Log(""+Round);
-            Debug.Log("aasd:" + avg);
-            AgisMax[g] = avg;
-            Agis[g] = avg;
+            float avg = gm[g].GetComponent<EmenyScr>().Agi;//获取速度
+            RoundNum[g] = 0; //初始每个敌人自己的回合都是0
+            int enemyhp = gm[g].GetComponent<EmenyScr>().EnemyHp;//获取敌人Hp
+            PlayerHp[0]= PlayerDate._instance.Hp;               //玩家血量
+            Debug.Log("玩家血量："+ PlayerHp[0]);
+            Debug.Log("敌人回合数："+Round);
+            Debug.Log("敌人速度:" + avg);
+            AgisMax[g] = avg;               //速度最大值
+            Agis[g] = avg;                  //储存速度
+            EnemyHp[g] = enemyhp;           //储存敌人血量
+
+            Debug.Log(EnemyHp[g]);
             //Agiss(avg);
-            SpeedAgis[g] = 1/avg;
+            SpeedAgis[g] = 1/avg;           //敌人每帧的速度
             Debug.Log(SpeedAgis[g]+"平均");
         }
+        
     }
 
     /// <summary>
@@ -103,14 +118,14 @@ public class CoroutineCountdown : MonoBehaviour
         if (igg == -1 & Player1Speed == 0)
         {
             igg = 1;
-            Player1Speed = 60;
+            Player1Speed = 60;                  //速度恢复最大值
         }
         for(int g=0; g <Agis.Length; g++)
         {
             if (igg == -1 & Agis[g] <= 0)
             {
                 igg = 1;
-                Agis[g]=AgisMax[g] ;               //变回最大值
+                Agis[g]=AgisMax[g] ;               //速度变回最大值
                 //Debug.Log(Agis[g] + ":" + AgisMax[g]);
                 Debug.Log( "io:" + igg);
             }
@@ -118,6 +133,7 @@ public class CoroutineCountdown : MonoBehaviour
    }
     void  Update()
     {
+
         CoroutineCountDown(); //出手判断
     }
 
@@ -137,16 +153,20 @@ public class CoroutineCountdown : MonoBehaviour
 
                 Player1Speed--;
                 // Debug.Log("III:" + Agis.Length);
-                for (int g = 0; g < Agis.Length; g++)  //敌人们 --，
+                for (int g = 0; g < Agis.Length; g++)  //敌人们速度 --，
                 {
                     Agis[g]--;
-                    iiSlider[g].value += SpeedAgis[g];
+                    iiSlider[g].value += SpeedAgis[g];              //每帧进度条增加
                     if (Mathf.Abs(iiSlider[g].value - 1) <= 0.01f)  //当进度条的绝对值-1 小于等于0.01的时候（进度条满）
                     {
                         //敌人 回合开始
                         iiSlider[g].value = 0;
-                        RoundNum[g] += 1;
-                        Debug.Log("敌人回合数" + RoundNum[g]);
+                        RoundNum[g] += 1;                           //回合加1
+                        i[g] = RoundNum[g];
+                        Debug.Log("血量 " + EnemyHp[g]);
+                        Debug.Log("敌人i回合数" + i[g]);
+                        Debug.Log("敌人g回合数" + RoundNum[g]);
+
                         gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();
                     }
                 }
@@ -161,7 +181,7 @@ public class CoroutineCountdown : MonoBehaviour
                 }
                 for (int g = 0; g < Agis.Length; g++)
                 {
-                    if (Player1Speed == Agis[g])            //玩家跟敌人速度相等的话
+                    if (Player1Speed == Agis[g])            //若玩家跟敌人速度相等的话
                     {
                         // Debug.Log("查看" + Agis[g]);
                         int randomn = new System.Random().Next(0, 10);
@@ -176,8 +196,6 @@ public class CoroutineCountdown : MonoBehaviour
                             //敌人优先，玩家数值+1
                             Player1Speed += 1;
                         }
-
-
                     }
                 }
                 //
@@ -204,7 +222,7 @@ public class CoroutineCountdown : MonoBehaviour
         }
     }
     
-    //  检查player
+    //  检查player，文字显示谁的回合
     public void CheckedPlayer(){
         if (Player1Speed==0)
         {
@@ -218,12 +236,11 @@ public class CoroutineCountdown : MonoBehaviour
                 
             }else
             {
-                
                 IfFirst=false;
             }
         }
-       
-        for (int g = 0; g < Agis.Length; g++)
+         
+        for (int g = 0; g < Agis.Length; g++)           //遍历
         {
             if (Agis[g] == 0)
             {
