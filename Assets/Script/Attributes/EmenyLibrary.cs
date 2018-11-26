@@ -55,7 +55,8 @@ public class EmenyLibrary{
 	public  class Enemy4:Attributes{
 		public void initdate(){
 			Name="敏捷型训练木人";
-			Hp=425;
+			//Hp=425
+			Hp=42;
 			Agi=53;
 		}
 		public override double Passivity_skill(double[] i){

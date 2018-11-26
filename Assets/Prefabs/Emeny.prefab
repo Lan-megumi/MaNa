@@ -1104,6 +1104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebuffUi: {fileID: 1717314163703036}
+  text: {fileID: 0}
   Buffnum: 0
 --- !u!114 &114864886767847316
 MonoBehaviour:
@@ -1365,7 +1366,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224448298283639808}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1481,8 +1482,8 @@ RectTransform:
   - {fileID: 224804121438744216}
   - {fileID: 224044757857847784}
   - {fileID: 224533570871048076}
-  - {fileID: 224222985207527458}
   - {fileID: 224520619766317646}
+  - {fileID: 224222985207527458}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1524,7 +1525,7 @@ RectTransform:
   - {fileID: 224236871613254544}
   - {fileID: 224354911107738062}
   m_Father: {fileID: 224448298283639808}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

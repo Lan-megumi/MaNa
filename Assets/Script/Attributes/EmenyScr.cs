@@ -30,7 +30,7 @@ public class EmenyScr : MonoBehaviour {
     {
         emenyObj2 = new List<GameObject>();
 		enemyAi=new List<Attributes>();
-		Debug.Log("Creat enemyAi");
+		// Debug.Log("Creat enemyAi");
 		
 		// enemyAi=null;
     }
@@ -71,9 +71,6 @@ public class EmenyScr : MonoBehaviour {
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
-			// double [] b={0};
-			Debug.Log(enemyAi);
-			// enemyAi[0]=Newemeny;
 			enemyAi.Add(Newemeny);
 		}else if(i==5){
 			Enemy5 Newemeny=new Enemy5();
@@ -81,9 +78,6 @@ public class EmenyScr : MonoBehaviour {
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
-			// double [] b={0};
-			Debug.Log(enemyAi);
-			// enemyAi[0]=Newemeny;
 			enemyAi.Add(Newemeny);
 		}else if(i==6){
 			Enemy6 Newemeny=new Enemy6();
@@ -91,9 +85,6 @@ public class EmenyScr : MonoBehaviour {
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
-			// double [] b={0};
-			Debug.Log(enemyAi);
-			// enemyAi[0]=Newemeny;
 			enemyAi.Add(Newemeny);
 		}else if(i==99){
 			Enemy99 Newemeny=new Enemy99();
@@ -124,12 +115,14 @@ public class EmenyScr : MonoBehaviour {
 	}
 
 ///<summary>
-///	敌人的伤害/治疗计算,结算完成后进行Ui的修改、阵亡事件
+///	敌人的伤害/治疗计算:True伤害，n为伤害值,结算完成后进行Ui的修改、阵亡事件
 ///</summary>
 	public void CountDamaged(bool i,int n){
 		if (i==true)
 		{
+			
 			EnemyHp-=n;
+			Debug.Log("造成伤害："+n+" 剩余血量:"+EnemyHp);
 		}else
 		{
 			EnemyHp+=n;
@@ -144,6 +137,8 @@ public class EmenyScr : MonoBehaviour {
 		//伤害结算完成判断是否阵亡
 		if (EnemyHp<=0)
 		{
+			//清理各个脚本敌人数组的数据
+			DmScr._instance.Update_EnemyNum(EnemyIndex);
 			
 		}
 	}

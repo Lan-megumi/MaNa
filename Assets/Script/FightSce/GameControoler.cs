@@ -23,7 +23,10 @@ public class GameControoler : MonoBehaviour {
 	private GameObject SceDate;
 	//关卡名
 	public string LevelName;
-	
+	///<summary>
+	///用于储存敌人数量
+	///</summary>
+	public int EnemyNum=0;
 	//场景第x小关
 	// Level_Enemy_Lib LEL ;
 
@@ -46,7 +49,7 @@ public class GameControoler : MonoBehaviour {
 			LevelName=SceDate.GetComponent<SceStar>().Re_LevelName();
 			//去除空格
 			string n = LevelName.Replace(" ","");
-			Debug.Log("去除空格"+n);
+			// Debug.Log("去除空格"+n);
 			//执行反射，准备生成敌人
 			// LEL.NewLevel_Enemy(LevelName);
 			this.GetComponent<Level_Enemy_Lib>().NewLevel_Enemy(n);
@@ -75,7 +78,12 @@ public class GameControoler : MonoBehaviour {
 		SceneManager.LoadScene(5,LoadSceneMode.Single);
 		
 	}
-//
+///<summary>
+///
+///</sumarry>
+	public void CheckEnemy(){
+		
+	}
 	
 
 //-----------------------------------------------------

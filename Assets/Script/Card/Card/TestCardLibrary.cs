@@ -51,7 +51,7 @@ public  class  TestCardLibrary:MonoBehaviour{
 		Library0.Add(EL02C1);
 		Library0.Add(EL03C1);
 		Library0.Add(EL04C1);
-		Debug.Log("TestCardLib Star");
+		// Debug.Log("TestCardLib Star");
         
 	}
 	

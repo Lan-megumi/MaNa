@@ -96,11 +96,11 @@ public class CardCompound : MonoBehaviour {
         {
             
             DicReturn = d1[a1 + "&" + a2];
-            Debug.Log("zzzzzzzzzzzz");
+            Debug.Log("Bm合成卡牌");
         }
         else
         {
-            Debug.Log("xxxxxxxxxxx");
+            Debug.Log("非Bm合成卡牌");
             
 
         }

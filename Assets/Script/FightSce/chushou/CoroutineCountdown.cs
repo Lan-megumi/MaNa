@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/*
-    该脚本功能
-    实现根据角色速度影响操作回合
-    分别表示玩家和敌人的回合
- */
+///<summary>
+///    该脚本功能:实现根据角色速度影响操作回合;
+///分别表示玩家和敌人的回合
+///</summary>
 public class CoroutineCountdown : MonoBehaviour
 {
     public static CoroutineCountdown Instance;
@@ -270,6 +269,14 @@ public class CoroutineCountdown : MonoBehaviour
                 IfPlayer=false;
             }
         }
+    }
+    ///<summary>
+    /// 滑动条控制脚本中的清除敌人数据方法，传入参数int i(0,1..) ;
+    ///</sumarry>
+    public void Update_EnemyNum(int i){
+        gm[i]=null;
+        iiSlider[i]=null;
+        
     }
 
 

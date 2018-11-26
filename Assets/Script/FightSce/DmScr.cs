@@ -15,71 +15,97 @@ public class DmScr : MonoBehaviour
             return Instance;
         }
     }
-    public List<GameObject> emenyObj2;   //创列表
+    public List<GameObject> enemyObj2;
+    public GameObject[] enemyObj3;   //创列表
     public float[] Hp;
 
     // Use this for initialization
     void Awake()
     {
+        Debug.Log("Awake");
+        enemyObj2 = new List<GameObject>();
+        enemyObj3 = new GameObject[3];
+        
 
-    }
-    void Start()
-    {
-        emenyObj2 = new List<GameObject>();
     }
     // Update is called once per frame
-    void Update()
+    public void SetDate()
     {
-
-    }
+        for (int i = 0; i < enemyObj2.Count; i++)
+            {
+                enemyObj3[i]=enemyObj2[i];
+            }
+}
     //点击，全体减血 （true，100）
     public void Dm(int num)
     {
-        Debug.Log("0" + emenyObj2);
-        for (int g = 0; g < emenyObj2.Count; g++)
+        Debug.Log("群体伤害:" + num);
+        for (int g = 0; g < 3; g++)
         {
-            emenyObj2[g].GetComponent<EmenyScr>().CountDamaged(true, num);
+            if(enemyObj3[g]!=null){
+                enemyObj3[g].GetComponent<EmenyScr>().CountDamaged(true, num);
+            }
             
         }
     }
-/*
-    溅射伤害代码
-    根据点击事件所传回的 index传入方法中的 z 值中来判断溅射哪些对象
- */
+///<summary>
+/// 溅射伤害代码,根据点击事件所传回的 index传入方法中的 z 值中来判断溅射哪些对象
+///</summary>
     public void CountRelated(int n, int z)
     {
-        // Debug.Log("n:" + n);
-        // Debug.Log("z:" + z);
-        if (z == 0 && DmScr._instance.emenyObj2.Count == 1)
+        Debug.Log("溅射伤害：坐标 "+z+" 伤害 "+n);
+    //选择一号位敌人
+        if (z == 0)
         {
-            emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
-        }
-        if (z == 0 && DmScr._instance.emenyObj2.Count > 1)
-        {
-            emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
-            emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
-        }
-    /*
-        选择中间的时候有分三个敌人和两个敌人的情况
-     */
-        if (z == 1)
-        {
-            if (emenyObj2.Count>2)
-            {
-                 emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
-                 emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
-                 emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true, n);
-            }else if(emenyObj2.Count==2)
-            {
-                emenyObj2[0].GetComponent<EmenyScr>().CountDamaged(true, n);
-                emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
+            for(int i=0;i<2;i++){
+                Debug.Log("Test1-"+i+" :"+enemyObj3[i]);
+
+                if(enemyObj3[i]!=null){
+                    enemyObj3[i].GetComponent<EmenyScr>().CountDamaged(true, n);
+                }
             }
-           
         }
-        if (z == 2)
+    //选择中间的时候有分三个敌人和两个敌人的情况
+        else if (z == 1)
         {
-            emenyObj2[1].GetComponent<EmenyScr>().CountDamaged(true, n);
-            emenyObj2[2].GetComponent<EmenyScr>().CountDamaged(true, n);
+            for(int i=0;i<3;i++){
+                if(enemyObj3[i]!=null){
+                    enemyObj3[i].GetComponent<EmenyScr>().CountDamaged(true, n);
+                }
+            }
         }
+    //选择三号位的敌人
+        else if (z == 2)
+        {
+            for(int i=1;i<3;i++){
+                if(enemyObj3[i]!=null){
+                    enemyObj3[i].GetComponent<EmenyScr>().CountDamaged(true, n);
+                }
+            }
+        }
+    }
+    ///<summary>
+    ///该方法用于返回敌人数量
+    ///</summary>
+    public int Re_EnemyNum(){
+        int R=0;
+        for(int i =0;i<enemyObj3.Length;i++){
+            if(enemyObj3[i]!=null){
+                R=R+1;
+            }
+        }
+        return R;
+    }
+    ///<summary>
+    ///该方法相当于转接器，
+    ///用于删除游戏中各个脚本下的敌人数组数据,传入参数 int i(0,1..) 为删除第几个敌人
+    ///</summary>
+    public void Update_EnemyNum(int i){
+        Debug.Log("第"+i+"个敌人阵亡！");
+        // PanelScript._instance.EnemyObj0[i]=null;
+        this.GetComponent<CoroutineCountdown>().Update_EnemyNum(i);
+        Destroy(enemyObj3[i]);
+        // enemyObj3[i]=null;
+
     }
 }
