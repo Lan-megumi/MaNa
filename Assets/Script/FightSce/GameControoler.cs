@@ -24,14 +24,11 @@ public class GameControoler : MonoBehaviour {
 	//关卡名
 	public string LevelName;
 	//场景第x小关
-	Level_Enemy_Lib LEL ;
+	// Level_Enemy_Lib LEL ;
 
 //---------------------------------------------------------
 	// Use this for initialization
 	void Start () {
-		LEL = new Level_Enemy_Lib();
-		Debug.Log("Star"+LEL);
-
 		//查找储存了场景数据的SceneDate
 		SetUi(false);
 		SceDate=GameObject.Find("SceneDate");

@@ -32,10 +32,10 @@ public class PanelScript : MonoBehaviour {
 		GameObject ii=	Instantiate(Emeny);
 
 		 ii.transform.parent=this.gameObject.transform;
-		 ii.GetComponent<EmenyScr>().CreatEmeny(i);
 
         Slider iiSlider = ii.GetComponentInChildren<Slider>();
         ii.GetComponent<EmenyScr>().EnemyIndex = EnemeyIndex;
+        ii.GetComponent<EmenyScr>().NewEmeny(i);
 
         CoroutineCountdown.gm.Add(ii);
         DmScr._instance.emenyObj2.Add(ii); //储存敌人

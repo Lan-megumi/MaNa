@@ -160,7 +160,7 @@ public class CountDebuff : MonoBehaviour {
 			DizzyNum=1;
             isDizzy = true;
 		}
-		CoroutineCountdown._instance.Function_Dizzy("Enemy");
+		
 
         if (isDizzy==true) 
         {

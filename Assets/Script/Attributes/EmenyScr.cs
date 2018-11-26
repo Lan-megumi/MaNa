@@ -26,13 +26,18 @@ public class EmenyScr : MonoBehaviour {
     // {
     //     _instance = this;
     // }
-    void Start()
+    void Awake()
     {
         emenyObj2 = new List<GameObject>();
 		enemyAi=new List<Attributes>();
-       
+		Debug.Log("Creat enemyAi");
+		
+		// enemyAi=null;
     }
-    public void CreatEmeny(int i){
+	/// <summary>
+	///	单个敌人实例化
+	/// </summary>
+    public void NewEmeny(int i){
 		if (i==1)
 		{
 			Emeny1 Newemeny=new Emeny1();
@@ -40,6 +45,7 @@ public class EmenyScr : MonoBehaviour {
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
+			// enemyAi[0]=Newemeny;
 		
         }
 		else if(i==2){
@@ -48,15 +54,57 @@ public class EmenyScr : MonoBehaviour {
 			EnemyHp=Newemeny.GetHp;
 			TextName.text=Newemeny.GetName;
             Agi = Newemeny.Agi;
+			// enemyAi[0]=Newemeny;
         }else if(i==3){
 			Enemy3 Newemeny=new Enemy3();
 			Newemeny.initdate();
-			Debug.Log("Enn"+Newemeny);
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
-			enemyAi[0]=Newemeny;
-
+			// double [] b={0};
+			Debug.Log(enemyAi);
+			// enemyAi[0]=Newemeny;
+			enemyAi.Add(Newemeny);
+		}else if(i==4){
+			Enemy4 Newemeny=new Enemy4();
+			Newemeny.initdate();
+			EnemyHp=Newemeny.GetHp;
+            Agi = Newemeny.Agi;
+			TextName.text=Newemeny.GetName;
+			// double [] b={0};
+			Debug.Log(enemyAi);
+			// enemyAi[0]=Newemeny;
+			enemyAi.Add(Newemeny);
+		}else if(i==5){
+			Enemy5 Newemeny=new Enemy5();
+			Newemeny.initdate();
+			EnemyHp=Newemeny.GetHp;
+            Agi = Newemeny.Agi;
+			TextName.text=Newemeny.GetName;
+			// double [] b={0};
+			Debug.Log(enemyAi);
+			// enemyAi[0]=Newemeny;
+			enemyAi.Add(Newemeny);
+		}else if(i==6){
+			Enemy6 Newemeny=new Enemy6();
+			Newemeny.initdate();
+			EnemyHp=Newemeny.GetHp;
+            Agi = Newemeny.Agi;
+			TextName.text=Newemeny.GetName;
+			// double [] b={0};
+			Debug.Log(enemyAi);
+			// enemyAi[0]=Newemeny;
+			enemyAi.Add(Newemeny);
+		}else if(i==99){
+			Enemy99 Newemeny=new Enemy99();
+			Newemeny.initdate();
+			EnemyHp=Newemeny.GetHp;
+            Agi = Newemeny.Agi;
+			TextName.text=Newemeny.GetName;
+			// double [] b={0};
+			Debug.Log(enemyAi);
+			// enemyAi[0]=Newemeny;
+			enemyAi.Add(Newemeny);
 		}
 		
 		else{

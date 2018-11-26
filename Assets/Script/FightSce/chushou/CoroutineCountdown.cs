@@ -43,6 +43,10 @@ public class CoroutineCountdown : MonoBehaviour
 
 //滑动条
     public Slider targetSliderOject;
+
+     /// <summary>
+    /// 用于接收生成的敌人实例化数组
+    ///</summary>
     public static List<GameObject> gm;
     public static List<Slider> iiSlider;
 
@@ -51,58 +55,57 @@ public class CoroutineCountdown : MonoBehaviour
     public float[] SpeedAgis;//每帧速度 数组
     public float[] AgisMax;//速度最大值   50  150  数组 
     public int[] RoundNum; //每个敌人自己的 回合 数组
-    public double[] i;    //i和RoundNum是一样的int-》double
+
+    /// <summary>
+    /// 用于给敌人Ai传值的数组
+    ///</summary>
+    public double[] i; 
     public int[] EnemyHp;//敌人血量数组
-    public int[] PlayerHp;//储存玩家血量
+    // public int[] PlayerHp;//储存玩家血量
     //---------------------------------
 
-    private void Awake()
+    void Awake()
     {
         // gm = new List<GameObject>();
         // iiSlider = new List<Slider>();
 
         c = 1/Player1Speed;    //玩家每帧的速度
-        Debug.Log("cc" + c);
-    }
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
-    void Start()
-    {
+        Debug.Log("玩家每帧速度：" + c);
         gm = new List<GameObject>();
         iiSlider = new List<Slider>(); //储存滑动条
     }
+   
     
     /// <summary>
-    /// 速度和速度平均值的 数组
+    /// 给诸多数组赋值的方法
     /// </summary>
     public void Agiss( )
     {
-        //定义数组长度
+        //定义数组长度，gm.Count为在场的敌人数量
         AgisMax = new float[gm.Count];              //速度最大值数组
         Agis = new float[gm.Count];                 //速度数组
         SpeedAgis = new float[gm.Count];            // 1/速度
 
         RoundNum = new int[gm.Count];               //敌人回合
-        i = new double[gm.Count];                   //与RoundNum相等  
         EnemyHp = new int[gm.Count];                //敌人血量
-        PlayerHp = new int[1];                      //玩家自己的血量
+
+
+        i = new double[10];                                     
 
         for (int g = 0; g < gm.Count; g++)
         {
             float avg = gm[g].GetComponent<EmenyScr>().Agi;//获取速度
             RoundNum[g] = 0; //初始每个敌人自己的回合都是0
             int enemyhp = gm[g].GetComponent<EmenyScr>().EnemyHp;//获取敌人Hp
-            PlayerHp[0]= PlayerDate._instance.Hp;               //玩家血量
-            Debug.Log("玩家血量："+ PlayerHp[0]);
+            // PlayerHp[0]= PlayerDate._instance.Hp;               //玩家血量
+            // Debug.Log("玩家血量："+ PlayerHp[0]);
             Debug.Log("敌人回合数："+Round);
             Debug.Log("敌人速度:" + avg);
             AgisMax[g] = avg;               //速度最大值
             Agis[g] = avg;                  //储存速度
             EnemyHp[g] = enemyhp;           //储存敌人血量
 
-            Debug.Log(EnemyHp[g]);
+            // Debug.Log(EnemyHp[g]);
             //Agiss(avg);
             SpeedAgis[g] = 1/avg;           //敌人每帧的速度
             Debug.Log(SpeedAgis[g]+"平均");
@@ -111,30 +114,34 @@ public class CoroutineCountdown : MonoBehaviour
     }
 
     /// <summary>
-    /// 洗牌
+    /// 下一回合
     /// </summary>
-   public void NextTrun(){                
-        
+   public void NextTrun(){         
+       //玩家
+       Debug.Log("N_igg="+igg);       
         if (igg == -1 & Player1Speed == 0)
         {
             igg = 1;
             Player1Speed = 60;                  //速度恢复最大值
         }
+        //敌人
         for(int g=0; g <Agis.Length; g++)
         {
             if (igg == -1 & Agis[g] <= 0)
             {
+                //Debug.Log("执行了NextTrun方法");
+
                 igg = 1;
                 Agis[g]=AgisMax[g] ;               //速度变回最大值
                 //Debug.Log(Agis[g] + ":" + AgisMax[g]);
-                Debug.Log( "io:" + igg);
+                // Debug.Log( "io:" + igg);
             }
         }
    }
     void  Update()
     {
 
-        CoroutineCountDown(); //出手判断
+        CoroutineCountDown();
     }
 
     /// <summary>
@@ -168,16 +175,19 @@ public class CoroutineCountdown : MonoBehaviour
                         RoundNum[g] += 1;                           //回合加1
                         
                         i[0]=RoundNum[g];
-                        i[1]=PlayerDate.Instance.ReturnHp();
+                        Debug.Log("PlayerHp"+PlayerDate._instance.ReturnHp());
+                        i[1]=PlayerDate._instance.ReturnHp();
                         i[2]=gm[g].GetComponent<EmenyScr>().Re_hp();
 
 
                         // Debug.Log("血量 " + EnemyHp[g]);
                         // Debug.Log("敌人i回合数" + i[g]);
                         // Debug.Log("敌人g回合数" + RoundNum[g]);
-
+                       
                         gm[g].GetComponent<EmenyScr>().enemyAi[0].Passivity_skill(i);
                         gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();
+                        //执行完操作后进入下一回合
+                       
                     }
                 }
 
@@ -219,25 +229,27 @@ public class CoroutineCountdown : MonoBehaviour
                 {
                     if (Agis[g] <= 0 && igg == 1)        //若速度等于或小于0，检查谁的回合
                     {
-                        // Debug.Log("创建的回合");
+                         //Debug.Log("创建的回合");
                         igg = -1;
                         CheckedPlayer();
+                        //Debug.Log("igg"+igg); 
+                        NextTrun();        
                         // Debug.Log("创建的回合2");
                         // Debug.Log("创建的回合3" + igg);
                     }
                 }
-
             }
-
         }
     }
     
-    //  检查player，文字显示谁的回合
+    ///<summary>
+    /// CheckedPlayer
+    /// 目前只用于修改Ui
+    ///</summary>
     public void CheckedPlayer(){
         if (Player1Speed==0)
         {
             Notetext.text="你的回合";
-            // Debug.Log("111111");
             IfPlayer=true;
             if (IfFirst!=true)
             {
@@ -256,18 +268,11 @@ public class CoroutineCountdown : MonoBehaviour
             {
                 Notetext.text="敌方回合";
                 IfPlayer=false;
-
-                // Debug.Log("333333");
             }
         }
     }
 
-/*
-    晕眩效果逻辑方法
- */
-    public void Function_Dizzy(string Who){
-        
-    }
+
 }
 
 

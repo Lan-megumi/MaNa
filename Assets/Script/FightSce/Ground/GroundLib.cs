@@ -33,7 +33,7 @@ public class GroundLib  {
 	public void UponGround(string GroundName){
 		//MethodInfo Ground_Class=GroundType.GetMethod(GroundName);
 		object b = Activator.CreateInstance(System.Type.GetType(GroundName));
-		Debug.Log("Upon:"+b.GetType());
+		Debug.Log("被置顶的场景类型:"+b.GetType());
 		GroundLibrary.Add((Ground)b);
 		
 	}
