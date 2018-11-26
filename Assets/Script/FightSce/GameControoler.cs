@@ -23,6 +23,7 @@ public class GameControoler : MonoBehaviour {
 	private GameObject SceDate;
 	//关卡名
 	public string LevelName;
+	
 	//场景第x小关
 	// Level_Enemy_Lib LEL ;
 
@@ -36,7 +37,7 @@ public class GameControoler : MonoBehaviour {
 		BlackCan.SetActive(true);
 		if (SceDate!=null)
 		{
-			//获取数据
+			//获取场景数据
 			this.GetComponent<GroundScr>().GetSceGround();
 			//先将Ui显示出来
 			SetUi(true);
@@ -53,7 +54,7 @@ public class GameControoler : MonoBehaviour {
 
 			//撤下遮布
 			BlackCan.SetActive(false);
-			//初始化数据
+			//初始化场景数据
 			SceDate.GetComponent<SceStar>().InitDate();
 			//新建临时玩家，一般情况下是独挡新建玩家实例
 			PlayerDate._instance.Testlinshi();
@@ -67,11 +68,14 @@ public class GameControoler : MonoBehaviour {
 		
 	}
 	
-//当战斗结束后事件执行完毕后可调用该方法返回场景
+///<summary>
+///当战斗结束后事件执行完毕后可调用该方法返回场景
+///</summary>
 	public void BackSce(){
 		SceneManager.LoadScene(5,LoadSceneMode.Single);
 		
 	}
+//
 	
 
 //-----------------------------------------------------

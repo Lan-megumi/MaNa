@@ -123,9 +123,9 @@ public class EmenyScr : MonoBehaviour {
 		return EnemyHp;
 	}
 
-/*
-	敌人的伤害/治疗计算,结算完成后进行Ui的修改
- */
+///<summary>
+///	敌人的伤害/治疗计算,结算完成后进行Ui的修改、阵亡事件
+///</summary>
 	public void CountDamaged(bool i,int n){
 		if (i==true)
 		{
@@ -141,7 +141,11 @@ public class EmenyScr : MonoBehaviour {
 		}
 		// UpdateHpUi(EnemyHp.ToString());
 		Update_HpSlider(EnemyMaxHp,EnemyHp);
-
+		//伤害结算完成判断是否阵亡
+		if (EnemyHp<=0)
+		{
+			
+		}
 	}
     
 	public void Update_HpSlider(int Maxnum,int NowNum){

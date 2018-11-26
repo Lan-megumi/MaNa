@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-
+///<summary>
+///	获取场景并将场景规则实例化出来的脚本
+///</summary>
 public class GroundScr : MonoBehaviour {
 	public static GroundScr Instance;
 
@@ -33,9 +35,9 @@ public class GroundScr : MonoBehaviour {
 
 	}
 
-/*
-	场景名称获取并且传递
- */
+///<summary>
+///	场景名称获取并且传递
+///</summary>
 	public void GetSceGround(){
 		SceDate=GameObject.Find("SceneDate");
 		SceGround=SceDate.GetComponent<SceStar>().Re_SceGround();
@@ -47,22 +49,7 @@ public class GroundScr : MonoBehaviour {
 	根据场景名称执行对应方法
 */
 	
-	public void FindGround(){
-		// groundLib=ReadCard._instance.groundLib;
-		// Debug.Log("GroundScr"+groundLib.a);
-
-
-		// Debug.Log("0"+GroundDic["Strom_labyrinth"]);
-		// System.Object[] o=new Object[num0.Length];
-
-		// o[1]=num0;
-		// d = GroundDic[SceGround];
-		
-		// MethodInfo Fun_Name=t.GetMethod("Arena");
-
-		// Fun_Name.Invoke(groundLib,null);
-		// Debug.Log("反射");
-	}
+	
 	public string Re_SceGround(){
 		return SceGround;
 	}

@@ -14,10 +14,9 @@ public class GroundLib  {
 	// Use this for initialization
 	List<Ground> GroundLibrary=new List<Ground>();
 
-/*
-	这里是调用公式的接口
-		会返回一个强制转换为int值的数字给 ReadCard.Reckon重新接收
- */
+ ///<summary>
+/// 这里是调用公式的接口会返回一个强制转换为int值的数字给 ReadCard.Reckon重新接收
+///</summary>
 	public int ReckonDamaged(double[] date){
 		double Fina=0;
 		Fina = GroundLibrary[0].Rule(date);
@@ -25,11 +24,10 @@ public class GroundLib  {
 		return (int)Fina;
 	
 	}
-/*
-	这个方法是将对应场景的类生成出来的方法
-		场景影响伤害的公式在类中继承父类的 Rule(double[])方法中
-
- */
+///<summary>
+///	这个方法是将对应场景的类生成出来的方法
+///		,场景影响伤害的公式在类中继承父类的 Rule(double[])方法中
+///</summary>
 	public void UponGround(string GroundName){
 		//MethodInfo Ground_Class=GroundType.GetMethod(GroundName);
 		object b = Activator.CreateInstance(System.Type.GetType(GroundName));
@@ -48,12 +46,18 @@ public class GroundLib  {
 		}
 		
 	}
+	///<summary>
+	/// 无场景
+	///</summary>
 	public class None:Ground{
 		public override double Rule(double[] date){
 			double Reckon = date[0]*1;
 			return Reckon;
 		}  
 	}
+	///<summary>
+	/// 飓风迷域(未实现)
+	///</summary>
 	public class Strom_labyrinth:Ground{
 
 		public override double Rule(double[] date){
@@ -62,6 +66,9 @@ public class GroundLib  {
 			return Reckon;
 		}  
 	}
+	///<summary>
+	/// 竞技场
+	///</summary>
 	public class Arena:Ground{
 
 		public override double Rule(double[] date){
