@@ -12,12 +12,12 @@ public class Level_Enemy_Lib:MonoBehaviour{
 /// <summary>
 ///	根据反射生成 该关卡的敌人阵列
 /// </summary>
-	public void NewLevel_Enemy(string name){
+	public void NewLevel_Enemy(string name,int i ){
 		
 		object b = Activator.CreateInstance(System.Type.GetType(name));
 		// Debug.Log("dddd"+b);
 		Level_Enemy_Libs.Add((Level_Enemy)b);
-		Level_Enemy_Libs[0].CreatEnemy(1);
+		Level_Enemy_Libs[0].CreatEnemy(i);
 	}
 	public void NextEnemy(){
 		LevelNum++;
@@ -39,6 +39,10 @@ public class SanFran_Outtrainingground:Level_Enemy{
 		if (i==1)
 		{
 			PanelScript._instance.CreatEmeny(4);
+			PanelScript._instance.CreatEmeny(4);
+
+			PanelScript._instance.CreatEmeny(4);
+
 		}
 		if (i==2)
 		{

@@ -113,6 +113,10 @@ public class EmenyScr : MonoBehaviour {
 	public int Re_hp(){
 		return EnemyHp;
 	}
+	public string Re_Name(){
+		string i = TextName.text;
+		return  i;
+	}
 
 ///<summary>
 ///	敌人的伤害/治疗计算:True伤害，n为伤害值,结算完成后进行Ui的修改、阵亡事件

@@ -93,21 +93,30 @@ public class CoroutineCountdown : MonoBehaviour
 
         for (int g = 0; g < gm.Count; g++)
         {
-            float avg = gm[g].GetComponent<EmenyScr>().Agi;//获取速度
-            RoundNum[g] = 0; //初始每个敌人自己的回合都是0
-            int enemyhp = gm[g].GetComponent<EmenyScr>().EnemyHp;//获取敌人Hp
-            // PlayerHp[0]= PlayerDate._instance.Hp;               //玩家血量
-            // Debug.Log("玩家血量："+ PlayerHp[0]);
-            Debug.Log("敌人回合数："+Round);
-            Debug.Log("敌人速度:" + avg);
-            AgisMax[g] = avg;               //速度最大值
-            Agis[g] = avg;                  //储存速度
-            EnemyHp[g] = enemyhp;           //储存敌人血量
+            if (gm[g]==null)
+            {
+                Agis[g]=99999999;
+                AgisMax[g]=99999999;
 
-            // Debug.Log(EnemyHp[g]);
-            //Agiss(avg);
-            SpeedAgis[g] = 1/avg;           //敌人每帧的速度
-            Debug.Log(SpeedAgis[g]+"平均");
+            }else
+            {
+                float avg = gm[g].GetComponent<EmenyScr>().Agi;//获取速度
+                RoundNum[g] = 0; //初始每个敌人自己的回合都是0
+                int enemyhp = gm[g].GetComponent<EmenyScr>().EnemyHp;//获取敌人Hp
+                // PlayerHp[0]= PlayerDate._instance.Hp;               //玩家血量
+                // Debug.Log("玩家血量："+ PlayerHp[0]);
+                Debug.Log("敌人回合数："+Round);
+                Debug.Log("敌人速度:" + avg);
+                AgisMax[g] = avg;               //速度最大值
+                Agis[g] = avg;                  //储存速度
+                EnemyHp[g] = enemyhp;           //储存敌人血量
+
+                // Debug.Log(EnemyHp[g]);
+                //Agiss(avg);
+                SpeedAgis[g] = 1/avg;           //敌人每帧的速度
+            }
+           
+            // Debug.Log(SpeedAgis[g]+"平均");
         }
         
     }
@@ -163,31 +172,35 @@ public class CoroutineCountdown : MonoBehaviour
                     敌人们速度 --，只有到速度为0的时候才进入if条件执行的方法里
                  */
                 for (int g = 0; g < Agis.Length; g++)  
-               
                 {
-                    Agis[g]--;
-                    iiSlider[g].value += SpeedAgis[g];              //每帧进度条增加
-                    if (Mathf.Abs(iiSlider[g].value - 1) <= 0.01f)  //当进度条的绝对值-1 小于等于0.01的时候（进度条满）
+                    if (gm[g]!=null)
                     {
-                        //敌人 回合开始
-                        iiSlider[g].value = 0;
-                        RoundNum[g] += 1;                           //回合加1
+                         Agis[g]--;
+                        iiSlider[g].value += SpeedAgis[g];              //每帧进度条增加
+                        if (Mathf.Abs(iiSlider[g].value - 1) <= 0.01f)  //当进度条的绝对值-1 小于等于0.01的时候（进度条满）
+                        {
+                            //敌人 回合开始
+                            iiSlider[g].value = 0;
+                            RoundNum[g] += 1;                           //回合加1
+                            
+                            i[0]=RoundNum[g];
+                            Debug.Log("PlayerHp"+PlayerDate._instance.ReturnHp());
+                            i[1]=PlayerDate._instance.ReturnHp();
+                            i[2]=gm[g].GetComponent<EmenyScr>().Re_hp();
+
+
+                            // Debug.Log("血量 " + EnemyHp[g]);
+                            // Debug.Log("敌人i回合数" + i[g]);
+                            // Debug.Log("敌人g回合数" + RoundNum[g]);
+                            
                         
-                        i[0]=RoundNum[g];
-                        Debug.Log("PlayerHp"+PlayerDate._instance.ReturnHp());
-                        i[1]=PlayerDate._instance.ReturnHp();
-                        i[2]=gm[g].GetComponent<EmenyScr>().Re_hp();
-
-
-                        // Debug.Log("血量 " + EnemyHp[g]);
-                        // Debug.Log("敌人i回合数" + i[g]);
-                        // Debug.Log("敌人g回合数" + RoundNum[g]);
-                       
-                        gm[g].GetComponent<EmenyScr>().enemyAi[0].Passivity_skill(i);
-                        gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();
-                        //执行完操作后进入下一回合
-                       
+                            gm[g].GetComponent<EmenyScr>().enemyAi[0].Passivity_skill(i);
+                            gm[g].GetComponent<CountDebuff>().EnemyComputeDebuff();
+                            //执行完操作后进入下一回合
+                        
+                        }
                     }
+                   
                 }
 
                 targetSliderOject.value += c;               //玩家每帧数速度

@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chose_level.unity
     guid: 8a36d4c1b05c8b749be9367b7dd8b3a5
+  - enabled: 1
+    path: Assets/Scenes/linshi.unity
+    guid: 963dc375409c2e64d810e0945d71e3ba

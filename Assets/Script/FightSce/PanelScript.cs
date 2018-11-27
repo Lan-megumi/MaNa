@@ -33,11 +33,21 @@ public class PanelScript : MonoBehaviour {
         Slider iiSlider = ii.GetComponentInChildren<Slider>();
         ii.GetComponent<EmenyScr>().EnemyIndex = EnemeyIndex;
         ii.GetComponent<EmenyScr>().NewEmeny(i);
-
-        CoroutineCountdown.gm.Add(ii);
-        DmScr._instance.enemyObj2.Add(ii); //储存敌人
-        //CoroutineCountdown.EnemyObj1.Add(ii.GetComponent<GameObject>());
-        CoroutineCountdown.iiSlider.Add(iiSlider);//进度条
+        
+        if (ii.GetComponent<EmenyScr>().Re_Name()=="占位符")
+        {
+            CoroutineCountdown.gm.Add(null);
+            DmScr._instance.enemyObj2.Add(null); 
+            CoroutineCountdown.iiSlider.Add(null);
+            ii.SetActive(false);
+        }else
+        {
+            CoroutineCountdown.gm.Add(ii);
+            DmScr._instance.enemyObj2.Add(ii); //储存敌人
+            //CoroutineCountdown.EnemyObj1.Add(ii.GetComponent<GameObject>());
+            CoroutineCountdown.iiSlider.Add(iiSlider);//进度条
+        }
+      
         DmScr._instance.SetDate();
         iiSlider.value = 0;
         EnemeyIndex++;

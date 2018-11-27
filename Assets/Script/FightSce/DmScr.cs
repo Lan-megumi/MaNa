@@ -58,7 +58,7 @@ public class DmScr : MonoBehaviour
         if (z == 0)
         {
             for(int i=0;i<2;i++){
-                Debug.Log("Test1-"+i+" :"+enemyObj3[i]);
+                // Debug.Log("Test1-"+i+" :"+enemyObj3[i]);
 
                 if(enemyObj3[i]!=null){
                     enemyObj3[i].GetComponent<EmenyScr>().CountDamaged(true, n);
@@ -104,8 +104,10 @@ public class DmScr : MonoBehaviour
         Debug.Log("第"+i+"个敌人阵亡！");
         // PanelScript._instance.EnemyObj0[i]=null;
         this.GetComponent<CoroutineCountdown>().Update_EnemyNum(i);
-        Destroy(enemyObj3[i]);
-        // enemyObj3[i]=null;
+        enemyObj3[i].gameObject.SetActive(false);
+        enemyObj3[i]=null;
+        //执行GameController脚本中的检查敌人数量
+        GameControoler._instance.CheckEnemy();
 
     }
 }

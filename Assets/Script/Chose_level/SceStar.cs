@@ -6,6 +6,7 @@ public class SceStar : MonoBehaviour {
 	
 
 	public string SceGround,LevelName;
+	public int LELnum=1;
 	public static SceStar _instance;
 	//更规范的 单例写法  调用时 脚本名+Instance+方法
 	public static SceStar Instance{
@@ -49,10 +50,13 @@ public class SceStar : MonoBehaviour {
 	public string Re_LevelName(){
 		return LevelName;
 	}
-	public void InitDate(){
-		SceGround="";
-		LevelName="";
+	public int Re_LELNum(){
+		return LELnum;
 	}
+	public void add_LELNum(){
+		LELnum++;
+	}
+	
 	
 	
 }
