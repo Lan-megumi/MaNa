@@ -505,8 +505,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d6e7f01d048844e862102abed0e9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Emeny: {fileID: 1780929053986740, guid: 00a62b155da7c734fbb0e49259354f35, type: 2}
-  EnemyObj0: []
+  Enemy: {fileID: 1119125405403292, guid: 5695b9cc027194bcd82021e4a4b5f1b8, type: 2}
+  EmptyObj: {fileID: 1810007794255006, guid: 188e4d0501e6a44a9ba11168d47beee6, type: 2}
 --- !u!114 &107369458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2475,6 +2475,7 @@ MonoBehaviour:
   CoverCardCan: {fileID: 2118911401}
   LevelName: 
   EnemyNum: 0
+  LELnum: 0
 --- !u!4 &734128644
 Transform:
   m_ObjectHideFlags: 0

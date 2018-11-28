@@ -7,7 +7,7 @@ public class PanelScript : MonoBehaviour {
 /*
 	该脚本主要用于新建敌人Ui
  */
-	public GameObject Emeny;
+	public GameObject Enemy,EmptyObj;
     public static PanelScript Instance;
 
     public static PanelScript _instance{
@@ -25,11 +25,14 @@ public class PanelScript : MonoBehaviour {
 
 	public void CreatEmeny(int i){
 
-        //Debug.Log(i);
-		GameObject ii=	Instantiate(Emeny);
+        GameObject Father_ii= Instantiate(Enemy);
 
-		 ii.transform.parent=this.gameObject.transform;
-
+        Father_ii.transform.parent=this.gameObject.transform;
+        Debug.Log("Fathe_ii = "+Father_ii);
+        Transform Tran_ii = Father_ii.transform.GetChild(0);
+        Debug.Log("Trans ii = "+Tran_ii.name);
+        GameObject ii=Tran_ii.gameObject;
+        Debug.Log("GameO ii = "+ii);
         Slider iiSlider = ii.GetComponentInChildren<Slider>();
         ii.GetComponent<EmenyScr>().EnemyIndex = EnemeyIndex;
         ii.GetComponent<EmenyScr>().NewEmeny(i);
@@ -39,7 +42,7 @@ public class PanelScript : MonoBehaviour {
             CoroutineCountdown.gm.Add(null);
             DmScr._instance.enemyObj2.Add(null); 
             CoroutineCountdown.iiSlider.Add(null);
-            ii.SetActive(false);
+            ii.gameObject.SetActive(false);
         }else
         {
             CoroutineCountdown.gm.Add(ii);
