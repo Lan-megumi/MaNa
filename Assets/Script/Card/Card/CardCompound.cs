@@ -21,14 +21,16 @@ public class CardCompound : MonoBehaviour {
     public Rarity CardRarity;
     public string CardName;   
 
-    public string Cardid1, Cardid2, Cardid3;  //获取三张卡牌的id
+    public string Cardid1, Cardid2, Cardid3,Cardid4;  //获取三张卡牌的id
 
     private int d,b, c = 0;
 
     private string a1, a2;  //构成  a1&a2 
 
-    public Text text,text1,text2;//已选或未选
+    public Text text,text1,text2,text3;//已选或未选
 
+    private bool[] bCardbool1;//获取TestMananger的bCardbool
+    private string[] CardidStr;
     private void Awake()
     {
         _instance = this;
@@ -46,10 +48,13 @@ public class CardCompound : MonoBehaviour {
  */
     public void ShowButton3()
     {
+        //bool[] bCardbool1=TestMananger._instance.;
+        //Debug.Log("bCardboo1"+bCardbool1);
         //获取选择的卡牌id
         Cardid1 = TestMananger._instance.Cardid1;  
         Cardid2 = TestMananger._instance.Cardid2;
         Cardid3 = TestMananger._instance.Cardid3;
+        Cardid4 = TestMananger._instance.Cardid4;
         // Debug.Log("a1a1" + Cardid1);
         // Debug.Log("a1a2" + Cardid2);
         // Debug.Log("a1a3" + Cardid3);
@@ -57,7 +62,24 @@ public class CardCompound : MonoBehaviour {
         //if(TestMananger._instance.bCard == false&& TestMananger._instance.bCard1 == false)
         //{
 
-        //}
+        //}待改
+        // string[] CardidStr={Cardid1,Cardid2,Cardid3,Cardid4};
+        // if(TestMananger._instance.bCardboolNum==2){
+        //     for(int i=0;i<CardidStr.Length;i++){
+        //         if(bCardbool1[i]){
+        //             if(a1==null){
+        //                 a1=CardidStr[i];
+        //                 Debug.Log("a1"+a1);
+        //             }else{
+        //                 a2=CardidStr[i];
+        //                 Debug.Log("a2"+a2);
+        //             }
+        //         }
+        //     }
+
+        // }
+
+
 
         if (TestMananger._instance.bCard==false)  //第一张未被选择
         {
@@ -85,6 +107,7 @@ public class CardCompound : MonoBehaviour {
         text.text = "未选";  //融合后，已选择变为未选
         text1.text = "未选";
         text2.text = "未选";
+        text3.text="未选";
         FindDic(a1, a2);   
         TestMananger._instance.Fix();    //TestManager里面的fix方法，使选择变为未选
     }
