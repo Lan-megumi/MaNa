@@ -39,7 +39,8 @@ public class TestMananger : MonoBehaviour
     public bool bCard, bCard1, bCard2,bCard3 = false;//融合条件，true已选，false未选
     public Text text, text1, text2,text3;//是否选择
     public bool[] bCardbool;  //已选中数组
-    private bool[] BCardbool;
+    public bool[] BCardbool;
+    private string[] bCardids;
     public int bCardboolNum=0;
     public int BCardboolNum=0;
     
@@ -57,18 +58,7 @@ public class TestMananger : MonoBehaviour
         // VisableCard();
     }
    
-    public void Fix()   //在CardCompound 里面调用 ，初始化选择（未选）
-    {
-        bool [] bCardObj={
-            bCard,bCard1,bCard2,bCard3
-        };
-        for(int i=0;i<bCardObj.Length;i++)
-        {
-            if(bCardObj[i]==true){
-                bCardObj[i]=false;
-            }   
-        }
-    }
+   
 
 
 
@@ -95,9 +85,10 @@ public class TestMananger : MonoBehaviour
             {
                 text.text = "未选";
                 bCard = false;
-                //BCard=false;
+                BCard=false;
+          
             }
-        
+        Debug.Log("BCard" + BCard);
         ShotAA();   //运行检测
     }
 
@@ -124,7 +115,7 @@ public class TestMananger : MonoBehaviour
             {
                 text1.text = "未选";
                 bCard1 = false;
-                //BCard1=false;
+                BCard1=false;
             
         }
         ShotAA();
@@ -153,7 +144,7 @@ public class TestMananger : MonoBehaviour
             {
                 text2.text = "未选";
                 bCard2 = false;
-                //BCard2=false;
+                BCard2=false;
             
         }
         ShotAA();
@@ -180,7 +171,7 @@ public class TestMananger : MonoBehaviour
             {
                 text3.text = "未选";
                 bCard3 = false;
-                //BCard3=false;
+                BCard3=false;
             
         }
         ShotAA();
@@ -188,7 +179,15 @@ public class TestMananger : MonoBehaviour
 
     public void button3()//点击融合，显示id,      （其余内容未补完）//出牌条件，不得出单张或者3张
     {
+        text.text = "未选";  //发牌后，已选择变为未选
+        text1.text = "未选";
+        text2.text = "未选";
+        text3.text = "未选";
+
+
+        string[] bCardids ={ Cardid1,Cardid2,Cardid3,Cardid4};
         bool[] bCardbool={bCard,bCard1,bCard2,bCard3};
+        bool[] BCardbool = { BCard, BCard1, BCard2, BCard3 };
         for(int i=0;i<bCardbool.Length;i++){
             Debug.Log(bCardbool[i]);
             if(bCardbool[i]==true){
@@ -199,70 +198,14 @@ public class TestMananger : MonoBehaviour
             if(bCardboolNum>2||bCardboolNum==1){
                 Debug.Log("这样出牌不行");
             }else{
-                if (bCard == true) {        //获取第一张卡牌的id
-                Cardid1 = Library1[d - 3].GetCardid;
-                // CardName1 = Library1[d - 3].GetCardName;
-                
-                Debug.Log("融合了:" + Cardid1);
-       
-            }
-            if (bCard1 == true)        //第二张id
+            for(int i = 0; i < bCardbool.Length; i++)
             {
-                    Cardid2 = Library1[d - 2].GetCardid;
-                    // CardName2 = Library1[d - 2].GetCardName;
-                    Debug.Log("融合了" + Cardid2);
-                
-            }
-            if (bCard2 == true)         //第三张id
-            {
-                    Cardid3 = Library1[d-1].GetCardid;
-                    // CardName = Library1[d-1].GetCardName;
-                    Debug.Log("融合了" + Cardid3);
-                
-            }
-            if(bCard3 ==true){
-                Cardid4=Library1[d].GetCardid;
-                Debug.Log("融合了"+Cardid4);
-            
+                if (bCardbool[i])
+                {
+                    Cardid1 = Library1[i].GetCardid;
+                }
             }
         }
-
-
-        // if (bCard == true && bCard1 == true && bCard2 == true &&bCard3==true||       
-        //     bCard == true && bCard1 == false && bCard2 == false&&bCard3==false ||
-        //     bCard == false && bCard1 == true && bCard2 == false&&bCard3==false ||
-        //     bCard == false && bCard1 == false && bCard2 == true&&bCard3==false||
-        //     bCard == false && bCard1 == false && bCard2 == false&&bCard3==true)
-        // {
-        //     Debug.Log("这样出牌系不可以滴，一次必须出2张牌");
-
-        // }else {
-            
-        //    if (bCard == true) {        //获取第一张卡牌的id
-        //         Cardid1 = Library1[d - 3].GetCardid;
-        //         // CardName1 = Library1[d - 3].GetCardName;
-                
-        //         Debug.Log("融合了:" + Cardid1);
-       
-        //     }
-        //     if (bCard1 == true)        //第二张id
-        //     {
-        //             Cardid2 = Library1[d - 2].GetCardid;
-        //             // CardName2 = Library1[d - 2].GetCardName;
-        //             Debug.Log("融合了" + Cardid2);
-                
-        //     }
-        //     if (bCard2 == true)         //第三张id
-        //     {
-        //             Cardid3 = Library1[d-1].GetCardid;
-        //             // CardName = Library1[d-1].GetCardName;
-        //             Debug.Log("融合了" + Cardid3);
-                
-        //     }
-        //     if(bCard3 ==true){
-        //         Cardid4=Library1[d].GetCardid;
-        //     }
-        // }
     }
 
     //该方法功能为发牌，并且与Ui功能交互
@@ -271,8 +214,13 @@ public class TestMananger : MonoBehaviour
         text.text = "未选";  //发牌后，已选择变为未选
         text1.text = "未选";
         text2.text = "未选";
-        text3.text="未选";
-        
+        text3.text = "未选";
+
+        for (int i = 0; i < bCardbool.Length; i++)
+        {
+            BCardbool[i] = false;
+        }
+
         Debug.Log("发牌！");
         // UpdateLibrary();
         Library1 = TestCardLibrary._instance.Library0;
@@ -315,61 +263,21 @@ public class TestMananger : MonoBehaviour
             CardRarity = Library1[i].GetCardRarity;
             CardName = Library1[i].GetCardName;
             BCardbool[i]=false;
-            Debug.Log("BCardbool[i]"+BCardbool[i]);
             Debug.Log("选中的Cardid"+Cardid);
              }
         }
-
-// d=3    
-// 4 =d    i=3   
-// 3 =d-1  i=2
-// 2 =d-2  i=1
-// 1 =d-3  i=0
-
-//d=i
-        
-        // if(BCard3==true){
-        //     Cardid = Library1[d].GetCardid;
-        //     CardType = Library1[d].GetCardType;
-        //     CardEle = Library1[d].GetCardElement_type;
-        //     CardRarity = Library1[d].GetCardRarity;
-        //     CardName = Library1[d].GetCardName;
-        //     BCard3 = false;
-        // }
-        // if (BCard2 == true)    //第三张卡牌的信息
-        // {
-        //     Cardid = Library1[d-1].GetCardid;
-        //     CardType = Library1[d-1].GetCardType;
-        //     CardEle = Library1[d-1].GetCardElement_type;
-        //     CardRarity = Library1[d-1].GetCardRarity;
-        //     CardName = Library1[d-1].GetCardName;
-   
-        //     BCard2 = false;
-            
-        // }
-        // if (BCard1 == true)        //第二张卡牌的信息
-        // {
-
-        //     Cardid = Library1[d - 2].GetCardid;
-        //     CardType = Library1[d - 2].GetCardType;
-        //     CardEle = Library1[d - 2].GetCardElement_type;
-        //     CardRarity = Library1[d - 2].GetCardRarity;
-        //     CardName = Library1[d - 2].GetCardName;
-    
-        //     BCard1 = false;
-            
-        // }
-        // if (BCard == true)             //第一张卡牌的信息
-        // {
-        //     Cardid = Library1[d - 3].GetCardid;
-        //     CardType = Library1[d - 3].GetCardType;
-        //     CardEle = Library1[d - 3].GetCardElement_type;
-        //     CardRarity = Library1[d - 3].GetCardRarity;
-        //     CardName = Library1[d - 3].GetCardName;
-        //     BCard = false;
-            
-        // }
-        Fix();  //初始化卡牌是否选择
+        //Fix();  //初始化卡牌是否选择
+    }
+    public void Fix()   //在CardCompound 里面调用 ，初始化选择（未选）
+    {
+        bCard = false;
+        bCard1 = false;
+        bCard2 = false;
+        bCard3 = false;
+        BCard = false;
+        BCard1 = false;
+        BCard2 = false;
+        BCard3 = false;
     }
 }
     
