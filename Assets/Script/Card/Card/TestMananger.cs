@@ -22,6 +22,7 @@ public class TestMananger : MonoBehaviour
 
     public List<GameObject> CardLibrary;
     public List<TestCard> Library1;
+    public  string[] bCardids;
 
     // //-----------------------------------------------------
     //	定义用于接收卡牌属性的类
@@ -40,7 +41,6 @@ public class TestMananger : MonoBehaviour
     public Text text, text1, text2,text3;//是否选择
     public bool[] bCardbool;  //已选中数组
     public bool[] BCardbool;
-    private string[] bCardids;
     public int bCardboolNum=0;
     public int BCardboolNum=0;
     
@@ -54,7 +54,7 @@ public class TestMananger : MonoBehaviour
     {
         Library1 = new List<TestCard>();
         // Debug.Log("TestManager Star");
-        
+        bCardids=new string[]{ Cardid1,Cardid2,Cardid3,Cardid4};
         // VisableCard();
     }
    
@@ -185,7 +185,7 @@ public class TestMananger : MonoBehaviour
         text3.text = "未选";
 
 
-        string[] bCardids ={ Cardid1,Cardid2,Cardid3,Cardid4};
+       
         bool[] bCardbool={bCard,bCard1,bCard2,bCard3};
         bool[] BCardbool = { BCard, BCard1, BCard2, BCard3 };
         for(int i=0;i<bCardbool.Length;i++){
@@ -198,13 +198,14 @@ public class TestMananger : MonoBehaviour
             if(bCardboolNum>2||bCardboolNum==1){
                 Debug.Log("这样出牌不行");
             }else{
-            for(int i = 0; i < bCardbool.Length; i++)
-            {
-                if (bCardbool[i])
+
+                for(int i = 0; i < bCardbool.Length; i++)
                 {
-                    Cardid1 = Library1[i].GetCardid;
+                    if (bCardbool[i]==true)
+                    {
+                        bCardids[i] = Library1[d-(BCardbool.Length-i-1)].GetCardid;
+                    }
                 }
-            }
         }
     }
 
@@ -257,11 +258,8 @@ public class TestMananger : MonoBehaviour
         bool[] BCardbool={BCard,BCard1,BCard2,BCard3};
         for(int i=0;i<BCardbool.Length;i++){
             if(BCardbool[i]==true){
-            Cardid = Library1[i].GetCardid;
-            CardType = Library1[i].GetCardType;
-            CardEle = Library1[i].GetCardElement_type;
-            CardRarity = Library1[i].GetCardRarity;
-            CardName = Library1[i].GetCardName;
+            Cardid = Library1[d-(BCardbool.Length-i-1)].GetCardid;
+           
             BCardbool[i]=false;
             Debug.Log("选中的Cardid"+Cardid);
              }
@@ -278,6 +276,10 @@ public class TestMananger : MonoBehaviour
         BCard1 = false;
         BCard2 = false;
         BCard3 = false;
+    }
+    public string[] Re_ids(){
+
+        return bCardids;
     }
 }
     

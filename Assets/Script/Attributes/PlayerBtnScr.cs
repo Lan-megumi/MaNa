@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerBtnScr : MonoBehaviour {
 
 	///<summary>
-	///	通过此读取Player的公共战斗数据以及进入Player的计算方法
+	///	通过此读取Player的公共战斗数据以及进入Player的计算方法,绑定于按钮上
 	///</summary>
 	public void CheckDate(){
 		string type0=PlayerFightScr._instance.Re_N_Type();
@@ -19,6 +19,7 @@ public class PlayerBtnScr : MonoBehaviour {
 			if (type0=="Cure")
 			{
 				PlayerDate._instance.CurePlayer(int.Parse(num));
+				Debug.Log("Cure!"+num);
 			}
 		}else
 		{

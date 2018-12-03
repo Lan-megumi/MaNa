@@ -24,7 +24,7 @@ public class ReadCard : MonoBehaviour {
 	//接收两张牌的参数
 	public string Cardid1,Cardid2;
 	//Reckon 是面板伤害求和
-	private int Reckon,CureReckon;
+	public int Reckon,CureReckon;
 	private int CardDamage1,CardDamage2,Card1Cure,Card2Cure;
 	public AttcakeType CardAttackeType1,CardAttackeType2,BmAttackeType;
 //------------------------------------------
@@ -41,15 +41,21 @@ public GroundLib groundLib;
 	该传入参数将被作用于jo()方法中，并且是触发jo()方法的唯一接口
 	*/
 	public void SetId(string id1,string id2){
-		Cardid1=id1;
-		Cardid2=id2;
-        Debug.Log("Cardid1" + Cardid1 + "Cardid2" + Cardid2);
-		jo();
+		if (id1==""||id2=="")
+		{
+			Debug.Log("id传入有空值");
+		}else
+		{
+			Cardid1=id1;
+			Cardid2=id2;
+			Debug.Log("融合的两张卡的id Cardid1 : " + id1 + "Cardid2 : " + id2);
+			Debug.Log("------------------------------");
+			jo();
+		}
 	}
 
 /*
 	合成调用的方法
-	目前暂时只是根据id找到卡牌对应的伤害没有根据伤害类型
 */
 	public void jo(){
 	//首先同步卡牌，因为牌库有可能被洗牌，不过好像洗了牌也不影响
@@ -96,34 +102,93 @@ public GroundLib groundLib;
 	//单体治疗x单体治疗/单体伤害/群体治疗/群体伤害
 	 if (CardAttackeType1==(AttcakeType)2)
 	 {
+		 //单体治疗+单体治疗
 		 if (CardAttackeType2==(AttcakeType)2)
 		 {
 			 CureReckon=Card1Cure+Card2Cure;
 			 Reckon=CardDamage1+CardDamage2;
+			 BmAttackeType=(AttcakeType)0;
 		 }
+		 //单体治疗+单体伤害
 		 if (CardAttackeType2==(AttcakeType)0)
 		 {
 			 CureReckon=Card1Cure+CardDamage2;
 			 Reckon=CardDamage1+CardDamage2;
+			 BmAttackeType=(AttcakeType)0;
+
 		 }
-		  if (CardAttackeType2==(AttcakeType)3)
+		 //单体治疗+群体治疗
+		if (CardAttackeType2==(AttcakeType)3)
 		 {
-			 CureReckon=Card1Cure+CardDamage2;
-			 Reckon=CardDamage1+CardDamage2;
+			 float linshiCure=Card1Cure*0.3f+Card2Cure;
+			 CureReckon=(int)linshiCure;
+			 float linshi=CardDamage1*0.3f+CardDamage2;
+			 Reckon=(int)linshi;
+			 BmAttackeType=(AttcakeType)1;
+		 }
+		 //单体治疗+群体伤害
+		 if (CardAttackeType2==(AttcakeType)1)
+		 {
+			 float linshiCure=Card1Cure*0.3f+CardDamage2;
+			 CureReckon=(int)linshiCure;
+			 float linshi = CardDamage1*0.3f+CardDamage2;
+			 Reckon=(int)linshi;
+			 BmAttackeType=(AttcakeType)1;
+		 }
+		 //单体治疗+溅射
+		 if(CardAttackeType2==(AttcakeType)4){
+			 float linshiCure=Card1Cure+CardDamage2*0.6f;
+			 CureReckon=(int)linshiCure;
+			 float linshi = CardDamage1+CardDamage2*0.6f;
+			 Reckon=(int)linshi;
+			 BmAttackeType=(AttcakeType)4;
 		 }
 	 }
+
 	 //群体治疗x群体治疗/单体治疗/群体伤害/单体伤害	
-	 if (CardAttackeType1==(AttcakeType)2)
+	 if (CardAttackeType1==(AttcakeType)3)
 	 {
-		 if (CardAttackeType2==(AttcakeType)2)
+		 //群体治疗+群体治疗
+		 if (CardAttackeType2==(AttcakeType)3)
 		 {
 			 CureReckon=Card1Cure+Card2Cure;
 			 Reckon=CardDamage1+CardDamage2;
+			 BmAttackeType=(AttcakeType)1;
 		 }
+		 //群体治疗+单体治疗
+		 if (CardAttackeType2==(AttcakeType)2)
+		 {
+			 float linshiCure=Card1Cure+CardDamage2*0.3f;
+			 CureReckon=(int)linshiCure;
+			 float linshi =CardDamage1+CardDamage2;
+			 Reckon=(int)linshi;
+			 BmAttackeType=(AttcakeType)1;
+		 }
+		 //群体治疗+群体伤害
+		 if (CardAttackeType2==(AttcakeType)1)
+		 {
+			CureReckon=Card1Cure+CardDamage2;
+			 Reckon=CardDamage1+CardDamage2;
+			 BmAttackeType=(AttcakeType)1;
+		 }
+		 //群体治疗+单体伤害
 		 if (CardAttackeType2==(AttcakeType)0)
 		 {
-			 CureReckon=Card1Cure+CardDamage2;
-			 Reckon=CardDamage1+CardDamage2;
+			 float linshiCure=Card1Cure+CardDamage2*0.3f;
+			 CureReckon=(int)linshiCure;
+			 float linshi =CardDamage1+CardDamage2;
+			 Reckon=(int)linshi;
+			 BmAttackeType=(AttcakeType)1;
+		 }
+		 //群体治疗+溅射
+		 if (CardAttackeType2==(AttcakeType)4)
+		 {
+			 float linshiCure = Card1Cure+CardDamage2*0.5f;
+			 CureReckon=(int)linshiCure;
+			 float linshi = CardDamage1+CardDamage2*0.5f;
+			 Reckon=(int)linshi;
+			 BmAttackeType=(AttcakeType)4;
+
 		 }
 	 }	
 	
@@ -170,6 +235,22 @@ public GroundLib groundLib;
 				Reckon=(int)linshi;
 				BmAttackeType=(AttcakeType)1;
 			}
+			//群体+单体治疗
+			if (CardAttackeType2==(AttcakeType)3)
+			 {
+				 float linshiCure=Card1Cure+Card2Cure*0.3f;
+				CureReckon=(int)linshiCure;
+				float linshi=CardDamage1+CardDamage2*0.3f;
+				Reckon=(int)linshi;
+				BmAttackeType=(AttcakeType)1;
+		 	}
+			//群体+群体治疗
+			if (CardAttackeType2==(AttcakeType)3)
+			{
+				CureReckon=Card1Cure+Card2Cure;
+				Reckon=CardDamage1+CardDamage2;
+				BmAttackeType=(AttcakeType)1;
+			}
 		}
 		//单体+？
 		if (CardAttackeType1==(AttcakeType)0)
@@ -199,6 +280,17 @@ public GroundLib groundLib;
 			 {
 				CureReckon=CardDamage1+Card2Cure;
 				Reckon=CardDamage1+CardDamage2;
+				BmAttackeType=(AttcakeType)0;
+
+			 }
+			 //单体+群体治疗
+			 if (CardAttackeType2==(AttcakeType)3)
+			 {
+				float linshiCure=CardDamage1*0.3f+Card2Cure;
+				CureReckon=(int)linshiCure;
+				float linshi = CardDamage1*0.3f+CardDamage2;
+				Reckon=(int)linshi;
+				BmAttackeType=(AttcakeType)1;
 			 }
 		}
 		//溅射+?
@@ -223,6 +315,23 @@ public GroundLib groundLib;
 			{
 				Reckon=CardDamage1+CardDamage2;
 				BmAttackeType=(AttcakeType)4;
+			}
+			//溅射+单体治疗
+			if(CardAttackeType2==(AttcakeType)2){
+				float linishiCure=CardDamage1+Card1Cure*0.6f;
+				CureReckon=(int)linishiCure;
+				float linshi=CardDamage1+CardDamage2*0.6f;
+				Reckon=(int)linshi;
+				BmAttackeType=(AttcakeType)4;
+			}
+			//溅射+群体治疗
+			if (CardAttackeType2==(AttcakeType)3)
+			{
+				float linshiCure = CardDamage1*0.5f+Card1Cure;
+				CureReckon=(int)linshiCure;
+				float linshi = CardDamage1*0.5f+CardDamage2;
+				Reckon=(int)linshi;
+				BmAttackeType=(AttcakeType)1;
 			}
 	}
 //-----------------------------------------
@@ -269,35 +378,33 @@ public GroundLib groundLib;
 		{
 			PublicFightScr._instance.StarFunction("R");
 			PublicFightScr._instance.StarFunction2(Reckon.ToString());
-
-		}
-	//治疗结算↓
-		else if (BmAttackeType==(AttcakeType)2)
-		{
-			PlayerFightScr._instance.StarFuntion("Cure");
-			PlayerFightScr._instance.StarFuntion2(CureReckon.ToString());
-
-		}else if (BmAttackeType==(AttcakeType)3)
-		{
-			// DmScr._instance.DmCure(Reckon);
 		}
 	//神奇输入↓
 		else
 		{
 			Debug.Log("The AttcakeType is Wrong! 你输入了什么鬼？");
 		}
+		Debug.Log("jo方法末端 Cure:"+CureReckon);
+	//治疗结算↓
+		if (CureReckon!=0)
+		{
+			PlayerFightScr._instance.StarFuntion("Cure");
+			PlayerFightScr._instance.StarFuntion2(CureReckon.ToString());
+		}
 /*
 	执行 BuffScr 脚本，进行buff计算
 */
 	 BuffScr._instance.Card1_Buff(Cardid1);
 	 BuffScr._instance.Card2_Buff(Cardid2);
-	 BuffScr._instance.ReckonBuff();	
+	 BuffScr._instance.ReckonBuff();
+	 Debug.Log("-------------------");	
 
 	}
 	
 
-
-	//在结算完成后执行清空数据初始化数据
+	///<summary>
+	///ReadCard-初始化数据
+	///</summary>
 	public void InitDate(){
 		Cardid1=null;
 		Cardid2=null;
