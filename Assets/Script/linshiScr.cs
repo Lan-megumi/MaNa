@@ -15,8 +15,7 @@ public class linshiScr : MonoBehaviour {
 	
 	public string note="";
 	void Awake(){
-		ImageUi();
-		StartCoroutine("Time0");
+		// StartCoroutine("Time0");
 	}
 	 /// <summary>
 	/// Update is called every frame, if the MonoBehaviour is enabled.
@@ -28,7 +27,7 @@ public class linshiScr : MonoBehaviour {
 
 			}else{
 				Cover_alpha=Cover_alpha-0.1f;
-				// Debug.Log("alhpa="+Cover_alpha);
+				Debug.Log("alhpa="+Cover_alpha);
 				color.a=Cover_alpha;
 				Cover.color=color;
 			}
@@ -48,18 +47,6 @@ public class linshiScr : MonoBehaviour {
 			note="";
 		}
 		
-	}
-	///<summary>
-	/// 该方法用于改变linshi 场景下的背景图片
-	///</summary>
-	public void ImageUi(){	
-		GameObject SceDate= GameObject.Find("SceneDate");
-		string SceName = SceDate.GetComponent<SceStar>().Re_LevelName();
-		SceName=SceName.Replace(" ","");
-		//需要注意 该方法会直接找到 Resources 文件夹下的
-		Sprite pic=Resources.Load(SceName,typeof(Sprite))as Sprite;
-		Debug.Log("T/"+pic);
-		Back_Image.sprite=pic;
 	}
 	
 	IEnumerator Time0(){

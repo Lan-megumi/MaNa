@@ -1067,6 +1067,7 @@ GameObject:
   - component: {fileID: 276073924}
   - component: {fileID: 276073925}
   - component: {fileID: 276073926}
+  - component: {fileID: 276073927}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -1135,6 +1136,17 @@ MonoBehaviour:
   Imm: 0
   Avd: 0
   Agi: 0
+--- !u!114 &276073927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 276073923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254e2a5647f1b384681d72dd9518a7db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &317338119
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,7 +3098,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1126691448}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 276073927}
+        m_MethodName: CheckDate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1126691448
@@ -5835,6 +5858,7 @@ MonoBehaviour:
   text2: {fileID: 2128510732}
   text3: {fileID: 1856854468}
   bCardbool: 
+  BCardbool: 
   bCardboolNum: 0
   BCardboolNum: 0
   BCard: 0

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+///<summary>
+///战斗场景中继脚本，用于储存临时对敌人造成伤害的类型、数值、Debuff效果，同时能被敌人的功能脚本读取到
+///</summary>
 public class PublicFightScr : MonoBehaviour {
 /*
 	该脚本为公共脚本
@@ -33,13 +35,18 @@ public class PublicFightScr : MonoBehaviour {
 
 
 	 */
+	 ///<summary>
+	 ///传入类型，接收三个值Damaged , Cure , R
+	 ///</summary>
 	public void StarFunction(string type){
 		N_Type=type;
 	}
 	public void StarFunction2(string name){
 		N_Name=name;
 	}
-	//以下是Buff触发使用的Function
+	///<summary>
+	///Buff触发使用的Function,传入参数由卡牌合成后的返回而定
+	///</summary>
 	public void StarFunctoin3(string name){
 		N_Buff=name;
 	}
@@ -65,7 +72,9 @@ public class PublicFightScr : MonoBehaviour {
 
 
     //------------------------------------------------------------
-
+	///<summary>
+	/// pulicFightScr-初始化数据
+	///</summary>
     public void N_init(){
 		// Debug.Log("N_init!");
 		N_Name=null;

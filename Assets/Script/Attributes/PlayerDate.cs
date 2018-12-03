@@ -52,6 +52,9 @@ public class PlayerDate : MonoBehaviour {
 		this.GetComponent<PlayerUi>().Update_HpSlider(MaxHp,Hp);
 
 	}
+	///<summary>
+	/// 攻击玩家的方法
+	///</summary>
 	public int AttackePlayer(int damage){
 		int Reckon= Hp-damage;
 		if (Reckon<=0)
@@ -61,6 +64,20 @@ public class PlayerDate : MonoBehaviour {
 		Hp=Reckon;
 		UpdateHp();
 		return Reckon;
+	}
+	///<summary>
+	///	治疗玩家的方法
+	///</summary>
+	public void CurePlayer(int Cure){
+		int Reckon= Hp+Cure;
+		if (Reckon>=MaxHp)
+		{
+			Hp=MaxHp;
+		}else
+		{
+			Hp=Reckon;
+		}
+		UpdateHp();
 	}
 	public void UpdateHp(){
 		this.GetComponent<PlayerUi>().Update_HpSlider(MaxHp,Hp);
@@ -83,6 +100,6 @@ public class PlayerDate : MonoBehaviour {
 		return Avd;
 	}
 //-----------------------------------------
-
+	
 	
 }

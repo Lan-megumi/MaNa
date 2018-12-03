@@ -24,7 +24,8 @@ public class ReadCard : MonoBehaviour {
 	//接收两张牌的参数
 	public string Cardid1,Cardid2;
 	//Reckon 是面板伤害求和
-	private int CardDamage1,CardDamage2,Reckon;
+	private int Reckon,CureReckon;
+	private int CardDamage1,CardDamage2,Card1Cure,Card2Cure;
 	public AttcakeType CardAttackeType1,CardAttackeType2,BmAttackeType;
 //------------------------------------------
 
@@ -67,7 +68,7 @@ public GroundLib groundLib;
 			{
 				CardDamage1=Library2[i].GetCardDamage;
 				CardAttackeType1=Library2[i].GetAttcakeType;
-
+				Card1Cure=Library2[i].GetCardCure;
 				Debug.Log("CardDamage1:"+CardDamage1);
 				a++;
 			}
@@ -75,6 +76,7 @@ public GroundLib groundLib;
 			{
 				CardDamage2=Library2[i].GetCardDamage;
 				CardAttackeType2=Library2[i].GetAttcakeType;
+				Card2Cure=Library2[i].GetCardCure;
 				Debug.Log("CardDamage2:"+CardDamage2);
 				a++;
 			}
@@ -89,66 +91,42 @@ public GroundLib groundLib;
 		区别于伤害的治疗
 		2 - 单体治疗
 		3 - 群体治疗
+		需要注意的是治疗卡与其他伤害卡组和依然可以造成伤害
 	 */
-		//群体+？
-		if (CardAttackeType1==(AttcakeType)3)
-		{
-			//群体+单体=A+B*1/3   群体DmScr
-			if (CardAttackeType2==(AttcakeType)2)
-			{
-				float linshi=CardDamage1+CardDamage2*0.35f;
-				Reckon=(int)linshi;
-				BmAttackeType=(AttcakeType)3;
-			}
-			//群体+群体=A+B   群体DmScr
-			if (CardAttackeType2==(AttcakeType)3)
-			{
-				Reckon=CardDamage1+CardDamage2;
-				BmAttackeType=(AttcakeType)3;
-			}
-			// //群体+溅射=A+B*1/2   群体DmScr
-			// if (CardAttackeType2==(AttcakeType)4)
-			// {
-			// }
-		}
-		//单体治疗+？
-		if (CardAttackeType1==(AttcakeType)2)
-		{
-			//单体+单体=A+B   单体治疗
-			if (CardAttackeType2==(AttcakeType)2)
-			{
-				Reckon=CardDamage1+CardDamage2;
-				BmAttackeType=(AttcakeType)2;
-			}
-			//单体+群体=A*1/3+B  群体治疗DmScr
-			if (CardAttackeType2==(AttcakeType)3)
-			{
-				float linshi = CardDamage1*0.35f+CardDamage2;
-				Reckon=(int)linshi;
-				BmAttackeType=(AttcakeType)3;
-
-			}
-			// //单体+溅射=A*2/3+B  溅射R
-			// if (CardAttackeType2==(AttcakeType)4)
-			// {
-			// }
-		}
-		//溅射+?
-	// 	if (CardAttackeType1==(AttcakeType)4)
-	// 	{
-	// 		//溅射+单体=
-	// 		if (CardAttackeType2==(AttcakeType)0)
-	// 		{
-	// 		}
-	// 		//溅射+群体=
-	// 		if (CardAttackeType2==(AttcakeType)1)
-	// 		{
-	// 		}
-	// 		//溅射+溅射=
-	// 		if (CardAttackeType2==(AttcakeType)4)
-	// 		{
-	// 		}
-	// }
+	//单体治疗x单体治疗/单体伤害/群体治疗/群体伤害
+	 if (CardAttackeType1==(AttcakeType)2)
+	 {
+		 if (CardAttackeType2==(AttcakeType)2)
+		 {
+			 CureReckon=Card1Cure+Card2Cure;
+			 Reckon=CardDamage1+CardDamage2;
+		 }
+		 if (CardAttackeType2==(AttcakeType)0)
+		 {
+			 CureReckon=Card1Cure+CardDamage2;
+			 Reckon=CardDamage1+CardDamage2;
+		 }
+		  if (CardAttackeType2==(AttcakeType)3)
+		 {
+			 CureReckon=Card1Cure+CardDamage2;
+			 Reckon=CardDamage1+CardDamage2;
+		 }
+	 }
+	 //群体治疗x群体治疗/单体治疗/群体伤害/单体伤害	
+	 if (CardAttackeType1==(AttcakeType)2)
+	 {
+		 if (CardAttackeType2==(AttcakeType)2)
+		 {
+			 CureReckon=Card1Cure+Card2Cure;
+			 Reckon=CardDamage1+CardDamage2;
+		 }
+		 if (CardAttackeType2==(AttcakeType)0)
+		 {
+			 CureReckon=Card1Cure+CardDamage2;
+			 Reckon=CardDamage1+CardDamage2;
+		 }
+	 }	
+	
 //--------------------------------------------------------------------------
 	
 
@@ -216,6 +194,12 @@ public GroundLib groundLib;
 				Reckon=(int)linshi;
 				BmAttackeType=(AttcakeType)4;
 			}
+			//单体+单体治疗
+			 if (CardAttackeType2==(AttcakeType)2)
+			 {
+				CureReckon=CardDamage1+Card2Cure;
+				Reckon=CardDamage1+CardDamage2;
+			 }
 		}
 		//溅射+?
 		if (CardAttackeType1==(AttcakeType)4)
@@ -267,13 +251,11 @@ public GroundLib groundLib;
 	}
 	
 //--------------------------------------------------------------------------
-/*
-	区别于伤害、治疗的Debuff释放
-*/
+
 	
-	/*
-		根据上方计算的BmAttackeType结果来使用传参
-	 */
+/*
+	根据上方计算的BmAttackeType结果来使用传参
+*/
 	 //伤害结算
 		if (BmAttackeType==(AttcakeType)0)
 		{
@@ -292,8 +274,8 @@ public GroundLib groundLib;
 	//治疗结算↓
 		else if (BmAttackeType==(AttcakeType)2)
 		{
-			// PublicFightScr._instance.StarFunction("Cure");
-			// PublicFightScr._instance.StarFunction2(Reckon.ToString());
+			PlayerFightScr._instance.StarFuntion("Cure");
+			PlayerFightScr._instance.StarFuntion2(CureReckon.ToString());
 
 		}else if (BmAttackeType==(AttcakeType)3)
 		{
