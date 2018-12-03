@@ -15,7 +15,8 @@ public class linshiScr : MonoBehaviour {
 	
 	public string note="";
 	void Awake(){
-		// StartCoroutine("Time0");
+		StartCoroutine("Time0");
+        UpdateImg();
 	}
 	 /// <summary>
 	/// Update is called every frame, if the MonoBehaviour is enabled.
@@ -48,6 +49,15 @@ public class linshiScr : MonoBehaviour {
 		}
 		
 	}
+    public void UpdateImg()
+    {
+        //SanFran_Outtrainingground
+        GameObject SceDate = GameObject.Find("SceneDate");
+        string d= SceDate.GetComponent<SceStar>().Re_LevelName().Replace(" ","");
+        Sprite pic = Resources.Load(d, typeof(Sprite)) as Sprite;
+        Debug.Log(pic + " d");
+        Back_Image.sprite = pic;
+    }
 	
 	IEnumerator Time0(){
 		yield return new WaitForSeconds(3);
