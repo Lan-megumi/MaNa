@@ -28,11 +28,11 @@ public class PanelScript : MonoBehaviour {
         GameObject Father_ii= Instantiate(Enemy);
 
         Father_ii.transform.parent=this.gameObject.transform;
-        Debug.Log("Fathe_ii = "+Father_ii);
+        // Debug.Log("Fathe_ii = "+Father_ii);
         Transform Tran_ii = Father_ii.transform.GetChild(0);
-        Debug.Log("Trans ii = "+Tran_ii.name);
+        // Debug.Log("Trans ii = "+Tran_ii.name);
         GameObject ii=Tran_ii.gameObject;
-        Debug.Log("GameO ii = "+ii);
+        // Debug.Log("GameO ii = "+ii);
         Slider iiSlider = ii.GetComponentInChildren<Slider>();
         ii.GetComponent<EmenyScr>().EnemyIndex = EnemeyIndex;
         ii.GetComponent<EmenyScr>().NewEmeny(i);
@@ -51,7 +51,7 @@ public class PanelScript : MonoBehaviour {
             CoroutineCountdown.iiSlider.Add(iiSlider);//进度条
         }
       
-        DmScr._instance.SetDate();
+        
         iiSlider.value = 0;
         EnemeyIndex++;
 

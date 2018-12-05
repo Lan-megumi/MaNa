@@ -15,8 +15,14 @@ public class DmScr : MonoBehaviour
             return Instance;
         }
     }
+    ///<summary>
+    /// 动态数组，用于储存其他脚本动态加入的敌人对象
+    ///</summary>
     public List<GameObject> enemyObj2;
-    public GameObject[] enemyObj3;   //创列表
+    ///<summary>
+    /// 静态数组，在动态数组加载完成后赋值用于储存计算的数组
+    ///</summary>
+    public GameObject[] enemyObj3;   
     public float[] Hp;
 
     // Use this for initialization
@@ -28,7 +34,9 @@ public class DmScr : MonoBehaviour
         
 
     }
-    // Update is called once per frame
+    ///<summary>
+    /// List数组传复制给 []数组
+    ///</summary>
     public void SetDate()
     {
         for (int i = 0; i < enemyObj2.Count; i++)

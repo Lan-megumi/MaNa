@@ -81,7 +81,7 @@ public class GameControoler : MonoBehaviour {
 		
 	}
 ///<summary>
-///
+/// 检查胜利条件并且跳转场景
 ///</sumarry>
 	public void CheckEnemy(){
 		int i = DmScr._instance.Re_EnemyNum();
@@ -89,10 +89,11 @@ public class GameControoler : MonoBehaviour {
 
 		if (i==0)
 		{
-			Debug.Log("You win!");
+			//当通关时，增加 SceStar 脚本下的计数器 LELNum。同时根据此判断是否超过大关所规定的小关数来判断是否通过一个大关
+			Debug.Log("-----------------");
 			SceDate.GetComponent<SceStar>().add_LELNum();
 			int d=SceDate.GetComponent<SceStar>().Re_LELNum();
-			if (d>3)
+			if (d>SceDate.GetComponent<SceStar>().Re_MaxLELnum())
 			{
 				SceneManager.LoadScene(5);
 				Destroy(SceDate);
@@ -102,8 +103,18 @@ public class GameControoler : MonoBehaviour {
 			}
 		}
 	}
+///<summary>
+///	结算界面
+///</summary>
+	public void ShowResult_Ui(){
 
-	
+	}
+///<summary>
+///	阵亡界面
+///</summary>
+	public void Player_Default(){
+
+	}
 
 //-----------------------------------------------------
 //Ui层代码
