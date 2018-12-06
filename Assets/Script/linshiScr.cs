@@ -28,7 +28,7 @@ public class linshiScr : MonoBehaviour {
 
 			}else{
 				Cover_alpha=Cover_alpha-0.1f;
-				Debug.Log("alhpa="+Cover_alpha);
+				// Debug.Log("alhpa="+Cover_alpha);
 				color.a=Cover_alpha;
 				Cover.color=color;
 			}
@@ -55,7 +55,7 @@ public class linshiScr : MonoBehaviour {
         GameObject SceDate = GameObject.Find("SceneDate");
         string d= SceDate.GetComponent<SceStar>().Re_LevelName().Replace(" ","");
         Sprite pic = Resources.Load(d, typeof(Sprite)) as Sprite;
-        Debug.Log(pic + " d");
+        // Debug.Log(pic + " d");
         Back_Image.sprite = pic;
     }
 	
