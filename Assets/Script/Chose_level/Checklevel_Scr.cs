@@ -21,8 +21,9 @@ public class Checklevel_Scr : MonoBehaviour {
 	}
 	//------------------------------------
 	//声明Ui需要用到组件，Image以及储存其的数组
-	public Image level1,level2,level3,level4;
+	public Image level1,level2,level3,level4,BackGroundImg;
 	public List<Image> levelObj;
+	public float BackImgAlpha=0.0f;
 	//声明Ui需要用到Text组件
 	public Text Name1,Name2,Menu1;
 	//------------------------------------
@@ -68,9 +69,17 @@ public class Checklevel_Scr : MonoBehaviour {
 		//敲下回车进入关卡事件
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
-			Debug.Log("ENTER");
+			// Debug.Log("ENTER");
 			LevelGo(i);
 
+		}
+		if(Time.frameCount%5==0){
+			if(BackImgAlpha<=1.0f){
+				BackImgAlpha+=0.1f;
+				Color color=Color.white;
+				color.a=BackImgAlpha;
+				BackGroundImg.color=color;
+			}
 		}
 	}
 	//改变关卡选中Ui效果的方法，同时执行改变名称
@@ -105,6 +114,18 @@ public class Checklevel_Scr : MonoBehaviour {
 			SceneManager.LoadScene(4,LoadSceneMode.Single);
 		}
 		
+	}
+
+	public int Re_i(){
+		Debug.Log("i="+i);
+		return i;
+	}
+	public string Re_LevelName(){
+		string text="None";
+		if(Re_i()==0){
+			text="San Fran_Out training ground";
+		}
+		return text;
 	}
 
 
