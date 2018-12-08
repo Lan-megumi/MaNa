@@ -27,8 +27,6 @@ public  class  TestCardLibrary:MonoBehaviour{
 	TestCard EL04C1=new TestCard("EL04C1",(Type)0,(Element_type)2,(Rarity)3,"飓风迷域",6,30,(AttcakeType)1,0);
 	// public Text IdText,TypeText,EleText,RarityText,NameText;
 	public List<TestCard> Library0;
-	private int n =0;
-	private bool t =true;
 	void Awake(){
 		_instance=this;
 	}
@@ -55,10 +53,18 @@ public  class  TestCardLibrary:MonoBehaviour{
         
 	}
 	
-	//洗牌功能
+	/*
+	洗牌功能
+		由于牌库体制尚未健全，使用洗牌功能有一定几率出现以下Bug
+	*洗牌后手牌出现两张一摸一样的牌,在12.5版本以前不存在会出现两张一模一样的卡牌
+	*打出去的牌下回合立即抽到，理由同上
+		Bug本质：
+	发牌是根据 Libray0 数组的下标来发牌，而洗牌则是重新打乱Library0数组的内
+	每一个数据的位置，所以由于发牌机制的不健全逻辑不完整是有可能出现上述Bug的。
+	*/
 	public void OrbLibrary(){
 		System.Random random =new System.Random();
-		Debug.Log("Random:"+random);
+		// Debug.Log("Random:"+random);
 		List<TestCard> OrbList = new List<TestCard>();
 		foreach(TestCard item in Library0){
 				OrbList.Insert(random.Next(OrbList.Count+1),item);
@@ -68,7 +74,7 @@ public  class  TestCardLibrary:MonoBehaviour{
 				Library0.Add(item);
 			}
 			OrbList.Clear();
-        TestMananger._instance.VisableCard();
+        // TestMananger._instance.VisableCard();
 	}
 
 }

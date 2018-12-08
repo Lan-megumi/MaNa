@@ -17,7 +17,7 @@ public class CardUi : MonoBehaviour {
 	void Start () {
 		
 	}
-	public void ChangeUi(string Cardid,Type CardType,Element_type CardEle,Rarity CardRarity,string CardName){
+	public void ChangeUiDate(string Cardid,Type CardType,Element_type CardEle,Rarity CardRarity,string CardName){
 		IdText.text=Cardid;
 		 TypeText.text=CardType.ToString();
 		 EleText.text=CardEle.ToString();
