@@ -30,7 +30,7 @@ public class TestCardScr : MonoBehaviour {
 	///</summary>
 	public void TestCardBtn(){
 		//在执行之前需要询问公共脚本数量
-		if (TestMananger._instance.Re_ChoseNum()>=2&&Re_Bool_Card()==true)
+		if (TestMananger._instance.Re_ChoseNum()>=2&&Re_Bool_Card()==false)
 		{
 			Debug.Log("来自TestCardSCr的报告：来自公共脚本信息表示已选择了两张牌");
 		}else
