@@ -3396,12 +3396,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3292440ec3efd543abf58c6388c0aa1, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1282344008 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114122857690220832, guid: a3292440ec3efd543abf58c6388c0aa1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1282344007}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!224 &1282344009 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,
@@ -3488,17 +3482,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2043938811}
-        m_MethodName: button3
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2043938810}
         m_MethodName: ShowButton3
         m_Mode: 1
@@ -4523,12 +4506,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3292440ec3efd543abf58c6388c0aa1, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1633302844 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114122857690220832, guid: a3292440ec3efd543abf58c6388c0aa1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1633302843}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!224 &1633302845 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,
@@ -5086,12 +5063,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3292440ec3efd543abf58c6388c0aa1, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1856854468 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114122857690220832, guid: a3292440ec3efd543abf58c6388c0aa1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1856854467}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!224 &1856854469 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,
@@ -5486,20 +5457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca52a18ac733f048b6d54229782193e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardLibrary: []
-  Cardid: 
-  CardType: 0
-  CardEle: 0
-  CardRarity: 0
-  CardName: 
-  Cardid1: 
-  Cardid2: 
-  Cardid3: 
-  Cardid4: 
-  text: {fileID: 1282344008}
-  text1: {fileID: 1633302844}
-  text2: {fileID: 2128510732}
-  text3: {fileID: 1856854468}
+  a1: 
+  a2: 
 --- !u!114 &2043938811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6148,12 +6107,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3292440ec3efd543abf58c6388c0aa1, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &2128510732 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114122857690220832, guid: a3292440ec3efd543abf58c6388c0aa1,
-    type: 2}
-  m_PrefabInternal: {fileID: 2128510731}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!224 &2128510733 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224067377559384818, guid: a3292440ec3efd543abf58c6388c0aa1,

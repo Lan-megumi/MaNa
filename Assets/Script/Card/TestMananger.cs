@@ -34,7 +34,7 @@ public class TestMananger : MonoBehaviour
     public Type CardType;
     public Element_type CardEle;
     public Rarity CardRarity;
-    public int CardCost;
+    public int CardCost,ChoseNum;
 
     //-----------------------------------------------------	
     private int b= 0;
@@ -44,6 +44,7 @@ public class TestMananger : MonoBehaviour
     void Start()
     {
         Library1 = new List<TestCard>();
+        // Init();
     }
 
     //该方法功能为发牌，并且与Ui功能交互
@@ -53,6 +54,9 @@ public class TestMananger : MonoBehaviour
         Debug.Log("发牌！");
         //同步卡库
         Library1 = TestCardLibrary._instance.Library0;
+        //初始化各个脚本的关键值
+        CardCompound._instance.Init();
+        Init();
         //循环给卡牌填值
         for (int i = 0; i < CardLibrary.Count; i++)
         {
@@ -66,6 +70,7 @@ public class TestMananger : MonoBehaviour
             //调用相应方法传值以及改变Ui
             CardLibrary[i].GetComponent<CardUi>().ChangeUiDate(Cardid, CardType, CardEle, CardRarity, CardName);
             CardLibrary[i].GetComponent<TestCardScr>().SetDate(Cardid,CardCost);
+            CardLibrary[i].GetComponent<TestCardScr>().Init();
             d =b;
             b++;
             //当循环到牌库上限时，将索引归零并且提示发牌之后洗牌
@@ -79,10 +84,37 @@ public class TestMananger : MonoBehaviour
         if (IFOrd==true)
         {
             // TestCardLibrary._instance.OrbLibrary();
+            IFOrd=false;
         }
     }
-    public int Re_ArrayNum(){
+    ///<summary>
+    /// 执行检查目前选了第几张牌
+    ///</summary>
+    public void CheckChoseNum(bool bt){
+        if (ChoseNum<3)
+        {
+            if (bt==true)
+            {
+                ChoseNum++;
+            }else
+            {
+                ChoseNum--;
+            }
+        }else
+        {
+            Debug.Log("来自TestManager的报告：ChoseNum超过3");
+        }
+    }
+
+ //-------------------------------   
+    public int Re_ChoseNum(){
+        return ChoseNum;
+    }
+    public int Re_ArrayNum_d(){
         return d;
+    }
+    public void Init(){
+        ChoseNum=0;
     }
 }
     

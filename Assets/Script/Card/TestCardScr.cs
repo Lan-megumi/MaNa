@@ -14,16 +14,10 @@ public class TestCardScr : MonoBehaviour {
 
 	///	判断卡牌是否被选中，这个变量会经常被用到
 	public bool Bool_Card=false;
-	// Use this for initialization
+	//用于储存第几个，从公共脚本中获取值
+	public int i=0;
 
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+//--------------------------------------------------
 	///<summary>
 	///	该方法为主要为填值,第一个值为id,第二个值为消耗cost
 	///</summary>
@@ -36,21 +30,27 @@ public class TestCardScr : MonoBehaviour {
 	///</summary>
 	public void TestCardBtn(){
 		//在执行之前需要询问公共脚本数量
-		if (true)
+		if (TestMananger._instance.Re_ChoseNum()>=2&&Re_Bool_Card()==true)
 		{
-			
-		}
-		if (Re_Bool_Card()!=true)
-		{
-			Bool_Card=true;
-			//传递id方法，判断是否为第二个选取的卡牌
-			//同时传递消息给公共脚本
-			Debug.Log("|"+Re_Cardid()+" |");
+			Debug.Log("来自TestCardSCr的报告：来自公共脚本信息表示已选择了两张牌");
 		}else
 		{
-			Bool_Card=false;
-			//消除传递过去的id方法
-			//同时传递消除的消息给公共脚本
+			if (Re_Bool_Card()!=true)
+			{
+				Bool_Card=true;
+				//传递id方法，判断是否为第二个选取的卡牌
+				//同时传递消息给公共脚本
+				// Debug.Log("|"+Re_Cardid()+" |");
+				CardCompound._instance.Saveid(Re_Cardid());
+			}else
+			{
+				Bool_Card=false;
+				CardCompound._instance.Deletid(i);
+				//消除传递过去的id方法
+				//同时传递消除的消息给公共脚本
+			}
+			TestMananger._instance.CheckChoseNum(Bool_Card);
+			i=TestMananger._instance. Re_ChoseNum();
 		}
 	}
 
@@ -64,5 +64,8 @@ public class TestCardScr : MonoBehaviour {
 	}
 	public bool Re_Bool_Card(){
 		return Bool_Card;
+	}
+	public void Init(){
+		Bool_Card=false;
 	}
 }
