@@ -47,8 +47,6 @@ public class PlayerDate : MonoBehaviour {
 		MaxHp=5000;Hp=5000;Mana=600;MaxMana=600;Rgs=100;Imm=100;Avd=100;Agi=1f;
 		Player_name="圣人惠她老公";
 		this.GetComponent<PlayerUi>().UpdateName(Player_name);
-		this.GetComponent<PlayerUi>().UpdateMana(MaxMana);
-
 		this.GetComponent<PlayerUi>().Update_HpSlider(MaxHp,Hp);
 
 	}

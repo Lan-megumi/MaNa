@@ -8,7 +8,7 @@ public class PlayerUi : MonoBehaviour {
 /*
 	该脚本用于绑定Player的Ui
  */
-	public Text Name,Mana;
+	public Text Name;
 	public Slider HpSlider;
 	// Use this for initialization
 	void Start () {
@@ -19,9 +19,7 @@ public class PlayerUi : MonoBehaviour {
 	void Update () {
 		
 	}
-	public void UpdateMana(int num){
-		Mana.text=num.ToString();
-	}
+
 	public void UpdateName(string text){
 		Name.text=text;
 	}

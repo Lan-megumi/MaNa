@@ -33,7 +33,7 @@ public class GameControoler : MonoBehaviour {
 //---------------------------------------------------------
 	// Use this for initialization
 	void Start () {
-
+		
 		//查找储存了场景数据的SceneDate
 		SetUi(false);
 		SceDate=GameObject.Find("SceneDate");

@@ -34,19 +34,22 @@ public class CoroutineCountdown : MonoBehaviour
 
 //用于接收Player1的速度
     private float Player1Speed=60;
-//用于接收Player2的速度
     
     private float c;
     private int Round= 0;
 //---------------------------
 
 //滑动条
-    public Slider targetSliderOject;
+    public Slider PlayerSliderOject;
 
      /// <summary>
     /// 用于接收生成的敌人实例化数组
     ///</summary>
     public static List<GameObject> gm;
+    
+    ///<summary>
+    /// 用于储存敌人滑动条的数组
+    ///</summary>
     public static List<Slider> iiSlider;
 
     private GameObject Emeny;
@@ -203,12 +206,12 @@ public class CoroutineCountdown : MonoBehaviour
                    
                 }
 
-                targetSliderOject.value += c;               //玩家每帧数速度
-                if (Mathf.Abs(targetSliderOject.value - 1) <= 0.01f)
+                PlayerSliderOject.value += c;               //玩家每帧数速度
+                if (Mathf.Abs(PlayerSliderOject.value - 1) <= 0.01f)
                 {
 
                     //玩家 回合开始
-                    targetSliderOject.value = 0;
+                    PlayerSliderOject.value = 0;
                     // TestMananger._instance.VisableCard();
                 }
                 for (int g = 0; g < Agis.Length; g++)

@@ -27,5 +27,10 @@ public class PlayerBtnScr : MonoBehaviour {
 		}
 		PlayerFightScr._instance.InitDate();
 	}
+	public void ShowDetail(){
+		int MaxHp=this.GetComponent<PlayerDate>().ReturnMaxHp();
+		int Hp = this.GetComponent<PlayerDate>().ReturnHp();
+		
+	}
 
 }
