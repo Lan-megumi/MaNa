@@ -44,11 +44,10 @@ public class PlayerDate : MonoBehaviour {
 	}
 	public void Testlinshi(){
 		Debug.Log("临时玩家创建！");
-		MaxHp=5000;Hp=5000;Mana=600;MaxMana=600;Rgs=100;Imm=100;Avd=100;Agi=1f;
+		Hp=5000;MaxHp=Hp;Mana=600;MaxMana=Mana;Rgs=100;Imm=100;Avd=100;Agi=1f;
 		Player_name="圣人惠她老公";
 		this.GetComponent<PlayerUi>().UpdateName(Player_name);
 		this.GetComponent<PlayerUi>().Update_HpSlider(MaxHp,Hp);
-
 	}
 	///<summary>
 	/// 攻击玩家的方法
@@ -96,6 +95,12 @@ public class PlayerDate : MonoBehaviour {
 	}
 	public int ReturnAvd(){
 		return Avd;
+	}
+	public int ReturnMaxMana(){
+		return MaxMana;
+	}
+	public int ReturnMana(){
+		return Mana;
 	}
 //-----------------------------------------
 	

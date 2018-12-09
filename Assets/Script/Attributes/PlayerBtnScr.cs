@@ -24,13 +24,23 @@ public class PlayerBtnScr : MonoBehaviour {
 		}else
 		{
 			Debug.Log("Player公共战斗脚本中的数值为空");
+			ShowDetail();
 		}
 		PlayerFightScr._instance.InitDate();
 	}
+	///<summary>
+	///	点击玩家显示详细数据的点击方法
+	///</summary>
 	public void ShowDetail(){
 		int MaxHp=this.GetComponent<PlayerDate>().ReturnMaxHp();
 		int Hp = this.GetComponent<PlayerDate>().ReturnHp();
-		
+		int MaxMana = this.GetComponent<PlayerDate>().ReturnMaxMana();
+		int Mana = this.GetComponent<PlayerDate>().ReturnMana();
+		// Debug.Log("Hp:"+Hp+" MaxHp:"+MaxHp);
+		// Debug.Log("Mana:"+Mana+" MaxMana:"+MaxMana)
+		Player_Deatil_Ui._instance.ShowHpDeatil(MaxHp,Hp);
+		Player_Deatil_Ui._instance.ShowMannaDeatil(MaxMana,Mana);
+		//执行获取Ui并且显示方法
 	}
 
 }

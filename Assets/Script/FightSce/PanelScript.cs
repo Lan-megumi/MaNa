@@ -7,7 +7,7 @@ public class PanelScript : MonoBehaviour {
 /*
 	该脚本主要用于新建敌人Ui
  */
-	public GameObject Enemy,EmptyObj;
+	public GameObject Enemy;
     public static PanelScript Instance;
 
     public static PanelScript _instance{

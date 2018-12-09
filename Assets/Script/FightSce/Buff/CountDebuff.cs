@@ -14,6 +14,9 @@ using UnityEngine.UI;
 		眩晕
 		冻伤
  */
+ ///<summary>
+ /// 敌人的Debuff计算方法以及储存层数的脚本
+ ///</summary>
 public class CountDebuff : MonoBehaviour {
 //------------------------------------------------
 	//用于接收敌人血量
@@ -45,11 +48,7 @@ public class CountDebuff : MonoBehaviour {
 		EmenyHp=this.GetComponent<EmenyScr>().EnemyHp;
 		// Debug.Log("CountDebuff_Hp"+EmenyHp);
 	}
-	// void Awake(){
-	// 	_instance=this;
-	// }
 	
-
 //玩家/敌人回合结束后，判断敌方是否有(回合开始结算)Debuff需要结算
 	public void EnemyComputeDebuff(){
 
