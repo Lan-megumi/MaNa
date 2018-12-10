@@ -9,6 +9,7 @@ using System;
 public class GameControoler : MonoBehaviour {
 	public GameObject CardCan,EnemyCan,BlackCan,CoverCardCan;
 	public static GameControoler Instance;
+    public  Animation animation;
 
     public static GameControoler _instance{
         get{
@@ -30,9 +31,9 @@ public class GameControoler : MonoBehaviour {
 	//场景第x小关
 	public int  LELnum;
 
-//---------------------------------------------------------
-	// Use this for initialization
-	void Start () {
+    //---------------------------------------------------------
+    // Use this for initialization
+    void Start () {
 		
 		//查找储存了场景数据的SceneDate
 		SetUi(false);
@@ -89,6 +90,8 @@ public class GameControoler : MonoBehaviour {
 
 		if (i==0)
 		{
+            //animation.Play("An11");
+
 			//当通关时，增加 SceStar 脚本下的计数器 LELNum。同时根据此判断是否超过大关所规定的小关数来判断是否通过一个大关
 			Debug.Log("-----------------");
 			SceDate.GetComponent<SceStar>().add_LELNum();

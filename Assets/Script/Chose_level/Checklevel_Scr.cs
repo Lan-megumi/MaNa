@@ -9,6 +9,7 @@ using UnityEngine.UI;
  */
 public class Checklevel_Scr : MonoBehaviour {
 	public static Checklevel_Scr _instance;
+    
 	//更规范的 单例写法  调用时 脚本名+Instance+方法
 	public static Checklevel_Scr Instance{
 		get{
@@ -69,8 +70,10 @@ public class Checklevel_Scr : MonoBehaviour {
 		//敲下回车进入关卡事件
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
-			// Debug.Log("ENTER");
-			LevelGo(i);
+            
+            
+            // Debug.Log("ENTER");
+            LevelGo(i);
 
 		}
 		if(Time.frameCount%5==0){
