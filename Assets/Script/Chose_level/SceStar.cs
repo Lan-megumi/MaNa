@@ -42,6 +42,7 @@ public class SceStar : MonoBehaviour {
 	SceGround:为场地场景
 */
 	public void Set_SceNum(string i){
+        
 		LevelName=i;
 		// SceNum=i;
 		if (i=="San Fran_Out training ground")

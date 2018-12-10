@@ -9,7 +9,9 @@ using System;
 public class GameControoler : MonoBehaviour {
 	public GameObject CardCan,EnemyCan,BlackCan,CoverCardCan;
 	public static GameControoler Instance;
-    public  Animation animation;
+    private GameObject jin;
+
+    private bool manbool = false;
 
     public static GameControoler _instance{
         get{
@@ -34,9 +36,13 @@ public class GameControoler : MonoBehaviour {
     //---------------------------------------------------------
     // Use this for initialization
     void Start () {
-		
-		//查找储存了场景数据的SceneDate
-		SetUi(false);
+        Animator animator = GetComponent<Animator>();
+
+        jin = GameObject.Find("jinanimation1");
+        jin.SetActive(false);
+        
+        //查找储存了场景数据的SceneDate
+        SetUi(false);
 		SceDate=GameObject.Find("SceneDate");
 		CoverCardCan.SetActive(true);
 		BlackCan.SetActive(true);
@@ -90,21 +96,17 @@ public class GameControoler : MonoBehaviour {
 
 		if (i==0)
 		{
-            //animation.Play("An11");
+            jin.SetActive(true);
+            
+           
+                //当通关时，增加 SceStar 脚本下的计数器 LELNum。同时根据此判断是否超过大关所规定的小关数来判断是否通过一个大关
+                Debug.Log("-----------------");
+                SceDate.GetComponent<SceStar>().add_LELNum();
+                StartCoroutine(Man());
+            
 
-			//当通关时，增加 SceStar 脚本下的计数器 LELNum。同时根据此判断是否超过大关所规定的小关数来判断是否通过一个大关
-			Debug.Log("-----------------");
-			SceDate.GetComponent<SceStar>().add_LELNum();
-			int d=SceDate.GetComponent<SceStar>().Re_LELNum();
-			if (d>SceDate.GetComponent<SceStar>().Re_MaxLELnum())
-			{
-				SceneManager.LoadScene(5);
-				Destroy(SceDate);
-			}else{
-				SceneManager.LoadScene(6);
 
-			}
-		}
+        }
 	}
 ///<summary>
 ///	结算界面
@@ -128,5 +130,20 @@ public class GameControoler : MonoBehaviour {
 	public void SetCardUi(bool n){
 		CoverCardCan.SetActive(n);
 	}
-	
+    IEnumerator Man()
+    {
+
+        yield return new WaitForSeconds(2f);
+        int d = SceDate.GetComponent<SceStar>().Re_LELNum();
+        if (d > SceDate.GetComponent<SceStar>().Re_MaxLELnum())
+        {
+            SceneManager.LoadScene(5);
+            Destroy(SceDate);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+
+        }
+    }
 }
