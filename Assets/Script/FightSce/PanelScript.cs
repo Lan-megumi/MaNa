@@ -29,6 +29,7 @@ public class PanelScript : MonoBehaviour {
 
         Father_ii.transform.parent=this.gameObject.transform;
         // Debug.Log("Fathe_ii = "+Father_ii);
+        //获取预制体的 敌人子对象，可以从中拿到敌人的数据、debuff控制脚本
         Transform Tran_ii = Father_ii.transform.GetChild(0);
         // Debug.Log("Trans ii = "+Tran_ii.name);
         GameObject ii=Tran_ii.gameObject;

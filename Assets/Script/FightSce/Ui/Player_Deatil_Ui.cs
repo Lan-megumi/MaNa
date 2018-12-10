@@ -19,6 +19,7 @@ public class Player_Deatil_Ui : MonoBehaviour {
 //---------------------------------------
 	public Slider Hp,Mana;
 	public GameObject DeatilObj;
+    public Image PlayerPoritrait;
 
    
     
@@ -28,7 +29,6 @@ public class Player_Deatil_Ui : MonoBehaviour {
     ///</summary>
 	public void ShowHpDeatil(int MaxHp,int hp){
 		double i = (double)hp/(double)MaxHp;
-        double d = 4000.00f/5555.00f;
         i=System.Math.Round(i,4);
         Debug.Log("i:"+i+"  Hp:"+hp+"/MaxHp:"+MaxHp);
         Hp.value=(float)i;

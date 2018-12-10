@@ -36,7 +36,7 @@ public class CountDebuff : MonoBehaviour {
 	Dizzy:眩晕
 	Fear:恐惧
  */
-	private int FireNum =0,IceNum=0,IceAcheNum=0,DizzyNum=0,
+	public int FireNum =0,IceNum=0,IceAcheNum=0,DizzyNum=0,
 	FearNum=0;
 	public float Buffnum;//用于接收buff的数值/伤害
 	
@@ -74,6 +74,18 @@ public class CountDebuff : MonoBehaviour {
 			Fear();
 		}
 		// EmenyScr.
+	}
+	public int[] Re_Debuffnum(){
+		int[] DebuffArray={0,0,0,0};
+		int [] linshi={IceAcheNum,FireNum,DizzyNum,FearNum};
+		for (int i = 0; i < linshi.Length; i++)
+		{
+			if(linshi[i]!=0){
+				DebuffArray[i]=linshi[i];
+			}
+		}
+		// Debug.Log("Array:"+DebuffArray[0]+DebuffArray[1]+DebuffArray[2]);
+		return DebuffArray;
 	}
 
 //------------------------------燃烧---------------------------
