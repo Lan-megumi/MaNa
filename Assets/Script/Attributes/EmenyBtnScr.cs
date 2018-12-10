@@ -118,6 +118,13 @@ public class EmenyBtnScr : MonoBehaviour {
 			InitDate();
 			ReadCard._instance.InitDate();
 		}
+		//点击事件工作二：显示Deatil面板相关数据
+		int [] DebuffArray=this.GetComponentInParent<CountDebuff>().Re_Debuffnum();
+		Enemy_Deatil_Ui._instance.ShowDebuffUi(DebuffArray);
+		int Maxhp= this.GetComponentInParent<EmenyScr>().Re_Maxhp();
+		int hp= this.GetComponentInParent<EmenyScr>().Re_hp();
+		Enemy_Deatil_Ui._instance.ShowHpDeatil(Maxhp,hp);
+
 	}
 	public GameObject returnFater(){
 		return Father;
