@@ -1,3 +1,4 @@
 # MaNa
-Second project
-Date：2018.09.28
+CardGame 
+# Date：
+2018.09.28
