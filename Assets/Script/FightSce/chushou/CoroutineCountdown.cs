@@ -127,7 +127,8 @@ public class CoroutineCountdown : MonoBehaviour
     /// <summary>
     /// 下一回合
     /// </summary>
-   public void NextTrun(){         
+   public void NextTrun(){
+
        //玩家
        Debug.Log("N_igg="+igg);       
         if (igg == -1 & Player1Speed == 0)
@@ -148,6 +149,7 @@ public class CoroutineCountdown : MonoBehaviour
                 // Debug.Log( "io:" + igg);
             }
         }
+        Enemy_Deatil_Ui._instance.Update_Deatil_Ui();
    }
     void  Update()
     {

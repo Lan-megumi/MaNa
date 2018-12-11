@@ -118,4 +118,10 @@ public class DmScr : MonoBehaviour
         GameControoler._instance.CheckEnemy();
 
     }
+    ///<summary>
+    /// 返回敌人在DmScr下的数组
+    ///</summary>
+    public GameObject[] Re_EnemyObj3(){
+        return enemyObj3;
+    }
 }

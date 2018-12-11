@@ -20,8 +20,9 @@ public class Enemy_Deatil_Ui : MonoBehaviour {
     }
 //------------------------------------------
 	public Slider EnemyHp;
+	//绑定Deatil Ui 头像
 	public Image EnemyPortrait;
-
+	
 
 	///<summary>
     /// Enemy血条显示
@@ -73,6 +74,34 @@ public class Enemy_Deatil_Ui : MonoBehaviour {
 		}
 
 
+		
+	}
+
+	///<summary>
+	///	执行实时更新Deatil Ui的方法
+	///</summary>
+	public void Update_Deatil_Ui(){
+		GameObject[] linshi=DmScr._instance.Re_EnemyObj3();
+		for (int i = 0; i < linshi.Length; i++)
+		{
+			//通过找到数组下Obj的敌人数据中一个布尔变量是否为true来判断是否最后一个选中的是他
+			if(linshi[i]!=null&&linshi[i].GetComponent<EmenyScr>().Re_BchoseDeatil()==true){
+				linshi[i].GetComponent<EmenyScr>().Set_Enemy_Deatil_Ui();
+			}
+		}
+	}
+	///<summary>
+	///	执行初始化所有敌人脚本下 BchoseDeatil 变量为false
+	///</summary>
+	public void Init_Bchose_Deail(){
+		GameObject[] linshi=DmScr._instance.Re_EnemyObj3();
+		for (int i = 0; i < linshi.Length; i++)
+		{
+			if(linshi[i]!=null){
+				linshi[i].GetComponent<EmenyScr>().Set_BchoseDeatil(false);
+				
+			}
+		}
 		
 	}
 	

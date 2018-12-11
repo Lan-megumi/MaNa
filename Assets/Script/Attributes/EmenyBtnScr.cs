@@ -103,20 +103,16 @@ public class EmenyBtnScr : MonoBehaviour {
 			InitDate();
 			ReadCard._instance.InitDate();
 		}
+		Enemy_Deatil_Ui._instance.Init_Bchose_Deail();
+		this.GetComponentInParent<EmenyScr>().Set_BchoseDeatil(true);
         //点击事件工作二：显示Deatil面板相关数据
+		if(this.gameObject!=null){
+       	 	this.GetComponentInParent<EmenyScr>().Set_Enemy_Deatil_Ui();
+		}
         
-        if (this.gameObject!=null)
-        {
-			if(this.GetComponentInParent<CountDebuff>().Re_Debuffnum()!=null&&this.gameObject!=null){
-				int[] DebuffArray = this.GetComponentInParent<CountDebuff>().Re_Debuffnum();
-            	Enemy_Deatil_Ui._instance.ShowDebuffUi(DebuffArray);
-			}
-			int Maxhp= this.GetComponentInParent<EmenyScr>().Re_Maxhp();
-			int hp= this.GetComponentInParent<EmenyScr>().Re_hp();
-			Enemy_Deatil_Ui._instance.ShowHpDeatil(Maxhp,hp);
-        }
 
 	}
+	
 	public GameObject returnFater(){
 		return Father;
 	}
@@ -127,5 +123,5 @@ public class EmenyBtnScr : MonoBehaviour {
 		z=0;
 		N_Buff_num=0;
 	}
-	
+
 }

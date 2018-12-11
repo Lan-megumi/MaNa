@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class EmenyScr : MonoBehaviour {
 
 	public int  EnemyHp,EnemyMaxHp;
+    public int EnemyIndex;
+	public bool BChose_Deatil;
 	//-------------------------
-	public Text TextHp,TextName;
+	public Text TextName;
 	public Slider HpSlider;
 	//-------------------------
 	public GameObject BCheckBcak;
     //用于记录第几个生成的敌人
-    public int EnemyIndex;
-
+	
     public Slider targetSliderOject, targetSliderOject1;
 
     public List<GameObject> emenyObj2;
@@ -110,16 +111,6 @@ public class EmenyScr : MonoBehaviour {
 
 	}
 	
-	public int Re_hp(){
-		return EnemyHp;
-	}
-	public string Re_Name(){
-		string i = TextName.text;
-		return  i;
-	}
-	public int Re_Maxhp(){
-		return EnemyMaxHp;
-	}
 
 ///<summary>
 ///	敌人的伤害/治疗计算:True伤害，n为伤害值,结算完成后进行Ui的修改、阵亡事件
@@ -149,7 +140,20 @@ public class EmenyScr : MonoBehaviour {
 			
 		}
 	}
-    
+	///<summary>
+	///	执行更新Deatil面板Ui的方法
+	///</summary>
+    public void Set_Enemy_Deatil_Ui(){
+		if(this.GetComponentInParent<CountDebuff>().Re_Debuffnum()!=null&&this.gameObject!=null){
+			int[] DebuffArray = this.GetComponent<CountDebuff>().Re_Debuffnum();
+			Enemy_Deatil_Ui._instance.ShowDebuffUi(DebuffArray);
+		}
+		int Maxhp= this.Re_Maxhp();
+		int hp= this.Re_hp();
+		Enemy_Deatil_Ui._instance.ShowHpDeatil(Maxhp,hp);
+
+	}
+
 	public void Update_HpSlider(int Maxnum,int NowNum){
 		double i = (double)NowNum/(double)Maxnum;
 		Debug.Log(NowNum+"/"+Maxnum+"="+i);
@@ -164,6 +168,27 @@ public class EmenyScr : MonoBehaviour {
 			BCheckBcak.SetActive(false);
 		}
 	}
+	///<summary>
+	///	执行更新单个敌人下的 BchoseDeatil 变量，传入参数为Bool
+	///</summary>
+	public void Set_BchoseDeatil(bool t){
+		BChose_Deatil=t;
+	}
 
+
+//----------------------------------------
+	public int Re_hp(){
+		return EnemyHp;
+	}
+	public string Re_Name(){
+		string i = TextName.text;
+		return  i;
+	}
+	public int Re_Maxhp(){
+		return EnemyMaxHp;
+	}
+	public bool Re_BchoseDeatil(){
+		return BChose_Deatil;
+	}
   
 }
