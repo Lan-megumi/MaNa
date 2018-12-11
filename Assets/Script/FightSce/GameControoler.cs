@@ -92,7 +92,7 @@ public class GameControoler : MonoBehaviour {
 ///</sumarry>
 	public void CheckEnemy(){
 		int i = DmScr._instance.Re_EnemyNum();
-		Debug.Log("CheckEnemy!  "+i);
+		// Debug.Log("CheckEnemy!  "+i);
 
 		if (i==0)
 		{
@@ -103,11 +103,25 @@ public class GameControoler : MonoBehaviour {
                 Debug.Log("-----------------");
                 SceDate.GetComponent<SceStar>().add_LELNum();
                 StartCoroutine(Man());
-            
-
-
         }
 	}
+
+	IEnumerator Man()
+    {
+
+        yield return new WaitForSeconds(2f);
+        int d = SceDate.GetComponent<SceStar>().Re_LELNum();
+        if (d > SceDate.GetComponent<SceStar>().Re_MaxLELnum())
+        {
+            SceneManager.LoadScene(5);
+            Destroy(SceDate);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+
+        }
+    }
 ///<summary>
 ///	结算界面
 ///</summary>
@@ -130,20 +144,5 @@ public class GameControoler : MonoBehaviour {
 	public void SetCardUi(bool n){
 		CoverCardCan.SetActive(n);
 	}
-    IEnumerator Man()
-    {
-
-        yield return new WaitForSeconds(2f);
-        int d = SceDate.GetComponent<SceStar>().Re_LELNum();
-        if (d > SceDate.GetComponent<SceStar>().Re_MaxLELnum())
-        {
-            SceneManager.LoadScene(5);
-            Destroy(SceDate);
-        }
-        else
-        {
-            SceneManager.LoadScene(6);
-
-        }
-    }
+    
 }

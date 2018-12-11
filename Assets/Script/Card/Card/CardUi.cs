@@ -9,6 +9,7 @@ using UnityEngine.UI;
  */
 public class CardUi : MonoBehaviour {
 	public Text IdText,TypeText,EleText,RarityText,NameText;
+	public GameObject BchoseUi;
 	public static CardUi _instance;
 
 	void Awake(){
@@ -23,6 +24,10 @@ public class CardUi : MonoBehaviour {
 		 EleText.text=CardEle.ToString();
 		 RarityText.text=CardRarity.ToString();
 		 NameText.text=CardName.ToString();
+	}
+	//控制被选中时的卡牌效果
+	public void Set_BchoseUi(bool f){
+		BchoseUi.SetActive(f);
 	}
 	
 

@@ -8,7 +8,6 @@ public class EmenyBtnScr : MonoBehaviour {
 
 	// Use this for initialization
 	public GameObject Father;
-	public bool t =true;
 	public string NTpye,NName,NBuff;
     public int EnemyIndexof;
 	private float N_Buff_num;
@@ -21,20 +20,6 @@ public class EmenyBtnScr : MonoBehaviour {
             父子件里面有该敌人的数据、独立的计算Debuff脚本
      */
     public void GetFather(){
-		
-		
-		if (t==true)
-		{
-			Father.GetComponent<EmenyScr>().UpdateBack(t);
-			PublicFightScr._instance.Recvie_Father=returnFater();
-			t=false;
-		}else
-		{
-			Father.GetComponent<EmenyScr>().UpdateBack(t);
-			PublicFightScr._instance.Recvie_Father=null;
-
-			t=true;
-		}
 /*
 	读取 PublicFightScr 脚本的值
 */
@@ -120,15 +105,16 @@ public class EmenyBtnScr : MonoBehaviour {
 		}
         //点击事件工作二：显示Deatil面板相关数据
         
-        if (this.GetComponentInParent<CountDebuff>().Re_Debuffnum()!=null&&this!=null)
+        if (this.gameObject!=null)
         {
-            int[] DebuffArray = this.GetComponentInParent<CountDebuff>().Re_Debuffnum();
-            Enemy_Deatil_Ui._instance.ShowDebuffUi(DebuffArray);
+			if(this.GetComponentInParent<CountDebuff>().Re_Debuffnum()!=null&&this.gameObject!=null){
+				int[] DebuffArray = this.GetComponentInParent<CountDebuff>().Re_Debuffnum();
+            	Enemy_Deatil_Ui._instance.ShowDebuffUi(DebuffArray);
+			}
+			int Maxhp= this.GetComponentInParent<EmenyScr>().Re_Maxhp();
+			int hp= this.GetComponentInParent<EmenyScr>().Re_hp();
+			Enemy_Deatil_Ui._instance.ShowHpDeatil(Maxhp,hp);
         }
-		
-		int Maxhp= this.GetComponentInParent<EmenyScr>().Re_Maxhp();
-		int hp= this.GetComponentInParent<EmenyScr>().Re_hp();
-		Enemy_Deatil_Ui._instance.ShowHpDeatil(Maxhp,hp);
 
 	}
 	public GameObject returnFater(){
@@ -141,4 +127,5 @@ public class EmenyBtnScr : MonoBehaviour {
 		z=0;
 		N_Buff_num=0;
 	}
+	
 }

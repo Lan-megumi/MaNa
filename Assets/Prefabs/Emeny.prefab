@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 222461806450747478}
   - component: {fileID: 114864886767847316}
   - component: {fileID: 114038310503482076}
+  - component: {fileID: 114451720306577058}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -851,6 +852,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: IceAche:0
+--- !u!114 &114451720306577058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182261698839526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
 --- !u!114 &114552320261619814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -971,7 +985,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Father: {fileID: 1780929053986740}
-  t: 1
   NTpye: 
   NName: 
   NBuff: 
@@ -1055,6 +1068,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DebuffUi: {fileID: 1717314163703036}
   text: {fileID: 0}
+  FireNum: 0
+  IceNum: 0
+  IceAcheNum: 0
+  DizzyNum: 0
+  FearNum: 0
   Buffnum: 0
 --- !u!114 &114864886767847316
 MonoBehaviour:
