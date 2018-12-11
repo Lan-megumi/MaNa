@@ -45,8 +45,9 @@ public class EnemyDeatil_Debuff_Panel : MonoBehaviour {
 	public void InitScr(){
 		for(int i =0;i<D_Obj_Array.Count;i++){
 			D_Obj_Array[i].GetComponent<Deatil_Debuff_Ui>().DestroyObj();
-			D_Obj_Array[i]=null;
+			
 		}
+		D_Obj_Array.Clear();
 	}
 
 //--------------------------------

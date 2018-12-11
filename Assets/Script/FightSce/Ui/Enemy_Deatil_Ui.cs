@@ -29,7 +29,7 @@ public class Enemy_Deatil_Ui : MonoBehaviour {
 	public void ShowHpDeatil(int MaxHp,int hp){
 		double i = (double)hp/(double)MaxHp;
         i=System.Math.Round(i,4);
-        Debug.Log("i:"+i+"  Hp:"+hp+"/MaxHp:"+MaxHp);
+        // Debug.Log("i:"+i+"  Hp:"+hp+"/MaxHp:"+MaxHp);
         EnemyHp.value=(float)i;
 	}
 	///<summary>
@@ -66,7 +66,7 @@ public class Enemy_Deatil_Ui : MonoBehaviour {
 						Debug.Log("来自Enemy_Deatil_Ui的报告：生成Debuff实例时出现了超出索引或空值的情况");
 						break;
 				}
-				Debug.Log("执行生成了 "+d_name+" 的Debuff，层数是 "+d_num[i]);
+				// Debug.Log("执行生成了 "+d_name+" 的Debuff，层数是 "+d_num[i]);
 				//调用 Deatil_Debuff_Panel 部分脚本内容
 				EnemyDeatil_Debuff_Panel._instance.CreatEnemyDebuff(d_num[i],d_name);
 			}
