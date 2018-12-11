@@ -120,7 +120,6 @@ public class EmenyBtnScr : MonoBehaviour
             }
             //执行完所有操作后将 公共脚本值归零
             PublicFightScr._instance.N_init();
-<<<<<<< HEAD
 			InitDate();
 			ReadCard._instance.InitDate();
 		}
@@ -144,37 +143,5 @@ public class EmenyBtnScr : MonoBehaviour
 		z=0;
 		N_Buff_num=0;
 	}
-=======
-            InitDate();
-            ReadCard._instance.InitDate();
-        }
-        //点击事件工作二：显示Deatil面板相关数据
-
-        if (this.gameObject != null)
-        {
-            if (this.GetComponentInParent<CountDebuff>().Re_Debuffnum() != null && this.gameObject != null)
-            {
-                int[] DebuffArray = this.GetComponentInParent<CountDebuff>().Re_Debuffnum();
-                Enemy_Deatil_Ui._instance.ShowDebuffUi(DebuffArray);
-            }
-            int Maxhp = this.GetComponentInParent<EmenyScr>().Re_Maxhp();
-            int hp = this.GetComponentInParent<EmenyScr>().Re_hp();
-            Enemy_Deatil_Ui._instance.ShowHpDeatil(Maxhp, hp);
-        }
-
-    }
-    public GameObject returnFater()
-    {
-        return Father;
-    }
-    private void InitDate()
-    {
-        NName = "";
-        NTpye = "";
-        NBuff = "";
-        z = 0;
-        N_Buff_num = 0;
-    }
->>>>>>> 4141a44c160c04fbb3d14f994257c6a7b22d6ace
 
 }
