@@ -12,15 +12,15 @@ public class Deatil_Debuff_Ui : MonoBehaviour {
 	// Use this for initialization
 	
 	public void SetBuffImg(string name){
-		Debug.Log("name:"+name);
+		// Debug.Log("name:"+name);
 		Sprite pic = Resources.Load("Debuff/"+name,typeof(Sprite))as Sprite;
-		Debug.Log("Pic:"+pic);
+		// Debug.Log("Pic:"+pic);
 		Buff_Pic.sprite=pic;
 	}
 	public void SetBuffNum(int i){
 		BuffNum_Ui.text=i.ToString();
 	}
 	public void DestroyObj(){
-		Destroy(this);
+		Destroy(this.gameObject);
 	}
 }

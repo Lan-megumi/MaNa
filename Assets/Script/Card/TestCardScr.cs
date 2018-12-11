@@ -50,6 +50,7 @@ public class TestCardScr : MonoBehaviour {
 				//同时传递消除的消息给公共脚本
 			}
 			TestMananger._instance.CheckChoseNum(Bool_Card);
+			this.GetComponent<CardUi>().Set_BchoseUi(Bool_Card);
 			i=TestMananger._instance. Re_ChoseNum();
 		}
 	}

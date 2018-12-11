@@ -112,7 +112,7 @@ public class DmScr : MonoBehaviour
         Debug.Log("第"+i+"个敌人阵亡！");
         // PanelScript._instance.EnemyObj0[i]=null;
         this.GetComponent<CoroutineCountdown>().Update_EnemyNum(i);
-        enemyObj3[i].gameObject.SetActive(false);
+        Destroy(enemyObj3[i].gameObject);
         enemyObj3[i]=null;
         //执行GameController脚本中的检查敌人数量
         GameControoler._instance.CheckEnemy();
