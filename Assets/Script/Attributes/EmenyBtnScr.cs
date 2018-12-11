@@ -13,17 +13,15 @@ public class EmenyBtnScr : MonoBehaviour {
     public int EnemyIndexof;
 	private float N_Buff_num;
 	private int z;
-
-
+    
     /*
         该方法附着在每个敌人身上，每个敌人都有一个GetFather()方法
         GetFather 可以获取到敌人物体携带的Btn的父子件，
             父子件里面有该敌人的数据、独立的计算Debuff脚本
      */
-    public void GetFather(){
-		
-		
-		if (t==true)
+        public void GetFather(){
+        Audios._instant.m_ArrayMusic[1].Play();
+        if (t==true)
 		{
 			Father.GetComponent<EmenyScr>().UpdateBack(t);
 			PublicFightScr._instance.Recvie_Father=returnFater();
