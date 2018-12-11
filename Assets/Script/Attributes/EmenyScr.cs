@@ -118,8 +118,8 @@ public class EmenyScr : MonoBehaviour {
 	public void CountDamaged(bool i,int n){
 		if (i==true)
 		{
-			
-			EnemyHp-=n;
+            
+            EnemyHp -=n;
 			Debug.Log("造成伤害："+n+" 剩余血量:"+EnemyHp);
 		}else
 		{
