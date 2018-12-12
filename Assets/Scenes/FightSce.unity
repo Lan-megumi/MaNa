@@ -890,13 +890,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb67e5a7c0f94a46a553f67d69f2c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Audio: {fileID: 0}
   myMusicArray:
   - {fileID: 8300000, guid: a264ecf953d662c4998ec62d86b82b12, type: 3}
   - {fileID: 8300000, guid: bff653bec4d3de34fa8127153d483e55, type: 3}
   - {fileID: 8300000, guid: b2e07bef22ccd544a84b4ba5081a705d, type: 3}
-  music1: {fileID: 0}
-  music2: {fileID: 0}
-  music3: {fileID: 0}
 --- !u!82 &201628464
 AudioSource:
   m_ObjectHideFlags: 0
