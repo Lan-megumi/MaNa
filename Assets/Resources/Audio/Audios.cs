@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Audios : MonoBehaviour {
 
-    public AudioSource[] m_ArrayMusic;
-    private AudioSource m_music1;
-    private AudioSource m_music2;
-    private AudioSource m_music3;
-    private AudioSource m_music4;
+    public AudioSource m_Audio;
+    
+
+    public AudioClip[] myMusicArray;
+    
     // Use this for initialization
     public static Audios _instant;
     private void Awake()
@@ -16,19 +16,12 @@ public class Audios : MonoBehaviour {
         _instant = this;
     }
     void Start () {
-        m_ArrayMusic = gameObject.GetComponents<AudioSource>();
-        m_music1 = m_ArrayMusic[0];
-        m_music2 = m_ArrayMusic[1];
-        m_music3 = m_ArrayMusic[2];
-        m_music4 = m_ArrayMusic[3];
-        m_music1.Stop();
-        m_music2.Stop();
-        m_music3.Stop();
-        m_music4.Stop();
+       m_Audio = gameObject.GetComponent<AudioSource>();
+       m_Audio.clip= myMusicArray[1]; 
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+    }
 }

@@ -97,7 +97,7 @@ public class GameControoler : MonoBehaviour {
 		if (i==0)
 		{
             jin.SetActive(true);
-            Audios._instant.m_ArrayMusic[3].Play();
+            
            
                 //当通关时，增加 SceStar 脚本下的计数器 LELNum。同时根据此判断是否超过大关所规定的小关数来判断是否通过一个大关
                 Debug.Log("-----------------");
