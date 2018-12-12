@@ -37,7 +37,7 @@ public class EmenyBtnScr : MonoBehaviour
             PublicFightScr._instance.Recvie_Father = null;
 
             t = true;
-
+        }
 
 
 
@@ -53,7 +53,7 @@ public class EmenyBtnScr : MonoBehaviour
             z = EnemyIndexof;
             // Debug.Log("EnemyIndexof:" + z);
 
-        }
+        
         if (NTpye != null && NName != null)
         {
             //----------------------------Debuff

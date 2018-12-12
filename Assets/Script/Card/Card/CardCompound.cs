@@ -57,7 +57,7 @@ public class CardCompound : MonoBehaviour {
         else
         {
             Debug.Log("非Bm合成卡牌");
-             ReadCard._instance.SetId(a1, a2);
+            ReadCard._instance.SetId(a1, a2);
         }
         return DicReturn;
     }
