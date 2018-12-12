@@ -10,10 +10,11 @@ public class SoundSetting : MonoBehaviour {
     public GameObject isOnGameObject1;
     public GameObject isOffGameObject1;
 
-    private AudioSource m_audiobg;
+    public AudioSource m_audiobg;
     private AudioSource m_audioef;
 
     public bool audioefbool;
+    public bool audiobgbool;
     public Slider slider;
     // Use this for initialization
     public static SoundSetting _instance;
@@ -50,9 +51,11 @@ public class SoundSetting : MonoBehaviour {
         if (isOn==true)
         {
             m_audiobg.mute = true;
+            audiobgbool = true;
         } else
         {
             m_audiobg.mute = false;
+            audiobgbool = false;
         }
     }
     //音效

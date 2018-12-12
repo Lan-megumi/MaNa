@@ -5,7 +5,7 @@ using UnityEngine;
 public class Audios : MonoBehaviour {
 
     public AudioSource m_Audio;
-    
+    private AudioSource m_MainAudio;
 
     public AudioClip[] myMusicArray;
     
@@ -19,12 +19,25 @@ public class Audios : MonoBehaviour {
     }
 
     void Start () {
-       m_Audio = gameObject.GetComponent<AudioSource>();
-       m_Audio.clip= myMusicArray[1];
+        m_Audio = gameObject.GetComponent<AudioSource>();
         m_Audio.volume = SoundSetting._instance.slider.value;
+        m_Audio.clip = myMusicArray[1];
+        m_MainAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+        
+        if (SoundSetting._instance.audiobgbool == true)
+        {
+            m_MainAudio.mute = true;
+
+        }
+        else
+        {
+            m_MainAudio.mute = false;
+        }
+        
         if (SoundSetting._instance.audioefbool == true)
         {
             m_Audio.mute = true;
+            
         }else
         {
             m_Audio.mute = false;

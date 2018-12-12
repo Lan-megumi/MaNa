@@ -60,8 +60,9 @@ public class EmenyLibrary{
 			Agi=53;
 		}
 		public override double Passivity_skill(double[] i){
-		
-			Debug.Log("触发锤一下被动");
+        Audios._instant.m_Audio.clip = Audios._instant.myMusicArray[0];
+        Audios._instant.m_Audio.Play();
+        Debug.Log("触发锤一下被动");
 			int r = Random.Range(1,40);
 			PlayerDate._instance.AttackePlayer(40+r);
 			Debug.Log("锤一下造成了"+(40+r)+"点伤害!");
