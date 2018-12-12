@@ -77,6 +77,7 @@ public class EmenyLibrary{
 		}
 		public override double Passivity_skill(double[] i){
 			int r = Random.Range(1,20);
+			
 			PlayerDate._instance.AttackePlayer(70+r);
 			Debug.Log("弩箭造成了"+(70+r)+"点伤害!");	
 			if (0<i[1]&&i[1]<100)
