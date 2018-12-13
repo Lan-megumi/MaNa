@@ -23,7 +23,7 @@ public class EmenyBtnScr : MonoBehaviour
 
     public void GetFather()
     {
-        
+        //选中敌人时播放的音效
         Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[5];
         Audios._instance.m_Audio.Play();
         if (t == true)
@@ -103,7 +103,8 @@ public class EmenyBtnScr : MonoBehaviour
                 Debug.Log(NName);
                 int n = int.Parse(NName);
                 Father.GetComponent<EmenyScr>().CountDamaged(true, n);
-
+                //收到伤害后播放的BGM
+                
             }
             //----------------------------Cure
             if (NTpye == "Cure")

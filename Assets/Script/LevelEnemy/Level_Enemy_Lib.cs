@@ -38,7 +38,8 @@ public class SanFran_Outtrainingground:Level_Enemy{
 	public override void CreatEnemy(int i){
 		if (i==1)
 		{
-			PanelScript._instance.CreatEmeny(4);
+			PanelScript._instance.CreatEmeny(4);	
+
 			DmScr._instance.SetDate();
 		}
 		if (i==2)

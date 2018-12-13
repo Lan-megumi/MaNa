@@ -9,6 +9,7 @@ public class PanelScript : MonoBehaviour {
  */
 	public GameObject Enemy;
     public static PanelScript Instance;
+    RectTransform rt;
 
     public static PanelScript _instance{
         get{
@@ -22,7 +23,12 @@ public class PanelScript : MonoBehaviour {
 
     //新建一个初始值用于给敌人标记是第几个生成的
     private int EnemeyIndex = 0;
-
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+    }
 	public void CreatEmeny(int i){
 
         GameObject Father_ii= Instantiate(Enemy);
@@ -46,6 +52,16 @@ public class PanelScript : MonoBehaviour {
             ii.gameObject.SetActive(false);
         }else
         {
+            // Debug.Log("Obj_after:"+Father_ii.transform.position);
+            // Debug.Log("EnemyIndex:"+EnemeyIndex);
+            Tran_ii.GetComponent<RectTransform>().anchoredPosition+=new Vector2(70*EnemeyIndex,0);
+
+            // rt.anchoredPosition+=new Vector2(55*EnemeyIndex,0);
+            // Debug.Log("rt:"+rt.anchoredPosition);
+
+            // Debug.Log("Obj_before:"+Father_ii.transform.position);
+
+
             CoroutineCountdown.gm.Add(ii);
             DmScr._instance.enemyObj2.Add(ii); //储存敌人
             //CoroutineCountdown.EnemyObj1.Add(ii.GetComponent<GameObject>());

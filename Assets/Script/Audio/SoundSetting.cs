@@ -91,5 +91,6 @@ public class SoundSetting : MonoBehaviour {
     public void SoundVolume()
     {
         m_audiobg.volume = slider.value;
+        // m_audioef.volume = slider.value;
     }
 }
