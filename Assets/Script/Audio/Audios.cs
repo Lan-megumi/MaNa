@@ -51,7 +51,8 @@ public class Audios : MonoBehaviour {
         m_Audio.volume = SoundSetting._instance.slider.value;
         m_Audio.clip = myMusicArray[1];
         m_MainAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
-        
+        m_MainAudio.volume= SoundSetting._instance.slider.value;
+
         if (SoundSetting._instance.audiobgbool == true)
         {
             m_MainAudio.mute = true;
@@ -74,5 +75,6 @@ public class Audios : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
     }
 }

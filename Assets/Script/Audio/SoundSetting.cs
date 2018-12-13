@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class SoundSetting : MonoBehaviour {
-    private GameObject Setting;
-
+    private GameObject Setting;//喇叭图标
+    private bool isSetting;//音乐控制界面显示
+    //背景音乐选择btn
     public GameObject isOnGameObject;  
     public GameObject isOffGameObject;
+    //音效选择btn
     public GameObject isOnGameObject1;
     public GameObject isOffGameObject1;
 
-    public AudioSource m_audiobg;
-    private AudioSource m_audioef;
 
-    public bool audioefbool;
+    public AudioSource m_audiobg;//背景音乐控件
+    //跳转后是否开启背景音乐/音效
+    public bool audioefbool; 
     public bool audiobgbool;
-    public Slider slider;
+    public Slider slider;//音量滑动条
     // Use this for initialization
     
     public static SoundSetting _instance;
@@ -26,9 +28,10 @@ public class SoundSetting : MonoBehaviour {
     }
 
     void Start () {
+        
         Setting = GameObject.Find("Setting");
         Setting.SetActive(false);
-        
+        isSetting = false;
         m_audiobg = GameObject.Find("Main Camera").GetComponent<AudioSource>();
 	}
 	
@@ -39,13 +42,23 @@ public class SoundSetting : MonoBehaviour {
 
     public void Open()
     {
-        Setting.SetActive(true);
+        if (isSetting == false)
+        {
+            Setting.SetActive(true);
+            isSetting = true;
+        }
+        else
+        {
+            Setting.SetActive(false);
+            isSetting = false;
+        }
+        
     }
     public void Close()
     {
         Setting.SetActive(false);
     }
-    //背景音乐
+    //背景音乐Toggle
     public void OnValueChange(bool isOn)
     {
         isOffGameObject.SetActive(isOn);
@@ -60,7 +73,7 @@ public class SoundSetting : MonoBehaviour {
             audiobgbool = false;
         }
     }
-    //音效
+    //音效Toggle
     public void OnValueChange1(bool isOn)
     {
         isOffGameObject1.SetActive(isOn);

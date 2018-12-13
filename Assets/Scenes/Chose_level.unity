@@ -1717,7 +1717,6 @@ RectTransform:
   - {fileID: 796882900}
   - {fileID: 20210226}
   - {fileID: 1966412933}
-  - {fileID: 1962720509}
   m_Father: {fileID: 1735697463}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3018,13 +3017,13 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1962720508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 122810783}
-  m_Father: {fileID: 1205759086}
-  m_RootOrder: 7
+  m_Father: {fileID: 1966412933}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3079,7 +3078,9 @@ MonoBehaviour:
   isOffGameObject: {fileID: 138183734}
   isOnGameObject1: {fileID: 1809775768}
   isOffGameObject1: {fileID: 1821408722}
+  m_audiobg: {fileID: 0}
   audioefbool: 0
+  audiobgbool: 0
   slider: {fileID: 383601590}
 --- !u!114 &1962720513
 MonoBehaviour:
@@ -3164,6 +3165,7 @@ RectTransform:
   - {fileID: 242171345}
   - {fileID: 344420648}
   - {fileID: 622886142}
+  - {fileID: 1962720509}
   m_Father: {fileID: 1205759086}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

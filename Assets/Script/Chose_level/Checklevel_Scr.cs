@@ -118,7 +118,6 @@ public class Checklevel_Scr : MonoBehaviour {
 		}
 		
 	}
-
 	public int Re_i(){
 		Debug.Log("i="+i);
 		return i;
@@ -130,8 +129,6 @@ public class Checklevel_Scr : MonoBehaviour {
 		}
 		return text;
 	}
-
-
-
+    
 }
  
