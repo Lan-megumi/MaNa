@@ -17,10 +17,12 @@ public class SoundSetting : MonoBehaviour {
     public bool audiobgbool;
     public Slider slider;
     // Use this for initialization
+    
     public static SoundSetting _instance;
+
     private void Awake()
     {
-        _instance=this;
+        _instance = this;
     }
 
     void Start () {

@@ -23,8 +23,9 @@ public class EmenyBtnScr : MonoBehaviour
 
     public void GetFather()
     {
-        Audios._instant.m_Audio.clip = Audios._instant.myMusicArray[2];
-        Audios._instant.m_Audio.Play();
+        
+        Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[5];
+        Audios._instance.m_Audio.Play();
         if (t == true)
         {
             Father.GetComponent<EmenyScr>().UpdateBack(t);

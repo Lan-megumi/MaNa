@@ -45,7 +45,11 @@ public class EmenyLibrary{
 			int huihe=int.Parse( i[0].ToString());
 			if (huihe%2==0)
 			{
-				Hp+=65;
+
+                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[2];
+                Audios._instance.m_Audio.Play();
+
+                Hp +=65;
 				Debug.Log("触发了自我修复！");
 			}
 			return 0.0;
@@ -60,8 +64,10 @@ public class EmenyLibrary{
 			Agi=53;
 		}
 		public override double Passivity_skill(double[] i){
-        Audios._instant.m_Audio.clip = Audios._instant.myMusicArray[0];
-        Audios._instant.m_Audio.Play();
+
+        Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[6];
+        Audios._instance.m_Audio.Play();
+
         Debug.Log("触发锤一下被动");
 			int r = Random.Range(1,40);
 			PlayerDate._instance.AttackePlayer(40+r);
@@ -77,7 +83,11 @@ public class EmenyLibrary{
 			Agi=60;
 		}
 		public override double Passivity_skill(double[] i){
-			int r = Random.Range(1,20);
+
+        Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[4];
+        Audios._instance.m_Audio.Play();
+
+        int r = Random.Range(1,20);
 			PlayerDate._instance.AttackePlayer(70+r);
 			Debug.Log("弩箭造成了"+(70+r)+"点伤害!");	
 			if (0<i[1]&&i[1]<100)
@@ -98,7 +108,11 @@ public class EmenyLibrary{
 
 			if (0<i[2]&&i[2]<400)
 			{
-				Debug.Log("机关训练木人想使用致命重击！");
+
+                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[4];
+                Audios._instance.m_Audio.Play();
+
+                Debug.Log("机关训练木人想使用致命重击！");
 				int d = Random.Range(1,40);
 				double r = Random.Range(0,1);
 				if (r+0.65>=1)
@@ -111,7 +125,10 @@ public class EmenyLibrary{
 					Debug.Log("扑空了");
 				}
 			}else{
-				Debug.Log("触发锤一下被动");
+                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[6];
+                Audios._instance.m_Audio.Play();
+
+                Debug.Log("触发锤一下被动");
 				int r = Random.Range(1,40);
 				PlayerDate._instance.AttackePlayer(40+r);
 				Debug.Log("锤一下造成了"+40+r+"点伤害!");

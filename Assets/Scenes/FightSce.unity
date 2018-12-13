@@ -534,6 +534,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224640531992159934, guid: c5390c16c93b8ea47a026e1e52c380e6,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5390c16c93b8ea47a026e1e52c380e6, type: 2}
   m_IsPrefabParent: 0
@@ -891,10 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Audio: {fileID: 0}
-  myMusicArray:
-  - {fileID: 8300000, guid: a264ecf953d662c4998ec62d86b82b12, type: 3}
-  - {fileID: 8300000, guid: bff653bec4d3de34fa8127153d483e55, type: 3}
-  - {fileID: 8300000, guid: b2e07bef22ccd544a84b4ba5081a705d, type: 3}
+  myMusicArray: []
 --- !u!82 &201628464
 AudioSource:
   m_ObjectHideFlags: 0

@@ -135,8 +135,11 @@ public class EmenyScr : MonoBehaviour {
 		//伤害结算完成判断是否阵亡
 		if (EnemyHp<=0)
 		{
-			//清理各个脚本敌人数组的数据
-			DmScr._instance.Update_EnemyNum(EnemyIndex);
+            Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[7];
+            Audios._instance.m_Audio.Play();
+
+            //清理各个脚本敌人数组的数据
+            DmScr._instance.Update_EnemyNum(EnemyIndex);
 			
 		}
 	}
