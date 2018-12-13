@@ -45,7 +45,7 @@ public class SoundSetting : MonoBehaviour {
     {
         Setting.SetActive(false);
     }
-    //背景音乐
+    //背景音乐Btn
     public void OnValueChange(bool isOn)
     {
         isOffGameObject.SetActive(isOn);
@@ -60,7 +60,7 @@ public class SoundSetting : MonoBehaviour {
             audiobgbool = false;
         }
     }
-    //音效
+    //音效Btn
     public void OnValueChange1(bool isOn)
     {
         isOffGameObject1.SetActive(isOn);
@@ -78,5 +78,6 @@ public class SoundSetting : MonoBehaviour {
     public void SoundVolume()
     {
         m_audiobg.volume = slider.value;
+        // m_audioef.volume = slider.value;
     }
 }

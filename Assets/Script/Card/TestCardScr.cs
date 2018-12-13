@@ -42,16 +42,20 @@ public class TestCardScr : MonoBehaviour {
 				//同时传递消息给公共脚本
 				// Debug.Log("|"+Re_Cardid()+" |");
 				CardCompound._instance.Saveid(Re_Cardid());
+				TestMananger._instance.CheckChoseNum(Bool_Card);
+				i=TestMananger._instance. Re_ChoseNum();
+
 			}else
 			{
 				Bool_Card=false;
+				TestMananger._instance.CheckChoseNum(Bool_Card);
 				CardCompound._instance.Deletid(i);
+				i=0;
 				//消除传递过去的id方法
 				//同时传递消除的消息给公共脚本
 			}
-			TestMananger._instance.CheckChoseNum(Bool_Card);
+			// TestMananger._instance.CheckChoseNum(Bool_Card);
 			this.GetComponent<CardUi>().Set_BchoseUi(Bool_Card);
-			i=TestMananger._instance. Re_ChoseNum();
 		}
 	}
 
@@ -68,5 +72,6 @@ public class TestCardScr : MonoBehaviour {
 	}
 	public void Init(){
 		Bool_Card=false;
+		i=0;
 	}
 }

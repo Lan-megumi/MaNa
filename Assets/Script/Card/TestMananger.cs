@@ -105,6 +105,12 @@ public class TestMananger : MonoBehaviour
             Debug.Log("来自TestManager的报告：ChoseNum超过3");
         }
     }
+    public void InitUi(){
+        for(int i =0;i<CardLibrary.Count;i++){
+            CardLibrary[i].GetComponent<CardUi>().Set_BchoseUi(false);
+            CardLibrary[i].GetComponent<TestCardScr>().Init();
+        }
+    }
 
  //-------------------------------   
     public int Re_ChoseNum(){
