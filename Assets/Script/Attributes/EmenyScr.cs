@@ -120,9 +120,23 @@ public class EmenyScr : MonoBehaviour {
 		{
             
             EnemyHp -=n;
-			//播放动画
-			this.transform.GetChild(1).GetComponent<EnemyAni_Scr>().StarDamged();
-			Debug.Log("造成伤害："+n+" 剩余血量:"+EnemyHp);
+			if (EnemyHp<=0)
+			{
+				this.transform.GetChild(1).GetComponent<EnemyAni_Scr>().StarDie();
+				
+				Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[7];
+				Audios._instance.m_Audio.Play();
+
+				//清理各个脚本敌人数组的数据
+				DmScr._instance.Update_EnemyNum(EnemyIndex);
+				
+			}else
+			{
+				//播放动画
+				this.transform.GetChild(1).GetComponent<EnemyAni_Scr>().StarDamged();
+				Debug.Log("造成伤害："+n+" 剩余血量:"+EnemyHp);
+			}
+			
 		}else
 		{
 			EnemyHp+=n;
@@ -138,15 +152,7 @@ public class EmenyScr : MonoBehaviour {
 		// UpdateHpUi(EnemyHp.ToString());
 		Update_HpSlider(EnemyMaxHp,EnemyHp);
 		//伤害结算完成判断是否阵亡
-		if (EnemyHp<=0)
-		{
-            Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[7];
-            Audios._instance.m_Audio.Play();
-
-            //清理各个脚本敌人数组的数据
-            DmScr._instance.Update_EnemyNum(EnemyIndex);
-			
-		}
+		
 	}
 	///<summary>
 	///	执行更新Deatil面板Ui的方法
@@ -182,6 +188,8 @@ public class EmenyScr : MonoBehaviour {
 	public void Set_BchoseDeatil(bool t){
 		BChose_Deatil=t;
 	}
+
+	
 
 
 //----------------------------------------

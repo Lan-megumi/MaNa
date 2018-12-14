@@ -30,10 +30,18 @@ public class EnemyAni_Scr : MonoBehaviour {
 	public void StarCure(){
 		Anim.SetBool("IfCure",true);
 	}
+	public void StarDie(){
+		Anim.SetBool("IfDie",true);
+	}
+	//方便动画获取脚本做的跳转值DmScr脚本内的方法
+	public void DieFun(){
+		DmScr._instance. DestoryEnemy();
+	}
 	//执行播放完动画后帧的调用脚本
 	public void AnimationInit(){
 		Anim.SetBool("IfDamage",false);
 		Anim.SetBool("IfCure",false);
+		Anim.SetBool("IfDie",false);
 
 	}
 }

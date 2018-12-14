@@ -5,7 +5,8 @@ using UnityEngine;
 public class DmScr : MonoBehaviour
 {
     public static DmScr Instance;
-
+    //用于临时储存删除第几个敌人的下标
+    int linshii;
     public static DmScr _instance{
         get{
             if (null==Instance)
@@ -112,11 +113,15 @@ public class DmScr : MonoBehaviour
         Debug.Log("第"+i+"个敌人阵亡！");
         // PanelScript._instance.EnemyObj0[i]=null;
         this.GetComponent<CoroutineCountdown>().Update_EnemyNum(i);
-        Destroy(enemyObj3[i].gameObject);
-        enemyObj3[i]=null;
+        linshii=i;
+       
+
+    }
+    public void DestoryEnemy(){
+        Destroy(enemyObj3[linshii].gameObject);
+        enemyObj3[linshii]=null;
         //执行GameController脚本中的检查敌人数量
         GameControoler._instance.CheckEnemy();
-
     }
     ///<summary>
     /// 返回敌人在DmScr下的数组
