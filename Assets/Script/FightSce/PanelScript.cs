@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PanelScript : MonoBehaviour {
 /*
-	该脚本主要用于新建敌人Ui
+	该脚本主要用于新建敌人(Ui、数据)
  */
 	public GameObject Enemy;
     public static PanelScript Instance;

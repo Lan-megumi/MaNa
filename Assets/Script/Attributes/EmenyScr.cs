@@ -120,6 +120,8 @@ public class EmenyScr : MonoBehaviour {
 		{
             
             EnemyHp -=n;
+			//播放动画
+			this.transform.GetChild(1).GetComponent<EnemyAni_Scr>().StarDamged();
 			Debug.Log("造成伤害："+n+" 剩余血量:"+EnemyHp);
 		}else
 		{
@@ -129,6 +131,9 @@ public class EmenyScr : MonoBehaviour {
 			{
 				EnemyHp=EnemyMaxHp;
 			}
+			//播放动画
+			this.transform.GetChild(1).GetComponent<EnemyAni_Scr>().StarCure();
+
 		}
 		// UpdateHpUi(EnemyHp.ToString());
 		Update_HpSlider(EnemyMaxHp,EnemyHp);
@@ -165,10 +170,10 @@ public class EmenyScr : MonoBehaviour {
     public void UpdateBack(bool i){
 		if (i==true)
 		{
-			BCheckBcak.SetActive(true);
+			// BCheckBcak.SetActive(true);
 		}else
 		{
-			BCheckBcak.SetActive(false);
+			// BCheckBcak.SetActive(false);
 		}
 	}
 	///<summary>
