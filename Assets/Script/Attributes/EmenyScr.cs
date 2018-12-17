@@ -132,8 +132,10 @@ public class EmenyScr : MonoBehaviour {
 				
 			}else
 			{
-				//播放动画
-				this.transform.GetChild(1).GetComponent<EnemyAni_Scr>().StarDamged();
+                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[5];
+                Audios._instance.m_Audio.Play();
+                //播放动画
+                this.transform.GetChild(1).GetComponent<EnemyAni_Scr>().StarDamged();
 				Debug.Log("造成伤害："+n+" 剩余血量:"+EnemyHp);
 			}
 			

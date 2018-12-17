@@ -33,9 +33,8 @@ public class Audios : MonoBehaviour {
     }
     
     void Start () {
-
         myMusicclip = Resources.Load("Audios/a") as AudioClip;
-        myMusicclip1 = Resources.Load("Audios/b") as AudioClip;
+        myMusicclip1 = Resources.Load("Audios/Major") as AudioClip;
         myMusicclip2 = Resources.Load("Audios/buxue") as AudioClip;
         myMusicclip3 = Resources.Load("Audios/mubangji") as AudioClip;
         myMusicclip4 = Resources.Load("Audios/shejian") as AudioClip;

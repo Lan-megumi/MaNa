@@ -24,10 +24,10 @@ public class EmenyBtnScr : MonoBehaviour
     public void GetFather()
     {
         //选中敌人时播放的音效
-        Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[5];
-        Audios._instance.m_Audio.Play();
+        
         if (t == true)
         {
+
             Father.GetComponent<EmenyScr>().UpdateBack(t);
             PublicFightScr._instance.Recvie_Father = returnFater();
             t = false;
