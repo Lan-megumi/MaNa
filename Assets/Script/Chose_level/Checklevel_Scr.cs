@@ -30,8 +30,8 @@ public class Checklevel_Scr : MonoBehaviour {
 	//------------------------------------
 	//声明逻辑部分需要用到的变量
 	public int i =0;
-	//------------------------------------
-
+    public static int levelObj_i;//选择第几大关卡
+    //------------------------------------
 	void Start(){
 		levelObj.Add(level1);
 		levelObj.Add(level2);
@@ -65,14 +65,12 @@ public class Checklevel_Scr : MonoBehaviour {
 				i+=1;
 			}
 			LevelUi_Scr(i);
-
 		}
 		//敲下回车进入关卡事件
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
             
-            
-            // Debug.Log("ENTER");
+            Debug.Log("ENTER");
             LevelGo(i);
 
 		}
@@ -87,13 +85,16 @@ public class Checklevel_Scr : MonoBehaviour {
 	}
 	//改变关卡选中Ui效果的方法，同时执行改变名称
 	public void LevelUi_Scr(int i ){
-		levelObj[i].gameObject.SetActive(true);
+        levelObj_i = i;
+        levelObj[i].gameObject.SetActive(true);
+        //Debug.Log(levelObj[i]+":"+ levelObj_i+"i"+i);
 		LevelNameUi_Scr(i);
 	}
 	//改变关卡名称Ui的方法
 	public void LevelNameUi_Scr(int i){
 		if (i==0)
 		{
+
 			Name1.text="圣芙兰法师学院";
 			Name2.text="露天战斗训练场";
 		}
@@ -120,7 +121,9 @@ public class Checklevel_Scr : MonoBehaviour {
 	}
 	public int Re_i(){
 		Debug.Log("i="+i);
+        
 		return i;
+        
 	}
 	public string Re_LevelName(){
 		string text="None";
