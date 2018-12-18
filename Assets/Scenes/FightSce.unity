@@ -898,7 +898,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Audio: {fileID: 0}
+  m_MainAudio: {fileID: 0}
   myMusicArray: []
+  Bgm: []
 --- !u!82 &201628464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1430,9 +1432,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2b9302fe677c4f8488d41586ec2149ab, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 90710c41cf0e60d49944d4f944c73da4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.524
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1512,7 +1514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9d44712a59ff34d9790d473e3f4273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 0}
+  audiobg: {fileID: 0}
 --- !u!1 &359932937
 GameObject:
   m_ObjectHideFlags: 0
