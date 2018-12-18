@@ -43,8 +43,13 @@ public class CardUi : MonoBehaviour {
 	///</summary>
 	public void EvenTrr_LargeImg(bool i){
 		if(i==true){
+			this.GetComponent<RectTransform>().anchoredPosition+=new Vector2(0,100);
+			this.GetComponent<Transform>().SetAsLastSibling();
 			CardImage.sprite=Deatil;
 		}else{
+			this.GetComponent<RectTransform>().anchoredPosition-=new Vector2(0,100);
+			this.GetComponent<Transform>().SetAsFirstSibling();
+			
 			CardImage.sprite=Img;
 		}
 

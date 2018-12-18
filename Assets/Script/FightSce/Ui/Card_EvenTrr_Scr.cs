@@ -22,15 +22,15 @@ public class Card_EvenTrr_Scr : MonoBehaviour {
 	public void testFun(){
 		// Debug.Log("rect.rect:"+rect.rect);
 		// Debug.Log("rect.pivot:"+rect.pivot);
-		rect.sizeDelta=rect.sizeDelta*1.41f;
-		
+		rect.sizeDelta=rect.sizeDelta*1.75f;
+
 		// Debug.Log("rect.sizeDelta:"+rect.sizeDelta);
 		
 	}
 	public void testFun2(){
 		// Debug.Log("rect.rect:"+rect.rect);
 		// Debug.Log("rect.pivot:"+rect.pivot);
-		rect.sizeDelta=rect.sizeDelta/1.41f;
+		rect.sizeDelta=rect.sizeDelta/1.75f;
 		// Debug.Log("rect.sizeDelta:"+rect.sizeDelta);
 		
 	}
