@@ -5,7 +5,7 @@ using UnityEngine;
 public class Audios : MonoBehaviour {
 
     public AudioSource m_Audio;
-    private AudioSource m_MainAudio;
+    public AudioSource m_MainAudio;
 
     public AudioClip[] myMusicArray;
     private AudioClip myMusicclip;
@@ -16,6 +16,12 @@ public class Audios : MonoBehaviour {
     private AudioClip myMusicclip5;
     private AudioClip myMusicclip6;
     private AudioClip myMusicclip7;
+    private AudioClip myMusicclip8;
+    private AudioClip myMusicclip9;
+    public AudioClip[] Bgm;
+    private AudioClip m_Bgm;
+    private AudioClip m_Bgm1;
+    private AudioClip m_Bgm2;
     // Use this for initialization
 
     public static Audios Instance;
@@ -33,22 +39,27 @@ public class Audios : MonoBehaviour {
     }
     
     void Start () {
-        myMusicclip = Resources.Load("Audios/a") as AudioClip;
-        myMusicclip1 = Resources.Load("Audios/Major") as AudioClip;
-        myMusicclip2 = Resources.Load("Audios/buxue") as AudioClip;
-        myMusicclip3 = Resources.Load("Audios/mubangji") as AudioClip;
-        myMusicclip4 = Resources.Load("Audios/shejian") as AudioClip;
-        myMusicclip5 = Resources.Load("Audios/Emenyj") as AudioClip;
-        myMusicclip6 = Resources.Load("Audios/playj") as AudioClip;
-        myMusicclip7 = Resources.Load("Audios/Emenydie") as AudioClip;
+        myMusicclip = Resources.Load("Audios/SoundEffects/a") as AudioClip;
+        myMusicclip1 = Resources.Load("Audios/SoundEffects/aa") as AudioClip;
+        myMusicclip2 = Resources.Load("Audios/SoundEffects/quantou") as AudioClip;
+        myMusicclip3 = Resources.Load("Audios/SoundEffects/mubangji") as AudioClip;
+        myMusicclip4 = Resources.Load("Audios/SoundEffects/shejian") as AudioClip;
+        myMusicclip5 = Resources.Load("Audios/SoundEffects/chuiji") as AudioClip;
+        myMusicclip6 = Resources.Load("Audios/SoundEffects/playjiao") as AudioClip;
+        myMusicclip7 = Resources.Load("Audios/SoundEffects/Emenydie") as AudioClip;
+        myMusicclip8 = Resources.Load("Audios/SoundEffects/Emenyjiao") as AudioClip;
+        myMusicclip9 = Resources.Load("Audios/SoundEffects/buxue") as AudioClip;
+        m_Bgm = Resources.Load("Audios/BGM/bgm") as AudioClip;
+        m_Bgm1 = Resources.Load("Audios/BGM/bgm1") as AudioClip;
+        m_Bgm2 = Resources.Load("Audios/BGM/bgmweizhi") as AudioClip;
         myMusicArray = new AudioClip[]{ myMusicclip, myMusicclip1, myMusicclip2,
             myMusicclip3, myMusicclip4, myMusicclip5,
-            myMusicclip6 ,myMusicclip7};
-
+            myMusicclip6 ,myMusicclip7,myMusicclip8,myMusicclip9};
+        Bgm = new AudioClip[] { m_Bgm,m_Bgm1,m_Bgm2 };
         
         m_Audio = gameObject.GetComponent<AudioSource>();
         m_Audio.volume = SoundSetting._instance.slider.value;
-        m_Audio.clip = myMusicArray[1];
+        //m_Audio.clip = myMusicArray[1];
         m_MainAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
         m_MainAudio.volume= SoundSetting._instance.slider.value;
 

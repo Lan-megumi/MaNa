@@ -46,7 +46,7 @@ public class EmenyLibrary{
 			if (huihe%2==0)
 			{
 
-                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[2];
+                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[0];
                 Audios._instance.m_Audio.Play();
 
                 Hp +=65;
@@ -65,7 +65,7 @@ public class EmenyLibrary{
 		}
 		public override double Passivity_skill(double[] i){
 
-        Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[6];
+        Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[2];
         Audios._instance.m_Audio.Play();
 
         Debug.Log("触发锤一下被动");
@@ -109,7 +109,7 @@ public class EmenyLibrary{
 			if (0<i[2]&&i[2]<400)
 			{
 
-                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[4];
+                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[5];
                 Audios._instance.m_Audio.Play();
 
                 Debug.Log("机关训练木人想使用致命重击！");
@@ -125,7 +125,7 @@ public class EmenyLibrary{
 					Debug.Log("扑空了");
 				}
 			}else{
-                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[6];
+                Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[0];
                 Audios._instance.m_Audio.Play();
 
                 Debug.Log("触发锤一下被动");

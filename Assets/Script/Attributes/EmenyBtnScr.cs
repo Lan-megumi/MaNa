@@ -23,8 +23,6 @@ public class EmenyBtnScr : MonoBehaviour
 
     public void GetFather()
     {
-        //选中敌人时播放的音效
-        
         if (t == true)
         {
 
