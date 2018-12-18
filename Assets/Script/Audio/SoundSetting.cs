@@ -33,6 +33,7 @@ public class SoundSetting : MonoBehaviour {
         Setting.SetActive(false);
         isSetting = false;
         m_audiobg = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+        m_audiobg.volume = 0.1f;
 	}
 	
 	// Update is called once per frame
@@ -42,16 +43,10 @@ public class SoundSetting : MonoBehaviour {
 
     public void Open()
     {
-        if (isSetting == false)
-        {
+        
             Setting.SetActive(true);
             isSetting = true;
-        }
-        else
-        {
-            Setting.SetActive(false);
-            isSetting = false;
-        }
+       
         
     }
     public void Close()
