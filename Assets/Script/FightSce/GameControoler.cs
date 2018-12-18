@@ -118,8 +118,8 @@ public class GameControoler : MonoBehaviour {
         }
         else
         {
-            SceneManager.LoadScene(6);
-
+            // SceneManager.LoadScene(6);
+			BalanceScr._instance.StarUi(true);
         }
     }
 ///<summary>
