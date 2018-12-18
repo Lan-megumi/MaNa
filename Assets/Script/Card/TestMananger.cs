@@ -67,10 +67,14 @@ public class TestMananger : MonoBehaviour
             CardRarity = Library1[b].GetCardRarity;
             CardName = Library1[b].GetCardName;
             CardCost=Library1[b].GetCardCost;
-            //调用相应方法传值以及改变Ui
-            CardLibrary[i].GetComponent<CardUi>().ChangeUiDate(Cardid, CardType, CardEle, CardRarity, CardName);
+            //为脚本填充数据
             CardLibrary[i].GetComponent<TestCardScr>().SetDate(Cardid,CardCost);
             CardLibrary[i].GetComponent<TestCardScr>().Init();
+            //调用相应方法传值以及改变Ui
+            CardLibrary[i].GetComponent<CardUi>().ChangeUiDate(Cardid);
+            CardLibrary[i].GetComponent<CardUi>().SetCardImage();
+            
+            
             d =b;
             b++;
             //当循环到牌库上限时，将索引归零并且提示发牌之后洗牌
