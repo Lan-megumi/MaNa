@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 ///<summary>
 ///	结算界面
 ///<summary>
 public class BalanceScr : MonoBehaviour {
     public GameObject balance;
-    public GameObject wim;
-    public GameObject fail;
+    public Text result;
+    public Text number;
 
 
 	public static BalanceScr Instance;
@@ -28,10 +29,6 @@ public class BalanceScr : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         balance = GameObject.Find("U");
-        wim = GameObject.Find("U/Win");
-        fail = GameObject.Find("U/Fail");
-        wim.SetActive(false);
-        fail.SetActive(false);
         balance.SetActive(false);
        
 	}
@@ -45,10 +42,12 @@ public class BalanceScr : MonoBehaviour {
 		IFwin=d;
 		if(IFwin==true){
             balance.SetActive(true);
-            wim.SetActive(true);
+            result.text = "胜利";
+            number.text = "获得补血药 x2";
 		}else{
             balance.SetActive(true);
-            fail.SetActive(true);
+            result.text = "失败";
+            number.text = "获得补血药 x1";
         }
 	}
 	public void JumpChoselevel(){
