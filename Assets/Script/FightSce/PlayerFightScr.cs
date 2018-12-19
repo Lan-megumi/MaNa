@@ -28,6 +28,10 @@ public class PlayerFightScr : MonoBehaviour {
 	///</summary>
 	public void StarFuntion(string type0){
 		N_Type=type0;
+		//如果有Cure治疗效果，则传递参数给PlayerDate跳转参数给PlayerUi
+		if(N_Type=="Cure"){
+			PlayerDate._instance.Fun_EvenTrr(true);
+		}
 	}
 	///<summary>
 	///	传入伤害数值，类型string
@@ -46,5 +50,7 @@ public class PlayerFightScr : MonoBehaviour {
 	public void InitDate(){
 		N_Type="";
 		N_Num="";
+		PlayerDate._instance.Fun_EvenTrr(false);
+
 	}
 }

@@ -9,7 +9,9 @@ public class PlayerUi : MonoBehaviour {
 	该脚本用于绑定Player的Ui
  */
 	public Text Name;
+	public Image Trri_img;
 	public Slider HpSlider;
+	public bool IfCure_Bm;
 	// Use this for initialization
 	void Start () {
 		// Update_HpSlider(1000,1100);
@@ -27,5 +29,25 @@ public class PlayerUi : MonoBehaviour {
 		double i = (double)NowNum/(double)Maxnum;
 		// Debug.Log(i);
 		HpSlider.value=(float)i;
+	}
+
+	public void PlayerTrri_Ui(bool d){
+		if(d==true){
+			if(IfCure_Bm==true){
+				Trri_img.gameObject.SetActive(true);
+			}
+		}else{
+			if(IfCure_Bm==true){
+				Trri_img.gameObject.SetActive(false);
+			}
+			// Trri_img.gameObject.SetActive(false);
+
+		}
+	}
+	///<summary>
+	/// Cure部分Ui显示效果
+	///</summary>
+	public void Set_IfCure_Bm(bool t){
+		IfCure_Bm=t;
 	}
 }

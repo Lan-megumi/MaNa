@@ -80,6 +80,12 @@ public class PlayerDate : MonoBehaviour {
 	public void UpdateHp(){
 		this.GetComponent<PlayerUi>().Update_HpSlider(MaxHp,Hp);
 	}
+	///<summary>
+	/// 方法的跳转接口
+	///</summary>
+	public void Fun_EvenTrr(bool n){
+		this.GetComponent<PlayerUi>().PlayerTrri_Ui(n);
+	}
 //-----------------------------------------
 	//以下分别为获取 玩家血量、最大血量、魔法抗性、异常抗性、闪避
 	public int ReturnHp(){
