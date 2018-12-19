@@ -113,13 +113,14 @@ public class GameControoler : MonoBehaviour {
         int d = SceDate.GetComponent<SceStar>().Re_LELNum();
         if (d > SceDate.GetComponent<SceStar>().Re_MaxLELnum())
         {
-            SceneManager.LoadScene(5);
+            BalanceScr._instance.StarUi(true);
+
+            //SceneManager.LoadScene(5);
             Destroy(SceDate);
         }
         else
         {
-            // SceneManager.LoadScene(6);
-			BalanceScr._instance.StarUi(true);
+            SceneManager.LoadScene(6);
         }
     }
 ///<summary>
