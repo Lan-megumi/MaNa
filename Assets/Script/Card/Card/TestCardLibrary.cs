@@ -34,18 +34,18 @@ public  class  TestCardLibrary:MonoBehaviour{
     TestCard EL11Wa=new TestCard("EL11Wa",(Type)0,(Element_type)1,(Rarity)3,"洛水",4,25,(AttcakeType)2,40);
     TestCard EL12Wa=new TestCard("EL12Wa",(Type)0,(Element_type)1,(Rarity)3,"绝寒",8,70,(AttcakeType)1,0);
 
-    TestCard EL01C1=new TestCard("EL01C1",(Type)0,(Element_type)2,(Rarity)0,"蔓延",3,10,(AttcakeType)1,0);
-    TestCard EL02C1=new TestCard("EL02C1",(Type)0,(Element_type)2,(Rarity)0,"轻盈",2,15,(AttcakeType)8,0);
-    TestCard EL03C1=new TestCard("EL03C1",(Type)0,(Element_type)2,(Rarity)0,"悲风",3,40,(AttcakeType)4,0);
-    TestCard EL04C1=new TestCard("EL04C1",(Type)0,(Element_type)2,(Rarity)1,"氤氲",3,20,(AttcakeType)8,0);
-    TestCard EL05C1=new TestCard("EL05C1",(Type)0,(Element_type)2,(Rarity)1,"狂风",4,25,(AttcakeType)1,0);
-    TestCard EL06C1=new TestCard("EL06C1",(Type)0,(Element_type)2,(Rarity)1,"涡旋",3,50,(AttcakeType)0,0);
-    TestCard EL07C1=new TestCard("EL07C1",(Type)0,(Element_type)2,(Rarity)2,"气浪",4,70,(AttcakeType)0,10);
-    TestCard EL08C1=new TestCard("EL08C1",(Type)0,(Element_type)2,(Rarity)2,"风挽",4,40,(AttcakeType)4,20);
-    TestCard EL09C1=new TestCard("EL09C1",(Type)0,(Element_type)2,(Rarity)2,"风痕",4,60,(AttcakeType)0,0);
-    TestCard EL10C1=new TestCard("EL10C1",(Type)0,(Element_type)2,(Rarity)3,"迷域",6,30,(AttcakeType)1,0);
-    TestCard EL11C1=new TestCard("EL11C1",(Type)0,(Element_type)2,(Rarity)3,"苍穹",7,50,(AttcakeType)1,0);
-    TestCard EL12C1=new TestCard("EL12C1",(Type)0,(Element_type)2,(Rarity)3,"风语",6,55,(AttcakeType)1,0);
+    TestCard EL01Cl=new TestCard("EL01Cl",(Type)0,(Element_type)2,(Rarity)0,"蔓延",3,10,(AttcakeType)1,0);
+    TestCard EL02Cl=new TestCard("EL02Cl",(Type)0,(Element_type)2,(Rarity)0,"轻盈",2,15,(AttcakeType)8,0);
+    TestCard EL03Cl=new TestCard("EL03Cl",(Type)0,(Element_type)2,(Rarity)0,"悲风",3,40,(AttcakeType)4,0);
+    TestCard EL04Cl=new TestCard("EL04Cl",(Type)0,(Element_type)2,(Rarity)1,"氤氲",3,20,(AttcakeType)8,0);
+    TestCard EL05Cl=new TestCard("EL05Cl",(Type)0,(Element_type)2,(Rarity)1,"狂风",4,25,(AttcakeType)1,0);
+    TestCard EL06Cl=new TestCard("EL06Cl",(Type)0,(Element_type)2,(Rarity)1,"涡旋",3,50,(AttcakeType)0,0);
+    TestCard EL07Cl=new TestCard("EL07Cl",(Type)0,(Element_type)2,(Rarity)2,"气浪",4,70,(AttcakeType)0,10);
+    TestCard EL08Cl=new TestCard("EL08Cl",(Type)0,(Element_type)2,(Rarity)2,"风挽",4,40,(AttcakeType)4,20);
+    TestCard EL09Cl=new TestCard("EL09Cl",(Type)0,(Element_type)2,(Rarity)2,"风痕",4,60,(AttcakeType)0,0);
+    TestCard EL10Cl=new TestCard("EL10Cl",(Type)0,(Element_type)2,(Rarity)3,"迷域",6,30,(AttcakeType)1,0);
+    TestCard EL11Cl=new TestCard("EL11Cl",(Type)0,(Element_type)2,(Rarity)3,"苍穹",7,50,(AttcakeType)1,0);
+    TestCard EL12Cl=new TestCard("EL12Cl",(Type)0,(Element_type)2,(Rarity)3,"风语",6,55,(AttcakeType)1,0);
     // public Text IdText,TypeText,EleText,RarityText,NameText;
     public List<TestCard> Library0;
 	void Awake(){
@@ -79,18 +79,18 @@ public  class  TestCardLibrary:MonoBehaviour{
         Library0.Add(EL11Wa);
         Library0.Add(EL12Wa);
 
-        Library0.Add(EL01C1);
-		Library0.Add(EL02C1);
-		Library0.Add(EL03C1);
-		Library0.Add(EL04C1);
-        Library0.Add(EL05C1);
-        Library0.Add(EL06C1);
-        Library0.Add(EL07C1);
-        Library0.Add(EL08C1);
-        Library0.Add(EL09C1);
-        Library0.Add(EL10C1);
-        Library0.Add(EL11C1);
-        Library0.Add(EL12C1);
+        Library0.Add(EL01Cl);
+		Library0.Add(EL02Cl);
+		Library0.Add(EL03Cl);
+		Library0.Add(EL04Cl);
+        Library0.Add(EL05Cl);
+        Library0.Add(EL06Cl);
+        Library0.Add(EL07Cl);
+        Library0.Add(EL08Cl);
+        Library0.Add(EL09Cl);
+        Library0.Add(EL10Cl);
+        Library0.Add(EL11Cl);
+        Library0.Add(EL12Cl);
         // Debug.Log("TestCardLib Star");
 
     }
