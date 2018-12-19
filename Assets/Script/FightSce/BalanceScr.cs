@@ -7,6 +7,11 @@ using UnityEngine.SceneManagement;
 ///	结算界面
 ///<summary>
 public class BalanceScr : MonoBehaviour {
+    public GameObject balance;
+    public GameObject wim;
+    public GameObject fail;
+
+
 	public static BalanceScr Instance;
 
 	public static BalanceScr _instance{
@@ -22,7 +27,13 @@ public class BalanceScr : MonoBehaviour {
 	public bool IFwin;
 	// Use this for initialization
 	void Start () {
-		
+        balance = GameObject.Find("U");
+        wim = GameObject.Find("U/Win");
+        fail = GameObject.Find("U/Fail");
+        wim.SetActive(false);
+        fail.SetActive(false);
+        balance.SetActive(false);
+       
 	}
 	
 	// Update is called once per frame
@@ -33,12 +44,14 @@ public class BalanceScr : MonoBehaviour {
 		this.gameObject.SetActive(true);
 		IFwin=d;
 		if(IFwin==true){
-
+            balance.SetActive(true);
+            wim.SetActive(true);
 		}else{
-			
-		}
+            balance.SetActive(true);
+            fail.SetActive(true);
+        }
 	}
 	public void JumpChoselevel(){
-		SceneManager.LoadScene(6);
+		SceneManager.LoadScene(5);
 	}
 }
