@@ -57,6 +57,7 @@ public class PlayerDate : MonoBehaviour {
 		if (Reckon<=0)
 		{
 			Debug.Log("玩家被击败了");
+			BalanceScr._instance.StarUi(false);
 		}
 		Hp=Reckon;
 		UpdateHp();
