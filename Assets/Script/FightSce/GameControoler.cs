@@ -105,7 +105,9 @@ public class GameControoler : MonoBehaviour {
                 StartCoroutine(Man());
         }
 	}
-
+	public void StarMan(){
+		jin.SetActive(true);
+	}
 	IEnumerator Man()
     {
 

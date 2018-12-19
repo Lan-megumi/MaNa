@@ -45,6 +45,7 @@ public class BalanceScr : MonoBehaviour {
             result.text = "胜利";
             number.text = "获得补血药 x2";
 		}else{
+            GameControoler._instance.StarMan();
             balance.SetActive(true);
             result.text = "失败";
             number.text = "获得补血药 x1";
