@@ -27,7 +27,6 @@ public class EmenyBtnScr : MonoBehaviour
         {
 
             Father.GetComponent<EmenyScr>().UpdateBack(t);
-            PublicFightScr._instance.Recvie_Father = returnFater();
             t = false;
         }
         else
@@ -55,6 +54,8 @@ public class EmenyBtnScr : MonoBehaviour
         
         if (NTpye != null && NName != null)
         {
+            PublicFightScr._instance.Recvie_Father = returnFater();
+
             //----------------------------Debuff
             //在这里根据接受Debuff的不同来进行不同的操作
             if (NBuff == "Fire")
@@ -143,6 +144,8 @@ public class EmenyBtnScr : MonoBehaviour
 		NBuff="";
 		z=0;
 		N_Buff_num=0;
+        PublicFightScr._instance.Recvie_Father = null;
+
 	}
 
 }
