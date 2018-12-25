@@ -22,6 +22,8 @@ public class CardCompound : MonoBehaviour {
     private string DicReturn;
     //储存两个卡的id
     public  string a1, a2;  //构成  a1&a2 
+    //储存两个卡的消耗
+    public int b1,b2;
 
     void Awake()
     {
@@ -36,9 +38,17 @@ public class CardCompound : MonoBehaviour {
     ///</summary>
     public void ShowButton3()
     {
+        //判断是否有卡牌进入合成
         if (a1!=null||a2!=null)
         {
-            FindDic(a1, a2);
+            //获取玩家的Mana条
+            int Mana=PlayerDate._instance.ReturnMana();
+            if(b1+b2<=Mana){
+                FindDic(a1, a2);
+                PlayerDate._instance.ReckonMana(-(b1+b2));
+            }else{
+                Debug.Log("来自CardCompound的报告：你的Mana不够");
+            }
         }else
         {
             Debug.Log("未传回两个id");
@@ -89,6 +99,30 @@ public class CardCompound : MonoBehaviour {
         }
     }
 //--------------------------------------------------
+    public void SetCost(int cost){
+        if (Re_a1()==null)
+        {
+            b1=cost;
+        }else if(Re_a2()==null){
+            b2=cost;
+        }else{
+            Debug.Log("来自CardCompound的报告：已经储存了两个消耗");
+        }
+    }
+    public void DeletCost(int i){
+        if (i==2)
+        {
+            b2=0;
+        }else if (i==1)
+        {
+            b1=0;
+        }else
+        {
+            Debug.Log("来自CardCompound的报告：没有储存任何消耗");
+            
+        }
+    }
+//--------------------------------------------------
     //返回方法
     public string Re_a1(){
         return a1;
@@ -99,5 +133,7 @@ public class CardCompound : MonoBehaviour {
     public void Init(){
         a1=null;
         a2=null;
+        b1=0;
+        b2=0;
     }
 }

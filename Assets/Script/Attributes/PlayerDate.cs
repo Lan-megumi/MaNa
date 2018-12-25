@@ -86,6 +86,15 @@ public class PlayerDate : MonoBehaviour {
 	public void Fun_EvenTrr(bool n){
 		this.GetComponent<PlayerUi>().PlayerTrri_Ui(n);
 	}
+	///<summary>
+	///	该方法用于结算Mana值，如果需要消耗Mana请传入一个负数
+	///</summary>
+	public void ReckonMana(int i){
+		Mana+=i;
+		if(Mana+i>MaxMana){
+			Mana=MaxMana;
+		}
+	}
 //-----------------------------------------
 	//以下分别为获取 玩家血量、最大血量、魔法抗性、异常抗性、闪避
 	public int ReturnHp(){
