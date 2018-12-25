@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class PlayerBtnScr : MonoBehaviour {
 
+	
+	/// <summary>
+	/// OnMouseDown is called when the user has pressed the mouse button while
+	/// over the GUIElement or Collider.
+	/// </summary>
+	void OnMouseDown()
+	{
+		CheckDate();
+	}
+
 	///<summary>
 	///	通过此读取Player的公共战斗数据以及进入Player的计算方法,绑定于按钮上
 	///</summary>

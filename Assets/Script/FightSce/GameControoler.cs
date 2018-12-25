@@ -76,6 +76,7 @@ public class GameControoler : MonoBehaviour {
 		}else
 		{
 			Debug.Log("数据未找到！");
+			SceneManager.LoadScene(5);
 		}
 		
 	}

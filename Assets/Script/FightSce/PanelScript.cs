@@ -34,6 +34,7 @@ public class PanelScript : MonoBehaviour {
         GameObject Father_ii= Instantiate(Enemy);
 
         Father_ii.transform.parent=this.gameObject.transform;
+        Father_ii.transform.localScale=new Vector3(1,1,1);
         // Debug.Log("Fathe_ii = "+Father_ii);
         //获取预制体的 敌人子对象，可以从中拿到敌人的数据、debuff控制脚本
         Transform Tran_ii = Father_ii.transform.GetChild(0);
