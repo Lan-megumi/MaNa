@@ -55,7 +55,6 @@ public class TestMananger : MonoBehaviour
         //同步卡库
         Library1 = TestCardLibrary._instance.Library0;
         //初始化各个脚本的关键值
-        CardCompound._instance.Init();
         Init();
         //循环给卡牌填值
         for (int i = 0; i < CardLibrary.Count; i++)

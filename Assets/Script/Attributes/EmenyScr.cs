@@ -122,6 +122,8 @@ public class EmenyScr : MonoBehaviour {
             EnemyHp -=n;
 			if (EnemyHp<=0)
 			{
+				Debug.Log("来自EmenyScr的报告：敌人阵亡！");
+				//播放死亡动画-死亡动画会触发死亡检测的一系列判断
 				this.transform.GetChild(1).GetComponent<EnemyAni_Scr>().StarDie();
 				
 				Audios._instance.m_Audio.clip = Audios._instance.myMusicArray[7];

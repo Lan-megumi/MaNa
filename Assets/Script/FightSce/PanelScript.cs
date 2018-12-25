@@ -55,7 +55,7 @@ public class PanelScript : MonoBehaviour {
         {
             // Debug.Log("Obj_after:"+Father_ii.transform.position);
             // Debug.Log("EnemyIndex:"+EnemeyIndex);
-            Tran_ii.GetComponent<RectTransform>().anchoredPosition+=new Vector2(70*EnemeyIndex,0);
+            Tran_ii.GetComponent<RectTransform>().anchoredPosition+=new Vector2(50*EnemeyIndex,0);
 
             // rt.anchoredPosition+=new Vector2(55*EnemeyIndex,0);
             // Debug.Log("rt:"+rt.anchoredPosition);

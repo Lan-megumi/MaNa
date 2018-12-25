@@ -39,6 +39,7 @@ public class EnemyAni_Scr : MonoBehaviour {
 	}
 	//执行播放完动画后帧的调用脚本
 	public void AnimationInit(){
+		Debug.Log("动画初始化");
 		Anim.SetBool("IfDamage",false);
 		Anim.SetBool("IfCure",false);
 		Anim.SetBool("IfDie",false);
