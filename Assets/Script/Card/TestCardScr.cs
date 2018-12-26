@@ -69,6 +69,7 @@ public class TestCardScr : MonoBehaviour {
 		return Cardid;
 	}
 	public int Re_CardCost(){
+		Debug.Log("CardCost:"+CardCost);
 		return CardCost;
 	}
 	public bool Re_Bool_Card(){

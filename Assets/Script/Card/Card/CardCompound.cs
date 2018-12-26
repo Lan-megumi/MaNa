@@ -43,9 +43,12 @@ public class CardCompound : MonoBehaviour {
         {
             //获取玩家的Mana条
             int Mana=PlayerDate._instance.ReturnMana();
-            if(b1+b2<=Mana){
+            int cardC1=Re_b1();
+            int cardC2=Re_b2();
+            if(cardC1+cardC2<=Mana){
                 FindDic(a1, a2);
-                PlayerDate._instance.ReckonMana(-(b1+b2));
+                Debug.Log("b1+b2"+(-cardC1-cardC2));
+                PlayerDate._instance.ReckonMana(-(cardC1+cardC2));
             }else{
                 Debug.Log("来自CardCompound的报告：你的Mana不够");
             }
@@ -100,10 +103,10 @@ public class CardCompound : MonoBehaviour {
     }
 //--------------------------------------------------
     public void SetCost(int cost){
-        if (Re_a1()==null)
+        if (Re_b1()==0)
         {
             b1=cost;
-        }else if(Re_a2()==null){
+        }else if(Re_b2()==0){
             b2=cost;
         }else{
             Debug.Log("来自CardCompound的报告：已经储存了两个消耗");
@@ -129,6 +132,12 @@ public class CardCompound : MonoBehaviour {
     }
     public string Re_a2(){
         return a2;
+    }
+     public int Re_b1(){
+        return b1;
+    }
+    public int Re_b2(){
+        return b2;
     }
     public void Init(){
         a1=null;
