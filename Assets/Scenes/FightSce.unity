@@ -2431,6 +2431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player_name: 
+  Head_portrait: 
   Hp: 0
   MaxHp: 0
   Mana: 0
@@ -2877,7 +2878,7 @@ MonoBehaviour:
   Hp: {fileID: 2131902474}
   Mana: {fileID: 2099758626}
   DeatilObj: {fileID: 612319036}
-  PlayerPoritrait: {fileID: 0}
+  PlayerPoritrait: {fileID: 2008856374}
 --- !u!1 &623600324
 GameObject:
   m_ObjectHideFlags: 0
@@ -6207,7 +6208,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2008856372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -6218,13 +6219,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!222 &2008856375
 CanvasRenderer:
   m_ObjectHideFlags: 0

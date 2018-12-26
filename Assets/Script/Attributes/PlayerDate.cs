@@ -28,7 +28,7 @@ public class PlayerDate : MonoBehaviour {
 /*
 	准备用于接受玩家数据的变量
 */
-	 public string Player_name="";
+	 public string Player_name="",Head_portrait="";
 	 public int Hp,MaxHp,Mana,MaxMana,Rgs,Imm,Avd;
 	 public float Agi;
 	 //---------------------------------
@@ -46,6 +46,7 @@ public class PlayerDate : MonoBehaviour {
 		Debug.Log("临时玩家创建！");
 		Hp=5000;MaxHp=Hp;Mana=600;MaxMana=Mana;Rgs=100;Imm=100;Avd=100;Agi=1f;
 		Player_name="圣人惠她老公";
+		Head_portrait="Player";
 		this.GetComponent<PlayerUi>().UpdateName(Player_name);
 		this.GetComponent<PlayerUi>().Update_HpSlider(MaxHp,Hp);
 	}
@@ -119,6 +120,9 @@ public class PlayerDate : MonoBehaviour {
 	}
 	public int ReturnMana(){
 		return Mana;
+	}
+	public string Re_Headportrait(){
+		return Head_portrait;
 	}
 //-----------------------------------------
 	

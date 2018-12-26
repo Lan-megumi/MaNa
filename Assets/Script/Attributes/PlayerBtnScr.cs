@@ -48,8 +48,12 @@ public class PlayerBtnScr : MonoBehaviour {
 		int Mana = this.GetComponent<PlayerDate>().ReturnMana();
 		// Debug.Log("Hp:"+Hp+" MaxHp:"+MaxHp);
 		// Debug.Log("Mana:"+Mana+" MaxMana:"+MaxMana)
+		string Headportrait=this.GetComponent<PlayerDate>().Re_Headportrait();
+
 		Player_Deatil_Ui._instance.ShowHpDeatil(MaxHp,Hp);
 		Player_Deatil_Ui._instance.ShowMannaDeatil(MaxMana,Mana);
+		Player_Deatil_Ui._instance.ShowHeadportrait(Headportrait);
+
 		//执行获取Ui并且显示方法
 	}
 
