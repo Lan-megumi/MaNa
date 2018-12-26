@@ -30,7 +30,6 @@ public class GroundScr : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		//新建场景数据库的实例
-
 		groundLib=new GroundLib();
 
 	}
@@ -42,12 +41,18 @@ public class GroundScr : MonoBehaviour {
 		SceDate=GameObject.Find("SceneDate");
 		SceGround=SceDate.GetComponent<SceStar>().Re_SceGround();
 		// Debug.Log("GroundScr:"+SceGround);	
-		groundLib.UponGround(SceGround);
+		ChangeGround(SceGround);
 
 	}
-/*
-	根据场景名称执行对应方法
-*/
+	///<summary>
+	///	改变场景的方法，同时改变Ui的显示
+	///</summary>
+	public void ChangeGround(string name){
+		groundLib.UponGround(name);
+		GroundUi._instance.ChangeGroundImg(name);
+		//播放一个动画
+	}
+
 	
 	
 	public string Re_SceGround(){
