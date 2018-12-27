@@ -19,6 +19,7 @@ public class Player_Deatil_Ui : MonoBehaviour {
 //---------------------------------------
 	public Slider Hp,Mana;
 	public GameObject DeatilObj;
+    //玩家头像
     public Image PlayerPoritrait;
 
    
@@ -34,13 +35,20 @@ public class Player_Deatil_Ui : MonoBehaviour {
         Hp.value=(float)i;
 	}
 
-     ///<summary>
+    ///<summary>
     /// Mana显示
     ///</summary>
 	public void ShowMannaDeatil(int MaxMana,int mana){
 		double i = (double)mana/(double)MaxMana;
         i=System.Math.Round(i,4);
         Mana.value=(float)i;
+	}
+    ///<summary>
+    /// 头像显示
+    ///</summary>
+	public void ShowHeadportrait(string Name){
+		Sprite a= Resources.Load("Headportrait/"+Name,typeof(Sprite))as Sprite;
+        PlayerPoritrait.sprite=a;
 	}
     public void ShowDebuffUi(){
         

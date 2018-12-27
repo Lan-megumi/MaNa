@@ -12,7 +12,8 @@ using System;
 */
 public class GroundLib  {
 	// Use this for initialization
-	List<Ground> GroundLibrary=new List<Ground>();
+	// List<Ground> GroundLibrary=new List<Ground>();
+	Ground[] GroundLibrary=new Ground[1];
 
  ///<summary>
 /// 这里是调用公式的接口会返回一个强制转换为int值的数字给 ReadCard.Reckon重新接收
@@ -32,17 +33,22 @@ public class GroundLib  {
 		//MethodInfo Ground_Class=GroundType.GetMethod(GroundName);
 		object b = Activator.CreateInstance(System.Type.GetType(GroundName));
 		Debug.Log("被置顶的场景类型:"+b.GetType());
-		GroundLibrary.Add((Ground)b);
-		
+		GroundLibrary[0]=((Ground)b);
+		GroundLibrary[0].name=GroundName;
 	}
 }
  
 //----------
 
 	public class Ground  {
+		public string name;
 		// Use this for initialization
 		public virtual double Rule(double[] date){
 			return 0;
+		}
+		public string GetName{
+			set{name=value;}
+			get{return name;}
 		}
 		
 	}
@@ -50,6 +56,7 @@ public class GroundLib  {
 	/// 无场景
 	///</summary>
 	public class None:Ground{
+		
 		public override double Rule(double[] date){
 			double Reckon = date[0]*1;
 			return Reckon;

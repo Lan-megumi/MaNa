@@ -20,6 +20,7 @@ public class Attributes  {
 	public int Imm;
 	public int Avd;
 	public string Name;
+	public string Headportrait;//头像
 
 /*
 	Passivity_skil 被动技能
@@ -62,6 +63,10 @@ public class Attributes  {
 	public string GetName{
 		set{Name=value;}
 		get{return Name;}
+	}
+	public string GetHeadportrait{
+		set{Headportrait=value;}
+		get{return Headportrait;}
 	}
 }
 

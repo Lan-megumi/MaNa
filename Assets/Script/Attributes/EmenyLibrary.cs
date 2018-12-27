@@ -20,6 +20,7 @@ public class EmenyLibrary{
             Agi = 80;
 			Imm=15;
 			Avd=2;
+			Headportrait=null;
 		}
 		
 	}
@@ -32,6 +33,8 @@ public class EmenyLibrary{
 			Agi=150;
 			Imm=15;
 			Avd=2;
+			Headportrait=null;
+
 		}
 	}
 	public  class Enemy3:Attributes{
@@ -39,6 +42,8 @@ public class EmenyLibrary{
 			Name="厚重型训练木人";
 			Hp=600;
 			Agi=78;
+			Headportrait="Blockhead";
+
 		}
 		public override double Passivity_skill(double[] i){
 			
@@ -62,6 +67,8 @@ public class EmenyLibrary{
 			//Hp=425
 			Hp=42;
 			Agi=53;
+			Headportrait="Blockhead";
+
 		}
 		public override double Passivity_skill(double[] i){
 
@@ -82,6 +89,8 @@ public class EmenyLibrary{
 			Name="机关训练木人";
 			Hp=350;
 			Agi=60;
+			Headportrait="Blockhead";
+
 		}
 		public override double Passivity_skill(double[] i){
 
@@ -104,6 +113,8 @@ public class EmenyLibrary{
 			Name="损害的大型训练木人";
 			Hp=1200;
 			Agi=82;
+			Headportrait="Blockhead";
+
 		}
 		public override double Passivity_skill(double[] i){
 
@@ -151,6 +162,8 @@ public class EmenyLibrary{
 			Name="占位符";
 			Hp=1200;
 			Agi=82;
+			Headportrait=null;
+
 		}
 	}
 	

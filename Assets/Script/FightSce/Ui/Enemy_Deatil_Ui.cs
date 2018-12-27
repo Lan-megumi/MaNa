@@ -72,9 +72,13 @@ public class Enemy_Deatil_Ui : MonoBehaviour {
 				EnemyDeatil_Debuff_Panel._instance.CreatEnemyDebuff(d_num[i],d_name);
 			}
 		}
-
-
-		
+	}
+	///<summary>
+	///
+	///</summary>
+	public void ShowHeadportrait(string name){
+		Sprite a = Resources.Load("Headportrait/"+name,typeof(Sprite))as Sprite;
+		EnemyPortrait.sprite=a;
 	}
 
 	///<summary>
@@ -104,5 +108,6 @@ public class Enemy_Deatil_Ui : MonoBehaviour {
 		}
 		
 	}
+
 	
 }

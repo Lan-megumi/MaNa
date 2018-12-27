@@ -8,6 +8,7 @@ public class EmenyScr : MonoBehaviour {
 	public int  EnemyHp,EnemyMaxHp;
     public int EnemyIndex;
 	public bool BChose_Deatil;
+	public string Headportrait;
 	//-------------------------
 	public Text TextName;
 	public Slider HpSlider;
@@ -47,7 +48,7 @@ public class EmenyScr : MonoBehaviour {
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
 			// enemyAi[0]=Newemeny;
-		
+			Headportrait=Newemeny.GetHeadportrait;
         }
 		else if(i==2){
 			Emeny2 Newemeny=new Emeny2();
@@ -55,21 +56,24 @@ public class EmenyScr : MonoBehaviour {
 			EnemyHp=Newemeny.GetHp;
 			TextName.text=Newemeny.GetName;
             Agi = Newemeny.Agi;
+			Headportrait=Newemeny.GetHeadportrait;
 			// enemyAi[0]=Newemeny;
         }else if(i==3){
 			Enemy3 Newemeny=new Enemy3();
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
+			Headportrait=Newemeny.GetHeadportrait;
 			TextName.text=Newemeny.GetName;
 			// double [] b={0};
-			Debug.Log(enemyAi);
+			// Debug.Log(enemyAi);
 			// enemyAi[0]=Newemeny;
 			enemyAi.Add(Newemeny);
 		}else if(i==4){
 			Enemy4 Newemeny=new Enemy4();
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
+			Headportrait=Newemeny.GetHeadportrait;
             Agi = Newemeny.Agi;
 			TextName.text=Newemeny.GetName;
 			enemyAi.Add(Newemeny);
@@ -78,6 +82,7 @@ public class EmenyScr : MonoBehaviour {
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
+			Headportrait=Newemeny.GetHeadportrait;
 			TextName.text=Newemeny.GetName;
 			enemyAi.Add(Newemeny);
 		}else if(i==6){
@@ -85,6 +90,7 @@ public class EmenyScr : MonoBehaviour {
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
+			Headportrait=Newemeny.GetHeadportrait;
 			TextName.text=Newemeny.GetName;
 			enemyAi.Add(Newemeny);
 		}else if(i==99){
@@ -92,6 +98,7 @@ public class EmenyScr : MonoBehaviour {
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
+			Headportrait=Newemeny.GetHeadportrait;
 			TextName.text=Newemeny.GetName;
 			// double [] b={0};
 			Debug.Log(enemyAi);
@@ -170,6 +177,10 @@ public class EmenyScr : MonoBehaviour {
 		int hp= this.Re_hp();
 		Enemy_Deatil_Ui._instance.ShowHpDeatil(Maxhp,hp);
 
+		string Headportrait=this.Re_Headportrait();
+		Debug.Log("Headportrait"+Headportrait);
+		Enemy_Deatil_Ui._instance.ShowHeadportrait(Headportrait);
+
 	}
 
 	public void Update_HpSlider(int Maxnum,int NowNum){
@@ -209,6 +220,9 @@ public class EmenyScr : MonoBehaviour {
 	}
 	public bool Re_BchoseDeatil(){
 		return BChose_Deatil;
+	}
+	public string Re_Headportrait(){
+		return Headportrait;
 	}
   
 }
