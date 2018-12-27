@@ -79,7 +79,7 @@ public class EmenyLibrary{
 			int r = Random.Range(1,40);
 			PlayerDate._instance.AttackePlayer(40+r);
 			Debug.Log("锤一下造成了"+(40+r)+"点伤害!");
-            
+            Inj._instance.StartRed();
             return 0.0;
 		}
 	}

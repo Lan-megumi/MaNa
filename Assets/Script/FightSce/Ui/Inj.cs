@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class Inj : MonoBehaviour {
+    public Text text;
+    private int i=0;
     public static Inj Instance;
     public static Inj _instance
     {
@@ -15,23 +17,26 @@ public class Inj : MonoBehaviour {
             return Instance;
         }
     }
-    public GameObject text;
     public Animator Anima;
     
     // Use this for initialization
     void Start () {
-        text = GameObject.Find("text");
+        text = GameObject.Find("Text").GetComponent<Text>();
         Anima = this.GetComponent<Animator>();
 	}
-	public void StartRed()
+    public void StartRed()
     {
-        Debug.Log("istext");
+        i++;
+        if (i >= 5) {
+            text.text = "要挂了";
+        }
         Anima.SetBool("istext", true);
-        
+        StartCoroutine(Injure());
     }
-    //public void AnimationInit()
-    //{
-    //    Anima.SetBool("istext", false);
-    //}
-    
+
+    IEnumerator Injure()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Anima.SetBool("istext", false);
+    }
 }
