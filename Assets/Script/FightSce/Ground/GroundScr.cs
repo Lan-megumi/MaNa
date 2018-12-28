@@ -44,9 +44,9 @@ public class GroundScr : MonoBehaviour {
 		ChangeGround(SceGround);
 
 	}
-	///<summary>
-	///	改变场景的方法，同时改变Ui的显示
-	///</summary>
+///<summary>
+///	改变场景的方法，同时改变Ui的显示
+///</summary>
 	public void ChangeGround(string name){
 		groundLib.UponGround(name);
 		GroundUi._instance.ChangeGroundImg(name);

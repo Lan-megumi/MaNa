@@ -20,6 +20,7 @@ public class CoroutineCountdown : MonoBehaviour
             return Instance;
         }
     }
+//---------------------------
 
     public Text Notetext;
 /*
@@ -29,19 +30,24 @@ public class CoroutineCountdown : MonoBehaviour
     public bool IfPlayer,IfFirst;
 
 //---------------------------
-
-    private int igg = 1;    //初始条件
+    ///<summary>
+    /// 控制
+    ///</summary>
+    private int igg = 1;    //CoroutineCountDown()进程在update里动，若igg=-1,CoroutineCountDown()不在继续，达成NextTrue()条件之一，可以回合结束
 
 //用于接收Player1的速度
     private float Player1Speed=60;
+
+    private float BackgroundSpeed=150;//场景速度
     
-    private float c;
+    private float c;//玩家的每帧速度
+
     private int Round= 0;
-//---------------------------
 
 //滑动条
-    public Slider PlayerSliderOject;
-
+    public Slider PlayerSliderOject;  //玩家
+ 
+//---------------------------
      /// <summary>
     /// 用于接收生成的敌人实例化数组
     ///</summary>
@@ -53,7 +59,7 @@ public class CoroutineCountdown : MonoBehaviour
     public static List<Slider> iiSlider;
 
     private GameObject Emeny;
-    public float[] Agis; //速度 的数组
+    public float[] Agis; //敌人速度 的数组
     public float[] SpeedAgis;//每帧速度 数组
     public float[] AgisMax;//速度最大值   50  150  数组 
     public int[] RoundNum; //每个敌人自己的 回合 数组
@@ -68,9 +74,6 @@ public class CoroutineCountdown : MonoBehaviour
 
     void Awake()
     {
-        // gm = new List<GameObject>();
-        // iiSlider = new List<Slider>();
-
         c = 1/Player1Speed;    //玩家每帧的速度
         Debug.Log("玩家每帧速度：" + c);
         gm = new List<GameObject>();
@@ -93,7 +96,7 @@ public class CoroutineCountdown : MonoBehaviour
 
 
         i = new double[10];                                     
-
+        //给敌人数组赋值
         for (int g = 0; g < gm.Count; g++)
         {
             if (gm[g]==null)
@@ -108,8 +111,8 @@ public class CoroutineCountdown : MonoBehaviour
                 int enemyhp = gm[g].GetComponent<EmenyScr>().EnemyHp;//获取敌人Hp
                 // PlayerHp[0]= PlayerDate._instance.Hp;               //玩家血量
                 // Debug.Log("玩家血量："+ PlayerHp[0]);
-                Debug.Log("敌人回合数："+Round);
-                Debug.Log("敌人速度:" + avg);
+                Debug.Log(i+"敌人回合数："+Round);
+                Debug.Log(i+"敌人速度:" + avg);
                 AgisMax[g] = avg;               //速度最大值
                 Agis[g] = avg;                  //储存速度
                 EnemyHp[g] = enemyhp;           //储存敌人血量
@@ -128,13 +131,19 @@ public class CoroutineCountdown : MonoBehaviour
     /// 下一回合
     /// </summary>
    public void NextTrun(){
-
+//某个速度为0时，则igg会=-1，
        //玩家
        Debug.Log("N_igg="+igg);       
+       
         if (igg == -1 & Player1Speed == 0)
         {
             igg = 1;
             Player1Speed = 60;                  //速度恢复最大值
+        }
+        //背景
+        if(igg==-1&BackgroundSpeed==0){
+            igg=1;
+            BackgroundSpeed=150;
         }
         //敌人
         for(int g=0; g <Agis.Length; g++)
@@ -149,6 +158,7 @@ public class CoroutineCountdown : MonoBehaviour
                 // Debug.Log( "io:" + igg);
             }
         }
+        
         Enemy_Deatil_Ui._instance.Update_Deatil_Ui();
    }
     void  Update()
@@ -171,8 +181,8 @@ public class CoroutineCountdown : MonoBehaviour
             {
                 GameControoler._instance.SetCardUi(true);
 
-                Player1Speed--;
-
+                Player1Speed--; 
+                BackgroundSpeed--;
                  /*
                     敌人们速度 --，只有到速度为0的时候才进入if条件执行的方法里
                  */
@@ -216,6 +226,8 @@ public class CoroutineCountdown : MonoBehaviour
                     PlayerSliderOject.value = 0;
                     // TestMananger._instance.VisableCard();
                 }
+
+                //若速度相等处理
                 for (int g = 0; g < Agis.Length; g++)
                 {
                     if (Player1Speed == Agis[g])            //若玩家跟敌人速度相等的话
@@ -233,12 +245,19 @@ public class CoroutineCountdown : MonoBehaviour
                             //敌人优先，玩家数值+1
                             Player1Speed += 1;
                         }
+                        
                     }
                 }
                 //
                 if (Player1Speed <= 0 && igg == 1)   //当玩家速度为0
                 {
-                    igg = -1;
+                    igg = -1;     
+                    // Debug.Log("jkhg手打");
+                    CheckedPlayer();
+                }
+                if (BackgroundSpeed <= 0 && igg == 1)   //当背景速度为0
+                {
+                    igg = -1;     
                     // Debug.Log("jkhg手打");
                     CheckedPlayer();
                 }
@@ -287,6 +306,19 @@ public class CoroutineCountdown : MonoBehaviour
                 IfPlayer=false;
             }
         }
+
+        if(BackgroundSpeed==0)
+        {
+            //场景
+            GroundLib d = GroundScr._instance.groundLib;
+            double [] s= d.ReckonRule3();
+            if(s[1]!=99){
+                //进入结算的方法
+                PulicObjScr._instance.Test(s);
+                
+            }
+        }
+
     }
     ///<summary>
     /// 滑动条控制脚本中的清除敌人数据方法，传入参数int i(0,1..) ;

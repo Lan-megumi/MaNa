@@ -28,6 +28,7 @@ public class GroundUi : MonoBehaviour {
 		GroundDeatil.enabled=false;
 	}
 	public void ChangeGroundImg(string name){
+		
 		Sprite a = Resources.Load("GroundImg/"+name,typeof(Sprite))as Sprite;
 		Groundimg.sprite=a;
 		if(a!=null){

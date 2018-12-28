@@ -15,14 +15,42 @@ public class GroundLib  {
 	// List<Ground> GroundLibrary=new List<Ground>();
 	Ground[] GroundLibrary=new Ground[1];
 
- ///<summary>
+///<summary>
 /// 这里是调用公式的接口会返回一个强制转换为int值的数字给 ReadCard.Reckon重新接收
 ///</summary>
-	public int ReckonDamaged(double[] date){
+	public int ReckonRule1(double[] date){
 		double Fina=0;
 		Fina = GroundLibrary[0].Rule(date);
 		
 		return (int)Fina;
+	
+	}
+///<summary>
+/// Rule2方法暂时未完成
+///</summary>
+	public int ReckonRule2(double[] date){
+		
+		// GroundLibrary[0].Rule2(date);
+		return 0;
+	
+	}
+///<summary>
+/// Rule2Init方法暂时未完成
+///</summary>
+	public int ReckonRule2Init(double[] date){
+		
+		// GroundLibrary[0].Rule2Init(date);
+		return 0;
+	
+	}
+
+///<summary>
+/// Rule3：随机攻击效果,返回一个数组
+///</summary>
+	public double[] ReckonRule3(){
+		
+		double[] d= GroundLibrary[0].Rule3();
+		return d;
 	
 	}
 ///<summary>
@@ -43,8 +71,30 @@ public class GroundLib  {
 	public class Ground  {
 		public string name;
 		// Use this for initialization
+		///<summary>
+		///	Rule方法用于场景专属的影响伤害效果,传入的double数组应为伤害规范数组，返回一个double类型变量或数组
+		///</summary>
 		public virtual double Rule(double[] date){
 			return 0;
+		}
+		///<summary>
+		///	Rule2方法用于影响当前场景的人的属性,传入的double数组应为属性规范数组,返回一个double类型变量或数组
+		///</summary>
+		public virtual double Rule2(double [] date){
+			return 0;
+		}
+		///<summary>
+		///	Rule2Init方法用于场景切换前执行，改回被扣减的属性,传入的double数组应为属性规范数组,返回一个double类型变量或数组
+		///</summary>
+		public virtual double Rule2Init(double [] date){
+			return 0;
+		}
+		///<summary>
+		///	Rule3方法用于随机攻击的效果,返回一个double类型的数组，里面储存伤害值以及类型
+		///</summary>
+		public virtual double[] Rule3(){
+			double[]d={0};
+			return d;
 		}
 		public string GetName{
 			set{name=value;}
@@ -78,10 +128,21 @@ public class GroundLib  {
 	///</summary>
 	public class Arena:Ground{
 
-		public override double Rule(double[] date){
-			Debug.Log("Arena.Rule所有伤害提升3%");
-			double Reckon = date[0]+date[0]*0.03;
-			return Reckon;
+		public override double[] Rule3(){
+			Debug.Log("Arena.Rule3：一定几率对全场造成10点伤害");
+			double [] reckonDeatil={0,0,0};
+			int Reckon = 0;//第一位数
+			int AttcakeType=99;//第二位数
+			System.Random rd = new System.Random();
+			float f = (float)(rd.Next(100)*0.01);
+			if (0.7+f>=1)
+			{
+				Reckon=10;
+				AttcakeType=1;
+			}
+			reckonDeatil[0]=(double)Reckon;
+			reckonDeatil[1]=(double)AttcakeType;
+			return reckonDeatil;
 		} 
 	}
 

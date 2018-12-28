@@ -7,17 +7,26 @@ using UnityEngine;
 	并触发
  */
 public class BuffScr : MonoBehaviour {
+
+	public static BuffScr Instance;
+
+    public static BuffScr _instance{
+        get{
+            if (null==Instance)
+            {
+                Instance=FindObjectOfType(typeof(BuffScr))as BuffScr;
+            }
+            return Instance;
+        }
+    }
+//------------------------------------
 	public string Buffid1,Buffid2,BuffName1,BuffName2;
 	public float Buffrate1,Buffrate2,BuffNum1,BuffNum2;
 	//用于接收计算出来的最终的rate
 	public float Result_rate,Result_num;
 	public string Result_name;
 	
-	public static BuffScr _instance;
 
-	void Awake(){
-		_instance=this;
-	}
 	// Use this for initialization
 	void Start () {
 		

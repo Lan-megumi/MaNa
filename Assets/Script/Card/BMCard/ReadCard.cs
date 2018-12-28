@@ -356,7 +356,7 @@ public GroundLib groundLib;
 	{
 		//新建用于接受 GroundScr 中 场景数据库变量？对象？
 		GroundLib gb = GroundScr._instance.groundLib;
-		Reckon= gb.ReckonDamaged(numObj);
+		Reckon= gb.ReckonRule1(numObj);
 	}
 	
 //--------------------------------------------------------------------------
