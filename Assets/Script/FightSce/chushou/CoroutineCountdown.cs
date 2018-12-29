@@ -35,11 +35,12 @@ public class CoroutineCountdown : MonoBehaviour
     ///</summary>
     private int igg = 1;    //CoroutineCountDown()进程在update里动，若igg=-1,CoroutineCountDown()不在继续，达成NextTrue()条件之一，可以回合结束
 
-//用于接收Player1的速度
-    private float Player1Speed=60;
 
+    private float Player1Speed=60;//用于接收Player1的速度
+    //新加的背景和帮手（264-280行）检测里没有加NextTrue（），不会主动结束回合
     private float BackgroundSpeed=150;//场景速度
-    
+    private float HelperSpeed=0;//帮手速度
+    private float HelperSpeedMax;
     private float c;//玩家的每帧速度
 
     private int Round= 0;
@@ -76,8 +77,10 @@ public class CoroutineCountdown : MonoBehaviour
     {
         c = 1/Player1Speed;    //玩家每帧的速度
         Debug.Log("玩家每帧速度：" + c);
-        gm = new List<GameObject>();
+        gm = new List<GameObject>();   //储存敌人
         iiSlider = new List<Slider>(); //储存滑动条
+        Helper_Speed(ref HelperSpeed);//帮手的传值  不知道要传啥
+        Debug.Log("helpSpeed0000" + HelperSpeed);
     }
    
     
@@ -133,12 +136,20 @@ public class CoroutineCountdown : MonoBehaviour
    public void NextTrun(){
 //某个速度为0时，则igg会=-1，
        //玩家
-       Debug.Log("N_igg="+igg);       
-       
+       Debug.Log("N_igg="+igg);
+
+
+        //速度恢复最大值
         if (igg == -1 & Player1Speed == 0)
         {
             igg = 1;
             Player1Speed = 60;                  //速度恢复最大值
+        }
+        //帮手
+        if(igg==-1 & HelperSpeed==0){
+            igg = 1;
+            HelperSpeed = HelperSpeedMax;
+
         }
         //背景
         if(igg==-1&BackgroundSpeed==0){
@@ -183,6 +194,7 @@ public class CoroutineCountdown : MonoBehaviour
 
                 Player1Speed--; 
                 BackgroundSpeed--;
+                HelperSpeed--;
                  /*
                     敌人们速度 --，只有到速度为0的时候才进入if条件执行的方法里
                  */
@@ -255,6 +267,11 @@ public class CoroutineCountdown : MonoBehaviour
                     // Debug.Log("jkhg手打");
                     CheckedPlayer();
                 }
+                if (HelperSpeed <= 0 && igg == 1)
+                {
+                    igg = -1;
+                    CheckedPlayer();
+                }
                 if (BackgroundSpeed <= 0 && igg == 1)   //当背景速度为0
                 {
                     igg = -1;     
@@ -269,7 +286,7 @@ public class CoroutineCountdown : MonoBehaviour
                         igg = -1;
                         CheckedPlayer();
                         //Debug.Log("igg"+igg); 
-                        NextTrun();        
+                        NextTrun();        //结束回合
                         // Debug.Log("创建的回合2");
                         // Debug.Log("创建的回合3" + igg);
                     }
@@ -283,7 +300,7 @@ public class CoroutineCountdown : MonoBehaviour
     /// 目前只用于修改Ui
     ///</summary>
     public void CheckedPlayer(){
-        if (Player1Speed==0)
+        if (Player1Speed==0)   //玩家回合
         {
             Notetext.text="你的回合";
             IfPlayer=true;
@@ -298,7 +315,7 @@ public class CoroutineCountdown : MonoBehaviour
             }
         }
          
-        for (int g = 0; g < Agis.Length; g++)           //遍历
+        for (int g = 0; g < Agis.Length; g++)           //敌人回合
         {
             if (Agis[g] == 0)
             {
@@ -307,7 +324,7 @@ public class CoroutineCountdown : MonoBehaviour
             }
         }
 
-        if(BackgroundSpeed==0)
+        if(BackgroundSpeed==0)      //背景回合
         {
             //场景
             GroundLib d = GroundScr._instance.groundLib;
@@ -318,7 +335,10 @@ public class CoroutineCountdown : MonoBehaviour
                 
             }
         }
-
+        if(HelperSpeed==0)  //帮手回合
+        {
+            Notetext.text = "帮手回合";
+        }
     }
     ///<summary>
     /// 滑动条控制脚本中的清除敌人数据方法，传入参数int i(0,1..) ;
@@ -328,6 +348,14 @@ public class CoroutineCountdown : MonoBehaviour
         iiSlider[i]=null;
         
     }
+    public void Helper_Speed(ref float i)
+    {
+        HelperSpeed = i+10;
+        HelperSpeedMax = HelperSpeed;
+        Debug.Log("helpSpeedMax" + HelperSpeedMax);
+
+    }
+    
 
 
 }
