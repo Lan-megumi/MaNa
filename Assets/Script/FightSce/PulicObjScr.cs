@@ -15,15 +15,34 @@ public class PulicObjScr : MonoBehaviour {
         }
     }
 //--------------------------------------
+    ///<summary>
+    /// 储存敌人的数组
+    ///<summary>
+    public GameObject[] EnemyObj;
+     ///<summary>
+    /// 储存敌人的数组
+    ///<summary>
+    public GameObject[] PlayerObj;
+
+    public GameObject EnemyPanel;
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+     private void UpdateObj(){
+         //该方法为更新同步的数据
+         //更新敌人
+         
+     }
+     public GameObject[] Re_PlayerObj(){
+         UpdateObj();
+         return PlayerObj;
+     }
+    public GameObject[] Re_EnemyObj(){
+         UpdateObj();
+         return EnemyObj;
+     }
 	public void Test(double[] d){
 		
 	}
