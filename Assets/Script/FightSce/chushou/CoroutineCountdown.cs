@@ -135,9 +135,9 @@ public class CoroutineCountdown : MonoBehaviour
     /// </summary>
    public void NextTrun(){
 //某个速度为0时，则igg会=-1，
-       //玩家
-       Debug.Log("N_igg="+igg);
-        Debug.Log("HelperSpeed" + HelperSpeed);
+        //玩家
+        //Debug.Log("N_igg="+igg);
+        // Debug.Log("HelperSpeed" + HelperSpeed);
 
         //速度恢复最大值
         if (igg == -1 & Player1Speed == 0)
@@ -330,7 +330,7 @@ public class CoroutineCountdown : MonoBehaviour
             //场景
             GroundLib d = GroundScr._instance.groundLib;
             double [] s= d.ReckonRule3();
-            Debug.Log("s="+s);
+            Debug.Log("来自收脚本的信息：背景回合取得的数组第一位为 "+s[0]);
             if(s[0]!=0){
                 //进入结算的方法
                 PulicObjScr._instance.Test(s);
