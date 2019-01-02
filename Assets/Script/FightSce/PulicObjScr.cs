@@ -24,16 +24,30 @@ public class PulicObjScr : MonoBehaviour {
     ///<summary>
     public GameObject[] PlayerObj;
 
-    public GameObject EnemyPanel;
+    public Transform EnemyPanel;
 	// Use this for initialization
 	void Start () {
 
 	}
 	
-     private void UpdateObj(){
+     public void UpdateObj(){
          //该方法为更新同步的数据
          //更新敌人
-         
+         int d = EnemyPanel.GetChildCount();
+         List<GameObject> LinshiEnemyObj=new List<GameObject>();
+        //  Debug.Log("1:"+d);
+         for(int i=0;i<d;i++){
+            Transform linshiTran=EnemyPanel.GetChild(i);
+            if(linshiTran.gameObject.activeInHierarchy==false) {
+                
+            }else{
+                LinshiEnemyObj.Add(linshiTran.gameObject);
+                Debug.Log(i+":"+LinshiEnemyObj[i]);
+                EnemyObj[i]=linshiTran.gameObject;
+            }
+            
+         }
+
      }
      public GameObject[] Re_PlayerObj(){
          UpdateObj();
