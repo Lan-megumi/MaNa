@@ -270,12 +270,14 @@ public class CoroutineCountdown : MonoBehaviour
                 {
                     igg = -1;
                     CheckedPlayer();
+                    NextTrun(); 
                 }
                 if (BackgroundSpeed <= 0 && igg == 1)   //当背景速度为0
                 {
                     igg = -1;     
                     // Debug.Log("jkhg手打");
                     CheckedPlayer();
+                    NextTrun(); 
                 }
                 for (int g = 0; g < Agis.Length; g++)   //遍历速度
                 {
@@ -328,7 +330,8 @@ public class CoroutineCountdown : MonoBehaviour
             //场景
             GroundLib d = GroundScr._instance.groundLib;
             double [] s= d.ReckonRule3();
-            if(s[1]!=99){
+            Debug.Log("s="+s);
+            if(s[0]!=0){
                 //进入结算的方法
                 PulicObjScr._instance.Test(s);
                 

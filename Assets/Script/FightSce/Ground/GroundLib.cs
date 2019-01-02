@@ -78,22 +78,26 @@ public class GroundLib  {
 			return 0;
 		}
 		///<summary>
-		///	Rule2方法用于影响当前场景的人的属性,传入的double数组应为属性规范数组,返回一个double类型变量或数组
+		///	Rule2方法用于影响当前场景的人的属性,返回的double数组应为属性规范数组
 		///</summary>
-		public virtual double Rule2(double [] date){
-			return 0;
+		public virtual double[] Rule2(){
+			double[] d={0,0,0,0,0,0};
+			
+			return d;
 		}
 		///<summary>
 		///	Rule2Init方法用于场景切换前执行，改回被扣减的属性,传入的double数组应为属性规范数组,返回一个double类型变量或数组
 		///</summary>
-		public virtual double Rule2Init(double [] date){
-			return 0;
+		public virtual double[] Rule2Init(){
+			double[] d={0,0,0,0,0,0};
+
+			return d;
 		}
 		///<summary>
 		///	Rule3方法用于随机攻击的效果,返回一个double类型的数组，里面储存伤害值以及类型
 		///</summary>
 		public virtual double[] Rule3(){
-			double[]d={0};
+			double[]d={0,0,0,0,0,0};
 			return d;
 		}
 		public string GetName{
