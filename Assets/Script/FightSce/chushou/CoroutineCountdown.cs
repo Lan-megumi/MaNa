@@ -137,7 +137,7 @@ public class CoroutineCountdown : MonoBehaviour
 //某个速度为0时，则igg会=-1，
        //玩家
        Debug.Log("N_igg="+igg);
-
+        Debug.Log("HelperSpeed" + HelperSpeed);
 
         //速度恢复最大值
         if (igg == -1 & Player1Speed == 0)
@@ -146,13 +146,12 @@ public class CoroutineCountdown : MonoBehaviour
             Player1Speed = 60;                  //速度恢复最大值
         }
         //帮手
-        if(igg==-1 & HelperSpeed==0){
+        if(igg==-1&&HelperSpeed<=0){
             igg = 1;
             HelperSpeed = HelperSpeedMax;
-
         }
         //背景
-        if(igg==-1&BackgroundSpeed==0){
+        if(igg==-1&BackgroundSpeed<=0){
             igg=1;
             BackgroundSpeed=150;
         }
@@ -350,10 +349,8 @@ public class CoroutineCountdown : MonoBehaviour
     }
     public void Helper_Speed(ref float i)
     {
-        HelperSpeed = i+10;
+        HelperSpeed = i+80;
         HelperSpeedMax = HelperSpeed;
-        Debug.Log("helpSpeedMax" + HelperSpeedMax);
-
     }
     
 
