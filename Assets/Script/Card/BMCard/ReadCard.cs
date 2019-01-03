@@ -27,6 +27,8 @@ public class ReadCard : MonoBehaviour {
 	public int Reckon,CureReckon;
 	private int CardDamage1,CardDamage2,Card1Cure,Card2Cure;
 	public AttcakeType CardAttackeType1,CardAttackeType2,BmAttackeType;
+	//用于储存卡牌属性的变量
+	public Element_type Card1Element_Type,Card2Element_Type,BmElementCardType;
 //------------------------------------------
 
 public GroundLib groundLib;
@@ -75,6 +77,8 @@ public GroundLib groundLib;
 				CardDamage1=Library2[i].GetCardDamage;
 				CardAttackeType1=Library2[i].GetAttcakeType;
 				Card1Cure=Library2[i].GetCardCure;
+				Card1Element_Type=Library2[i].GetCardElement_type;
+
 				Debug.Log("CardDamage1:"+CardDamage1);
 				a++;
 			}
@@ -83,6 +87,8 @@ public GroundLib groundLib;
 				CardDamage2=Library2[i].GetCardDamage;
 				CardAttackeType2=Library2[i].GetAttcakeType;
 				Card2Cure=Library2[i].GetCardCure;
+				Card2Element_Type=Library2[i].GetCardElement_type;
+
 				Debug.Log("CardDamage2:"+CardDamage2);
 				a++;
 			}
@@ -335,7 +341,19 @@ public GroundLib groundLib;
 			}
 	}
 //-----------------------------------------
-
+	/*
+		执行合成后的属性判断
+		规则：
+		第一张卡牌的合成为优先属性，第一张卡片属性是什么后面的卡牌属性就是什么
+	 */
+	
+	if(Card1Element_Type==(Element_type)0&&Card2Element_Type==(Element_type)0){
+		BmElementCardType=(Element_type)0;
+	}else{
+		BmElementCardType=Card1Element_Type;
+	}
+	
+//-----------------------------------------
 
 
 
@@ -351,13 +369,12 @@ public GroundLib groundLib;
 	重新给Reckon赋值
 */
 	//准备数据传参 
-	double [] numObj={22.1};
-	if (BmAttackeType==(AttcakeType)0)
-	{
-		//新建用于接受 GroundScr 中 场景数据库变量？对象？
-		GroundLib gb = GroundScr._instance.groundLib;
-		Reckon= gb.ReckonRule1(numObj);
-	}
+	double [] numObj={Reckon,(double)BmElementCardType,(double)BmAttackeType};
+	
+	//新建用于接受 GroundScr 中 场景数据库变量？对象？
+	GroundLib gb = GroundScr._instance.groundLib;
+	Reckon= gb.ReckonRule1(numObj);
+	
 	
 //--------------------------------------------------------------------------
 

@@ -16,6 +16,7 @@ using UnityEngine;
 	*/
 	public enum Element_type
 	{
+		None,
 		Fire,
 		Water,
 		Cloud

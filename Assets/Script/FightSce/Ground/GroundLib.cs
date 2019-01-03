@@ -14,6 +14,7 @@ public class GroundLib  {
 	// Use this for initialization
 	// List<Ground> GroundLibrary=new List<Ground>();
 	Ground[] GroundLibrary=new Ground[1];
+	
 
 ///<summary>
 /// 这里是调用公式的接口会返回一个强制转换为int值的数字给 ReadCard.Reckon重新接收
@@ -26,22 +27,26 @@ public class GroundLib  {
 	
 	}
 ///<summary>
-/// Rule2方法暂时未完成
+/// Rule2会返回一个人物属性数组
 ///</summary>
-	public int ReckonRule2(double[] date){
+	public double[] ReckonRule2(){
 		
-		// GroundLibrary[0].Rule2(date);
-		return 0;
+		double[] d = GroundLibrary[0].Rule2();
+		return d;
 	
 	}
 ///<summary>
-/// Rule2Init方法暂时未完成
+/// Rule2Init会返回一个人物属性数组
 ///</summary>
-	public int ReckonRule2Init(double[] date){
+	public double[] ReckonRule2Init(){
+		double[]d=null;
+		if (GroundLibrary[0]==null)
+		{	
+		}else{
+			d = GroundLibrary[0].Rule2Init();
+		}
 		
-		// GroundLibrary[0].Rule2Init(date);
-		return 0;
-	
+		return d;
 	}
 
 ///<summary>
@@ -130,15 +135,34 @@ public class GroundLib  {
 
 		public override double Rule(double[] date){
 			Debug.Log("Strom_labyrinth.Rule");
-			double Reckon = date[0]*1;
+			if(date[1]==1){
+				date[0]*=(1-0.15);
+			}else if (date[1]==3)
+			{
+				date[0]*=1.20;
+			}
+			double Reckon=date[0];
 			return Reckon;
 		}  
+		public override double[] Rule2(){
+			double[] date={
+				0,0,0,0,0,-0.05
+			};
+			return date;
+		}
+
+		public override double[] Rule2Init(){
+			double[] date={
+				0,0,0,0,0,0.05
+			};
+			return date;
+		}
 	}
 	///<summary>
 	/// 竞技场
 	///</summary>
 	public class Arena:Ground{
-
+		float Rate=0.0f;
 		public override double[] Rule3(){
 			Debug.Log("Arena.Rule3");
 			double [] reckonDeatil={0,0,0};
@@ -146,10 +170,14 @@ public class GroundLib  {
 			int AttcakeType=99;//第二位数
 			System.Random rd = new System.Random();
 			float f = (float)(rd.Next(100)*0.01);
-			if (0.7+f>=1)
+			// Debug.Log("Arena:f"+f);
+			if (0.7+f+Rate>=1)
 			{
 				Reckon=10;
 				AttcakeType=1;
+				Rate=0.0f;
+			}else{
+				Rate+=0.1f;
 			}
 			reckonDeatil[0]=(double)Reckon;
 			reckonDeatil[1]=(double)AttcakeType;

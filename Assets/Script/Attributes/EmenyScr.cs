@@ -22,7 +22,7 @@ public class EmenyScr : MonoBehaviour {
 	public List<Attributes> enemyAi;
 
     // public static EmenyScr _instance;
-    public float Agi;
+    public float Agi,Avd;
 
     // private void Awake()
     // {
@@ -46,6 +46,7 @@ public class EmenyScr : MonoBehaviour {
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
+			Avd = Newemeny.Avd;
 			TextName.text=Newemeny.GetName;
 			// enemyAi[0]=Newemeny;
 			Headportrait=Newemeny.GetHeadportrait;
@@ -56,12 +57,14 @@ public class EmenyScr : MonoBehaviour {
 			EnemyHp=Newemeny.GetHp;
 			TextName.text=Newemeny.GetName;
             Agi = Newemeny.Agi;
+			Avd = Newemeny.Avd;
 			Headportrait=Newemeny.GetHeadportrait;
 			// enemyAi[0]=Newemeny;
         }else if(i==3){
 			Enemy3 Newemeny=new Enemy3();
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
+			Avd = Newemeny.Avd;
             Agi = Newemeny.Agi;
 			Headportrait=Newemeny.GetHeadportrait;
 			TextName.text=Newemeny.GetName;
@@ -75,6 +78,7 @@ public class EmenyScr : MonoBehaviour {
 			EnemyHp=Newemeny.GetHp;
 			Headportrait=Newemeny.GetHeadportrait;
             Agi = Newemeny.Agi;
+			Avd = Newemeny.Avd;
 			TextName.text=Newemeny.GetName;
 			enemyAi.Add(Newemeny);
 		}else if(i==5){
@@ -82,6 +86,7 @@ public class EmenyScr : MonoBehaviour {
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
+			Avd = Newemeny.Avd;
 			Headportrait=Newemeny.GetHeadportrait;
 			TextName.text=Newemeny.GetName;
 			enemyAi.Add(Newemeny);
@@ -90,6 +95,7 @@ public class EmenyScr : MonoBehaviour {
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
+			Avd = Newemeny.Avd;
 			Headportrait=Newemeny.GetHeadportrait;
 			TextName.text=Newemeny.GetName;
 			enemyAi.Add(Newemeny);
@@ -98,6 +104,7 @@ public class EmenyScr : MonoBehaviour {
 			Newemeny.initdate();
 			EnemyHp=Newemeny.GetHp;
             Agi = Newemeny.Agi;
+			Avd = Newemeny.Avd;
 			Headportrait=Newemeny.GetHeadportrait;
 			TextName.text=Newemeny.GetName;
 			// double [] b={0};
@@ -202,6 +209,17 @@ public class EmenyScr : MonoBehaviour {
 	///</summary>
 	public void Set_BchoseDeatil(bool t){
 		BChose_Deatil=t;
+	}
+	///<summary>
+	/// 接受场景Rule2改变的数据
+	///</summary>
+	public void ChangeDate(double[] d){
+		EnemyMaxHp+=(int)d[0];
+		if(EnemyMaxHp<EnemyHp){
+			EnemyHp=EnemyMaxHp;
+		}
+		Agi+=(int)d[3];
+		Avd+=(float)d[5];
 	}
 
 	

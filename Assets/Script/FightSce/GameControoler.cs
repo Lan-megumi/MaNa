@@ -48,8 +48,7 @@ public class GameControoler : MonoBehaviour {
 		BlackCan.SetActive(true);
 		if (SceDate!=null)
 		{
-			//获取场景数据
-			this.GetComponent<GroundScr>().GetSceGround();
+			
 			//先将Ui显示出来
 			SetUi(true);
 
@@ -63,7 +62,8 @@ public class GameControoler : MonoBehaviour {
 			// LEL.NewLevel_Enemy(LevelName);
 			this.GetComponent<Level_Enemy_Lib>().NewLevel_Enemy(n,LELnum);
 			EnemyNum=DmScr._instance.Re_EnemyNum();
-
+			//获取场景数据生成场景
+			this.GetComponent<GroundScr>().GetSceGround();
 			//撤下遮布
 			BlackCan.SetActive(false);
 			//初始化场景数据

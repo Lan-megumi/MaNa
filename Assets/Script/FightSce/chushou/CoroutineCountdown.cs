@@ -333,7 +333,7 @@ public class CoroutineCountdown : MonoBehaviour
             Debug.Log("来自收脚本的信息：背景回合取得的数组第一位为 "+s[0]);
             if(s[0]!=0){
                 //进入结算的方法
-                PulicObjScr._instance.Test(s);
+                PulicObjScr._instance.GroundRule3(s);
                 
             }
         }

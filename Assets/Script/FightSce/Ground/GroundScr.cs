@@ -48,9 +48,18 @@ public class GroundScr : MonoBehaviour {
 ///	改变场景的方法，同时改变Ui的显示
 ///</summary>
 	public void ChangeGround(string name){
+		
+		//执行场景Rule2Init方法
+		PulicObjScr._instance.GroundRule2Init();
+		
+		
+
 		groundLib.UponGround(name);
 		GroundUi._instance.ChangeGroundImg(name);
 		//播放一个动画
+
+		//执行场景Rule2方法
+		PulicObjScr._instance.GroundRule2();
 	}
 
 	

@@ -29,8 +29,8 @@ public class PlayerDate : MonoBehaviour {
 	准备用于接受玩家数据的变量
 */
 	 public string Player_name="",Head_portrait="";
-	 public int Hp,MaxHp,Mana,MaxMana,Rgs,Imm,Avd;
-	 public float Agi;
+	 public int Hp,MaxHp,Mana,MaxMana,Rgs,Imm;
+	 public float Agi,Avd;
 	 //---------------------------------
 
 	// Use this for initialization
@@ -98,6 +98,22 @@ public class PlayerDate : MonoBehaviour {
 		Debug.Log("ReckonMana:"+Mana+" ,i:"+i);
 		
 	}
+
+	///<summary>
+	/// 接受场景Rule2改变的数据
+	///</summary>
+	public void ChangeDate(double[] d){
+		MaxHp=(int)d[0];
+		if(MaxMana<d[1]){
+			int linshi = (int)d[1]-MaxMana;
+			Mana+=linshi;
+		}
+		MaxMana=(int)d[1];
+		Agi=(float)d[3];
+		Avd=(float)d[5];
+		
+
+	}
 //-----------------------------------------
 	//以下分别为获取 玩家血量、最大血量、魔法抗性、异常抗性、闪避
 	public int ReturnHp(){
@@ -112,7 +128,7 @@ public class PlayerDate : MonoBehaviour {
 	public int ReturnImm(){
 		return Imm;
 	}
-	public int ReturnAvd(){
+	public float ReturnAvd(){
 		return Avd;
 	}
 	public int ReturnMaxMana(){
