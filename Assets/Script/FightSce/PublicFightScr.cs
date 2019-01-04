@@ -14,6 +14,8 @@ public class PublicFightScr : MonoBehaviour {
 	public string N_Name;
 	public string N_Type;
 	public string N_Buff;
+	public string CureNum;
+	public bool CureFun=false;
 	public float N_Buff_num;
    
 
@@ -41,8 +43,18 @@ public class PublicFightScr : MonoBehaviour {
 	public void StarFunction(string type){
 		N_Type=type;
 	}
+	
 	public void StarFunction2(string name){
 		N_Name=name;
+	}
+	///<summary>
+	///	用于治疗效果的读取
+	///<summary>
+	public void StarCureFun(){
+		CureFun=true;
+	}
+	public void StarCureNum(string num){
+		CureNum=num;
 	}
 	///<summary>
 	///Buff触发使用的Function,传入参数由卡牌合成后的返回而定
@@ -81,6 +93,8 @@ public class PublicFightScr : MonoBehaviour {
 		N_Type=null;
 		N_Buff=null;
 		N_Buff_num=0;
+		CureFun=false;
+		CureNum=null;
 
 	}
 }

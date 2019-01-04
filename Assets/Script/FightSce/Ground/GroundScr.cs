@@ -52,8 +52,6 @@ public class GroundScr : MonoBehaviour {
 		//执行场景Rule2Init方法
 		PulicObjScr._instance.GroundRule2Init();
 		
-		
-
 		groundLib.UponGround(name);
 		GroundUi._instance.ChangeGroundImg(name);
 		//播放一个动画

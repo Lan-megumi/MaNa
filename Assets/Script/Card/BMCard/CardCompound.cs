@@ -27,8 +27,8 @@ public class CardCompound : MonoBehaviour {
 
     void Awake()
     {
-        d1.Add("EL01Fi&EL02Fi", "1%2");  //添加最佳卡牌
-        d1.Add("EL02Fi&EL01Fi", "1%2");
+        d1.Add("EL01Fi&EL02Fi", "Bm01Fi");  //添加最佳卡牌
+        d1.Add("EL02Fi&EL01Fi", "Bm01Fi");
         a1=null;
         a2=null;
     }
@@ -66,6 +66,7 @@ public class CardCompound : MonoBehaviour {
             
             DicReturn = d1[a1 + "&" + a2];
             Debug.Log("Bm合成卡牌");
+            BmCardScr._instance.ChangeBm(DicReturn);
         }
         else
         {

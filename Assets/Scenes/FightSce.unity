@@ -1542,6 +1542,15 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1813497737086012, guid: 5695b9cc027194bcd82021e4a4b5f1b8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114910709653679702, guid: 5695b9cc027194bcd82021e4a4b5f1b8,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5695b9cc027194bcd82021e4a4b5f1b8, type: 2}
   m_IsPrefabParent: 0
@@ -4519,7 +4528,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!224 &1181197755
 RectTransform:
@@ -6605,6 +6614,7 @@ GameObject:
   - component: {fileID: 2043938812}
   - component: {fileID: 2043938811}
   - component: {fileID: 2043938810}
+  - component: {fileID: 2043938816}
   m_Layer: 5
   m_Name: CardsCanvas
   m_TagString: Untagged
@@ -6729,6 +6739,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2043938816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2043938809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8cc3fbad9bf460d8e5e902fc7e0d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2044764722
 GameObject:
   m_ObjectHideFlags: 0
