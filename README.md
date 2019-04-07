@@ -1,6 +1,9 @@
 # Poject Name
 Mana  
-Tpye：CardGame / Swap  
-My graduation design works (not yet perfect  
+# Poject Type
+CardGame / Swap  
 # Poject Date：
 2018.09.28
+# What this？
+My graduation design works (not yet perfect  
+
