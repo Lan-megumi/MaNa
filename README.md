@@ -1,9 +1,9 @@
-# Poject Name
+## Poject Name
 Mana  
-# Poject Type
+## Poject Type
 CardGame / Swap  
-# Poject Date：
+## Poject Date：
 2018.09.28
-# What this？
+## What this？
 My graduation design works (not yet perfect  
 
